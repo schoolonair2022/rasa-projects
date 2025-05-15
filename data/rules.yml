@@ -11,8 +11,10 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-# New rules for contact management
-- rule: Ask for nickname after confirming contact
+# Simplified rule based on validation status
+- rule: Ask for wallet address again after invalid address
   steps:
-  - action: utter_add_contact_confirm
-  - action: utter_add_contact_ask_nickname
+  - action: action_validate_wallet_address
+  - slot_was_set:
+    - address_valid: false
+  - action: utter_add_contact_ask_address

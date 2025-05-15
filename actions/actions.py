@@ -48,13 +48,13 @@ class ActionValidateWalletAddress(Action):
         # Add more validation for BTC, EOS addresses as needed
             
         if is_valid:
-            # Instead of letting the story decide the next action, we'll explicitly return
-            # the appropriate followup action based on validation result
-            return [SlotSet("address_valid", True), 
-                    FollowupAction("utter_add_contact_confirm")]
+            contact_name = tracker.get_slot("contact_name")
+            dispatcher.utter_message(text=f"I've added {contact_name} with address {wallet_address} to your contacts. 🎉")
+            dispatcher.utter_message(text="Would you like to add a nickname or note for this contact?")
+            return [SlotSet("address_valid", True)]
         else:
-            return [SlotSet("address_valid", False), 
-                    FollowupAction("utter_add_contact_invalid_address")]
+            dispatcher.utter_message(text="That doesn't seem to be a valid wallet address. Please check and try again.")
+            return [SlotSet("address_valid", False), SlotSet("wallet_address", None)]
 
 class ActionResetContactSlots(Action):
     def name(self) -> Text:

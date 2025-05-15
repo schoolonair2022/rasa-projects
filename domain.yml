@@ -9,6 +9,7 @@ intents:
   - mood_unhappy
   - bot_challenge
   - add_contact
+  - inform
 
 responses:
   utter_greet:
@@ -35,15 +36,6 @@ responses:
   
   utter_add_contact_ask_address:
   - text: "Great! Now please provide the wallet address you want to save."
-  
-  utter_add_contact_confirm:
-  - text: "I've added {contact_name} with address {wallet_address} to your contacts. 🎉"
-  
-  utter_add_contact_invalid_address:
-  - text: "That doesn't seem to be a valid wallet address. Please check and try again."
-  
-  utter_add_contact_ask_nickname:
-  - text: "Would you like to add a nickname or note for this contact?"
 
 entities:
   - contact_name
@@ -71,7 +63,7 @@ slots:
     mappings:
     - type: from_entity
       entity: network_type
-
+      
   address_valid:
     type: bool
     influence_conversation: true
