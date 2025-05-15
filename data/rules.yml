@@ -1,7 +1,6 @@
 version: "3.1"
 
 rules:
-
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
@@ -11,3 +10,14 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+# New rules for contact management
+- rule: Ask for nickname after confirming contact
+  steps:
+  - action: utter_add_contact_confirm
+  - action: utter_add_contact_ask_nickname
+
+- rule: Reset contact slots after adding contact
+  steps:
+  - action: utter_add_contact_confirm
+  - action: action_reset_contact_slots

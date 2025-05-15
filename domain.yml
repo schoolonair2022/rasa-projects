@@ -8,6 +8,7 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - add_contact
 
 responses:
   utter_greet:
@@ -28,6 +29,48 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+  
+  utter_add_contact_ask_name:
+  - text: "Sure! What name would you like to save for this contact?"
+  
+  utter_add_contact_ask_address:
+  - text: "Great! Now please provide the wallet address you want to save."
+  
+  utter_add_contact_confirm:
+  - text: "I've added {contact_name} with address {wallet_address} to your contacts. 🎉"
+  
+  utter_add_contact_invalid_address:
+  - text: "That doesn't seem to be a valid wallet address. Please check and try again."
+  
+  utter_add_contact_ask_nickname:
+  - text: "Would you like to add a nickname or note for this contact?"
+
+entities:
+  - contact_name
+  - wallet_address
+  - network_type
+
+slots:
+  contact_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: contact_name
+  
+  wallet_address:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: wallet_address
+  
+  network_type:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: network_type
 
 session_config:
   session_expiration_time: 60
