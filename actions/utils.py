@@ -80,14 +80,18 @@ def validate_crypto_address(address):
     """Comprehensive validation for crypto addresses"""
     # First try regex patterns
     if is_valid_ethereum_address(address):
+        logger.info(f"Address {address} validated by ETH regex pattern")
         return True, "ETH"
     elif is_valid_bitcoin_address(address):
+        logger.info(f"Address {address} validated by BTC regex pattern")
         return True, "BTC"
     else:
+        logger.info(f"Address {address} failed regex validation, trying CryptoBERT...")
         # Fall back to CryptoBERT for more complex cases
         try:
             bert_manager = CryptoBERTManager()
             is_valid = bert_manager.classify_text(address)
+            logger.info(f"CryptoBERT classification result for {address}: {is_valid}")
             if is_valid:
                 return True, "CRYPTO"  # Generic crypto type
             return False, None
