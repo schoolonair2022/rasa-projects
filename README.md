@@ -13,6 +13,11 @@ CryptoBERT là mô hình ngôn ngữ dựa trên BERT được tinh chỉnh trê
 
 Nguồn gốc: [ElKulako/cryptobert](https://huggingface.co/ElKulako/cryptobert)
 
+source ~/activate-rasa.sh
+rm models/latest.tar.gz
+ln -s 20250515-052025-patient-syrup.tar.gz models/latest.tar.gz
+rasa shell --model models/20250515-052025-patient-syrup.tar.gz
+
 ## Cài đặt
 
 1. Cài đặt các phụ thuộc:

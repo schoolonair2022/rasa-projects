@@ -1,0 +1,33 @@
+version: "3.1"
+
+stories:
+# Stories for CryptoBERT features
+
+- story: analyze sentiment
+  steps:
+  - intent: ask_sentiment
+  - action: action_analyze_sentiment
+
+- story: detect scam
+  steps:
+  - intent: check_scam
+  - action: utter_ask_crypto_description
+  - intent: inform
+  - slot_was_set:
+    - crypto_description: anything
+  - action: action_detect_scam
+
+- story: classify topic
+  steps:
+  - intent: crypto_topic
+  - action: action_classify_topic
+
+- story: update user expertise
+  steps:
+  - intent: share_expertise
+  - action: action_update_user_expertise
+
+- story: extract crypto entities
+  steps:
+  - intent: mention_crypto
+  - action: action_extract_crypto_entities

@@ -1,0 +1,35 @@
+version: "3.1"
+
+rules:
+# Rules for CryptoBERT features
+
+- rule: Analyze sentiment when asked
+  steps:
+  - intent: ask_sentiment
+  - action: action_analyze_sentiment
+
+- rule: Detect scam when asked
+  steps:
+  - intent: check_scam
+  - action: utter_ask_crypto_description
+
+- rule: Detect scam after description
+  steps:
+  - action: utter_ask_crypto_description
+  - intent: inform  # This assumes the user's next message will be categorized as "inform"
+  - action: action_detect_scam
+
+- rule: Classify crypto topic
+  steps:
+  - intent: crypto_topic
+  - action: action_classify_topic
+
+- rule: Update user expertise level
+  steps:
+  - intent: share_expertise
+  - action: action_update_user_expertise
+
+- rule: Extract crypto entities
+  steps:
+  - intent: mention_crypto
+  - action: action_extract_crypto_entities
