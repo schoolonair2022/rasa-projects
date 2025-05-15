@@ -18,14 +18,12 @@ rules:
     - address_valid: false
   - action: utter_add_contact_ask_address
   - active_loop: null
-  - wait_for_user_input: true
   
 - rule: Start adding contact flow
   steps:
   - intent: add_contact
   - action: utter_add_contact_ask_name
   - active_loop: null
-  - wait_for_user_input: true
 
 # Rules for handling interruptions
 - rule: Handle sentiment question during any flow
