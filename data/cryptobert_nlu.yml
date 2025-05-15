@@ -1,85 +1,85 @@
 - intent: ask_sentiment
   examples: |
-    - Tôi có nên đầu tư vào Bitcoin không?
-    - Bạn nghĩ gì về ETH?
-    - Solana có đáng để mua không?
-    - Tôi lo lắng về thị trường gấu
-    - Tôi rất hào hứng với NFT
-    - Thị trường có vẻ tích cực
-    - Tiền điện tử đang lao dốc
-    - Tôi vừa mất tiền trong vụ sập sàn
-    - Phân tích tình hình thị trường hiện tại
-    - Bạn lạc quan về giá Bitcoin không?
-    - Tôi nghĩ đây là thời điểm tốt để mua vào
-    - Tôi nên bán token của mình không?
-    - Đồng coin này có triển vọng không?
-    - Phân tích tâm lý thị trường giúp tôi
-    - Tôi cảm thấy thị trường sắp phục hồi
-    - Liệu đây có phải là bẫy bull không?
-    - Tôi đang rất lo lắng về khoản đầu tư của mình
+    - Should I invest in Bitcoin?
+    - What do you think about ETH?
+    - Is Solana worth buying?
+    - I'm worried about the bear market
+    - I'm really excited about NFTs
+    - The market seems positive
+    - Cryptocurrencies are crashing
+    - I just lost money in the exchange collapse
+    - Analyze the current market situation
+    - Are you optimistic about Bitcoin's price?
+    - I think this is a good time to buy
+    - Should I sell my tokens?
+    - Does this coin have potential?
+    - Analyze the market sentiment for me
+    - I feel the market is about to recover
+    - Is this a bull trap?
+    - I'm really concerned about my investment
 
 - intent: check_scam
   examples: |
-    - Dự án này có phải scam không?
-    - Kiểm tra token này giúp tôi
-    - [ABC] Token có đáng tin không?
-    - Họ hứa lợi nhuận 100% mỗi tháng
-    - Tôi nhận được mail về presale coin mới
-    - Phân tích ICO này xem có lừa đảo không
-    - Họ bảo đảm lợi nhuận nhưng yêu cầu nạp tiền trước
-    - Có dấu hiệu lừa đảo nào trong dự án này không?
-    - Coin này mới ra mắt, có an toàn không?
-    - Tôi được mời vào nhóm Telegram pump và dump
-    - Kiểm tra ví này có đáng tin không
-    - Họ nói đầu tư không có rủi ro
-    - Đây có phải rugpull không?
-    - Tôi nghi ngờ dự án này
-    - Phân tích whitepaper giúp tôi tìm dấu hiệu lừa đảo
-    - Tôi có cơ hội làm giàu với token này không?
-    - Đây có phải Ponzi không?
-    - Project này có đáng để đầu tư không?
+    - Is this project a scam?
+    - Check this token for me
+    - Is [ABC] Token trustworthy?
+    - They promise 100% profit every month
+    - I received an email about a new coin presale
+    - Analyze this ICO to see if it's fraudulent
+    - They guarantee returns but require upfront payment
+    - Are there any signs of fraud in this project?
+    - This coin just launched, is it safe?
+    - I was invited to a Telegram pump and dump group
+    - Verify if this wallet is trustworthy
+    - They say there's no investment risk
+    - Is this a rugpull?
+    - I'm suspicious about this project
+    - Analyze the whitepaper to find signs of fraud
+    - Do I have a chance to get rich with this token?
+    - Is this a Ponzi scheme?
+    - Is this project worth investing in?
 
 - intent: crypto_topic
   examples: |
-    - Bitcoin hoạt động như thế nào?
-    - Cách tạo ví cold wallet
-    - Thuế từ lợi nhuận tiền điện tử
-    - Smart contract là gì?
-    - Tôi muốn tìm hiểu về NFT
-    - DeFi hoạt động như thế nào?
-    - Quy định pháp lý về tiền điện tử
-    - Cách bảo mật ví tiền điện tử
-    - Layer 2 là gì?
-    - Staking có an toàn không?
-    - Giải thích proof of stake
-    - Tôi nên đầu tư vào gì?
-    - Web3 là gì?
-    - Cách mua Bitcoin ở Việt Nam
-    - Làm thế nào để mining Ethereum?
-    - Flash loan hoạt động ra sao?
-    - Arbitrage là gì trong crypto?
-    - Giải thích Uniswap vs Sushiswap
+    - How does Bitcoin work?
+    - How to create a cold wallet
+    - Taxes from cryptocurrency profits
+    - What are smart contracts?
+    - I want to learn about NFTs
+    - How does DeFi work?
+    - Legal regulations on cryptocurrencies
+    - How to secure a cryptocurrency wallet
+    - What is Layer 2?
+    - Is staking safe?
+    - Explain proof of stake
+    - What should I invest in?
+    - What is Web3?
+    - How to buy Bitcoin
+    - How to mine Ethereum?
+    - How do flash loans work?
+    - What is arbitrage in crypto?
+    - Explain Uniswap vs Sushiswap
 
 - intent: share_expertise
   examples: |
-    - Tôi mới bắt đầu với crypto
-    - Tôi đã trade bitcoin 5 năm nay
-    - Tôi là người mới hoàn toàn
-    - Tôi chưa hiểu gì về blockchain
-    - Tôi đang phát triển dApp
-    - Tôi làm việc trong lĩnh vực DeFi
-    - Tôi chưa từng mua tiền điện tử
-    - Tôi là developer solidity
-    - Tôi không biết gì về staking
-    - Tôi đã đầu tư vào nhiều ICO
-    - Tôi muốn tìm hiểu từ cơ bản nhất
-    - Tôi đã tự phát triển một số NFT
-    - Tôi chỉ biết giao dịch cơ bản
-    - Tôi vẫn chưa hiểu rõ về gas fee
-    - Tôi thường xuyên sử dụng DEX
-    - Tôi là coder Rust
-    - Tôi chưa từng dùng metamask
-    - Tôi là trader chuyên nghiệp
+    - I'm new to crypto
+    - I've been trading bitcoin for 5 years
+    - I'm a complete beginner
+    - I don't understand anything about blockchain
+    - I'm developing a dApp
+    - I work in the DeFi space
+    - I've never bought cryptocurrency
+    - I'm a solidity developer
+    - I don't know anything about staking
+    - I've invested in many ICOs
+    - I want to learn from the very basics
+    - I've developed some NFTs myself
+    - I only know basic trading
+    - I still don't understand gas fees
+    - I regularly use DEX
+    - I'm a Rust coder
+    - I've never used metamask
+    - I'm a professional trader
 
 - intent: mention_crypto
   examples: |
@@ -91,17 +91,17 @@
     - Polkadot
     - USDT
     - XRP
-    - Tôi thích Avalanche
-    - Cosmos có tiềm năng
-    - Terra Luna đã sụp đổ
-    - Filecoin giải quyết vấn đề lưu trữ
-    - Bitcoin là vua
-    - Polygon giúp Ethereum mở rộng
-    - Chainlink là oracle hàng đầu
-    - Bạn biết gì về Tezos
-    - Tôi đang stake Eth
-    - Dogecoin là meme coin
-    - Layer 1 như Solana rất nhanh
+    - I like Avalanche
+    - Cosmos has potential
+    - Terra Luna collapsed
+    - Filecoin solves storage issues
+    - Bitcoin is king
+    - Polygon helps Ethereum scale
+    - Chainlink is the leading oracle
+    - What do you know about Tezos
+    - I'm staking Eth
+    - Dogecoin is a meme coin
+    - Layer 1s like Solana are very fast
     - Bitcoin Lightning Network
-    - Bạn đã nghe về zkSync chưa?
-    - Arbitrum là L2 cho Ethereum
+    - Have you heard about zkSync?
+    - Arbitrum is an L2 for Ethereum

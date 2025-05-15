@@ -44,19 +44,19 @@ responses:
   
   # New responses for CryptoBERT features
   utter_investment_info:
-  - text: "Đầu tư vào tiền điện tử có thể mang lại lợi nhuận cao nhưng cũng có rủi ro lớn. Hãy nhớ đa dạng hóa danh mục đầu tư và chỉ đầu tư số tiền bạn có thể chấp nhận mất."
+  - text: "Investing in cryptocurrencies can offer high returns but also comes with significant risks. Remember to diversify your portfolio and only invest what you can afford to lose."
   
   utter_technical_info:
-  - text: "Blockchain là một sổ cái phân tán lưu trữ dữ liệu trong các khối được liên kết với nhau. Mỗi khối chứa một bản ghi các giao dịch và một tham chiếu đến khối trước đó."
+  - text: "Blockchain is a distributed ledger that stores data in blocks that are linked together. Each block contains a record of transactions and a reference to the previous block."
   
   utter_security_tips:
-  - text: "Luôn bảo vệ khóa riêng tư của bạn, sử dụng xác thực hai yếu tố, và cẩn thận với các nỗ lực lừa đảo. Cân nhắc sử dụng ví phần cứng cho các khoản đầu tư lớn."
+  - text: "Always protect your private keys, use two-factor authentication, and be cautious of phishing attempts. Consider using a hardware wallet for large investments."
   
   utter_ask_crypto_description:
-  - text: "Bạn có thể mô tả dự án tiền điện tử đó không?"
+  - text: "Can you describe that cryptocurrency project in more detail?"
   
   utter_ask_expertise_level:
-  - text: "Bạn đã có kinh nghiệm với tiền điện tử bao lâu rồi?"
+  - text: "How much experience do you have with cryptocurrencies?"
 
 actions:
   - action_validate_wallet_address

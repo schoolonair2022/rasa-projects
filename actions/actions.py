@@ -84,11 +84,11 @@ class ActionAnalyzeSentiment(Action):
         logger.info(f"Sentiment analysis result: {sentiment}, confidence: {confidence}")
         
         if sentiment == "positive":
-            dispatcher.utter_message(text=f"Tôi nhận thấy bạn có quan điểm tích cực về chủ đề này! 📈")
+            dispatcher.utter_message(text=f"I notice you have a positive outlook on this topic! 📈")
         elif sentiment == "negative":
-            dispatcher.utter_message(text=f"Có vẻ bạn đang lo lắng về điều này. Tôi có thể giúp gì không? 📉")
+            dispatcher.utter_message(text=f"It seems you're concerned about this. Is there anything I can help with? 📉")
         else:
-            dispatcher.utter_message(text=f"Cảm ơn bạn đã chia sẻ quan điểm của mình.")
+            dispatcher.utter_message(text=f"Thank you for sharing your perspective.")
         
         return [SlotSet("sentiment", sentiment),
                 SlotSet("sentiment_confidence", confidence)]
@@ -104,7 +104,7 @@ class ActionDetectScam(Action):
         # Get crypto description from slot
         description = tracker.get_slot("crypto_description")
         if not description:
-            dispatcher.utter_message(text="Bạn có thể mô tả dự án/token đó không?")
+            dispatcher.utter_message(text="Can you describe that project/token?")
             return []
         
         logger.info(f"Analyzing potential scam: {description}")
@@ -112,12 +112,12 @@ class ActionDetectScam(Action):
         logger.info(f"Scam detection result: {is_scam}, probability: {probability}, indicators: {indicators}")
         
         if is_scam:
-            dispatcher.utter_message(text="⚠️ Cảnh báo! Dự án này có một số dấu hiệu đáng ngờ:")
+            dispatcher.utter_message(text="⚠️ Warning! This project has some suspicious signs:")
             if indicators:
                 dispatcher.utter_message(text="- " + "\n- ".join(indicators))
-            dispatcher.utter_message(text="Hãy cẩn thận và luôn nghiên cứu kỹ trước khi đầu tư.")
+            dispatcher.utter_message(text="Be careful and always do thorough research before investing.")
         else:
-            dispatcher.utter_message(text="Tôi không phát hiện các dấu hiệu lừa đảo rõ ràng, nhưng vẫn nên nghiên cứu thêm.")
+            dispatcher.utter_message(text="I don't detect clear signs of fraud, but you should still do your own research.")
         
         return [SlotSet("scam_probability", probability)]
 
@@ -138,13 +138,13 @@ class ActionClassifyTopic(Action):
         
         # Route based on topic
         if topic == "investment":
-            dispatcher.utter_message(text="Tôi thấy bạn đang nói về đầu tư tiền điện tử. Tôi có thể giúp gì không?")
+            dispatcher.utter_message(text="I see you're talking about cryptocurrency investment. How can I help?")
         elif topic == "technical":
-            dispatcher.utter_message(text="Đây là một câu hỏi kỹ thuật về blockchain. Tôi sẽ cố gắng giải thích rõ ràng.")
+            dispatcher.utter_message(text="This is a technical question about blockchain. I'll try to explain clearly.")
         elif topic == "security":
-            dispatcher.utter_message(text="Bảo mật là vấn đề rất quan trọng trong tiền điện tử. Hãy đảm bảo bạn luôn thực hiện các biện pháp phòng ngừa.")
+            dispatcher.utter_message(text="Security is a crucial issue in cryptocurrency. Make sure you always take precautions.")
         else:
-            dispatcher.utter_message(text="Tôi có thể giúp bạn với nhiều chủ đề về tiền điện tử. Bạn quan tâm đến khía cạnh nào?")
+            dispatcher.utter_message(text="I can help you with many cryptocurrency topics. Which aspect are you interested in?")
         
         return [SlotSet("query_topic", topic)]
 
@@ -165,11 +165,11 @@ class ActionUpdateUserExpertise(Action):
         
         # Customize response based on expertise
         if expertise == "beginner":
-            dispatcher.utter_message(text="Tôi sẽ đơn giản hóa các giải thích của mình để giúp bạn hiểu rõ hơn.")
+            dispatcher.utter_message(text="I'll simplify my explanations to help you understand better.")
         elif expertise == "expert":
-            dispatcher.utter_message(text="Tôi thấy bạn đã có hiểu biết sâu sắc về tiền điện tử. Tôi sẽ cung cấp các chi tiết chuyên sâu hơn.")
+            dispatcher.utter_message(text="I see you have a deep understanding of cryptocurrencies. I'll provide more in-depth details.")
         else:
-            dispatcher.utter_message(text="Tôi sẽ cung cấp thông tin cân bằng giữa cơ bản và chuyên sâu.")
+            dispatcher.utter_message(text="I'll provide information balanced between basic and advanced concepts.")
         
         return [SlotSet("expertise_level", expertise)]
 
@@ -191,14 +191,14 @@ class ActionExtractCryptoEntities(Action):
         # Respond based on extracted entities
         if entities['tokens']:
             token_list = ", ".join(entities['tokens'])
-            dispatcher.utter_message(text=f"Tôi thấy bạn đang nói về các token: {token_list}")
+            dispatcher.utter_message(text=f"I see you're talking about these tokens: {token_list}")
         
         if entities['blockchains']:
             blockchain_list = ", ".join(entities['blockchains'])
-            dispatcher.utter_message(text=f"Blockchain được đề cập: {blockchain_list}")
+            dispatcher.utter_message(text=f"Blockchains mentioned: {blockchain_list}")
         
         if not entities['tokens'] and not entities['blockchains']:
-            dispatcher.utter_message(text="Tôi không phát hiện được token hoặc blockchain cụ thể trong tin nhắn của bạn.")
+            dispatcher.utter_message(text="I couldn't detect specific tokens or blockchains in your message.")
         
         # Save to slots
         return [SlotSet("mentioned_tokens", entities['tokens']),
