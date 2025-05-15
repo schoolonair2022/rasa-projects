@@ -67,6 +67,7 @@ slots:
     mappings:
     - type: from_entity
       entity: network_type
+    - type: custom
       
   address_valid:
     type: bool
