@@ -18,3 +18,8 @@ rules:
   - slot_was_set:
     - address_valid: false
   - action: utter_add_contact_ask_address
+  
+- rule: Start adding contact flow
+  steps:
+  - intent: add_contact
+  - action: utter_add_contact_ask_name

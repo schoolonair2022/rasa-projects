@@ -35,15 +35,18 @@ stories:
   - action: utter_add_contact_ask_name
   - intent: inform
     entities:
-    - contact_name: "John"
+    - contact_name
+  - slot_was_set:
+    - contact_name: John
   - action: utter_add_contact_ask_address
   - intent: inform
     entities:
-    - wallet_address: "0x123456789abcdef"
+    - wallet_address
+  - slot_was_set:
+    - wallet_address: "0x123456789abcdef123456789abcdef123456789a"
   - action: action_validate_wallet_address
   - slot_was_set:
     - address_valid: true
-  - intent: inform
   - action: action_reset_contact_slots
 
 - story: add contact with invalid address
@@ -52,32 +55,25 @@ stories:
   - action: utter_add_contact_ask_name
   - intent: inform
     entities:
-    - contact_name: "Alice"
+    - contact_name
+  - slot_was_set:
+    - contact_name: Alice
   - action: utter_add_contact_ask_address
   - intent: inform
     entities:
-    - wallet_address: "invalid-address"
+    - wallet_address
+  - slot_was_set:
+    - wallet_address: "not-a-valid-address"
   - action: action_validate_wallet_address
   - slot_was_set:
     - address_valid: false
   - action: utter_add_contact_ask_address
   - intent: inform
     entities:
-    - wallet_address: "0x987654321fedcba"
+    - wallet_address
+  - slot_was_set:
+    - wallet_address: "0x123456789abcdef123456789abcdef123456789a"
   - action: action_validate_wallet_address
   - slot_was_set:
     - address_valid: true
-  - intent: inform
-  - action: action_reset_contact_slots
-
-- story: add contact with name and address in initial request
-  steps:
-  - intent: add_contact
-    entities:
-    - contact_name: "Bob"
-    - wallet_address: "0x987654321fedcba"
-  - action: action_validate_wallet_address
-  - slot_was_set:
-    - address_valid: true
-  - intent: inform
   - action: action_reset_contact_slots

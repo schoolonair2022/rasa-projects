@@ -54,7 +54,7 @@ class ActionValidateWalletAddress(Action):
             return [SlotSet("address_valid", True)]
         else:
             dispatcher.utter_message(text="That doesn't seem to be a valid wallet address. Please check and try again.")
-            return [SlotSet("address_valid", False), SlotSet("wallet_address", None)]
+            return [SlotSet("address_valid", False)]
 
 class ActionResetContactSlots(Action):
     def name(self) -> Text:
