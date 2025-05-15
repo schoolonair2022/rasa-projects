@@ -1,0 +1,107 @@
+- intent: ask_sentiment
+  examples: |
+    - Tôi có nên đầu tư vào Bitcoin không?
+    - Bạn nghĩ gì về ETH?
+    - Solana có đáng để mua không?
+    - Tôi lo lắng về thị trường gấu
+    - Tôi rất hào hứng với NFT
+    - Thị trường có vẻ tích cực
+    - Tiền điện tử đang lao dốc
+    - Tôi vừa mất tiền trong vụ sập sàn
+    - Phân tích tình hình thị trường hiện tại
+    - Bạn lạc quan về giá Bitcoin không?
+    - Tôi nghĩ đây là thời điểm tốt để mua vào
+    - Tôi nên bán token của mình không?
+    - Đồng coin này có triển vọng không?
+    - Phân tích tâm lý thị trường giúp tôi
+    - Tôi cảm thấy thị trường sắp phục hồi
+    - Liệu đây có phải là bẫy bull không?
+    - Tôi đang rất lo lắng về khoản đầu tư của mình
+
+- intent: check_scam
+  examples: |
+    - Dự án này có phải scam không?
+    - Kiểm tra token này giúp tôi
+    - [ABC] Token có đáng tin không?
+    - Họ hứa lợi nhuận 100% mỗi tháng
+    - Tôi nhận được mail về presale coin mới
+    - Phân tích ICO này xem có lừa đảo không
+    - Họ bảo đảm lợi nhuận nhưng yêu cầu nạp tiền trước
+    - Có dấu hiệu lừa đảo nào trong dự án này không?
+    - Coin này mới ra mắt, có an toàn không?
+    - Tôi được mời vào nhóm Telegram pump và dump
+    - Kiểm tra ví này có đáng tin không
+    - Họ nói đầu tư không có rủi ro
+    - Đây có phải rugpull không?
+    - Tôi nghi ngờ dự án này
+    - Phân tích whitepaper giúp tôi tìm dấu hiệu lừa đảo
+    - Tôi có cơ hội làm giàu với token này không?
+    - Đây có phải Ponzi không?
+    - Project này có đáng để đầu tư không?
+
+- intent: crypto_topic
+  examples: |
+    - Bitcoin hoạt động như thế nào?
+    - Cách tạo ví cold wallet
+    - Thuế từ lợi nhuận tiền điện tử
+    - Smart contract là gì?
+    - Tôi muốn tìm hiểu về NFT
+    - DeFi hoạt động như thế nào?
+    - Quy định pháp lý về tiền điện tử
+    - Cách bảo mật ví tiền điện tử
+    - Layer 2 là gì?
+    - Staking có an toàn không?
+    - Giải thích proof of stake
+    - Tôi nên đầu tư vào gì?
+    - Web3 là gì?
+    - Cách mua Bitcoin ở Việt Nam
+    - Làm thế nào để mining Ethereum?
+    - Flash loan hoạt động ra sao?
+    - Arbitrage là gì trong crypto?
+    - Giải thích Uniswap vs Sushiswap
+
+- intent: share_expertise
+  examples: |
+    - Tôi mới bắt đầu với crypto
+    - Tôi đã trade bitcoin 5 năm nay
+    - Tôi là người mới hoàn toàn
+    - Tôi chưa hiểu gì về blockchain
+    - Tôi đang phát triển dApp
+    - Tôi làm việc trong lĩnh vực DeFi
+    - Tôi chưa từng mua tiền điện tử
+    - Tôi là developer solidity
+    - Tôi không biết gì về staking
+    - Tôi đã đầu tư vào nhiều ICO
+    - Tôi muốn tìm hiểu từ cơ bản nhất
+    - Tôi đã tự phát triển một số NFT
+    - Tôi chỉ biết giao dịch cơ bản
+    - Tôi vẫn chưa hiểu rõ về gas fee
+    - Tôi thường xuyên sử dụng DEX
+    - Tôi là coder Rust
+    - Tôi chưa từng dùng metamask
+    - Tôi là trader chuyên nghiệp
+
+- intent: mention_crypto
+  examples: |
+    - Bitcoin
+    - Ethereum
+    - Solana
+    - BNB
+    - Cardano
+    - Polkadot
+    - USDT
+    - XRP
+    - Tôi thích Avalanche
+    - Cosmos có tiềm năng
+    - Terra Luna đã sụp đổ
+    - Filecoin giải quyết vấn đề lưu trữ
+    - Bitcoin là vua
+    - Polygon giúp Ethereum mở rộng
+    - Chainlink là oracle hàng đầu
+    - Bạn biết gì về Tezos
+    - Tôi đang stake Eth
+    - Dogecoin là meme coin
+    - Layer 1 như Solana rất nhanh
+    - Bitcoin Lightning Network
+    - Bạn đã nghe về zkSync chưa?
+    - Arbitrum là L2 cho Ethereum

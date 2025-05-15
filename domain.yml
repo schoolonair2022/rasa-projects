@@ -10,6 +10,11 @@ intents:
   - bot_challenge
   - add_contact
   - inform
+  - ask_sentiment
+  - check_scam
+  - crypto_topic
+  - share_expertise
+  - mention_crypto
 
 responses:
   utter_greet:
@@ -36,10 +41,31 @@ responses:
   
   utter_add_contact_ask_address:
   - text: "Great! Now please provide the wallet address you want to save."
+  
+  # New responses for CryptoBERT features
+  utter_investment_info:
+  - text: "Đầu tư vào tiền điện tử có thể mang lại lợi nhuận cao nhưng cũng có rủi ro lớn. Hãy nhớ đa dạng hóa danh mục đầu tư và chỉ đầu tư số tiền bạn có thể chấp nhận mất."
+  
+  utter_technical_info:
+  - text: "Blockchain là một sổ cái phân tán lưu trữ dữ liệu trong các khối được liên kết với nhau. Mỗi khối chứa một bản ghi các giao dịch và một tham chiếu đến khối trước đó."
+  
+  utter_security_tips:
+  - text: "Luôn bảo vệ khóa riêng tư của bạn, sử dụng xác thực hai yếu tố, và cẩn thận với các nỗ lực lừa đảo. Cân nhắc sử dụng ví phần cứng cho các khoản đầu tư lớn."
+  
+  utter_ask_crypto_description:
+  - text: "Bạn có thể mô tả dự án tiền điện tử đó không?"
+  
+  utter_ask_expertise_level:
+  - text: "Bạn đã có kinh nghiệm với tiền điện tử bao lâu rồi?"
 
 actions:
   - action_validate_wallet_address
   - action_reset_contact_slots
+  - action_analyze_sentiment
+  - action_detect_scam
+  - action_classify_topic
+  - action_update_user_expertise
+  - action_extract_crypto_entities
   
 entities:
   - contact_name
@@ -71,6 +97,55 @@ slots:
       
   address_valid:
     type: bool
+    influence_conversation: true
+    mappings:
+    - type: custom
+  
+  # New slots for CryptoBERT features
+  sentiment:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: custom
+  
+  sentiment_confidence:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+  
+  crypto_description:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+  
+  scam_probability:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+  
+  query_topic:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: custom
+  
+  expertise_level:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: custom
+  
+  mentioned_tokens:
+    type: list
+    influence_conversation: true
+    mappings:
+    - type: custom
+  
+  mentioned_blockchains:
+    type: list
     influence_conversation: true
     mappings:
     - type: custom
