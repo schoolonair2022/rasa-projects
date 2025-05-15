@@ -23,3 +23,39 @@ rules:
   steps:
   - intent: add_contact
   - action: utter_add_contact_ask_name
+
+# Rules for handling interruptions
+- rule: Handle sentiment question during any flow
+  condition:
+  - active_loop: null
+  steps:
+  - intent: ask_sentiment
+  - action: action_analyze_sentiment
+  
+- rule: Handle scam check during any flow
+  condition:
+  - active_loop: null
+  steps:
+  - intent: check_scam
+  - action: utter_ask_crypto_description
+  
+- rule: Handle crypto topic during any flow
+  condition:
+  - active_loop: null
+  steps:
+  - intent: crypto_topic
+  - action: action_classify_topic
+  
+- rule: Handle expertise sharing during any flow
+  condition:
+  - active_loop: null
+  steps:
+  - intent: share_expertise
+  - action: action_update_user_expertise
+  
+- rule: Handle crypto mention during any flow
+  condition:
+  - active_loop: null
+  steps:
+  - intent: mention_crypto
+  - action: action_extract_crypto_entities

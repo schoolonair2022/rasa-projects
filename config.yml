@@ -23,6 +23,9 @@ pipeline:
     epochs: 150
     constrain_similarities: true
     model_confidence: softmax
+    ranking_length: 5  # Return top 5 intent confidences
+    intent_tokenization_flag: True  # Improve intent recognition
+    intent_split_symbol: "_"
   - name: EntitySynonymMapper
   - name: ResponseSelector
     epochs: 100
