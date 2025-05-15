@@ -61,6 +61,9 @@ class ActionResetContactSlots(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
+        logger.info("Resetting contact-related slots")
+        # Ask if user wants to do something else
+        dispatcher.utter_message(text="Is there anything else I can help you with?")
         return [SlotSet("contact_name", None), 
                 SlotSet("wallet_address", None), 
                 SlotSet("network_type", None),
@@ -203,3 +206,27 @@ class ActionExtractCryptoEntities(Action):
         # Save to slots
         return [SlotSet("mentioned_tokens", entities['tokens']),
                 SlotSet("mentioned_blockchains", entities['blockchains'])]
+
+# Add a new action to handle fallback and context switching
+class ActionHandleContextSwitch(Action):
+    def name(self) -> Text:
+        return "action_handle_context_switch"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        # Get the active intent
+        latest_intent = tracker.latest_message.get('intent', {}).get('name')
+        logger.info(f"Handling context switch from intent: {latest_intent}")
+        
+        # Check if we were in the middle of a contact flow
+        contact_name = tracker.get_slot("contact_name")
+        wallet_address = tracker.get_slot("wallet_address")
+        
+        if contact_name and not wallet_address:
+            # We were in the middle of adding a contact but switched context
+            dispatcher.utter_message(text="I notice we were adding a contact. Would you like to continue with that or focus on your new question?")
+        
+        # Clear slots that might be context-dependent
+        return [SlotSet("active_context", latest_intent)]

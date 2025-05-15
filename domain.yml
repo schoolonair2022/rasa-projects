@@ -57,6 +57,15 @@ responses:
   
   utter_ask_expertise_level:
   - text: "How much experience do you have with cryptocurrencies?"
+  
+  utter_default:
+  - text: "I'm not sure I understand. Could you rephrase that?"
+  - text: "I didn't catch that. Can you say it differently?"
+  - text: "I'm having trouble understanding. Could you try another way?"
+  
+  utter_out_of_scope:
+  - text: "That's outside my cryptocurrency expertise. I'm better at helping with wallet addresses, crypto sentiment, and detecting scams."
+  - text: "I'm focused on cryptocurrency topics. I can help with wallet validation, sentiment analysis, and scam detection."
 
 actions:
   - action_validate_wallet_address
@@ -66,11 +75,15 @@ actions:
   - action_classify_topic
   - action_update_user_expertise
   - action_extract_crypto_entities
+  - action_handle_context_switch
   
 entities:
   - contact_name
   - wallet_address
   - network_type
+  - crypto_description
+  - continue_flow
+  - switch_context
 
 slots:
   contact_name:
@@ -146,6 +159,12 @@ slots:
   
   mentioned_blockchains:
     type: list
+    influence_conversation: true
+    mappings:
+    - type: custom
+    
+  active_context:
+    type: text
     influence_conversation: true
     mappings:
     - type: custom
