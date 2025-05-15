@@ -10,7 +10,6 @@ rules:
     - continue_flow: "continue adding the contact"
   - action: utter_add_contact_ask_name
   - active_loop: null
-  - wait_for_user_input: true
 
 - rule: Handle context switch with ask_sentiment
   steps:
