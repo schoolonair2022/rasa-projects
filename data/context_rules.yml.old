@@ -15,6 +15,7 @@ rules:
   steps:
   - intent: ask_sentiment
   - action: action_handle_context_switch
+  - active_loop: null
   - action: action_analyze_sentiment
   - active_loop: null
 
@@ -22,6 +23,7 @@ rules:
   steps:
   - intent: nlu_fallback
   - action: action_handle_context_switch
+  - active_loop: null
   - action: utter_default
   - active_loop: null
 
@@ -29,5 +31,6 @@ rules:
   steps:
   - intent: out_of_scope
   - action: utter_out_of_scope
+  - active_loop: null
   - action: action_handle_context_switch
   - active_loop: null

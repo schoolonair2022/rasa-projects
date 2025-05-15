@@ -1,0 +1,69 @@
+version: "3.1"
+
+rules:
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+  - active_loop: null
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - active_loop: null
+
+- rule: Ask for wallet address again after invalid address
+  steps:
+  - action: action_validate_wallet_address
+  - slot_was_set:
+    - address_valid: false
+  - action: utter_add_contact_ask_address
+  - active_loop: null
+  
+- rule: Start adding contact flow
+  steps:
+  - intent: add_contact
+  - action: utter_add_contact_ask_name
+  - active_loop: null
+
+# Rules for handling interruptions
+- rule: Handle sentiment question during any flow
+  condition:
+  - active_loop: null
+  steps:
+  - intent: ask_sentiment
+  - action: action_analyze_sentiment
+  - active_loop: null
+  
+- rule: Handle scam check during any flow
+  condition:
+  - active_loop: null
+  steps:
+  - intent: check_scam
+  - action: utter_ask_crypto_description
+  - active_loop: null
+  
+- rule: Handle crypto topic during any flow
+  condition:
+  - active_loop: null
+  steps:
+  - intent: crypto_topic
+  - action: action_classify_topic
+  - active_loop: null
+  
+- rule: Handle expertise sharing during any flow
+  condition:
+  - active_loop: null
+  steps:
+  - intent: share_expertise
+  - action: action_update_user_expertise
+  - active_loop: null
+  
+- rule: Handle crypto mention during any flow
+  condition:
+  - active_loop: null
+  steps:
+  - intent: mention_crypto
+  - action: action_extract_crypto_entities
+  - active_loop: null
