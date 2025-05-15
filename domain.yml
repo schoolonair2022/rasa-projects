@@ -37,6 +37,10 @@ responses:
   utter_add_contact_ask_address:
   - text: "Great! Now please provide the wallet address you want to save."
 
+actions:
+  - action_validate_wallet_address
+  - action_reset_contact_slots
+  
 entities:
   - contact_name
   - wallet_address
