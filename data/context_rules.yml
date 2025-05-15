@@ -10,21 +10,25 @@ rules:
     - continue_flow: "continue adding the contact"
   - action: utter_add_contact_ask_name
   - active_loop: null
+  - wait_for_user_input: true
 
 - rule: Handle context switch with ask_sentiment
   steps:
   - intent: ask_sentiment
   - action: action_handle_context_switch
   - action: action_analyze_sentiment
+  - active_loop: null
 
 - rule: Handle fallback for unexpected inputs
   steps:
   - intent: nlu_fallback
   - action: action_handle_context_switch
   - action: utter_default
+  - active_loop: null
 
 - rule: Handle out of scope messages
   steps:
   - intent: out_of_scope
   - action: utter_out_of_scope
   - action: action_handle_context_switch
+  - active_loop: null
