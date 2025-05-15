@@ -72,6 +72,12 @@ slots:
     - type: from_entity
       entity: network_type
 
+  address_valid:
+    type: bool
+    influence_conversation: true
+    mappings:
+    - type: custom
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

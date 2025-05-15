@@ -16,8 +16,3 @@ rules:
   steps:
   - action: utter_add_contact_confirm
   - action: utter_add_contact_ask_nickname
-
-- rule: Reset contact slots after adding contact
-  steps:
-  - action: utter_add_contact_confirm
-  - action: action_reset_contact_slots

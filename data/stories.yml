@@ -41,7 +41,7 @@ stories:
     entities:
     - wallet_address: "0x123456789abcdef"
   - action: action_validate_wallet_address
-  - action: utter_add_contact_confirm
+  - action: utter_add_contact_ask_nickname
   - action: action_reset_contact_slots
 
 - story: add contact with invalid address
@@ -56,8 +56,13 @@ stories:
     entities:
     - wallet_address: "invalid-address"
   - action: action_validate_wallet_address
-  - action: utter_add_contact_invalid_address
   - action: utter_add_contact_ask_address
+  - intent: inform
+    entities:
+    - wallet_address: "0x987654321fedcba"
+  - action: action_validate_wallet_address
+  - action: utter_add_contact_ask_nickname
+  - action: action_reset_contact_slots
 
 - story: add contact with name and address in initial request
   steps:
