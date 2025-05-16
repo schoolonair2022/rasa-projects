@@ -3,9 +3,6 @@ version: "3.1"
 nlu:
 - intent: inform
   examples: |
-    - [John](contact_name)
-    - [Alice](contact_name)
-    - [Bob](contact_name)
     - [0x123456789abcdef123456789abcdef123456789a](wallet_address)
     - [0x987654321fedcba987654321fedcba98765432](wallet_address)
     - [Bitcoin](crypto_description)

@@ -1,0 +1,1805 @@
+version: "3.1"
+
+nlu:
+  - lookup: crypto
+    examples: |
+      - Bitcoin
+      - Ethereum
+      - Tether
+      - XRP
+      - BNB
+      - Solana
+      - USDC
+      - Dogecoin
+      - Cardano
+      - TRON
+      - Lido Staked Ether
+      - Wrapped Bitcoin
+      - Sui
+      - Wrapped stETH
+      - Chainlink
+      - Avalanche
+      - Stellar
+      - Hyperliquid
+      - Shiba Inu
+      - Hedera
+      - LEO Token
+      - Bitcoin Cash
+      - Toncoin
+      - Litecoin
+      - Polkadot
+      - USDS
+      - WETH
+      - Monero
+      - Pi Network
+      - Wrapped eETH
+      - Bitget Token
+      - Pepe
+      - Binance Bridged USDT
+      - Ethena USDe
+      - Coinbase Wrapped BTC
+      - WhiteBIT Coin
+      - Bittensor
+      - Uniswap
+      - Dai
+      - Aave
+      - NEAR Protocol
+      - Aptos
+      - OKB
+      - Kaspa
+      - Ondo
+      - Jito Staked SOL
+      - Internet Computer
+      - Ethereum Classic
+      - BlackRock USD Institutional Digital Liquidity Fund
+      - Cronos
+      - Tokenize Xchange
+      - Gate
+      - Official Trump
+      - VeChain
+      - Mantle
+      - Render
+      - sUSDS
+      - Cosmos Hub
+      - Ethena Staked USDe
+      - Ethena
+      - USD1
+      - POL
+      - Lombard Staked BTC
+      - Artificial Superintelligence Alliance
+      - Filecoin
+      - Algorand
+      - Arbitrum
+      - Fasttoken
+      - Celestia
+      - Worldcoin
+      - Sonic
+      - Bonk
+      - Jupiter Perpetuals Liquidity Provider Token
+      - Binance-Peg WETH
+      - Maker
+      - First Digital USD
+      - KuCoin
+      - Jupiter
+      - Binance Staked SOL
+      - Kelp DAO Restaked ETH
+      - Stacks
+      - Story
+      - Quant
+      - EOS
+      - Flare
+      - Sei
+      - NEXO
+      - Fartcoin
+      - Optimism
+      - Immutable
+      - Injective
+      - Vaulta
+      - Rocket Pool ETH
+      - Virtuals Protocol
+      - XDC Network
+      - USDT0
+      - Solv Protocol BTC
+      - The Graph
+      - dogwifhat
+      - FLOKI
+      - Raydium
+      - Mantle Staked Ether
+      - Curve DAO
+      - Wrapped BNB
+      - Marinade Staked SOL
+      - PayPal USD
+      - Theta Network
+      - GALA
+      - Binance Bridged USDC
+      - Lido DAO
+      - JasmyCoin
+      - Jupiter Staked SOL
+      - Walrus
+      - Pudgy Penguins
+      - Arbitrum Bridged WBTC
+      - Renzo Restaked ETH
+      - The Sandbox
+      - clBTC
+      - Core
+      - Tether Gold
+      - Polygon Bridged USDT
+      - Solv Protocol Staked BTC
+      - IOTA
+      - PAX Gold
+      - Ethereum Name Service
+      - Helium
+      - PancakeSwap
+      - Official FO
+      - BitTorrent
+      - Bitcoin SV
+      - DeXe
+      - StakeWise Staked ETH
+      - Brett
+      - Kaia
+      - Pendle
+      - Flow
+      - Tezos
+      - Zcash
+      - SPX6900
+      - THORChain
+      - Usual USD
+      - Onyxcoin
+      - Decentraland
+      - Jito
+      - Stables Labs USDX
+      - Polyhedra Network
+      - Pyth Network
+      - Ondo US Dollar Yield
+      - Binance-Peg Dogecoin
+      - OUSG
+      - Aerodrome Finance
+      - Super OETH
+      - L2 Standard Bridged WETH
+      - Mantle Restaked ETH
+      - MultiversX
+      - AIOZ Network
+      - cgETH Hashkey Cloud
+      - Avalanche Bridged BTC
+      - Reserve Rights
+      - dYdX
+      - Grass
+      - ApeCoin
+      - Starknet
+      - Telcoin
+      - Arweave
+      - Movement
+      - Sonic Bridged USDC.e
+      - Axie Infinity
+      - TrueUSD
+      - tBTC
+      - NEO
+      - KAITO
+      - Arbitrum Bridged WETH
+      - eCash
+      - Kava
+      - DeepBook
+      - Popcat
+      - Conflux
+      - Beldex
+      - Bridged USDC
+      - Wormhole
+      - Morpho
+      - pumpBTC
+      - Aethir
+      - Ronin
+      - Mog Coin
+      - ether.fi Staked ETH
+      - Beam
+      - APENFT
+      - Chiliz
+      - Ket
+      - Berachain
+      - Ether.fi
+      - Ether.fi Staked BTC
+      - Compound
+      - Eigenlayer
+      - Circle USYC
+      - USDB
+      - Akash Network
+      - Saros
+      - Plume
+
+  - synonym: Bitcoin
+    examples: |
+      - BTC
+      - bitcoin
+      - XBT
+      - Bitcoin network
+      - btc
+      - satoshi's coin
+      - digital gold
+
+  - synonym: Ethereum
+    examples: |
+      - ETH
+      - ethereum
+      - ether
+      - eth
+      - Ethereum network
+      - vitalik's creation
+
+  - synonym: Tether
+    examples: |
+      - USDT
+      - tether
+      - usdt
+      - Tether USD
+      - dollar-pegged
+
+  - synonym: XRP
+    examples: |
+      - xrp
+      - Ripple
+      - ripple
+      - XRP Ledger
+      - Ripple network
+
+  - synonym: BNB
+    examples: |
+      - bnb
+      - Binance Coin
+      - binance coin
+      - Binance Smart Chain
+      - BSC
+      - Binance token
+
+  - synonym: Solana
+    examples: |
+      - SOL
+      - sol
+      - solana
+      - Solana network
+      - Solana blockchain
+
+  - synonym: USDC
+    examples: |
+      - usdc
+      - USD Coin
+      - usd coin
+      - USDC stablecoin
+      - Circle USD
+
+  - synonym: Dogecoin
+    examples: |
+      - DOGE
+      - doge
+      - dogecoin
+      - meme coin
+      - dog coin
+      - Elon's favorite
+
+  - synonym: Cardano
+    examples: |
+      - ADA
+      - ada
+      - cardano
+      - Cardano network
+      - Cardano blockchain
+      - Hoskinson's project
+
+  - synonym: TRON
+    examples: |
+      - TRX
+      - trx
+      - tron
+      - TRON network
+      - Justin Sun's project
+
+  - synonym: Lido Staked Ether
+    examples: |
+      - STETH
+      - stETH
+      - steth
+      - Lido stETH
+      - staked ETH
+      - liquid staking ETH
+
+  - synonym: Wrapped Bitcoin
+    examples: |
+      - WBTC
+      - wbtc
+      - wrapped btc
+      - ERC-20 Bitcoin
+      - tokenized Bitcoin
+
+  - synonym: Sui
+    examples: |
+      - SUI
+      - sui
+      - Sui network
+      - Sui blockchain
+      - Mysten Labs
+
+  - synonym: Wrapped stETH
+    examples: |
+      - WSTETH
+      - wstETH
+      - wsteth
+      - wrapped staked ETH
+      - wrapped stETH
+
+  - synonym: Chainlink
+    examples: |
+      - LINK
+      - link
+      - chainlink
+      - LINK token
+      - ChainLink Oracle
+
+  - synonym: Avalanche
+    examples: |
+      - AVAX
+      - avax
+      - avalanche
+      - Ava Labs
+      - Avalanche blockchain
+
+  - synonym: Stellar
+    examples: |
+      - XLM
+      - xlm
+      - stellar
+      - Stellar Lumens
+      - lumens
+
+  - synonym: Hyperliquid
+    examples: |
+      - HYPE
+      - hype
+      - hyperliquid
+      - Hyperliquid token
+
+  - synonym: Shiba Inu
+    examples: |
+      - SHIB
+      - shib
+      - shiba
+      - shiba inu
+      - dog token
+      - SHIBA
+
+  - synonym: Hedera
+    examples: |
+      - HBAR
+      - hbar
+      - hedera
+      - Hedera Hashgraph
+      - hashgraph
+
+  - synonym: LEO Token
+    examples: |
+      - LEO
+      - leo
+      - Bitfinex token
+      - LEO token
+
+  - synonym: Bitcoin Cash
+    examples: |
+      - BCH
+      - bch
+      - bitcoin cash
+      - Bitcoin fork
+      - BCash
+
+  - synonym: Toncoin
+    examples: |
+      - TON
+      - ton
+      - toncoin
+      - Telegram Open Network
+      - The Open Network
+
+  - synonym: Litecoin
+    examples: |
+      - LTC
+      - ltc
+      - litecoin
+      - digital silver
+      - Charlie Lee's coin
+
+  - synonym: Polkadot
+    examples: |
+      - DOT
+      - dot
+      - polkadot
+      - Polkadot network
+      - Web3 Foundation
+
+  - synonym: USDS
+    examples: |
+      - usds
+      - USD stablecoin
+      - USDS token
+      - dollar stablecoin
+
+  - synonym: WETH
+    examples: |
+      - weth
+      - Wrapped ETH
+      - wrapped ether
+      - ERC-20 Ethereum
+      - wrapped ethereum
+
+  - synonym: Monero
+    examples: |
+      - XMR
+      - xmr
+      - monero
+      - privacy coin
+      - anonymous cryptocurrency
+
+  - synonym: Pi Network
+    examples: |
+      - PI
+      - pi
+      - Pi coin
+      - pi network
+      - mobile mining
+
+  - synonym: Wrapped eETH
+    examples: |
+      - WEETH
+      - weETH
+      - weeth
+      - wrapped eETH
+      - wrapped ethereum
+
+  - synonym: Bitget Token
+    examples: |
+      - BGB
+      - bgb
+      - bitget
+      - Bitget exchange token
+
+  - synonym: Pepe
+    examples: |
+      - PEPE
+      - pepe
+      - pepe coin
+      - meme token
+      - frog token
+
+  - synonym: Binance Bridged USDT
+    examples: |
+      - BSC-USD
+      - BSC-USDT
+      - Binance USDT
+      - bridged USDT
+      - Binance Tether
+
+  - synonym: Ethena USDe
+    examples: |
+      - USDE
+      - USDe
+      - usde
+      - Ethena stablecoin
+      - USDe stablecoin
+
+  - synonym: Coinbase Wrapped BTC
+    examples: |
+      - CBBTC
+      - cbBTC
+      - Coinbase BTC
+      - Coinbase Bitcoin
+      - Coinbase wrapped Bitcoin
+
+  - synonym: WhiteBIT Coin
+    examples: |
+      - WBT
+      - wbt
+      - WhiteBIT
+      - WhiteBit token
+      - WB token
+
+  - synonym: Bittensor
+    examples: |
+      - TAO
+      - tao
+      - bittensor
+      - Bittensor network
+      - TAO token
+
+  - synonym: Uniswap
+    examples: |
+      - UNI
+      - uni
+      - uniswap
+      - Uniswap token
+      - DEX token
+
+  - synonym: Dai
+    examples: |
+      - DAI
+      - dai
+      - DAI stablecoin
+      - MakerDAO stablecoin
+      - decentralized USD
+
+  - synonym: Aave
+    examples: |
+      - AAVE
+      - aave
+      - Aave token
+      - AAVE protocol
+      - lending protocol
+
+  - synonym: NEAR Protocol
+    examples: |
+      - NEAR
+      - near
+      - Near protocol
+      - NEAR blockchain
+      - near token
+
+  - synonym: Aptos
+    examples: |
+      - APT
+      - apt
+      - aptos
+      - Aptos blockchain
+      - Aptos network
+
+  - synonym: OKB
+    examples: |
+      - okb
+      - OKX token
+      - OKB token
+      - OKEx coin
+
+  - synonym: Kaspa
+    examples: |
+      - KAS
+      - kas
+      - kaspa
+      - Kaspa network
+      - KAS token
+
+  - synonym: Ondo
+    examples: |
+      - ONDO
+      - ondo
+      - Ondo Finance
+      - Ondo token
+      - Ondo protocol
+
+  - synonym: Jito Staked SOL
+    examples: |
+      - JITOSOL
+      - jitoSOL
+      - jito SOL
+      - Jito staked solana
+      - JitoSOL
+
+  - synonym: Internet Computer
+    examples: |
+      - ICP
+      - icp
+      - Internet Computer Protocol
+      - Dfinity
+      - Internet Computer blockchain
+
+  - synonym: Ethereum Classic
+    examples: |
+      - ETC
+      - etc
+      - ethereum classic
+      - classic ethereum
+      - ETH fork
+
+  - synonym: BlackRock USD Institutional Digital Liquidity Fund
+    examples: |
+      - BUIDL
+      - buidl
+      - BlackRock USD
+      - BlackRock stablecoin
+      - BlackRock digital USD
+
+  - synonym: Cronos
+    examples: |
+      - CRO
+      - cro
+      - Crypto.com Coin
+      - Cronos chain
+      - Crypto.com token
+
+  - synonym: Tokenize Xchange
+    examples: |
+      - TKX
+      - tkx
+      - Tokenize
+      - Tokenize token
+      - Tokenize Xchange token
+
+  - synonym: Gate
+    examples: |
+      - GT
+      - gt
+      - Gate token
+      - Gate.io token
+      - Gate exchange token
+
+  - synonym: Official Trump
+    examples: |
+      - TRUMP
+      - trump
+      - Trump token
+      - Trump coin
+      - DJT
+
+  - synonym: VeChain
+    examples: |
+      - VET
+      - vet
+      - vechain
+      - VeChain Thor
+      - VET token
+
+  - synonym: Mantle
+    examples: |
+      - MNT
+      - mnt
+      - mantle
+      - Mantle network
+      - Mantle blockchain
+
+  - synonym: Render
+    examples: |
+      - RENDER
+      - render
+      - RNDR
+      - rndr
+      - Render token
+      - Render Network
+
+  - synonym: sUSDS
+    examples: |
+      - susds
+      - staked USDS
+      - Staked USD stablecoin
+      - sUSD stablecoin
+
+  - synonym: Cosmos Hub
+    examples: |
+      - ATOM
+      - atom
+      - Cosmos
+      - Cosmos network
+      - Cosmos ecosystem
+
+  - synonym: Ethena Staked USDe
+    examples: |
+      - SUSDE
+      - sUSDe
+      - susde
+      - staked USDe
+      - staked Ethena USD
+
+  - synonym: Ethena
+    examples: |
+      - ENA
+      - ena
+      - Ethena token
+      - Ethena protocol
+
+  - synonym: USD1
+    examples: |
+      - usd1
+      - USD1 stablecoin
+      - USD One
+      - dollar stablecoin
+
+  - synonym: POL
+    examples: |
+      - pol
+      - Polygon
+      - MATIC
+      - matic
+      - Polygon network
+
+  - synonym: Lombard Staked BTC
+    examples: |
+      - LBTC
+      - lBTC
+      - lbtc
+      - Lombard BTC
+      - staked Bitcoin
+
+  - synonym: Artificial Superintelligence Alliance
+    examples: |
+      - FET
+      - fet
+      - Fetch.ai
+      - Fetch token
+      - AI alliance
+
+  - synonym: Filecoin
+    examples: |
+      - FIL
+      - fil
+      - filecoin
+      - Filecoin network
+      - FIL token
+
+  - synonym: Algorand
+    examples: |
+      - ALGO
+      - algo
+      - algorand
+      - Algorand blockchain
+      - Algorand network
+
+  - synonym: Arbitrum
+    examples: |
+      - ARB
+      - arb
+      - arbitrum
+      - Arbitrum network
+      - Arbitrum One
+
+  - synonym: Fasttoken
+    examples: |
+      - FTN
+      - ftn
+      - Fasttoken network
+      - fast token
+      - FTN coin
+
+  - synonym: Celestia
+    examples: |
+      - TIA
+      - tia
+      - celestia
+      - Celestia network
+      - TIA token
+
+  - synonym: Worldcoin
+    examples: |
+      - WLD
+      - wld
+      - worldcoin
+      - World ID
+      - WLD token
+
+  - synonym: Sonic
+    examples: |
+      - S
+      - s
+      - Sonic
+      - Sonic network
+      - Fantom
+      - FTM
+
+  - synonym: Bonk
+    examples: |
+      - BONK
+      - bonk
+      - bonk coin
+      - Solana meme coin
+      - BONK token
+
+  - synonym: Jupiter Perpetuals Liquidity Provider Token
+    examples: |
+      - JLP
+      - jlp
+      - Jupiter LP
+      - Jupiter Perpetuals
+      - Jupiter liquidity
+
+  - synonym: Binance-Peg WETH
+    examples: |
+      - Binance WETH
+      - Binance Wrapped ETH
+      - BSC WETH
+      - Binance Ethereum
+
+  - synonym: Maker
+    examples: |
+      - MKR
+      - mkr
+      - Maker token
+      - MakerDAO
+      - Maker governance
+
+  - synonym: First Digital USD
+    examples: |
+      - FDUSD
+      - fdusd
+      - First Digital
+      - FDUSD stablecoin
+      - digital dollar
+
+  - synonym: KuCoin
+    examples: |
+      - KCS
+      - kcs
+      - KuCoin token
+      - KuCoin Shares
+      - KuCoin exchange token
+
+  - synonym: Jupiter
+    examples: |
+      - JUP
+      - jup
+      - jupiter
+      - Jupiter protocol
+      - Jupiter network
+
+  - synonym: Binance Staked SOL
+    examples: |
+      - BNSOL
+      - bnSOL
+      - bnsol
+      - Binance SOL
+      - Binance Solana
+
+  - synonym: Kelp DAO Restaked ETH
+    examples: |
+      - RSETH
+      - rsETH
+      - rseth
+      - restaked ETH
+      - Kelp restaked ETH
+
+  - synonym: Stacks
+    examples: |
+      - STX
+      - stx
+      - stacks
+      - Stacks blockchain
+      - Bitcoin layer-2
+
+  - synonym: Story
+    examples: |
+      - IP
+      - ip
+      - Story Protocol
+      - IP token
+      - intellectual property token
+
+  - synonym: Quant
+    examples: |
+      - QNT
+      - qnt
+      - quant
+      - Quant network
+      - Overledger
+
+  - synonym: EOS
+    examples: |
+      - eos
+      - EOS blockchain
+      - EOS network
+      - EOS token
+
+  - synonym: Flare
+    examples: |
+      - FLR
+      - flr
+      - flare
+      - Flare Network
+      - Flare blockchain
+
+  - synonym: Sei
+    examples: |
+      - SEI
+      - sei
+      - Sei network
+      - Sei blockchain
+      - Sei Labs
+
+  - synonym: NEXO
+    examples: |
+      - nexo
+      - Nexo token
+      - Nexo platform
+      - Nexo exchange
+
+  - synonym: Fartcoin
+    examples: |
+      - FARTCOIN
+      - fartcoin
+      - fart coin
+      - meme coin
+      - joke token
+
+  - synonym: Optimism
+    examples: |
+      - OP
+      - op
+      - optimism
+      - Optimism network
+      - Ethereum L2
+
+  - synonym: Immutable
+    examples: |
+      - IMX
+      - imx
+      - immutable
+      - Immutable X
+      - gaming blockchain
+
+  - synonym: Injective
+    examples: |
+      - INJ
+      - inj
+      - injective
+      - Injective protocol
+      - INJ chain
+
+  - synonym: Vaulta
+    examples: |
+      - A
+      - a
+      - vaulta
+      - A token
+      - Vaulta protocol
+
+  - synonym: Rocket Pool ETH
+    examples: |
+      - RETH
+      - rETH
+      - reth
+      - Rocket Pool
+      - staked Ethereum
+
+  - synonym: Virtuals Protocol
+    examples: |
+      - VIRTUAL
+      - virtual
+      - Virtuals
+      - virtual token
+      - Virtuals network
+
+  - synonym: XDC Network
+    examples: |
+      - XDC
+      - xdc
+      - XinFin
+      - XDC network
+      - XDC blockchain
+
+  - synonym: USDT0
+    examples: |
+      - usdt0
+      - USDT Zero
+      - Tether Zero
+      - USDT variant
+
+  - synonym: Solv Protocol BTC
+    examples: |
+      - SOLVBTC
+      - solvBTC
+      - Solv BTC
+      - Solv Bitcoin
+      - tokenized Bitcoin
+
+  - synonym: The Graph
+    examples: |
+      - GRT
+      - grt
+      - graph
+      - The Graph token
+      - Graph protocol
+
+  - synonym: dogwifhat
+    examples: |
+      - WIF
+      - wif
+      - dog with hat
+      - dogwifhat
+      - dog hat coin
+
+  - synonym: FLOKI
+    examples: |
+      - floki
+      - Floki Inu
+      - floki inu
+      - dog meme coin
+      - viking meme
+
+  - synonym: Raydium
+    examples: |
+      - RAY
+      - ray
+      - raydium
+      - Solana DEX
+      - RAY token
+
+  - synonym: Mantle Staked Ether
+    examples: |
+      - METH
+      - mETH
+      - meth
+      - Mantle ETH
+      - Mantle staked Ethereum
+
+  - synonym: Curve DAO
+    examples: |
+      - CRV
+      - crv
+      - curve
+      - Curve token
+      - Curve governance
+
+  - synonym: Wrapped BNB
+    examples: |
+      - WBNB
+      - wbnb
+      - Wrapped Binance Coin
+      - Wrapped BNB token
+      - tokenized BNB
+
+  - synonym: Marinade Staked SOL
+    examples: |
+      - MSOL
+      - mSOL
+      - msol
+      - Marinade SOL
+      - staked Solana
+
+  - synonym: PayPal USD
+    examples: |
+      - PYUSD
+      - pyusd
+      - PayPal stablecoin
+      - PayPal dollar
+      - PayPal USD stablecoin
+
+  - synonym: Theta Network
+    examples: |
+      - THETA
+      - theta
+      - Theta token
+      - Theta blockchain
+      - video network
+
+  - synonym: GALA
+    examples: |
+      - gala
+      - Gala Games
+      - Gala token
+      - gaming token
+      - play-to-earn
+
+  - synonym: Binance Bridged USDC
+    examples: |
+      - Binance USDC
+      - BSC USDC
+      - bridged USDC
+      - BEP-20 USDC
+
+  - synonym: Lido DAO
+    examples: |
+      - LDO
+      - ldo
+      - Lido token
+      - Lido governance
+      - Lido DAO token
+
+  - synonym: JasmyCoin
+    examples: |
+      - JASMY
+      - jasmy
+      - Jasmy token
+      - Japan's Bitcoin
+      - IoT token
+
+  - synonym: Jupiter Staked SOL
+    examples: |
+      - JUPSOL
+      - jupSOL
+      - jupsol
+      - Jupiter SOL
+      - Jupiter staked SOL
+
+  - synonym: Walrus
+    examples: |
+      - WAL
+      - wal
+      - walrus
+      - Walrus token
+      - WAL coin
+
+  - synonym: Pudgy Penguins
+    examples: |
+      - PENGU
+      - pengu
+      - pudgy
+      - penguins
+      - PP token
+
+  - synonym: Arbitrum Bridged WBTC
+    examples: |
+      - Arbitrum WBTC
+      - Arbitrum Bitcoin
+      - Arbitrum wrapped BTC
+      - L2 Bitcoin
+
+  - synonym: Renzo Restaked ETH
+    examples: |
+      - EZETH
+      - ezETH
+      - ezeth
+      - Renzo ETH
+      - easy staked ETH
+
+  - synonym: The Sandbox
+    examples: |
+      - SAND
+      - sand
+      - sandbox
+      - metaverse token
+      - virtual world
+
+  - synonym: clBTC
+    examples: |
+      - CLBTC
+      - clbtc
+      - CL Bitcoin
+      - Collective BTC
+      - Collective Labs BTC
+
+  - synonym: Core
+    examples: |
+      - CORE
+      - core
+      - Core blockchain
+      - Core network
+      - Core DAO
+
+  - synonym: Tether Gold
+    examples: |
+      - XAUT
+      - xaut
+      - Tether gold
+      - gold-backed token
+      - digital gold
+
+  - synonym: Polygon Bridged USDT
+    examples: |
+      - Polygon USDT
+      - USDT on Polygon
+      - MATIC USDT
+      - bridged Tether
+
+  - synonym: Solv Protocol Staked BTC
+    examples: |
+      - XSOLVBTC
+      - xSolvBTC
+      - Solv staked BTC
+      - Solv Bitcoin
+      - staked solvBTC
+
+  - synonym: IOTA
+    examples: |
+      - iota
+      - MIOTA
+      - miota
+      - IOTA token
+      - Tangle
+
+  - synonym: PAX Gold
+    examples: |
+      - PAXG
+      - paxg
+      - Pax Gold
+      - gold-backed token
+      - digital gold
+
+  - synonym: Ethereum Name Service
+    examples: |
+      - ENS
+      - ens
+      - Ethereum Names
+      - ENS token
+      - domain service
+
+  - synonym: Helium
+    examples: |
+      - HNT
+      - hnt
+      - helium
+      - Helium network
+      - IoT network
+
+  - synonym: PancakeSwap
+    examples: |
+      - CAKE
+      - cake
+      - PancakeSwap token
+      - Pancake DEX
+      - CAKE token
+
+  - synonym: Official FO
+    examples: |
+      - FO
+      - fo
+      - Official FO token
+      - FO coin
+      - Fraction Official
+
+  - synonym: BitTorrent
+    examples: |
+      - BTT
+      - btt
+      - bittorrent
+      - BitTorrent token
+      - TRON BitTorrent
+
+  - synonym: Bitcoin SV
+    examples: |
+      - BSV
+      - bsv
+      - Bitcoin Satoshi Vision
+      - Bitcoin SV
+      - Craig Wright coin
+
+  - synonym: DeXe
+    examples: |
+      - DEXE
+      - dexe
+      - DeXe network
+      - DeXe protocol
+      - decentralized trading
+
+  - synonym: StakeWise Staked ETH
+    examples: |
+      - OSETH
+      - osETH
+      - oseth
+      - StakeWise ETH
+      - optimized staked ETH
+
+  - synonym: Brett
+    examples: |
+      - BRETT
+      - brett
+      - Brett token
+      - Brett coin
+      - meme token
+
+  - synonym: Kaia
+    examples: |
+      - KAIA
+      - kaia
+      - Kaia network
+      - Kaia token
+      - Kaia protocol
+
+  - synonym: Pendle
+    examples: |
+      - PENDLE
+      - pendle
+      - Pendle finance
+      - Pendle protocol
+      - yield trading
+
+  - synonym: Flow
+    examples: |
+      - FLOW
+      - flow
+      - Flow blockchain
+      - Dapper Labs
+      - NBA Top Shot
+
+  - synonym: Tezos
+    examples: |
+      - XTZ
+      - xtz
+      - tezos
+      - Tez
+      - Tezos blockchain
+
+  - synonym: Zcash
+    examples: |
+      - ZEC
+      - zec
+      - zcash
+      - privacy coin
+      - private Bitcoin
+
+  - synonym: SPX6900
+    examples: |
+      - SPX
+      - spx
+      - SPX token
+      - SPX protocol
+      - SPX6900 token
+
+  - synonym: THORChain
+    examples: |
+      - RUNE
+      - rune
+      - thorchain
+      - THOR token
+      - cross-chain DEX
+
+  - synonym: Usual USD
+    examples: |
+      - USD0
+      - usd0
+      - Usual stablecoin
+      - USD Zero
+      - dollar stablecoin
+
+  - synonym: Onyxcoin
+    examples: |
+      - XCN
+      - xcn
+      - Onyx
+      - Onyxcoin
+      - Chain token
+
+  - synonym: Decentraland
+    examples: |
+      - MANA
+      - mana
+      - decentraland
+      - metaverse token
+      - virtual world
+
+  - synonym: Jito
+    examples: |
+      - JTO
+      - jto
+      - Jito Labs
+      - Jito token
+      - Jito network
+
+  - synonym: Stables Labs USDX
+    examples: |
+      - USDX
+      - usdx
+      - Stables stablecoin
+      - USDX stablecoin
+      - dollar stablecoin
+
+  - synonym: Polyhedra Network
+    examples: |
+      - ZKJ
+      - zkj
+      - Polyhedra
+      - zk proof
+      - ZKJ token
+
+  - synonym: Pyth Network
+    examples: |
+      - PYTH
+      - pyth
+      - Pyth token
+      - oracle network
+      - price feed token
+
+  - synonym: Ondo US Dollar Yield
+    examples: |
+      - USDY
+      - usdy
+      - Ondo USD
+      - yield-bearing USD
+      - Ondo stablecoin
+
+- synonym: Binance-Peg Dogecoin
+    examples: |
+      - Binance DOGE
+      - BEP-20 DOGE
+      - BSC Dogecoin
+      - Binance Dogecoin
+      - pegged Dogecoin
+
+  - synonym: OUSG
+    examples: |
+      - ousg
+      - Ondo USG
+      - Ondo treasury
+      - treasury-backed token
+
+  - synonym: Aerodrome Finance
+    examples: |
+      - AERO
+      - aero
+      - Aerodrome
+      - Aero token
+      - Aerodrome DEX
+
+  - synonym: Super OETH
+    examples: |
+      - SUPEROETH
+      - superOETH
+      - Origin ETH
+      - super staked ETH
+      - OETH token
+
+  - synonym: L2 Standard Bridged WETH
+    examples: |
+      - Base WETH
+      - L2 WETH
+      - Base Ethereum
+      - Bridged ETH
+
+  - synonym: Mantle Restaked ETH
+    examples: |
+      - CMETH
+      - cmETH
+      - cmeth
+      - Mantle restaked ETH
+      - compound mantle ETH
+
+  - synonym: MultiversX
+    examples: |
+      - EGLD
+      - egld
+      - Elrond
+      - eGold
+      - MultiversX blockchain
+
+  - synonym: AIOZ Network
+    examples: |
+      - AIOZ
+      - aioz
+      - AIOZ Network
+      - content delivery token
+      - streaming token
+
+  - synonym: cgETH Hashkey Cloud
+    examples: |
+      - CGETH.HASHKEY
+      - cgETH
+      - Hashkey ETH
+      - cloud staked ETH
+      - Hashkey Ethereum
+
+  - synonym: Avalanche Bridged BTC
+    examples: |
+      - BTC.B
+      - btc.b
+      - AVAX BTC
+      - Avalanche Bitcoin
+      - bridged Bitcoin
+
+  - synonym: Reserve Rights
+    examples: |
+      - RSR
+      - rsr
+      - Reserve Rights
+      - Reserve token
+      - RSR token
+
+  - synonym: dYdX
+    examples: |
+      - DYDX
+      - dydx
+      - dYdX token
+      - dYdX exchange
+      - derivatives exchange
+
+  - synonym: Grass
+    examples: |
+      - GRASS
+      - grass
+      - Grass token
+      - Grass coin
+      - Grass protocol
+
+  - synonym: ApeCoin
+    examples: |
+      - APE
+      - ape
+      - ApeCoin
+      - Bored Ape
+      - BAYC token
+
+  - synonym: Starknet
+    examples: |
+      - STRK
+      - strk
+      - stark
+      - Starknet token
+      - Stark token
+
+  - synonym: Telcoin
+    examples: |
+      - TEL
+      - tel
+      - telcoin
+      - telecom coin
+      - remittance token
+
+  - synonym: Arweave
+    examples: |
+      - AR
+      - ar
+      - arweave
+      - permanent storage
+      - AR token
+
+  - synonym: Movement
+    examples: |
+      - MOVE
+      - move
+      - Movement DAO
+      - MOVE token
+      - Movement Labs
+
+  - synonym: Sonic Bridged USDC.e
+    examples: |
+      - USDC.E
+      - usdc.e
+      - Sonic USDC
+      - bridged USDC
+      - USDC on Sonic
+
+  - synonym: Axie Infinity
+    examples: |
+      - AXS
+      - axs
+      - Axie
+      - gaming token
+      - play-to-earn
+
+  - synonym: TrueUSD
+    examples: |
+      - TUSD
+      - tusd
+      - True USD
+      - TrustToken USD
+      - dollar stablecoin
+
+  - synonym: tBTC
+    examples: |
+      - TBTC
+      - tbtc
+      - Threshold BTC
+      - tokenized Bitcoin
+      - Bitcoin on Ethereum
+
+  - synonym: NEO
+    examples: |
+      - neo
+      - Chinese Ethereum
+      - NEO blockchain
+      - Smart Economy
+      - NEO token
+
+  - synonym: KAITO
+    examples: |
+      - KAITO
+      - kaito
+      - Kaito token
+      - Kaito project
+      - Kaito network
+
+  - synonym: Arbitrum Bridged WETH
+    examples: |
+      - Arbitrum ETH
+      - Arbitrum WETH
+      - L2 Ethereum
+      - Arbitrum wrapped ETH
+
+  - synonym: eCash
+    examples: |
+      - XEC
+      - xec
+      - ecash
+      - Bitcoin ABC
+      - electronic cash
+
+  - synonym: Kava
+    examples: |
+      - KAVA
+      - kava
+      - Kava network
+      - Kava blockchain
+      - cross-chain DeFi
+
+  - synonym: DeepBook
+    examples: |
+      - DEEP
+      - deep
+      - DeepBook token
+      - DeepBook protocol
+      - Sui orderbook
+
+  - synonym: Popcat
+    examples: |
+      - POPCAT
+      - popcat
+      - pop cat
+      - meme token
+      - cat meme
+
+  - synonym: Conflux
+    examples: |
+      - CFX
+      - cfx
+      - conflux
+      - China blockchain
+      - tree-graph consensus
+
+  - synonym: Beldex
+    examples: |
+      - BDX
+      - bdx
+      - beldex
+      - privacy blockchain
+      - Beldex coin
+
+  - synonym: Bridged USDC
+    examples: |
+      - USDC.E
+      - Polygon USDC
+      - legacy USDC
+      - bridged Circle USD
+
+  - synonym: Wormhole
+    examples: |
+      - W
+      - w
+      - wormhole
+      - bridge token
+      - cross-chain protocol
+
+  - synonym: Morpho
+    examples: |
+      - MORPHO
+      - morpho
+      - Morpho token
+      - lending protocol
+      - Morpho labs
+
+  - synonym: pumpBTC
+    examples: |
+      - PUMPBTC
+      - pumpBTC
+      - pump Bitcoin
+      - leveraged Bitcoin
+      - BTC derivative
+
+  - synonym: Aethir
+    examples: |
+      - ATH
+      - ath
+      - Aethir token
+      - Aethir platform
+      - ATH coin
+
+  - synonym: Ronin
+    examples: |
+      - RON
+      - ron
+      - Ronin chain
+      - Axie sidechain
+      - Sky Mavis token
+
+  - synonym: Mog Coin
+    examples: |
+      - MOG
+      - mog
+      - mog coin
+      - cat meme token
+      - Solana meme coin
+
+  - synonym: ether.fi Staked ETH
+    examples: |
+      - EETH
+      - eETH
+      - eeth
+      - ether.fi ETH
+      - staked Ethereum
+
+  - synonym: Beam
+    examples: |
+      - BEAM
+      - beam
+      - Beam privacy
+      - Mimblewimble
+      - private cryptocurrency
+
+  - synonym: APENFT
+    examples: |
+      - NFT
+      - nft
+      - APENFT token
+      - TRON NFT
+      - APE NFT
+
+  - synonym: Chiliz
+    examples: |
+      - CHZ
+      - chz
+      - chiliz
+      - sports token
+      - fan token platform
+
+  - synonym: Ket
+    examples: |
+      - KET
+      - ket
+      - Ket token
+      - Ket protocol
+      - Ket network
+
+  - synonym: Berachain
+    examples: |
+      - BERA
+      - bera
+      - Berachain
+      - bear token
+      - Berachain network
+
+  - synonym: Ether.fi
+    examples: |
+      - ETHFI
+      - ethfi
+      - ether.fi token
+      - ETHFI governance
+      - liquid staking governance
+
+  - synonym: Ether.fi Staked BTC
+    examples: |
+      - EBTC
+      - eBTC
+      - ebtc
+      - ether.fi BTC
+      - staked Bitcoin
+
+  - synonym: Compound
+    examples: |
+      - COMP
+      - comp
+      - Compound token
+      - Compound finance
+      - lending protocol
+
+  - synonym: Eigenlayer
+    examples: |
+      - EIGEN
+      - eigen
+      - Eigenlayer token
+      - restaking protocol
+      - EIGEN token
+
+  - synonym: Circle USYC
+    examples: |
+      - USYC
+      - usyc
+      - Circle yield
+      - Circle USYC
+      - yield-bearing stablecoin
+
+  - synonym: USDB
+    examples: |
+      - usdb
+      - Blast USD
+      - USD Blast
+      - Blast stablecoin
+      - dollar on Blast
+
+  - synonym: Akash Network
+    examples: |
+      - AKT
+      - akt
+      - Akash
+      - cloud computing
+      - decentralized cloud
+
+  - synonym: Saros
+    examples: |
+      - SAROS
+      - saros
+      - Saros Finance
+      - Saros token
+      - Saros DEX
+
+  - synonym: Plume
+    examples: |
+      - PLUME
+      - plume
+      - Plume token
+      - Plume network
+      - Plume protocol

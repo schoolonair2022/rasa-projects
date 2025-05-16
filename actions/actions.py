@@ -230,3 +230,28 @@ class ActionHandleContextSwitch(Action):
         
         # Clear slots that might be context-dependent
         return [SlotSet("active_context", latest_intent)]
+    
+
+class ActionAskCryptoClarification(Action):
+    def name(self) -> Text:
+        return "action_ask_crypto_clarification"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # Lấy tin nhắn gần nhất của người dùng
+        user_message = tracker.latest_message.get("text", "").lower()
+        
+        # Trích xuất các viết tắt tiềm năng 
+        # Ví dụ, tìm tất cả các từ 2-5 ký tự không phải là từ phổ biến
+        words = re.findall(r'\b[a-z]{2,5}\b', user_message)
+        crypto_related_words = [word for word in words if word not in ['with', 'and', 'the', 'to', 'for', 'of', 'his', 'her']]
+        
+        if crypto_related_words:
+            abbreviation = crypto_related_words[0]  # Lấy ứng viên đầu tiên
+            message = f"Could you specify which cryptocurrency you mean by '{abbreviation}'? There are several possibilities."
+        else:
+            message = "Could you specify which cryptocurrency you're referring to? There are several possibilities."
+        
+        dispatcher.utter_message(text=message)
+        return []

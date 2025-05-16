@@ -17,10 +17,31 @@ intents:
   - mention_crypto
   - nlu_fallback
   - out_of_scope
+  - contact_add_request
 
 responses:
+  # Basic greeting and introduction
   utter_greet:
-  - text: "Hey! How are you?"
+    - text: "Hello! Welcome to your crypto wallet assistant. How can I help you today?"
+    - text: "Hi there! I'm your cryptocurrency wallet assistant. What would you like to do?"
+    - text: "Welcome to your digital wallet! I'm here to assist with your crypto needs."
+    - text: "Hello! Ready to manage your cryptocurrency wallet? I'm here to help."
+    - text: "Greetings! Your crypto assistant is ready to help with your wallet needs."
+    - text: "Hi! I'm your crypto wallet AI. What can I do for you today?"
+    - text: "Welcome back to your crypto wallet! How may I assist you?"
+    - text: "Hello! Your cryptocurrency management assistant is at your service."
+    - text: "Hi there! Ready to navigate the crypto world together? What's on your mind?"
+    - text: "Welcome! I'm your crypto companion. How can I help with your wallet today?"
+    - text: "Good day! Your digital asset assistant is here. What would you like to do?"
+    - text: "Hello! I'm here to help manage your cryptocurrency wallet. What do you need?"
+    - text: "Hi! Your personal crypto assistant is ready. What can I help you with?"
+    - text: "Welcome to your wallet dashboard! How may I assist you today?"
+    - text: "Hello! Looking to manage your crypto assets? I'm here to help."
+    - text: "Hi there! Your crypto wallet assistant is ready for your commands."
+    - text: "Welcome! How can I assist with your cryptocurrency needs today?"
+    - text: "Hello! I'm your digital wallet guide. What would you like to do?"
+    - text: "Hi! Ready to help with your crypto management. What's your request?"
+    - text: "Welcome aboard! Your crypto wallet assistant is at your service."
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -78,40 +99,52 @@ actions:
   - action_update_user_expertise
   - action_extract_crypto_entities
   - action_handle_context_switch
+  - action_ask_crypto_clarification
   
 entities:
-  - contact_name
-  - wallet_address
-  - network_type
   - crypto_description
   - continue_flow
   - switch_context
-
-forms: {}
+  - contact_add_entity_name
+  - contact_add_entity_crypto_network
+  - contact_add_entity_wallet_address
 
 slots:
-  contact_name:
+  contact_add_entity_name:
     type: text
-    influence_conversation: true
     mappings:
-    - type: from_entity
-      entity: contact_name
-  
-  wallet_address:
+      - type: from_entity
+        entity: contact_add_entity_name
+    influence_conversation: true
+    
+  contact_add_entity_crypto_network:
     type: text
-    influence_conversation: true
     mappings:
-    - type: from_entity
-      entity: wallet_address
-  
-  network_type:
+      - type: from_entity
+        entity: contact_add_entity_crypto_network
+    influence_conversation: true
+    
+  contact_add_entity_wallet_address:
     type: text
-    influence_conversation: true
     mappings:
-    - type: from_entity
-      entity: network_type
-    - type: custom
-      
+      - type: from_entity
+        entity: contact_add_entity_wallet_address
+    influence_conversation: true
+
+  crypto_abbreviation:
+    type: text
+    mappings:
+      - type: custom
+    
+  # Slot để kiểm soát luồng
+  contact_exists:
+    type: bool
+    influence_conversation: true
+    
+  valid_address:
+    type: bool
+    influence_conversation: true
+
   address_valid:
     type: bool
     influence_conversation: true
@@ -172,6 +205,20 @@ slots:
     influence_conversation: true
     mappings:
     - type: custom
+
+forms:
+  add_contact_form:
+    required_slots:
+      - contact_add_entity_name
+      - contact_add_entity_crypto_network
+      - contact_add_entity_wallet_address
+
+imports:
+  - data/contact/contact_nlu.yml
+  - data/contact/contact_responses.yml
+  - data/contact/contact_rules.yml
+  - data/contact/contact_stories.yml
+  - data/common/crypto_synonym_nlu.yml
 
 session_config:
   session_expiration_time: 60

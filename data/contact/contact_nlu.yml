@@ -1,0 +1,1085 @@
+version: "3.1"
+
+nlu:
+- intent: contact_add_request
+  examples: |
+    # Complete requests (name + address + network)
+    - Add [Sarah](contact_add_entity_name) to my contacts with [Bitcoin](contact_add_entity_crypto_network) address [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address)
+    - Create a new contact for [Mike](contact_add_entity_name) with [Ethereum](contact_add_entity_crypto_network) wallet [0x742d35Cc6634C0532925a3b844Bc454e4438f44e](contact_add_entity_wallet_address)
+    - Save [John](contact_add_entity_name)'s [Solana](contact_add_entity_crypto_network) address [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address)
+    - Add [Alex](contact_add_entity_name) to my contact list with address [bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh](contact_add_entity_wallet_address) for [Bitcoin](contact_add_entity_crypto_network)
+    - I want to store [Daniel](contact_add_entity_name)'s [Cardano](contact_add_entity_crypto_network) wallet [addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3n0d3vllmyqwsx5wktcd8cc3sq835lu7drv2xwl2wywfgse35a3x](contact_add_entity_wallet_address)
+    - Please add [Tom](contact_add_entity_name) to contacts with [Polkadot](contact_add_entity_crypto_network) address [1exaAg2VJRQbyUBAeXcktChCAqjVP9TUxF3zo23R2T6EGdE](contact_add_entity_wallet_address)
+    - Add a new contact named [Lisa](contact_add_entity_name) with [Dogecoin](contact_add_entity_crypto_network) wallet [DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1](contact_add_entity_wallet_address)
+    - Need to add [Jamie](contact_add_entity_name) with their [ETH](contact_add_entity_crypto_network) address [0x89F5C5F24447Fb138bDc8f610A87b538c220B6e8](contact_add_entity_wallet_address)
+    - Save [Taylor](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network) wallet [3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy](contact_add_entity_wallet_address) to my contacts
+    - Add my friend [Jordan](contact_add_entity_name) with [Ripple](contact_add_entity_crypto_network) address [rMnuS9WjpNixPTFCvZoHqwPaYuvJGU3DHc](contact_add_entity_wallet_address)
+    - Can you create a contact for [Casey](contact_add_entity_name) with [Avalanche](contact_add_entity_crypto_network) address [X-avax1qr6yzjykcjmeflztsgv5na54g4qksz0evptj0l](contact_add_entity_wallet_address)?
+    - Add [Riley](contact_add_entity_name) to my contacts with their [NEAR](contact_add_entity_crypto_network) wallet [riley.near](contact_add_entity_wallet_address)
+    - Save [Morgan](contact_add_entity_name)'s [Algorand](contact_add_entity_crypto_network) address [VCMJKWOY5P5P7SKMZFFOCEROPJCZOTIJMNIYNUCKH73UUNFZGXN6YPHJPY](contact_add_entity_wallet_address)
+    - Add my cousin [Taylor](contact_add_entity_name) with [Cosmos](contact_add_entity_crypto_network) wallet [cosmos1j26nm9kx2rsz9gx8cf8fd0k80t0hcytvzu4xla](contact_add_entity_wallet_address)
+    - Create [Blake](contact_add_entity_name)'s contact with [Tezos](contact_add_entity_crypto_network) wallet [tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx](contact_add_entity_wallet_address)
+
+    # Just name requests
+    - Add [Sarah](contact_add_entity_name) to my contacts
+    - I need to create a contact for [Mike](contact_add_entity_name)
+    - Add [John](contact_add_entity_name) to my contact list
+    - Create a new contact called [Alex](contact_add_entity_name)
+    - Save [Emma](contact_add_entity_name) as a contact
+    - Add [Daniel](contact_add_entity_name) to my contacts list
+    - I want to add [Tom](contact_add_entity_name) to my contacts
+    - Create a contact for [Lisa](contact_add_entity_name)
+    - Please add [David](contact_add_entity_name) to my contacts
+    - I'd like to save [Karen](contact_add_entity_name) as a contact
+    - Add [Lucas](contact_add_entity_name) to my address book
+    - Create a contact entry for [Ryan](contact_add_entity_name)
+    - I need to add [Linda](contact_add_entity_name) to my contacts
+    - Save [Chris](contact_add_entity_name) as a new contact
+    - Could you add [Jason](contact_add_entity_name) to my contacts?
+
+    # Just address requests
+    - Add this wallet address: [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address)
+    - Save wallet [0x742d35Cc6634C0532925a3b844Bc454e4438f44e](contact_add_entity_wallet_address) to contacts
+    - I want to add [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address) to my contacts
+    - Create a contact with address [bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh](contact_add_entity_wallet_address)
+    - Add [0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045](contact_add_entity_wallet_address) to my list
+    - Save this address as a contact: [addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3n0d3vllmyqwsx5wktcd8cc3sq835lu7drv2xwl2wywfgse35a3x](contact_add_entity_wallet_address)
+    - I need to add [1exaAg2VJRQbyUBAeXcktChCAqjVP9TUxF3zo23R2T6EGdE](contact_add_entity_wallet_address) to my contacts
+    - Create a contact with [DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1](contact_add_entity_wallet_address)
+    - Save [rMnuS9WjpNixPTFCvZoHqwPaYuvJGU3DHc](contact_add_entity_wallet_address) in my address book
+    - Add [MPwk2KMr3Wr2vjCiP6NKmSPSDeMKZ4JXen](contact_add_entity_wallet_address) to contacts
+
+    # Just network requests
+    - Add a [Bitcoin](contact_add_entity_crypto_network) address to contacts
+    - I want to save an [Ethereum](contact_add_entity_crypto_network) wallet
+    - Create a contact for a [Solana](contact_add_entity_crypto_network) address
+    - Add a wallet on the [Cardano](contact_add_entity_crypto_network) network
+    - Save a [Polkadot](contact_add_entity_crypto_network) address in my contacts
+    - I need to add a [Dogecoin](contact_add_entity_crypto_network) wallet
+    - Create a contact for an [XRP](contact_add_entity_crypto_network) address
+    - Add a [Litecoin](contact_add_entity_crypto_network) wallet to my list
+    - Save a [Cosmos](contact_add_entity_crypto_network) address as a contact
+    - I want to add a [Tron](contact_add_entity_crypto_network) wallet
+
+    # Vague requests
+    - How do I add someone to my contacts?
+    - I want to save a new contact
+    - Can you help me add a contact?
+    - What's the process for creating a contact?
+    - I need to add someone to my address book
+    - How do I create a new contact?
+    - Tell me how to add a contact
+    - I'd like to store someone's wallet address
+    - What should I do to add a contact?
+    - Help me save a wallet address
+    - I want to create a new entry in my address book
+    - How can I add someone's crypto address?
+    - What's the procedure to save a contact?
+    - I need assistance adding a new contact
+    - Can you guide me through adding a contact?
+
+    # Multiple addresses requests
+    - Add [Sarah](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) address [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address) and [Ethereum](contact_add_entity_crypto_network) address [0x742d35Cc6634C0532925a3b844Bc454e4438f44e](contact_add_entity_wallet_address)
+    - Create a contact for [Mike](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network) address [bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh](contact_add_entity_wallet_address) and [ETH](contact_add_entity_crypto_network) address [0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045](contact_add_entity_wallet_address)
+    - I want to add [John](contact_add_entity_name) with multiple wallet addresses: [Bitcoin](contact_add_entity_crypto_network), [Ethereum](contact_add_entity_crypto_network), and [Solana](contact_add_entity_crypto_network)
+    - Save [Alex](contact_add_entity_name) with addresses for different networks: [BTC](contact_add_entity_crypto_network), [ETH](contact_add_entity_crypto_network), and [SOL](contact_add_entity_crypto_network)
+    - Add [Emma](contact_add_entity_name) to contacts with her [Bitcoin](contact_add_entity_crypto_network) and [Polygon](contact_add_entity_crypto_network) addresses
+
+    # Gen Y/Z style 
+    - Yo, add [Jake](contact_add_entity_name) to my contacts rn
+    - Need to save [Zoe](contact_add_entity_name)'s wallet addy: [0x89F5C5F24447Fb138bDc8f610A87b538c220B6e8](contact_add_entity_wallet_address)
+    - Gotta add [Tyler](contact_add_entity_name) with his [BTC](contact_add_entity_crypto_network) address
+    - Can u add [Taylor](contact_add_entity_name) to my contacts? thx
+    - Drop [Charlie](contact_add_entity_name) in my contacts with their [ETH](contact_add_entity_crypto_network) wallet
+    - Fr need to save [Jordan](contact_add_entity_name)'s crypto address
+    - Just tryna add [Alex](contact_add_entity_name) to my wallet contacts
+    - Help me add [Quinn](contact_add_entity_name) real quick
+    - Bruh, need to save [Aidan](contact_add_entity_name)'s [SOL](contact_add_entity_crypto_network) addy
+    - Lemme add [Skyler](contact_add_entity_name) with their wallet [0xb794f5ea0ba39494ce839613fffba74279579268](contact_add_entity_wallet_address)
+
+    # With abbreviations and slang
+    - Add [Tom](contact_add_entity_name) w/ [BTC](contact_add_entity_crypto_network) address [3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5](contact_add_entity_wallet_address)
+    - Save [Jess](contact_add_entity_name) + her [ETH](contact_add_entity_crypto_network) wallet
+    - Add [Max](contact_add_entity_name) 2 contacts w/ [SOL](contact_add_entity_crypto_network) addy
+    - New contact 4 [Kim](contact_add_entity_name) with [DOT](contact_add_entity_crypto_network) wallet
+    - Add [Sam](contact_add_entity_name) asap with [AVAX](contact_add_entity_crypto_network) address
+    - Need 2 save [Pat](contact_add_entity_name)'s crypto wallet
+    - Adding [Jay](contact_add_entity_name) w/ their [BNB](contact_add_entity_crypto_network) addy
+    - Plz add [Chris](contact_add_entity_name) + [XRP](contact_add_entity_crypto_network) wallet
+    - Save [Robin](contact_add_entity_name) w/ [ADA](contact_add_entity_crypto_network) address [addr1qyklpa4lcncl0yw72rjcftqrze4gg6kv9mdnmek7vklnxk7ve6hecc4ree7wufd4qgljjwywdphrvr8clxpzh92433s9pxvey](contact_add_entity_wallet_address)
+    - Can u add [Drew](contact_add_entity_name) + [DOGE](contact_add_entity_crypto_network) wallet plz?
+
+    # More complete examples
+    - Add [Mark](contact_add_entity_name) to my contacts with [Ethereum](contact_add_entity_crypto_network) address [0x71C7656EC7ab88b098defB751B7401B5f6d8976F](contact_add_entity_wallet_address)
+    - Create a new contact for [Emily](contact_add_entity_name) with [Solana](contact_add_entity_crypto_network) wallet [4xTdCKvF6VxEDwGHQXGNGvw7qP3eUx8wGCj8zWhMuEum](contact_add_entity_wallet_address)
+    - Save [Derek](contact_add_entity_name)'s [Tezos](contact_add_entity_crypto_network) address [tz1eY5Aqa1kXDFoiebL28emyXFoneAoVg1zh](contact_add_entity_wallet_address) in my contacts
+    - Please add [Samantha](contact_add_entity_name) with [Polygon](contact_add_entity_crypto_network) wallet [0x3B3525F60eeea4a1eF554df5425912c2a532875D](contact_add_entity_wallet_address)
+    - Add [Kevin](contact_add_entity_name) to my address book with [Avalanche](contact_add_entity_crypto_network) address [X-avax1s09r3j8mxvk38d3uvhrf2leut5zx5c0uvqtcc8](contact_add_entity_wallet_address)
+    - I want to add [Sophia](contact_add_entity_name) with her [Flow](contact_add_entity_crypto_network) wallet [0x6e227575da6e6c30](contact_add_entity_wallet_address)
+    - Create a contact for [Lucas](contact_add_entity_name) with [NEAR](contact_add_entity_crypto_network) address [lucas.near](contact_add_entity_wallet_address)
+    - Add [Rachel](contact_add_entity_name) to my contacts with [Algorand](contact_add_entity_crypto_network) wallet [LVXGN4EJVPYJ6W4VVCZ5U6QMZXOSGT3CR3BDTPR6D7E3I34NDMFQ6MAKJQ](contact_add_entity_wallet_address)
+    - Save [Brandon](contact_add_entity_name) with [Cosmos](contact_add_entity_crypto_network) address [cosmos1kj9wnr7mv9t9pm4y8xqywlx0j3qgev3dt5xvus](contact_add_entity_wallet_address)
+    - Add my colleague [Olivia](contact_add_entity_name) with [Cardano](contact_add_entity_crypto_network) wallet [addr1qyc0kwu98x23mrwl7hcym5acvuqm6h55qeethtjz9jy996qcw7hpqhpl5dh7kud45kq2pg9975ls0yje86r4uetl7rls5qwj5p](contact_add_entity_wallet_address)
+
+    # Variations on name style
+    - Add [Dr. Smith](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network) address [1Mz7153HMuxXTuR2R1t78mGSdzaAtNbBWX](contact_add_entity_wallet_address)
+    - Save [Jane Doe](contact_add_entity_name) and her [ETH](contact_add_entity_crypto_network) wallet
+    - Create contact for [Mr. Johnson](contact_add_entity_name) with [SOL](contact_add_entity_crypto_network) address
+    - Add [CryptoKing42](contact_add_entity_name) to my contacts with their [DOT](contact_add_entity_crypto_network) address
+    - Save [The Real Satoshi](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network) wallet
+    - Create a contact for [mom](contact_add_entity_name) with her [ETH](contact_add_entity_crypto_network) address
+    - Add [bro](contact_add_entity_name) with [ADA](contact_add_entity_crypto_network) wallet
+    - Save [bestie](contact_add_entity_name) with their [SOL](contact_add_entity_crypto_network) address
+    - Add [roomie](contact_add_entity_name) to contacts with [AVAX](contact_add_entity_crypto_network) wallet
+    - Create contact for [@cryptodude](contact_add_entity_name) with [MATIC](contact_add_entity_crypto_network) address
+
+    # More variations with different phrasing
+    - I'd like to add [James](contact_add_entity_name) to my contact list with [Bitcoin](contact_add_entity_crypto_network) address [1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2](contact_add_entity_wallet_address)
+    - Could you please create a contact for [Ashley](contact_add_entity_name) with [Ethereum](contact_add_entity_crypto_network) wallet [0xb794f5ea0ba39494ce839613fffba74279579268](contact_add_entity_wallet_address)?
+    - I need to store [Matthew](contact_add_entity_name)'s [Solana](contact_add_entity_crypto_network) address [EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v](contact_add_entity_wallet_address)
+    - Would you add [Jennifer](contact_add_entity_name) to my contacts with [Polkadot](contact_add_entity_crypto_network) wallet [13ib36rtGs9shQbHnbpjHqFj6fX3ExNJYCZXCcgmDbxCgJH5](contact_add_entity_wallet_address)?
+    - I'm trying to add [Christopher](contact_add_entity_name) with [Cardano](contact_add_entity_crypto_network) address [addr1q9qfllpxg2vu4lq6rkvejevxxvggdp0j8pxv5vvp02tx0xy5sdd37hytt87d8zrj095j3zxacgxgxfm89xf9m7ctm8qsyn675n](contact_add_entity_wallet_address)
+    - Can you set up [Nicole](contact_add_entity_name) as a contact with [Ripple](contact_add_entity_crypto_network) wallet [rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh](contact_add_entity_wallet_address)?
+    - I'm hoping to create a contact for [Andrew](contact_add_entity_name) with [NEAR](contact_add_entity_crypto_network) address [andrew.near](contact_add_entity_wallet_address)
+    - Would it be possible to add [Jessica](contact_add_entity_name) to my contacts with [Algorand](contact_add_entity_crypto_network) address [VCMJKWOY5P5P7SKMZFFOCEROPJCZOTIJMNIYNUCKH73UUNFZGXN6YPHJPY](contact_add_entity_wallet_address)?
+    - I'm looking to save [Daniel](contact_add_entity_name)'s [Cosmos](contact_add_entity_crypto_network) wallet [cosmos1j26nm9kx2rsz9gx8cf8fd0k80t0hcytvzu4xla](contact_add_entity_wallet_address)
+    - Do you mind adding [Michelle](contact_add_entity_name) to my contacts with [Tezos](contact_add_entity_crypto_network) address [tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx](contact_add_entity_wallet_address)?
+
+    # Informal Gen Z phrasing
+    - Yooo add my friend [Jayden](contact_add_entity_name) to contacts
+    - Can u plz add [Kai](contact_add_entity_name) w/ their [BTC](contact_add_entity_crypto_network) addy [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address)?
+    - Need 2 add [Luna](contact_add_entity_name) ASAP
+    - Gotta save [Zion](contact_add_entity_name)'s wallet real quick
+    - Bruh, add [Hunter](contact_add_entity_name) to my contacts
+    - Lowkey need to add [Raven](contact_add_entity_name)'s [ETH](contact_add_entity_crypto_network) wallet [0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045](contact_add_entity_wallet_address)
+    - Tryna add [Noah](contact_add_entity_name) with [SOL](contact_add_entity_crypto_network) address [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address)
+    - Deadass need to save [Willow](contact_add_entity_name)'s wallet addy
+    - Add [Sage](contact_add_entity_name), they're super legit
+    - No cap, need to add [Phoenix](contact_add_entity_name) with [DOGE](contact_add_entity_crypto_network) wallet [DH5yaieqoZN36fDVciNyRueRGvGLR3mr7L](contact_add_entity_wallet_address)
+
+    # Questions as requests
+    - How do I add [Miguel](contact_add_entity_name) to my contacts?
+    - What's the way to save [Aisha](contact_add_entity_name)'s [ETH](contact_add_entity_crypto_network) address?
+    - Can you tell me how to add [Layla](contact_add_entity_name) with her wallet?
+    - What do I need to do to add [Omar](contact_add_entity_name) to my contacts?
+    - How can I create a contact for [Nia](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network) address?
+    - What's the process to add [Javier](contact_add_entity_name) with [ADA](contact_add_entity_crypto_network) wallet [addr1qyklpa4lcncl0yw72rjcftqrze4gg6kv9mdnmek7vklnxk7ve6hecc4ree7wufd4qgljjwywdphrvr8clxpzh92433s9pxvey](contact_add_entity_wallet_address)?
+    - Is it possible to add [Zara](contact_add_entity_name) to my contacts?
+    - How would I save [Mateo](contact_add_entity_name)'s wallet address?
+    - What's the best way to add [Amara](contact_add_entity_name) as a contact?
+    - Can you show me how to add [Khalid](contact_add_entity_name) with their [SOL](contact_add_entity_crypto_network) address?
+
+    # More conversational examples
+    - I need to add my crypto friend [Leo](contact_add_entity_name) to contacts
+    - My advisor [Janet](contact_add_entity_name) gave me her [BTC](contact_add_entity_crypto_network) address to save
+    - Want to add my trading buddy [Vince](contact_add_entity_name) with [ETH](contact_add_entity_crypto_network) wallet
+    - Need to store [Priya](contact_add_entity_name)'s address for future transactions
+    - Adding my accountant [Marcus](contact_add_entity_name) with [SOL](contact_add_entity_crypto_network) address [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address)
+    - Got a new wallet from [Tommy](contact_add_entity_name) that I need to save
+    - My sister [Anna](contact_add_entity_name) just got into crypto, adding her wallet
+    - Need to add my mining buddy [George](contact_add_entity_name) to contacts
+    - Adding my dad [Robert](contact_add_entity_name) with his first [BTC](contact_add_entity_crypto_network) address
+    - Just met [Chloe](contact_add_entity_name) at the crypto meetup, need to save her wallet
+
+    # Examples with typos and informal spelling
+    - Add [Jakub](contact_add_entity_name) 2 my contcts with [Etherium](contact_add_entity_crypto_network) address
+    - Pls add [Mia](contact_add_entity_name) w/ [Cardeno](contact_add_entity_crypto_network) wallet
+    - Cn you add [Toby](contact_add_entity_name) w his [Bitcon](contact_add_entity_crypto_network) addrss
+    - Saving [Gina](contact_add_entity_name) wit [Rippl](contact_add_entity_crypto_network) walet
+    - Ad [Finn](contact_add_entity_name) to my contax
+    - Plz create contct 4 [Marta](contact_add_entity_name) with [Salana](contact_add_entity_crypto_network) adress
+    - Need 2 save [Bens](contact_add_entity_name) [Dodgecoin](contact_add_entity_crypto_network) walet
+    - Cud u add [Tyla](contact_add_entity_name) to contcts
+    - Pls save [Haru](contact_add_entity_name) with [Polygn](contact_add_entity_crypto_network) adrss
+    - Gota add [Kiki](contact_add_entity_name)'s [Algrorand](contact_add_entity_crypto_network) wallet
+
+    # Technical/advanced users
+    - Add contact [Alice](contact_add_entity_name) with [secp256k1](contact_add_entity_crypto_network) public key [0x0450863AD64A87AE8A2FE83C1AF1A8403CB53F53E486D8511DAD8A04887E5B23522CD470243453A299FA9E77237716103ABC11A1DF38855ED6F2EE187E9C582BA6](contact_add_entity_wallet_address)
+    - Save [Bob](contact_add_entity_name)'s [multisig](contact_add_entity_crypto_network) address [bc1qakhjmxgymw0u4xzz4c32sjrffzv375hkncmscz7jncp3dhdyzunsn5tm4j](contact_add_entity_wallet_address)
+    - Add [Charlie](contact_add_entity_name) with [segwit](contact_add_entity_crypto_network) wallet [bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq](contact_add_entity_wallet_address)
+    - Create contact for [Dave](contact_add_entity_name) with [P2SH](contact_add_entity_crypto_network) address [3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy](contact_add_entity_wallet_address)
+    - Save [Eve](contact_add_entity_name) with their [HD wallet](contact_add_entity_crypto_network) root key
+    - Add [Frank](contact_add_entity_name) with [vanity](contact_add_entity_crypto_network) address [1FrankXXXXXXXXXXXXXXXXXXXXXXXXZEJrn](contact_add_entity_wallet_address)
+    - Create contact for [Grace](contact_add_entity_name) with [cold storage](contact_add_entity_crypto_network) address
+    - Save [Heidi](contact_add_entity_name)'s [contract](contact_add_entity_crypto_network) address [0x06012c8cf97BEaD5deAe237070F9587f8E7A266d](contact_add_entity_wallet_address)
+    - Add [Ivan](contact_add_entity_name) with [hardware wallet](contact_add_entity_crypto_network) address
+    - Create [Judy](contact_add_entity_name)'s contact with [smart contract](contact_add_entity_crypto_network) address [0xB8c77482e45F1F44dE1745F52C74426C631bDD52](contact_add_entity_wallet_address)
+
+    # Specific role-related
+    - Add my [crypto tax accountant](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network) address
+    - Save [mining pool operator](contact_add_entity_name) with [ETH](contact_add_entity_crypto_network) wallet
+    - Create contact for [exchange support](contact_add_entity_name) with their [SOL](contact_add_entity_crypto_network) address
+    - Add [NFT artist](contact_add_entity_name) to my contacts
+    - Save [DeFi protocol](contact_add_entity_name) with [ETH](contact_add_entity_crypto_network) address [0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D](contact_add_entity_wallet_address)
+    - Add [crypto mentor](contact_add_entity_name) to contacts with their [BTC](contact_add_entity_crypto_network) wallet
+    - Create contact for [validator node](contact_add_entity_name) with [DOT](contact_add_entity_crypto_network) address
+    - Save [smart contract developer](contact_add_entity_name) with their [AVAX](contact_add_entity_crypto_network) wallet
+    - Add [blockchain auditor](contact_add_entity_name) to my contacts
+    - Create entry for [staking pool](contact_add_entity_name) with [ADA](contact_add_entity_crypto_network) address
+    - Save [crypto charity](contact_add_entity_name) with their [BTC](contact_add_entity_crypto_network) wallet
+    - Add [DAO treasury](contact_add_entity_name) to contacts with [ETH](contact_add_entity_crypto_network) address
+    - Create contact for [token creator](contact_add_entity_name) with their wallet
+    - Add [crypto influencer](contact_add_entity_name) to my address book
+
+    # Context-specific examples
+    - Just got scammed, need to add [FBI crypto division](contact_add_entity_name) to contacts
+    - Add [exchange deposit](contact_add_entity_name) with wallet [bc1q359khn0phg58xgezyqsuuaha28zkwx047c0c3y](contact_add_entity_wallet_address)
+    - Save [cold storage](contact_add_entity_name) with address [1LvCF1GvHGAfJgJuCjkqfTfSsj8cSNWaJh](contact_add_entity_wallet_address)
+    - Create contact for [mining rewards](contact_add_entity_name) with [ETH](contact_add_entity_crypto_network) address
+    - Add [ICO refund](contact_add_entity_name) to contacts
+    - Save [hardware wallet backup](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network) address
+    - Create new contact for [monthly DCA](contact_add_entity_name) with wallet address
+    - Add [yield farming](contact_add_entity_name) to contacts with [ETH](contact_add_entity_crypto_network) address
+    - Save [multisig signer 1](contact_add_entity_name) with their public key
+    - Create contact for [DAO voting](contact_add_entity_name) address
+
+    # More complete examples with diverse names and cryptocurrencies
+    - Add [Wei](contact_add_entity_name) to my contacts with [NEO](contact_add_entity_crypto_network) address [AQVh2pG732YvtNaxEGkQUei3YA4cvo7d2i](contact_add_entity_wallet_address)
+    - Save [Ananya](contact_add_entity_name)'s [Stellar](contact_add_entity_crypto_network) wallet [GAEDPKAEGGSKOZNYMJ5USWXPSU6I7SWQTB2YPLEKV3PGHDJNZ55XGG4H](contact_add_entity_wallet_address)
+    - Create contact for [Ibrahim](contact_add_entity_name) with [Monero](contact_add_entity_crypto_network) address [49BnKAecHgNVxmToUgCjoSFrCGAgigYZfTTYGhZ781Cox4K7jviS8YxZTJZBSX398stMKpKSTnbEHuE9fh21yYo17RJZ5WJ](contact_add_entity_wallet_address)
+    - Add [Fatima](contact_add_entity_name) with [Theta](contact_add_entity_crypto_network) wallet [0x7a84F3A94a18C3c62A5C42566FA44f5f2A1726B3](contact_add_entity_wallet_address)
+    - Save [Jamal](contact_add_entity_name) with [Filecoin](contact_add_entity_crypto_network) address [f1z54xwauuolnfnhyb4s3ppk6mcnc7uvqhxqgxiwi](contact_add_entity_wallet_address)
+    - Create contact for [Soo-jin](contact_add_entity_name) with [Elrond](contact_add_entity_crypto_network) wallet [erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s0642ry0jqjfxgq5z2us9c4yce](contact_add_entity_wallet_address)
+    - Add [Paolo](contact_add_entity_name) to contacts with [VeChain](contact_add_entity_crypto_network) address [0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7](contact_add_entity_wallet_address)
+    - Save [Olga](contact_add_entity_name)'s [IOTA](contact_add_entity_crypto_network) wallet [ADLJXS9SKYQKMVLW9USKRCPWAFURPNWPWJWQVOFEINCYAVNEXVPLOLHTJOIEFPBZJBVUQRIAHUPBKIAHZVJGYQXTW](contact_add_entity_wallet_address)
+    - Create a contact for [Raj](contact_add_entity_name) with [Zilliqa](contact_add_entity_crypto_network) address [zil139tkqvc8rw92e6jrs40gawwc3mmdmmauv3x0xl](contact_add_entity_wallet_address)
+    - Add [Yuki](contact_add_entity_name) with [Waves](contact_add_entity_crypto_network) wallet [3PCUDAURpg357pVgKXxdwLEYiRKTHQsYr2B](contact_add_entity_wallet_address)
+
+    # More casual/conversational examples
+    - Just met someone at a crypto meetup, add [Jen](contact_add_entity_name) to contacts
+    - I need to add the wallet I just created, call it [emergency fund](contact_add_entity_name)
+    - Friend recommended a dev, add [Theo](contact_add_entity_name) to contacts
+    - Boss wants me to send him ETH, add [Mr. Wilson](contact_add_entity_name) to contacts
+    - Add my new trading partner [CryptoQueen](contact_add_entity_name) to contacts
+    - Making a donation, add [charity wallet](contact_add_entity_name) to my list
+    - Just created a multisig, add [family vault](contact_add_entity_name) to contacts
+    - Buying an NFT, need to add [artist wallet](contact_add_entity_name) to contacts
+    - Add my [staking rewards](contact_add_entity_name) address to contacts
+    - Just joined a DAO, add [governance](contact_add_entity_name) to my contacts
+
+    # More Gen Z style examples
+    - Need to add [bestie](contact_add_entity_name) asap with their [ETH](contact_add_entity_crypto_network) addy
+    - Can you add [bae](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network) wallet? tysm
+    - Literally need to save [squad](contact_add_entity_name)'s crypto address rn
+    - Add [fam](contact_add_entity_name) to contacts pls
+    - Just vibing with [senpai](contact_add_entity_name)'s wallet, add it pls
+    - Ngl need to add [homie](contact_add_entity_name) with [DOGE](contact_add_entity_crypto_network) address
+    - Based [trader](contact_add_entity_name) gave me their wallet, add it
+    - No cap, [plug](contact_add_entity_name) has the best rates, add their wallet
+    - Fr fr need to add [GOAT](contact_add_entity_name) to contacts
+    - Yeet [besties](contact_add_entity_name) address into my contacts
+
+    # Complete details with popular tokens
+    - Add [Melissa](contact_add_entity_name) with [Uniswap](contact_add_entity_crypto_network) address [0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984](contact_add_entity_wallet_address)
+    - Save [Terrance](contact_add_entity_name) with [Chainlink](contact_add_entity_crypto_network) wallet [0x514910771AF9Ca656af840dff83E8264EcF986CA](contact_add_entity_wallet_address)
+    - Create contact for [Lakshmi](contact_add_entity_name) with [Aave](contact_add_entity_crypto_network) address [0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9](contact_add_entity_wallet_address)
+    - Add [Diego](contact_add_entity_name) to contacts with [Compound](contact_add_entity_crypto_network) wallet [0xc00e94Cb662C3520282E6f5717214004A7f26888](contact_add_entity_wallet_address)
+    - Save [Nina](contact_add_entity_name)'s [Maker](contact_add_entity_crypto_network) address [0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2](contact_add_entity_wallet_address)
+    - Create contact for [Tyrone](contact_add_entity_name) with [Sushi](contact_add_entity_crypto_network) wallet [0x6B3595068778DD592e39A122f4f5a5cF09C90fE2](contact_add_entity_wallet_address)
+    - Add [Svetlana](contact_add_entity_name) with [Yearn](contact_add_entity_crypto_network) address [0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e](contact_add_entity_wallet_address)
+    - Save [Jerome](contact_add_entity_name) with [1inch](contact_add_entity_crypto_network) wallet [0x111111111117dC0aa78b770fA6A738034120C302](contact_add_entity_wallet_address)
+    - Create contact for [Aisha](contact_add_entity_name) with [Synthetix](contact_add_entity_crypto_network) address [0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F](contact_add_entity_wallet_address)
+    - Add [Ming](contact_add_entity_name) to contacts with [Balancer](contact_add_entity_crypto_network) wallet [0xba100000625a3754423978a60c9317c58a424e3D](contact_add_entity_wallet_address)
+
+    # More colloquial/casual requests
+    - Hey can you add [Jesse](contact_add_entity_name) to my contacts?
+    - Mind adding [Sadie](contact_add_entity_name) to my list real quick?
+    - Could you put [Aaron](contact_add_entity_name) in my contacts?
+    - Would you mind saving [Victoria](contact_add_entity_name) for me?
+    - Do me a favor and add [Rashid](contact_add_entity_name) to contacts
+    - Hook me up with adding [Gabriela](contact_add_entity_name) to my list
+    - Be a pal and add [Marcus](contact_add_entity_name) to contacts
+    - I'd appreciate if you'd add [Isabelle](contact_add_entity_name) to my list
+    - Do you think you could add [Leon](contact_add_entity_name) to contacts?
+    - Any chance you could add [Natalie](contact_add_entity_name) for me?
+
+    # Complete examples with additional context
+    - Add [Josh](contact_add_entity_name) to contacts with [BTC](contact_add_entity_crypto_network) address [3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy](contact_add_entity_wallet_address) for monthly payments
+    - Save [Amara](contact_add_entity_name) with [ETH](contact_add_entity_crypto_network) wallet [0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045](contact_add_entity_wallet_address) for NFT purchases
+    - Create contact for [Theo](contact_add_entity_name) with [ADA](contact_add_entity_crypto_network) address [addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3n0d3vllmyqwsx5wktcd8cc3sq835lu7drv2xwl2wywfgse35a3x](contact_add_entity_wallet_address) for staking rewards
+    - Add [Zara](contact_add_entity_name) to contacts with [SOL](contact_add_entity_crypto_network) wallet [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address) for trading
+    - Save [Kobe](contact_add_entity_name)'s [DOT](contact_add_entity_crypto_network) address [1exaAg2VJRQbyUBAeXcktChCAqjVP9TUxF3zo23R2T6EGdE](contact_add_entity_wallet_address) for governance voting
+    - Create contact for [Leila](contact_add_entity_name) with [AVAX](contact_add_entity_crypto_network) wallet [X-avax1qr6yzjykcjmeflztsgv5na54g4qksz0evptj0l](contact_add_entity_wallet_address) for DeFi investments
+    - Add [Carlos](contact_add_entity_name) with [XRP](contact_add_entity_crypto_network) address [rMnuS9WjpNixPTFCvZoHqwPaYuvJGU3DHc](contact_add_entity_wallet_address) for work payments
+    - Save [Jasmine](contact_add_entity_name) with [NEAR](contact_add_entity_crypto_network) wallet [jasmine.near](contact_add_entity_wallet_address) for the hackathon team
+    - Create contact for [Malik](contact_add_entity_name) with [ALGO](contact_add_entity_crypto_network) address [VCMJKWOY5P5P7SKMZFFOCEROPJCZOTIJMNIYNUCKH73UUNFZGXN6YPHJPY](contact_add_entity_wallet_address) for the DAO
+    - Add [Sophia](contact_add_entity_name) to contacts with [ATOM](contact_add_entity_crypto_network) wallet [cosmos1j26nm9kx2rsz9gx8cf8fd0k80t0hcytvzu4xla](contact_add_entity_wallet_address) for validator payments
+
+    # Mixed language examples
+    - Add [cuz](contact_add_entity_name) to my contacts with his wallet addy
+    - Yo can you save [homie](contact_add_entity_name)'s [ETH](contact_add_entity_crypto_network) wallet [0x89F5C5F24447Fb138bDc8f610A87b538c220B6e8](contact_add_entity_wallet_address)?
+    - Create a contact for [peeps](contact_add_entity_name) with BTC addy
+    - Save [boss](contact_add_entity_name) with crypto address for payday
+    - Plz add [mentor](contact_add_entity_name) with their [SOL](contact_add_entity_crypto_network) wallet
+    - Need to save [the squad](contact_add_entity_name)'s shared wallet
+    - Frfr add [buddy](contact_add_entity_name) to contacts with [DOGE](contact_add_entity_crypto_network) wallet
+    - Gotta add [newbie](contact_add_entity_name) to my crypto contacts
+    - Need to drop [friend](contact_add_entity_name) in my contacts with [XRP](contact_add_entity_crypto_network) address
+    - Plz save [roomie](contact_add_entity_name) with [AVAX](contact_add_entity_crypto_network) wallet
+
+    # Commands with different verbs
+    - Store [Maria](contact_add_entity_name) in my contacts with [BTC](contact_add_entity_crypto_network) address
+    - Put [Darius](contact_add_entity_name) in my address book
+    - Insert [Amelia](contact_add_entity_name) into contacts with [ETH](contact_add_entity_crypto_network) wallet
+    - Register [Felix](contact_add_entity_name) with [ADA](contact_add_entity_crypto_network) address
+    - Record [Imani](contact_add_entity_name)'s [SOL](contact_add_entity_crypto_network) wallet in contacts
+    - Include [Lars](contact_add_entity_name) in my contact list
+    - Place [Naomi](contact_add_entity_name) in my crypto contacts
+    - Log [Victor](contact_add_entity_name)'s [DOT](contact_add_entity_crypto_network) address in my book
+    - Enter [Yasmin](contact_add_entity_name) into my contacts
+    - Document [Zack](contact_add_entity_name)'s [AVAX](contact_add_entity_crypto_network) wallet in my list
+
+    # With temporal urgency
+    - Need to add [Lena](contact_add_entity_name) to contacts right now
+    - Quickly add [Raul](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network) address
+    - ASAP add [Tiffany](contact_add_entity_name) to my list
+    - Urgently need to save [Owen](contact_add_entity_name)'s wallet
+    - Add [Penny](contact_add_entity_name) to contacts before I forget
+    - Need to save [Quincy](contact_add_entity_name)'s address immediately
+    - Add [Rosa](contact_add_entity_name) to contacts while I have her wallet
+    - Save [Seth](contact_add_entity_name)'s address before the transaction
+    - Add [Tina](contact_add_entity_name) to contacts now please
+    - Quickly create contact for [Umar](contact_add_entity_name) with [ETH](contact_add_entity_crypto_network) wallet
+
+    # With specific locations
+    - Add [Valencia](contact_add_entity_name) from the crypto meetup to contacts
+    - Save [Wes](contact_add_entity_name) from the Discord server with [BTC](contact_add_entity_crypto_network) address
+    - Create contact for [Xena](contact_add_entity_name) from the mining pool
+    - Add [Yuri](contact_add_entity_name) from the trading group to my list
+    - Save [Zeke](contact_add_entity_name) from the conference with [SOL](contact_add_entity_crypto_network) wallet
+    - Add [Alicia](contact_add_entity_name) from the Telegram channel to contacts
+    - Create contact for [Boris](contact_add_entity_name) from the staking pool
+    - Save [Camila](contact_add_entity_name) from the NFT marketplace with wallet address
+    - Add [Devin](contact_add_entity_name) from the crypto class to contacts
+    - Create contact for [Elena](contact_add_entity_name) from the hackathon
+
+    # With professional titles
+    - Add [Dr. Fleming](contact_add_entity_name) to contacts with [BTC](contact_add_entity_crypto_network) address
+    - Save [Professor Liu](contact_add_entity_name) with [ETH](contact_add_entity_crypto_network) wallet
+    - Create contact for [Attorney Rodriguez](contact_add_entity_name) with [SOL](contact_add_entity_crypto_network) address
+    - Add [Captain Hill](contact_add_entity_name) to my list with [ADA](contact_add_entity_crypto_network) wallet
+    - Save [Senator Johnson](contact_add_entity_name)'s [DOT](contact_add_entity_crypto_network) address
+    - Create contact for [Dr. Patel](contact_add_entity_name) with crypto wallet
+    - Add [Officer Garcia](contact_add_entity_name) to contacts with [AVAX](contact_add_entity_crypto_network) address
+    - Save [Principal Davis](contact_add_entity_name) with [XRP](contact_add_entity_crypto_network) wallet
+    - Create contact for [Judge Wilson](contact_add_entity_name) with blockchain address
+    - Add [Director Zhang](contact_add_entity_name) to contacts with crypto wallet
+
+    # With descriptive specifiers
+    - Add [tall John](contact_add_entity_name) to contacts with [BTC](contact_add_entity_crypto_network) address
+    - Save [crypto Kelly](contact_add_entity_name) with [ETH](contact_add_entity_crypto_network) wallet
+    - Create contact for [NY Mike](contact_add_entity_name) with [SOL](contact_add_entity_crypto_network) address
+    - Add [trader Dave](contact_add_entity_name) to my list with wallet
+    - Save [tech Sarah](contact_add_entity_name)'s blockchain address
+    - Create contact for [designer Alex](contact_add_entity_name) with crypto wallet
+    - Add [coder Jordan](contact_add_entity_name) to contacts with address
+    - Save [gamer Casey](contact_add_entity_name) with [DOGE](contact_add_entity_crypto_network) wallet
+    - Create contact for [artist Riley](contact_add_entity_name) with NFT address
+    - Add [DJ Morgan](contact_add_entity_name) to contacts with crypto wallet
+
+    # More complete examples with different networks
+    - Add [Liam](contact_add_entity_name) to contacts with [Decred](contact_add_entity_crypto_network) address [DsYZdT7dgg7JjKD2yvnD5bxZZ9CYP51cTBL](contact_add_entity_wallet_address)
+    - Save [Nora](contact_add_entity_name) with [EOS](contact_add_entity_crypto_network) wallet [eosio.token](contact_add_entity_wallet_address)
+    - Create contact for [Owen](contact_add_entity_name) with [Dash](contact_add_entity_crypto_network) address [Xr9nrcuXfaKVGKKAsZJ5GhQSU7W6CherUr](contact_add_entity_wallet_address)
+    - Add [Penny](contact_add_entity_name) to my list with [Ontology](contact_add_entity_crypto_network) wallet [AGn8JFPGM5S4jkWhTC5MnqTdNgwV21971L](contact_add_entity_wallet_address)
+    - Save [Quinn](contact_add_entity_name)'s [Qtum](contact_add_entity_crypto_network) address [QVk3McAUNQCJW9kgvJJ4MaDKfLGVfxNTHh](contact_add_entity_wallet_address)
+    - Create contact for [Rosa](contact_add_entity_name) with [Nano](contact_add_entity_crypto_network) wallet [nano_3qb6o6i1tkzr6ofz1gridprofbzrmb916qb4nixc6896714n5gmu1xpnq73p](contact_add_entity_wallet_address)
+    - Add [Seth](contact_add_entity_name) to contacts with [Ravencoin](contact_add_entity_crypto_network) address [RHoCwPc2FCQqwToYnSiAb3SrCET4zEHsbS](contact_add_entity_wallet_address)
+    - Save [Tina](contact_add_entity_name) with [Fantom](contact_add_entity_crypto_network) wallet [0xCFE8D382D9f66a311fAa5A274891499695191991](contact_add_entity_wallet_address)
+    - Create contact for [Umar](contact_add_entity_name) with [Secret Network](contact_add_entity_crypto_network) address [secret1f69sk5033xdmkca5hpj57jk7p7yadsx7zcvuyr](contact_add_entity_wallet_address)
+    - Add [Valencia](contact_add_entity_name) to my contacts with [Celo](contact_add_entity_crypto_network) wallet [0xCe8ecf7CEcBdC7C66d1CC84620A09AC2c86c6210](contact_add_entity_wallet_address)
+
+    # More blockchain specific wording
+    - Add [Wes](contact_add_entity_name) to contacts with public key [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address)
+    - Save [Xena](contact_add_entity_name)'s wallet signature to contacts
+    - Create a contact for [Yuri](contact_add_entity_name) with their hot wallet
+    - Add [Zeke](contact_add_entity_name) to my list with cold storage address
+    - Save [Alicia](contact_add_entity_name)'s multisig to contacts
+    - Create contact for [Boris](contact_add_entity_name) with their DeFi wallet
+    - Add [Camila](contact_add_entity_name) to contacts with smart contract address
+    - Save [Devin](contact_add_entity_name)'s paper wallet to contacts
+    - Create contact for [Elena](contact_add_entity_name) with their liquidity pool address
+    - Add [Fabian](contact_add_entity_name) to my list with hardware wallet public key
+
+    # With different addressing schemes
+    - Add [Gabriel](contact_add_entity_name) to contacts with vanity address [1GABE1111111111111111111111111A3Nw2E](contact_add_entity_wallet_address)
+    - Save [Hannah](contact_add_entity_name) with bech32 wallet [bc1qql5ardctsvufy4xhd27k3lytfcjhwj42zk3wun](contact_add_entity_wallet_address)
+    - Create contact for [Ian](contact_add_entity_name) with legacy address [1Nss8DRmYmJcXkygNZtZ6CYgfFFMxCM2Pj](contact_add_entity_wallet_address)
+    - Add [Jackie](contact_add_entity_name) to my list with ENS name [jackie.eth](contact_add_entity_wallet_address)
+    - Save [Kenji](contact_add_entity_name)'s P2SH address [3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy](contact_add_entity_wallet_address)
+    - Create contact for [Lina](contact_add_entity_name) with checksum address [0x89F5C5F24447Fb138bDc8f610A87b538c220B6e8](contact_add_entity_wallet_address)
+    - Add [Marco](contact_add_entity_name) to contacts with stealth address
+    - Save [Nina](contact_add_entity_name)'s hierarchical deterministic wallet
+    - Create contact for [Oscar](contact_add_entity_name) with compressed public key
+    - Add [Priya](contact_add_entity_name) to my list with brain wallet
+
+    # Miscellaneous variants
+    - Just found my old [seed wallet](contact_add_entity_name), add to contacts
+    - Add [emergency backup](contact_add_entity_name) to my contact list
+    - Create contact for [tax payment](contact_add_entity_name) with wallet address
+    - Save [web3 login](contact_add_entity_name) with public key to contacts
+    - Add [metaverse land](contact_add_entity_name) to my crypto contacts
+    - Create contact for [airdrop destination](contact_add_entity_name) with wallet
+    - Save [staking returns](contact_add_entity_name) with address to contacts
+    - Add [yield farming](contact_add_entity_name) to my list
+    - Create contact for [NFT royalties](contact_add_entity_name) with wallet
+    - Save [donation](contact_add_entity_name) address to my contacts
+
+    # Complete requests (name + address + network)
+    - Add [Sarah](contact_add_entity_name) to my contacts with [Bitcoin](contact_add_entity_crypto_network) address [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address)
+    - Create a new contact for [Mike](contact_add_entity_name) with [Ethereum](contact_add_entity_crypto_network) wallet [0x742d35Cc6634C0532925a3b844Bc454e4438f44e](contact_add_entity_wallet_address)
+    - Save [John](contact_add_entity_name)'s [Solana](contact_add_entity_crypto_network) address [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address)
+    - Add [Alex](contact_add_entity_name) to my contact list with address [bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh](contact_add_entity_wallet_address) for [Bitcoin](contact_add_entity_crypto_network)
+    - I want to store [Daniel](contact_add_entity_name)'s [Cardano](contact_add_entity_crypto_network) wallet [addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3n0d3vllmyqwsx5wktcd8cc3sq835lu7drv2xwl2wywfgse35a3x](contact_add_entity_wallet_address)
+    - Please add [Tom](contact_add_entity_name) to contacts with [Polkadot](contact_add_entity_crypto_network) address [1exaAg2VJRQbyUBAeXcktChCAqjVP9TUxF3zo23R2T6EGdE](contact_add_entity_wallet_address)
+    - Add a new contact named [Lisa](contact_add_entity_name) with [Dogecoin](contact_add_entity_crypto_network) wallet [DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1](contact_add_entity_wallet_address)
+    - Need to add [Jamie](contact_add_entity_name) with their [ETH](contact_add_entity_crypto_network{"value":"Ethereum"}) address [0x89F5C5F24447Fb138bDc8f610A87b538c220B6e8](contact_add_entity_wallet_address)
+    - Save [Taylor](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network{"value":"Bitcoin"}) wallet [3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy](contact_add_entity_wallet_address) to my contacts
+    - Add my friend [Jordan](contact_add_entity_name) with [Ripple](contact_add_entity_crypto_network{"value":"XRP"}) address [rMnuS9WjpNixPTFCvZoHqwPaYuvJGU3DHc](contact_add_entity_wallet_address)
+    - Can you create a contact for [Casey](contact_add_entity_name) with [Avalanche](contact_add_entity_crypto_network) address [X-avax1qr6yzjykcjmeflztsgv5na54g4qksz0evptj0l](contact_add_entity_wallet_address)?
+    - Add [Riley](contact_add_entity_name) to my contacts with their [NEAR](contact_add_entity_crypto_network) wallet [riley.near](contact_add_entity_wallet_address)
+    - Save [Morgan](contact_add_entity_name)'s [Algorand](contact_add_entity_crypto_network) address [VCMJKWOY5P5P7SKMZFFOCEROPJCZOTIJMNIYNUCKH73UUNFZGXN6YPHJPY](contact_add_entity_wallet_address)
+    - Add my cousin [Taylor](contact_add_entity_name) with [Cosmos](contact_add_entity_crypto_network) wallet [cosmos1j26nm9kx2rsz9gx8cf8fd0k80t0hcytvzu4xla](contact_add_entity_wallet_address)
+    - Create [Blake](contact_add_entity_name)'s contact with [Tezos](contact_add_entity_crypto_network) wallet [tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx](contact_add_entity_wallet_address)
+    - Yo, save [Emma](contact_add_entity_name) with [Litecoin](contact_add_entity_crypto_network) address [MPwk2KMr3Wr2vjCiP6NKmSPSDeMKZ4JXen](contact_add_entity_wallet_address) 😎
+    - Add [Chris](contact_add_entity_name) to my list with [Tron](contact_add_entity_crypto_network) wallet [TZ2dmCNuKYyeXSUJP1tMMcFeXPVnTZrBsV](contact_add_entity_wallet_address)
+    - I need [Sophie](contact_add_entity_name) in contacts with [Binance Smart Chain](contact_add_entity_crypto_network{"value":"Binance Smart Chain"}) address [0x55d398326f99059fF775485246999027B3197955](contact_add_entity_wallet_address)
+    - Save [Liam](contact_add_entity_name) with [Polygon](contact_add_entity_crypto_network) wallet [0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359](contact_add_entity_wallet_address)
+    - Add [Ava](contact_add_entity_name) to my address book with [Harmony](contact_add_entity_crypto_network) address [one1t4p6x408dxkwpgqh7mujyzx3hw7qn9kn4qvhsp](contact_add_entity_wallet_address)
+    - Create a contact for [Noah](contact_add_entity_name) with [Stellar](contact_add_entity_crypto_network) wallet [GCIKZGQUUGAYKL5HRFCEBXCTSUWIAIPODL5CYFHEUZQJ5QUBCL2F3XOC](contact_add_entity_wallet_address)
+    - Yo, add [Mia](contact_add_entity_name) with [VeChain](contact_add_entity_crypto_network) address [0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7](contact_add_entity_wallet_address) to my contacts
+    - Save [Ethan](contact_add_entity_name) with [Terra](contact_add_entity_crypto_network) wallet [terra1x46rqay4d3cssq8gxxvqz8xt6nwlz4td20k38v](contact_add_entity_wallet_address)
+    - I want [Isabella](contact_add_entity_name) in my contacts with [NEO](contact_add_entity_crypto_network) address [AR4QmqYENiZAD6oXe7ftm6eDcwtHk7rVTT](contact_add_entity_wallet_address)
+    - Add [Mason](contact_add_entity_name) with [Flow](contact_add_entity_crypto_network) wallet [0x7f124bb61dc6e443](contact_add_entity_wallet_address)
+    - Create [Aria](contact_add_entity_name) with [ICON](contact_add_entity_crypto_network) address [hx168d434d1d25e79aacd200a3f142ea45e51a1603](contact_add_entity_wallet_address)
+    - Save [Logan](contact_add_entity_name) with [Zilliqa](contact_add_entity_crypto_network) wallet [zil139tkqvc8rw92e6jrs40gawwc3mmdmmauv3x0xl](contact_add_entity_wallet_address)
+    - Yo, add [Harper](contact_add_entity_name) with [Monero](contact_add_entity_crypto_network) address [49BnKAecHgNVxmToUgCjoSFrCGAgigYZfTTYGhZ781Cox4K7jviS8YxZTJZBSX398stMKpKSTnbEHuE9fh21yYo17RJZ5WJ](contact_add_entity_wallet_address) 😎
+    - I need [Elijah](contact_add_entity_name) with [Waves](contact_add_entity_crypto_network) wallet [3PCUDAURpg357pVgKXxdwLEYiRKTHQsYr2B](contact_add_entity_wallet_address)
+    - Add [Evelyn](contact_add_entity_name) to my contacts with [Decred](contact_add_entity_crypto_network) address [DsYZdT7dgg7JjKD2yvnD5bxZZ9CYP51cTBL](contact_add_entity_wallet_address)
+    - Save [Aiden](contact_add_entity_name) with [EOS](contact_add_entity_crypto_network) wallet [eosio.token](contact_add_entity_wallet_address)
+    - Create a contact for [Luna](contact_add_entity_name) with [Dash](contact_add_entity_crypto_network) address [Xr9nrcuXfaKVGKKAsZJ5GhQSU7W6CherUr](contact_add_entity_wallet_address)
+    - Add [Jackson](contact_add_entity_name) with [Ontology](contact_add_entity_crypto_network) wallet [AGn8JFPGM5S4jkWhTC5MnqTdNgwV21971L](contact_add_entity_wallet_address)
+    - Yo, save [Sofia](contact_add_entity_name) with [Qtum](contact_add_entity_crypto_network) address [QVk3McAUNQCJW9kgvJJ4MaDKfLGVfxNTHh](contact_add_entity_wallet_address)
+    - I want [Carter](contact_add_entity_name) with [IOTA](contact_add_entity_crypto_network) wallet [ADLJXS9SKYQKMVLW9USKRCPWAFURPNWPWJWQVOFEINCYAVNEXVPLOLHTJOIEFPBZJBVUQRIAHUPBKIAHZVJGYQXTW](contact_add_entity_wallet_address)
+    - Add [Mila](contact_add_entity_name) to my contacts with [Theta](contact_add_entity_crypto_network) address [0x4c5A86D9595Cc1A22De41E749Ce3C72bE73De4b0](contact_add_entity_wallet_address)
+    - Save [Owen](contact_add_entity_name) with [Elrond](contact_add_entity_crypto_network) wallet [erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s0642ry0jqjfxgq5z2us9c4yce](contact_add_entity_wallet_address)
+    - Create [Avery](contact_add_entity_name) with [Ravencoin](contact_add_entity_crypto_network) address [RHoCwPc2FCQqwToYnSiAb3SrCET4zEHsbS](contact_add_entity_wallet_address)
+    - Yo, add [Camila](contact_add_entity_name) with [Phantom Chain](contact_add_entity_crypto_network) wallet [tprv8ZgxMBicQKsPd9TeAdPADNnSyH9SSUUbTVeFszDE23Ki6TBB5nCefAdHkK8Fm3qMQR6sHwA56zqRmKmxnBPAVESJ5eKF6zpd6LgyS3ib6hq](contact_add_entity_wallet_address)
+    - I need [Wyatt](contact_add_entity_name) with [FTM](contact_add_entity_crypto_network{"value":"Fantom"}) address [0xCFE8D382D9f66a311fAa5A274891499695191991](contact_add_entity_wallet_address)
+    - Save [Scarlett](contact_add_entity_name) with [Secret Network](contact_add_entity_crypto_network) wallet [secret1f69sk5033xdmkca5hpj57jk7p7yadsx7zcvuyr](contact_add_entity_wallet_address)
+    - Add [Levi](contact_add_entity_name) to my contacts with [Holo](contact_add_entity_crypto_network) address [0xe32d13B7F5EeB031A6E1d543a6F0A9c1C507d08f](contact_add_entity_wallet_address)
+    - Create a contact for [Julia](contact_add_entity_name) with [Filecoin](contact_add_entity_crypto_network) wallet [f1z54xwauuolnfnhyb4s3ppk6mcnc7uvqhxqgxiwi](contact_add_entity_wallet_address)
+    - Yo, save [Luke](contact_add_entity_name) with [Celo](contact_add_entity_crypto_network) address [0xCe8ecf7CEcBdC7C66d1CC84620A09AC2c86c6210](contact_add_entity_wallet_address) 😎
+    - I want [Chloe](contact_add_entity_name) with [Nano](contact_add_entity_crypto_network) wallet [nano_3qb6o6i1tkzr6ofz1gridprofbzrmb916qb4nixc6896714n5gmu1xpnq73p](contact_add_entity_wallet_address)
+    - Add [Isaac](contact_add_entity_name) to my list with [Chainlink](contact_add_entity_crypto_network) address [0x514910771AF9Ca656af840dff83E8264EcF986CA](contact_add_entity_wallet_address)
+    - Save [Layla](contact_add_entity_name) with [Steem](contact_add_entity_crypto_network) wallet [steem1nbrpx4gpbqre40hpgmgcm9ma7k9rptrc1xhj75](contact_add_entity_wallet_address)
+    - Create [Gabriel](contact_add_entity_name) with [Kusama](contact_add_entity_crypto_network) address [H1tcrRod4RYwspnLfe3vBzRPxqp1R66NNpxJ75eiiFXZdhc](contact_add_entity_wallet_address)
+    - Yo, add [Zoe](contact_add_entity_name) with [BNB](contact_add_entity_crypto_network{"value":"Binance Coin"}) wallet [bnb1jxfh2g85q3v0tdq56fnevx6xcxtcnhtsmcu64m](contact_add_entity_wallet_address)
+    - I need [Nathan](contact_add_entity_name) with [Moonbeam](contact_add_entity_crypto_network) address [0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac](contact_add_entity_wallet_address)
+    - Save [Lily](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) wallet [1HLoD9E4SDFFPDiYfNYnkBLQ85Y51J3Zb1](contact_add_entity_wallet_address)
+    - Add [Dylan](contact_add_entity_name) to my contacts with [Ethereum](contact_add_entity_crypto_network) address [0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045](contact_add_entity_wallet_address)
+    - Create a contact for [Grace](contact_add_entity_name) with [Solana](contact_add_entity_crypto_network) wallet [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address)
+    - Yo, save [Eli](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network{"value":"Bitcoin"}) address [bc1qar0srrr7xfk3lxl3k8z7z5q8y7z5q8y7z5q8y](contact_add_entity_wallet_address) 😎
+    - I want [Hazel](contact_add_entity_name) with [Cardano](contact_add_entity_crypto_network) wallet [addr1q8v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9](contact_add_entity_wallet_address)
+    - Add [Josiah](contact_add_entity_name) to my list with [Polkadot](contact_add_entity_crypto_network) address [1FRMM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Violet](contact_add_entity_name) with [Dogecoin](contact_add_entity_crypto_network) wallet [D6Dz1pzn2Acw7eAe7eAe7eAe7eAe7eAe7eAe7eAe7eA](contact_add_entity_wallet_address)
+    - Create [Julian](contact_add_entity_name) with [XRP](contact_add_entity_crypto_network) address [r3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, add [Sadie](contact_add_entity_name) with [Litecoin](contact_add_entity_crypto_network) wallet [L3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I need [Lincoln](contact_add_entity_name) with [Cosmos](contact_add_entity_crypto_network) address [cosmos1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Lydia](contact_add_entity_name) with [Tron](contact_add_entity_crypto_network) wallet [T3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Evan](contact_add_entity_name) to my contacts with [NEAR](contact_add_entity_crypto_network) address [evan.near](contact_add_entity_wallet_address)
+    - Create a contact for [Claire](contact_add_entity_name) with [Algorand](contact_add_entity_crypto_network) wallet [A3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Asher](contact_add_entity_name) with [Avalanche](contact_add_entity_crypto_network) address [X-avax1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I want [Stella](contact_add_entity_name) with [BSC](contact_add_entity_crypto_network{"value":"Binance Smart Chain"}) wallet [0xB3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Ezra](contact_add_entity_name) to my list with [Polygon](contact_add_entity_crypto_network) address [0xP3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Penelope](contact_add_entity_name) with [Harmony](contact_add_entity_crypto_network) wallet [one1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create [Mateo](contact_add_entity_name) with [Stellar](contact_add_entity_crypto_network) address [G3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, add [Skylar](contact_add_entity_name) with [Tezos](contact_add_entity_crypto_network) wallet [tz1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) 😎
+    - I need [Addison](contact_add_entity_name) with [VeChain](contact_add_entity_crypto_network) address [0xV3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Elliot](contact_add_entity_name) with [Terra](contact_add_entity_crypto_network) wallet [terra1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Aurora](contact_add_entity_name) to my contacts with [NEO](contact_add_entity_crypto_network) address [N3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create a contact for [Grayson](contact_add_entity_name) with [Flow](contact_add_entity_crypto_network) wallet [0xF3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Nova](contact_add_entity_name) with [ICON](contact_add_entity_crypto_network) address [hx1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I want [Hudson](contact_add_entity_name) with [Zilliqa](contact_add_entity_crypto_network) wallet [zil1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Zara](contact_add_entity_name) to my list with [Monero](contact_add_entity_crypto_network) address [4gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Jaxon](contact_add_entity_name) with [Waves](contact_add_entity_crypto_network) wallet [3gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Create [Willow](contact_add_entity_name) with [Decred](contact_add_entity_crypto_network) address [DgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Yo, add [Finn](contact_add_entity_name) with [EOS](contact_add_entity_crypto_network) wallet [eosio.gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - I need [Eliza](contact_add_entity_name) with [Dash](contact_add_entity_crypto_network) address [XgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Milo](contact_add_entity_name) with [Ontology](contact_add_entity_crypto_network) wallet [OgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Ivy](contact_add_entity_name) to my contacts with [Qtum](contact_add_entity_crypto_network) address [QgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Create a contact for [Theo](contact_add_entity_name) with [IOTA](contact_add_entity_crypto_network) wallet [IgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Yo, save [Esme](contact_add_entity_name) with [Theta](contact_add_entity_crypto_network) address [0xTgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) 😎
+    - I want [Jude](contact_add_entity_name) with [Elrond](contact_add_entity_crypto_network) wallet [erd1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Lila](contact_add_entity_name) to my list with [Ravencoin](contact_add_entity_crypto_network) address [RgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Remy](contact_add_entity_name) with [Phantom Chain](contact_add_entity_crypto_network) wallet [tprv8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Create [Amara](contact_add_entity_name) with [FTM](contact_add_entity_crypto_network{"value":"Fantom"}) address [0xFgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, add [Declan](contact_add_entity_name) with [Secret Network](contact_add_entity_crypto_network) wallet [secret1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I need [Freya](contact_add_entity_name) with [Holo](contact_add_entity_crypto_network) address [0xHgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Silas](contact_add_entity_name) with [Filecoin](contact_add_entity_crypto_network) wallet [f1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Cora](contact_add_entity_name) to my contacts with [Celo](contact_add_entity_crypto_network) address [0xCgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create a contact for [Felix](contact_add_entity_name) with [Nano](contact_add_entity_crypto_network) wallet [nano_1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Maeve](contact_add_entity_name) with [Chainlink](contact_add_entity_crypto_network) address [0xLgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I want [Jasper](contact_add_entity_name) with [Steem](contact_add_entity_crypto_network) wallet [steem1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Iris](contact_add_entity_name) to my list with [Kusama](contact_add_entity_crypto_network) address [KgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Miles](contact_add_entity_name) with [BNB](contact_add_entity_crypto_network{"value":"Binance Coin"}) wallet [bnb1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create [Eloise](contact_add_entity_name) with [Moonbeam](contact_add_entity_crypto_network) address [0xMgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, add [Arlo](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) wallet [1BgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) 😎
+    - I need [Mira](contact_add_entity_name) with [Ethereum](contact_add_entity_crypto_network) address [0xEgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Lena](contact_add_entity_name) with [Solana](contact_add_entity_crypto_network) wallet [SgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Kai](contact_add_entity_name) to my contacts with [BTC](contact_add_entity_crypto_network{"value":"Bitcoin"}) address [bc1qgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create a contact for [Sienna](contact_add_entity_name) with [Cardano](contact_add_entity_crypto_network) wallet [addr1qgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Micah](contact_add_entity_name) with [Polkadot](contact_add_entity_crypto_network) address [1PgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I want [Selena](contact_add_entity_name) with [Dogecoin](contact_add_entity_crypto_network) wallet [DgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Jude](contact_add_entity_name) to my list with [XRP](contact_add_entity_crypto_network) address [rXgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Rory](contact_add_entity_name) with [Litecoin](contact_add_entity_crypto_network) wallet [LgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Create [June](contact_add_entity_name) with [Cosmos](contact_add_entity_crypto_network) address [cosmos1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, add [Elliot](contact_add_entity_name) with [Tron](contact_add_entity_crypto_network) wallet [TgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - I need [Tessa](contact_add_entity_name) with [NEAR](contact_add_entity_crypto_network) address [tessa.near](contact_add_entity_wallet_address)
+    - Save [Caleb](contact_add_entity_name) with [Algorand](contact_add_entity_crypto_network) wallet [AgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Lyric](contact_add_entity_name) to my contacts with [Avalanche](contact_add_entity_crypto_network) address [X-avax1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create a contact for [Zane](contact_add_entity_name) with [BSC](contact_add_entity_crypto_network{"value":"Binance Smart Chain"}) wallet [0xBgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Mae](contact_add_entity_name) with [Polygon](contact_add_entity_crypto_network) address [0xPgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I want [Beckett](contact_add_entity_name) with [Harmony](contact_add_entity_crypto_network) wallet [one1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Hadley](contact_add_entity_name) to my list with [Stellar](contact_add_entity_crypto_network) address [GgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Reese](contact_add_entity_name) with [Tezos](contact_add_entity_crypto_network) wallet [tz1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create [Kieran](contact_add_entity_name) with [VeChain](contact_add_entity_crypto_network) address [0xVgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, add [Sloane](contact_add_entity_name) with [Terra](contact_add_entity_crypto_network) wallet [terra1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) 😎
+    - I need [Emmett](contact_add_entity_name) with [NEO](contact_add_entity_crypto_network) address [NgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Aspen](contact_add_entity_name) with [Flow](contact_add_entity_crypto_network) wallet [0xFgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Phoenix](contact_add_entity_name) to my contacts with [ICON](contact_add_entity_crypto_network) address [hx1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create a contact for [Sage](contact_add_entity_name) with [Zilliqa](contact_add_entity_crypto_network) wallet [zil1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Rowan](contact_add_entity_name) with [Monero](contact_add_entity_crypto_network) address [4MgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - I want [River](contact_add_entity_name) with [Waves](contact_add_entity_crypto_network) wallet [3WgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Eden](contact_add_entity_name) to my list with [Decred](contact_add_entity_crypto_network) address [DgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Arden](contact_add_entity_name) with [EOS](contact_add_entity_crypto_network) wallet [eosio.gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Create [Ellis](contact_add_entity_name) with [Dash](contact_add_entity_crypto_network) address [XgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Yo, add [Quinn](contact_add_entity_name) with [Ontology](contact_add_entity_crypto_network) wallet [OgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - I need [Rory](contact_add_entity_name) with [Qtum](contact_add_entity_crypto_network) address [QgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Skye](contact_add_entity_name) with [IOTA](contact_add_entity_crypto_network) wallet [IgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Juniper](contact_add_entity_name) to my contacts with [Theta](contact_add_entity_crypto_network) address [0xTgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create a contact for [Cypress](contact_add_entity_name) with [Elrond](contact_add_entity_crypto_network) wallet [erd1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Indigo](contact_add_entity_name) with [Ravencoin](contact_add_entity_crypto_network) address [RgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) 😎
+    - I want [Sterling](contact_add_entity_name) with [Phantom Chain](contact_add_entity_crypto_network) wallet [tprv8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Wren](contact_add_entity_name) to my list with [FTM](contact_add_entity_crypto_network{"value":"Fantom"}) address [0xFgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Zephyr](contact_add_entity_name) with [Secret Network](contact_add_entity_crypto_network) wallet [secret1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create [Soren](contact_add_entity_name) with [Holo](contact_add_entity_crypto_network) address [0xHgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, add [Lark](contact_add_entity_name) with [Filecoin](contact_add_entity_crypto_network) wallet [f1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - I need [Onyx](contact_add_entity_name) with [Celo](contact_add_entity_crypto_network) address [0xCgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Sage](contact_add_entity_name) with [Nano](contact_add_entity_crypto_network) wallet [nano_1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Raven](contact_add_entity_name) to my contacts with [Chainlink](contact_add_entity_crypto_network) address [0xLgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create a contact for [Phoenix](contact_add_entity_name) with [Steem](contact_add_entity_crypto_network) wallet [steem1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Willow](contact_add_entity_name) with [Kusama](contact_add_entity_crypto_network) address [KgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - I want [Jett](contact_add_entity_name) with [BNB](contact_add_entity_crypto_network{"value":"Binance Coin"}) wallet [bnb1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Ivy](contact_add_entity_name) to my list with [Moonbeam](contact_add_entity_crypto_network) address [0xMgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Cairo](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) wallet [1BgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create [Lyric](contact_add_entity_name) with [Ethereum](contact_add_entity_crypto_network) address [0xEgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, add [Haven](contact_add_entity_name) with [Solana](contact_add_entity_crypto_network) wallet [SgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) 😎
+    - I need [Zion](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network{"value":"Bitcoin"}) address [bc1qgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Nova](contact_add_entity_name) with [Cardano](contact_add_entity_crypto_network) wallet [addr1qgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Koa](contact_add_entity_name) to my contacts with [Polkadot](contact_add_entity_crypto_network) address [1PgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create a contact for [Juniper](contact_add_entity_name) with [Dogecoin](contact_add_entity_crypto_network) wallet [DgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Yo, save [Sable](contact_add_entity_name) with [XRP](contact_add_entity_crypto_network) address [rXgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I want [Reef](contact_add_entity_name) with [Litecoin](contact_add_entity_crypto_network) wallet [LgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Vera](contact_add_entity_name) to my list with [Cosmos](contact_add_entity_crypto_network) address [cosmos1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Otto](contact_add_entity_name) with [Tron](contact_add_entity_crypto_network) wallet [TgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Create [Opal](contact_add_entity_name) with [NEAR](contact_add_entity_crypto_network) address [opal.near](contact_add_entity_wallet_address)
+    - Yo, add [Amos](contact_add_entity_name) with [Algorand](contact_add_entity_crypto_network) wallet [AgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - I need [Lila](contact_add_entity_name) with [Avalanche](contact_add_entity_crypto_network) address [X-avax1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Ezra](contact_add_entity_name) with [BSC](contact_add_entity_crypto_network{"value":"Binance Smart Chain"}) wallet [0xBgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Mira](contact_add_entity_name) to my contacts with [Polygon](contact_add_entity_crypto_network) address [0xPgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create a contact for [Theo](contact_add_entity_name) with [Harmony](contact_add_entity_crypto_network) wallet [one1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Lena](contact_add_entity_name) with [Stellar](contact_add_entity_crypto_network) address [GgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) 😎
+    - I want [Kai](contact_add_entity_name) with [Tezos](contact_add_entity_crypto_network) wallet [tz1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    # Partial Requests - Name Only (100 Examples)
+    - Add [Sarah](contact_add_entity_name) to my contacts
+    - Save [Mike](contact_add_entity_name) in my address book
+    - Create a contact for [John](contact_add_entity_name)
+    - Yo, add [Alex](contact_add_entity_name) to my list 😎
+    - I need [Daniel](contact_add_entity_name) in my contacts
+    - Please save [Tom](contact_add_entity_name) as a contact
+    - Add [Lisa](contact_add_entity_name) to my wallet
+    - Create [Jamie](contact_add_entity_name) in my contacts
+    - Save [Taylor](contact_add_entity_name) to my crypto list
+    - Add my friend [Jordan](contact_add_entity_name)
+    - Can you add [Casey](contact_add_entity_name) to my contacts?
+    - Yo, save [Riley](contact_add_entity_name) in my wallet 😎
+    - I want [Morgan](contact_add_entity_name) in my address book
+    - Add [Blake](contact_add_entity_name) to my contact list
+    - Create a contact for [Emma](contact_add_entity_name)
+    - Save [Chris](contact_add_entity_name) to my contacts
+    - Add [Sophie](contact_add_entity_name) to my list
+    - Yo, I need [Liam](contact_add_entity_name) saved
+    - Create [Ava](contact_add_entity_name) in my address book
+    - Save [Noah](contact_add_entity_name) as a contact
+    - Add [Mia](contact_add_entity_name) to my crypto wallet
+    - I want [Ethan](contact_add_entity_name) in my contacts
+    - Yo, add [Isabella](contact_add_entity_name) to my list 😎
+    - Save [Mason](contact_add_entity_name) in my wallet
+    - Create a contact for [Aria](contact_add_entity_name)
+    - Add [Logan](contact_add_entity_name) to my address book
+    - Save [Harper](contact_add_entity_name) to my contacts
+    - I need [Elijah](contact_add_entity_name) in my list
+    - Yo, create [Evelyn](contact_add_entity_name) as a contact
+    - Add [Aiden](contact_add_entity_name) to my contacts
+    - Save [Luna](contact_add_entity_name) in my address book
+    - Create [Jackson](contact_add_entity_name) in my wallet
+    - Add [Sofia](contact_add_entity_name) to my crypto list
+    - Yo, I want [Carter](contact_add_entity_name) saved 😎
+    - Save [Mila](contact_add_entity_name) to my contacts
+    - Add [Owen](contact_add_entity_name) to my list
+    - Create a contact for [Avery](contact_add_entity_name)
+    - Save [Camila](contact_add_entity_name) in my wallet
+    - I need [Wyatt](contact_add_entity_name) in my contacts
+    - Yo, add [Scarlett](contact_add_entity_name) to my address book
+    - Create [Levi](contact_add_entity_name) as a contact
+    - Save [Julia](contact_add_entity_name) to my crypto list
+    - Add [Luke](contact_add_entity_name) to my contacts
+    - Yo, I want [Chloe](contact_add_entity_name) in my list 😎
+    - Save [Isaac](contact_add_entity_name) in my address book
+    - Create a contact for [Layla](contact_add_entity_name)
+    - Add [Gabriel](contact_add_entity_name) to my wallet
+    - Save [Zoe](contact_add_entity_name) to my contacts
+    - Yo, add [Nathan](contact_add_entity_name) to my list
+    - I need [Lily](contact_add_entity_name) in my address book
+    - Create [Dylan](contact_add_entity_name) as a contact
+    - Save [Grace](contact_add_entity_name) to my crypto wallet
+    - Add [Eli](contact_add_entity_name) to my contacts
+    - Yo, save [Hazel](contact_add_entity_name) in my list 😎
+    - I want [Josiah](contact_add_entity_name) in my wallet
+    - Create a contact for [Violet](contact_add_entity_name)
+    - Add [Julian](contact_add_entity_name) to my address book
+    - Save [Sadie](contact_add_entity_name) to my contacts
+    - Yo, add [Lincoln](contact_add_entity_name) to my crypto list
+    - I need [Lydia](contact_add_entity_name) in my contacts
+    - Create [Evan](contact_add_entity_name) as a contact
+    - Save [Claire](contact_add_entity_name) in my wallet
+    - Add [Asher](contact_add_entity_name) to my list
+    - Yo, save [Stella](contact_add_entity_name) to my address book 😎
+    - I want [Ezra](contact_add_entity_name) in my contacts
+    - Create a contact for [Penelope](contact_add_entity_name)
+    - Add [Mateo](contact_add_entity_name) to my crypto wallet
+    - Save [Skylar](contact_add_entity_name) to my list
+    - Yo, add [Addison](contact_add_entity_name) to my contacts
+    - I need [Elliot](contact_add_entity_name) in my wallet
+    - Create [Aurora](contact_add_entity_name) as a contact
+    - Save [Grayson](contact_add_entity_name) to my address book
+    - Add [Nova](contact_add_entity_name) to my contacts
+    - Yo, save [Hudson](contact_add_entity_name) in my list 😎
+    - I want [Zara](contact_add_entity_name) in my crypto wallet
+    - Create a contact for [Jaxon](contact_add_entity_name)
+    - Add [Willow](contact_add_entity_name) to my address book
+    - Save [Finn](contact_add_entity_name) to my contacts
+    - Yo, add [Eliza](contact_add_entity_name) to my list
+    - I need [Milo](contact_add_entity_name) in my wallet
+    - Create [Ivy](contact_add_entity_name) as a contact
+    - Save [Theo](contact_add_entity_name) to my crypto list
+    - Add [Esme](contact_add_entity_name) to my contacts
+    - Yo, save [Jude](contact_add_entity_name) in my address book 😎
+    - I want [Lila](contact_add_entity_name) in my list
+    - Create a contact for [Remy](contact_add_entity_name)
+    - Add [Amara](contact_add_entity_name) to my wallet
+    - Save [Declan](contact_add_entity_name) to my contacts
+    - Yo, add [Freya](contact_add_entity_name) to my crypto list
+    - I need [Silas](contact_add_entity_name) in my address book
+    - Create [Cora](contact_add_entity_name) as a contact
+    - Save [Felix](contact_add_entity_name) to my list
+    - Add [Maeve](contact_add_entity_name) to my contacts
+    - Yo, save [Jasper](contact_add_entity_name) in my wallet 😎
+    - I want [Iris](contact_add_entity_name) in my address book
+    - Create a contact for [Miles](contact_add_entity_name)
+    - Add [Eloise](contact_add_entity_name) to my crypto list
+    - Save [Arlo](contact_add_entity_name) to my contacts
+    - Yo, add [Mira](contact_add_entity_name) to my list
+
+    # Partial Requests - Address Only (50 Examples)
+    - Add [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address) to my contacts
+    - Save [0x742d35Cc6634C0532925a3b844Bc454e4438f44e](contact_add_entity_wallet_address) in my wallet
+    - Create a contact with [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address)
+    - Yo, add [bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh](contact_add_entity_wallet_address) to my list 😎
+    - I need [addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3n0d3vllmyqwsx5wktcd8cc3sq835lu7drv2xwl2wywfgse35a3x](contact_add_entity_wallet_address) saved
+    - Save [1exaAg2VJRQbyUBAeXcktChCAqjVP9TUxF3zo23R2T6EGdE](contact_add_entity_wallet_address) to my contacts
+    - Add [DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1](contact_add_entity_wallet_address) to my address book
+    - Create [0x89F5C5F24447Fb138bDc8f610A87b538c220B6e8](contact_add_entity_wallet_address) as a contact
+    - Save [3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy](contact_add_entity_wallet_address) in my list
+    - Yo, add [rMnuS9WjpNixPTFCvZoHqwPaYuvJGU3DHc](contact_add_entity_wallet_address) to my wallet 😎
+    - I want [X-avax1qr6yzjykcjmeflztsgv5na54g4qksz0evptj0l](contact_add_entity_wallet_address) in my contacts
+    - Add [riley.near](contact_add_entity_wallet_address) to my list
+    - Save [VCMJKWOY5P5P7SKMZFFOCEROPJCZOTIJMNIYNUCKH73UUNFZGXN6YPHJPY](contact_add_entity_wallet_address) to my address book
+    - Create a contact with [cosmos1j26nm9kx2rsz9gx8cf8fd0k80t0hcytvzu4xla](contact_add_entity_wallet_address)
+    - Yo, save [tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx](contact_add_entity_wallet_address) in my contacts
+    - Add [MPwk2KMr3Wr2vjCiP6NKmSPSDeMKZ4JXen](contact_add_entity_wallet_address) to my wallet
+    - Save [TZ2dmCNuKYyeXSUJP1tMMcFeXPVnTZrBsV](contact_add_entity_wallet_address) to my list
+    - I need [0x55d398326f99059fF775485246999027B3197955](contact_add_entity_wallet_address) in my contacts
+    - Create [0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359](contact_add_entity_wallet_address) as a contact
+    - Yo, add [one1t4p6x408dxkwpgqh7mujyzx3hw7qn9kn4qvhsp](contact_add_entity_wallet_address) to my address book 😎
+    - Save [GCIKZGQUUGAYKL5HRFCEBXCTSUWIAIPODL5CYFHEUZQJ5QUBCL2F3XOC](contact_add_entity_wallet_address) in my wallet
+    - Add [0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7](contact_add_entity_wallet_address) to my contacts
+    - Create a contact with [terra1x46rqay4d3cssq8gxxvqz8xt6nwlz4td20k38v](contact_add_entity_wallet_address)
+    - Yo, save [AR4QmqYENiZAD6oXe7ftm6eDcwtHk7rVTT](contact_add_entity_wallet_address) in my list
+    - I want [0x7f124bb61dc6e443](contact_add_entity_wallet_address) in my address book
+    - Add [hx168d434d1d25e79aacd200a3f142ea45e51a1603](contact_add_entity_wallet_address) to my contacts
+    - Save [zil139tkqvc8rw92e6jrs40gawwc3mmdmmauv3x0xl](contact_add_entity_wallet_address) to my wallet
+    - Create [49BnKAecHgNVxmToUgCjoSFrCGAgigYZfTTYGhZ781Cox4K7jviS8YxZTJZBSX398stMKpKSTnbEHuE9fh21yYo17RJZ5WJ](contact_add_entity_wallet_address) as a contact
+    - Yo, add [3PCUDAURpg357pVgKXxdwLEYiRKTHQsYr2B](contact_add_entity_wallet_address) to my list 😎
+    - I need [DsYZdT7dgg7JjKD2yvnD5bxZZ9CYP51cTBL](contact_add_entity_wallet_address) saved
+    - Save [eosio.token](contact_add_entity_wallet_address) in my contacts
+    - Add [Xr9nrcuXfaKVGKKAsZJ5GhQSU7W6CherUr](contact_add_entity_wallet_address) to my address book
+    - Create a contact with [AGn8JFPGM5S4jkWhTC5MnqTdNgwV21971L](contact_add_entity_wallet_address)
+    - Yo, save [QVk3McAUNQCJW9kgvJJ4MaDKfLGVfxNTHh](contact_add_entity_wallet_address) to my wallet
+    - I want [ADLJXS9SKYQKMVLW9USKRCPWAFURPNWPWJWQVOFEINCYAVNEXVPLOLHTJOIEFPBZJBVUQRIAHUPBKIAHZVJGYQXTW](contact_add_entity_wallet_address) in my contacts
+    - Add [0x4c5A86D9595Cc1A22De41E749Ce3C72bE73De4b0](contact_add_entity_wallet_address) to my list
+    - Save [erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s0642ry0jqjfxgq5z2us9c4yce](contact_add_entity_wallet_address) to my address book
+    - Create [RHoCwPc2FCQqwToYnSiAb3SrCET4zEHsbS](contact_add_entity_wallet_address) as a contact
+    - Yo, add [tprv8ZgxMBicQKsPd9TeAdPADNnSyH9SSUUbTVeFszDE23Ki6TBB5nCefAdHkK8Fm3qMQR6sHwA56zqRmKmxnBPAVESJ5eKF6zpd6LgyS3ib6hq](contact_add_entity_wallet_address) to my contacts 😎
+    - I need [0xCFE8D382D9f66a311fAa5A274891499695191991](contact_add_entity_wallet_address) saved
+    - Save [secret1f69sk5033xdmkca5hpj57jk7p7yadsx7zcvuyr](contact_add_entity_wallet_address) in my wallet
+    - Add [0xe32d13B7F5EeB031A6E1d543a6F0A9c1C507d08f](contact_add_entity_wallet_address) to my list
+    - Create a contact with [f1z54xwauuolnfnhyb4s3ppk6mcnc7uvqhxqgxiwi](contact_add_entity_wallet_address)
+    - Yo, save [0xCe8ecf7CEcBdC7C66d1CC84620A09AC2c86c6210](contact_add_entity_wallet_address) to my address book
+    - I want [nano_3qb6o6i1tkzr6ofz1gridprofbzrmb916qb4nixc6896714n5gmu1xpnq73p](contact_add_entity_wallet_address) in my contacts
+    - Add [0x514910771AF9Ca656af840dff83E8264EcF986CA](contact_add_entity_wallet_address) to my wallet
+    - Save [steem1nbrpx4gpbqre40hpgmgcm9ma7k9rptrc1xhj75](contact_add_entity_wallet_address) to my list
+    - Create [H1tcrRod4RYwspnLfe3vBzRPxqp1R66NNpxJ75eiiFXZdhc](contact_add_entity_wallet_address) as a contact
+    - Yo, add [bnb1jxfh2g85q3v0tdq56fnevx6xcxtcnhtsmcu64m](contact_add_entity_wallet_address) to my contacts 😎
+    - Save [0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac](contact_add_entity_wallet_address) in my wallet
+    # Partial Requests - Network Only (50 Examples)
+    - Add a contact for [Bitcoin](contact_add_entity_crypto_network)
+    - Yo, save someone with [ETH](contact_add_entity_crypto_network{"value":"Ethereum"}) 😎
+    - I need a contact on [Solana](contact_add_entity_crypto_network)
+    - Create a contact for [BTC](contact_add_entity_crypto_network{"value":"Bitcoin"})
+    - Save a contact with [Ethereum](contact_add_entity_crypto_network)
+    - Add someone on [Cardano](contact_add_entity_crypto_network)
+    - Yo, I wanna add a contact for [Polkadot](contact_add_entity_crypto_network)
+    - Create a contact on [Dogecoin](contact_add_entity_crypto_network)
+    - Save someone for [XRP](contact_add_entity_crypto_network)
+    - I need a contact for [Litecoin](contact_add_entity_crypto_network)
+    - Add a contact with [Cosmos](contact_add_entity_crypto_network)
+    - Save a contact on [Tron](contact_add_entity_crypto_network)
+    - Yo, add someone for [NEAR](contact_add_entity_crypto_network)
+    - Create a contact for [Algorand](contact_add_entity_crypto_network)
+    - I want a contact on [Avalanche](contact_add_entity_crypto_network)
+    - Add someone with [BSC](contact_add_entity_crypto_network{"value":"Binance Smart Chain"})
+    - Save a contact for [Polygon](contact_add_entity_crypto_network)
+    - Yo, create a contact on [Harmony](contact_add_entity_crypto_network)
+    - I need someone for [Stellar](contact_add_entity_crypto_network)
+    - Add a contact with [Tezos](contact_add_entity_crypto_network)
+    - Save someone on [VeChain](contact_add_entity_crypto_network)
+    - Create a contact for [Terra](contact_add_entity_crypto_network)
+    - Yo, add a contact with [NEO](contact_add_entity_crypto_network)
+    - I want someone for [Flow](contact_add_entity_crypto_network)
+    - Add someone on [ICON](contact_add_entity_crypto_network)
+    - Save a contact with [Zilliqa](contact_add_entity_crypto_network)
+    - Create a contact for [Monero](contact_add_entity_crypto_network)
+    - Yo, add someone on [Waves](contact_add_entity_crypto_network)
+    - I need a contact for [Decred](contact_add_entity_crypto_network)
+    - Save someone with [EOS](contact_add_entity_crypto_network)
+    - Add a contact for [Dash](contact_add_entity_crypto_network)
+    - Create a contact on [Ontology](contact_add_entity_crypto_network)
+    - Yo, save someone with [Qtum](contact_add_entity_crypto_network)
+    - I want a contact for [IOTA](contact_add_entity_crypto_network)
+    - Add someone on [Theta](contact_add_entity_crypto_network)
+    - Save a contact for [Elrond](contact_add_entity_crypto_network)
+    - Create a contact with [Ravencoin](contact_add_entity_crypto_network)
+    - Yo, add someone for [Phantom Chain](contact_add_entity_crypto_network)
+    - I need a contact on [FTM](contact_add_entity_crypto_network{"value":"Fantom"})
+    - Save someone with [Secret Network](contact_add_entity_crypto_network)
+    - Add a contact for [Holo](contact_add_entity_crypto_network)
+    - Create a contact on [Filecoin](contact_add_entity_crypto_network)
+    - Yo, save someone for [Celo](contact_add_entity_crypto_network)
+    - I want a contact with [Nano](contact_add_entity_crypto_network)
+    - Add someone on [Chainlink](contact_add_entity_crypto_network)
+    - Save a contact for [Steem](contact_add_entity_crypto_network)
+    - Create a contact with [Kusama](contact_add_entity_crypto_network)
+    - Yo, add someone for [BNB](contact_add_entity_crypto_network{"value":"Binance Coin"})
+    - I need a contact on [Moonbeam](contact_add_entity_crypto_network)
+    - Save someone with [Hedera](contact_add_entity_crypto_network)
+
+    # Vague Requests (50 Examples)
+    - Yo, can you add a contact for me? 😎
+    - I need to save someone in my wallet
+    - Add a new contact to my address book
+    - Save a wallet address for me
+    - Create a contact, please
+    - Yo, I wanna add someone to my contacts
+    - Can you save a new contact?
+    - Add a person to my crypto wallet
+    - I need a contact added, pronto
+    - Save someone’s wallet in my list
+    - Yo, add a new wallet to my contacts
+    - Create a contact for my crypto stuff
+    - I want to add a contact, bet
+    - Save a new address in my contacts
+    - Can you add someone to my wallet?
+    - Yo, I need a new contact saved
+    - Add a contact to my crypto list
+    - Save someone in my address book
+    - Create a new contact for me, please
+    - Yo, can you add a wallet address?
+    - I need to add someone to my contacts
+    - Save a contact for my wallet
+    - Add a new person to my list
+    - Yo, create a contact for my crypto
+    - I want someone added to my contacts
+    - Save a new contact, vibes
+    - Can you add a wallet to my list?
+    - Yo, I need to save a contact
+    - Add someone to my address book
+    - Create a contact for my wallet app
+    - Save a new wallet address for me
+    - I need a contact in my crypto wallet
+    - Yo, add a person to my contacts, bet
+    - Can you save someone’s address?
+    - Add a contact for my crypto stuff
+    - Save a new contact in my wallet
+    - Yo, I wanna save a wallet address
+    - Create a new contact for crypto
+    - I need to add a contact to my list
+    - Save someone’s wallet for me
+    - Add a new contact, please
+    - Yo, can you create a contact?
+    - I want a new contact saved
+    - Save a wallet in my address book
+    - Add someone to my crypto contacts
+    - Create a contact for my wallet
+    - Yo, save a new address, vibes
+    - I need a new contact in my wallet
+    - Add a person to my crypto list
+    - Save a contact for me, bet
+
+    # Multiple Address Requests (100 Examples)
+    - Add [Sarah](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) address [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address) and [Ethereum](contact_add_entity_crypto_network) address [0x742d35Cc6634C0532925a3b844Bc454e4438f44e](contact_add_entity_wallet_address)
+    - Yo, save [Mike](contact_add_entity_name) with [ETH](contact_add_entity_crypto_network{"value":"Ethereum"}) wallet [0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045](contact_add_entity_wallet_address) and [Solana](contact_add_entity_crypto_network) wallet [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address) 😎
+    - Create a contact for [John](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network{"value":"Bitcoin"}) address [bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh](contact_add_entity_wallet_address) and [Cardano](contact_add_entity_crypto_network) address [addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3n0d3vllmyqwsx5wktcd8cc3sq835lu7drv2xwl2wywfgse35a3x](contact_add_entity_wallet_address)
+    - I need [Alex](contact_add_entity_name) with [Polkadot](contact_add_entity_crypto_network) wallet [1exaAg2VJRQbyUBAeXcktChCAqjVP9TUxF3zo23R2T6EGdE](contact_add_entity_wallet_address) and [Dogecoin](contact_add_entity_crypto_network) wallet [DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1](contact_add_entity_wallet_address)
+    - Save [Emma](contact_add_entity_name) with [XRP](contact_add_entity_crypto_network) address [rMnuS9WjpNixPTFCvZoHqwPaYuvJGU3DHc](contact_add_entity_wallet_address) and [Litecoin](contact_add_entity_crypto_network) address [MPwk2KMr3Wr2vjCiP6NKmSPSDeMKZ4JXen](contact_add_entity_wallet_address)
+    - Add [Daniel](contact_add_entity_name) with [Cosmos](contact_add_entity_crypto_network) wallet [cosmos1j26nm9kx2rsz9gx8cf8fd0k80t0hcytvzu4xla](contact_add_entity_wallet_address) and [Tron](contact_add_entity_crypto_network) wallet [TZ2dmCNuKYyeXSUJP1tMMcFeXPVnTZrBsV](contact_add_entity_wallet_address)
+    - Yo, create [Tom](contact_add_entity_name) with [NEAR](contact_add_entity_crypto_network) address [tom.near](contact_add_entity_wallet_address) and [Algorand](contact_add_entity_crypto_network) address [VCMJKWOY5P5P7SKMZFFOCEROPJCZOTIJMNIYNUCKH73UUNFZGXN6YPHJPY](contact_add_entity_wallet_address)
+    - Save [Lisa](contact_add_entity_name) with [Avalanche](contact_add_entity_crypto_network) wallet [X-avax1qr6yzjykcjmeflztsgv5na54g4qksz0evptj0l](contact_add_entity_wallet_address) and [BSC](contact_add_entity_crypto_network{"value":"Binance Smart Chain"}) address [0x89F5C5F24447Fb138bDc8f610A87b538c220B6e8](contact_add_entity_wallet_address)
+    - Add [David](contact_add_entity_name) with [Polygon](contact_add_entity_crypto_network) wallet [0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359](contact_add_entity_wallet_address) and [Harmony](contact_add_entity_crypto_network) address [one1t4p6x408dxkwpgqh7mujyzx3hw7qn9kn4qvhsp](contact_add_entity_wallet_address)
+    - I need [Karen](contact_add_entity_name) with [Stellar](contact_add_entity_crypto_network) wallet [GCIKZGQUUGAYKL5HRFCEBXCTSUWIAIPODL5CYFHEUZQJ5QUBCL2F3XOC](contact_add_entity_wallet_address) and [Tezos](contact_add_entity_crypto_network) address [tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx](contact_add_entity_wallet_address)
+    - Save [Lucas](contact_add_entity_name) with [VeChain](contact_add_entity_crypto_network) wallet [0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7](contact_add_entity_wallet_address) and [Terra](contact_add_entity_crypto_network) address [terra1x46rqay4d3cssq8gxxvqz8xt6nwlz4td20k38v](contact_add_entity_wallet_address)
+    - Yo, add [Ryan](contact_add_entity_name) with [NEO](contact_add_entity_crypto_network) wallet [AR4QmqYENiZAD6oXe7ftm6eDcwtHk7rVTT](contact_add_entity_wallet_address) and [Flow](contact_add_entity_crypto_network) address [0x7f124bb61dc6e443](contact_add_entity_wallet_address) 😎
+    - Create [Linda](contact_add_entity_name) with [ICON](contact_add_entity_crypto_network) wallet [hx168d434d1d25e79aacd200a3f142ea45e51a1603](contact_add_entity_wallet_address) and [Zilliqa](contact_add_entity_crypto_network) address [zil139tkqvc8rw92e6jrs40gawwc3mmdmmauv3x0xl](contact_add_entity_wallet_address)
+    - Add [Chris](contact_add_entity_name) with [Monero](contact_add_entity_crypto_network) wallet [49BnKAecHgNVxmToUgCjoSFrCGAgigYZfTTYGhZ781Cox4K7jviS8YxZTJZBSX398stMKpKSTnbEHuE9fh21yYo17RJZ5WJ](contact_add_entity_wallet_address) and [Waves](contact_add_entity_crypto_network) address [3PCUDAURpg357pVgKXxdwLEYiRKTHQsYr2B](contact_add_entity_wallet_address)
+    - Save [Jason](contact_add_entity_name) with [Decred](contact_add_entity_crypto_network) wallet [DsYZdT7dgg7JjKD2yvnD5bxZZ9CYP51cTBL](contact_add_entity_wallet_address) and [EOS](contact_add_entity_crypto_network) address [eosio.token](contact_add_entity_wallet_address)
+    - I want [Megan](contact_add_entity_name) with [Dash](contact_add_entity_crypto_network) wallet [Xr9nrcuXfaKVGKKAsZJ5GhQSU7W6CherUr](contact_add_entity_wallet_address) and [Ontology](contact_add_entity_crypto_network) address [AGn8JFPGM5S4jkWhTC5MnqTdNgwV21971L](contact_add_entity_wallet_address)
+    - Add [Peter](contact_add_entity_name) with [Qtum](contact_add_entity_crypto_network) wallet [QVk3McAUNQCJW9kgvJJ4MaDKfLGVfxNTHh](contact_add_entity_wallet_address) and [IOTA](contact_add_entity_crypto_network) address [ADLJXS9SKYQKMVLW9USKRCPWAFURPNWPWJWQVOFEINCYAVNEXVPLOLHTJOIEFPBZJBVUQRIAHUPBKIAHZVJGYQXTW](contact_add_entity_wallet_address)
+    - Yo, save [James](contact_add_entity_name) with [Theta](contact_add_entity_crypto_network) wallet [0x4c5A86D9595Cc1A22De41E749Ce3C72bE73De4b0](contact_add_entity_wallet_address) and [Elrond](contact_add_entity_crypto_network) address [erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s0642ry0jqjfxgq5z2us9c4yce](contact_add_entity_wallet_address)
+    - Create [Nicole](contact_add_entity_name) with [Ravencoin](contact_add_entity_crypto_network) wallet [RHoCwPc2FCQqwToYnSiAb3SrCET4zEHsbS](contact_add_entity_wallet_address) and [Phantom Chain](contact_add_entity_crypto_network) address [tprv8ZgxMBicQKsPd9TeAdPADNnSyH9SSUUbTVeFszDE23Ki6TBB5nCefAdHkK8Fm3qMQR6sHwA56zqRmKmxnBPAVESJ5eKF6zpd6LgyS3ib6hq](contact_add_entity_wallet_address)
+    - Add [William](contact_add_entity_name) with [FTM](contact_add_entity_crypto_network{"value":"Fantom"}) wallet [0xCFE8D382D9f66a311fAa5A274891499695191991](contact_add_entity_wallet_address) and [Secret Network](contact_add_entity_crypto_network) address [secret1f69sk5033xdmkca5hpj57jk7p7yadsx7zcvuyr](contact_add_entity_wallet_address)
+    - Save [Frank](contact_add_entity_name) with [Holo](contact_add_entity_crypto_network) wallet [0xe32d13B7F5EeB031A6E1d543a6F0A9c1C507d08f](contact_add_entity_wallet_address) and [Filecoin](contact_add_entity_crypto_network) address [f1z54xwauuolnfnhyb4s3ppk6mcnc7uvqhxqgxiwi](contact_add_entity_wallet_address)
+    - Yo, add [Sophia](contact_add_entity_name) with [Celo](contact_add_entity_crypto_network) wallet [0xCe8ecf7CEcBdC7C66d1CC84620A09AC2c86c6210](contact_add_entity_wallet_address) and [Nano](contact_add_entity_crypto_network) address [nano_3qb6o6i1tkzr6ofz1gridprofbzrmb916qb4nixc6896714n5gmu1xpnq73p](contact_add_entity_wallet_address)
+    - Create [Brandon](contact_add_entity_name) with [Chainlink](contact_add_entity_crypto_network) wallet [0x514910771AF9Ca656af840dff83E8264EcF986CA](contact_add_entity_wallet_address) and [Steem](contact_add_entity_crypto_network) address [steem1nbrpx4gpbqre40hpgmgcm9ma7k9rptrc1xhj75](contact_add_entity_wallet_address)
+    - Add [Olivia](contact_add_entity_name) with [NEAR](contact_add_entity_crypto_network) wallet [olivia.near](contact_add_entity_wallet_address) and [Kusama](contact_add_entity_crypto_network) address [H1tcrRod4RYwspnLfe3vBzRPxqp1R66NNpxJ75eiiFXZdhc](contact_add_entity_wallet_address)
+    - Save [Patrick](contact_add_entity_name) with [BNB](contact_add_entity_crypto_network{"value":"Binance Coin"}) wallet [bnb1jxfh2g85q3v0tdq56fnevx6xcxtcnhtsmcu64m](contact_add_entity_wallet_address) and [Moonbeam](contact_add_entity_crypto_network) address [0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac](contact_add_entity_wallet_address)
+    - I need [Ashley](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) wallet [1HLoD9E4SDFFPDiYfNYnkBLQ85Y51J3Zb1](contact_add_entity_wallet_address) and [ETH](contact_add_entity_crypto_network{"value":"Ethereum"}) address [0x55d398326f99059fF775485246999027B3197955](contact_add_entity_wallet_address)
+    - Yo, add [Brian](contact_add_entity_name) with [Solana](contact_add_entity_crypto_network) wallet [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address) and [Cardano](contact_add_entity_crypto_network) address [addr1q8v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9](contact_add_entity_wallet_address) 😎
+    - Save [Rachel](contact_add_entity_name) with [Polkadot](contact_add_entity_crypto_network) wallet [1FRMM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Dogecoin](contact_add_entity_crypto_network) address [D6Dz1pzn2Acw7eAe7eAe7eAe7eAe7eAe7eAe7eAe7eA](contact_add_entity_wallet_address)
+    - Create [Timothy](contact_add_entity_name) with [XRP](contact_add_entity_crypto_network) wallet [r3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Litecoin](contact_add_entity_crypto_network) address [L3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Michelle](contact_add_entity_name) with [Cosmos](contact_add_entity_crypto_network) wallet [cosmos1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Tron](contact_add_entity_crypto_network) address [T3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Eric](contact_add_entity_name) with [NEAR](contact_add_entity_crypto_network) wallet [eric.near](contact_add_entity_wallet_address) and [Algorand](contact_add_entity_crypto_network) address [A3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I need [Laura](contact_add_entity_name) with [Avalanche](contact_add_entity_crypto_network) wallet [X-avax1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [BSC](contact_add_entity_crypto_network{"value":"Binance Smart Chain"}) address [0xB3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Stephen](contact_add_entity_name) with [Polygon](contact_add_entity_crypto_network) wallet [0xP3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Harmony](contact_add_entity_crypto_network) address [one1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Heather](contact_add_entity_name) with [Stellar](contact_add_entity_crypto_network) wallet [G3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Tezos](contact_add_entity_crypto_network) address [tz1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, create [Adam](contact_add_entity_name) with [VeChain](contact_add_entity_crypto_network) wallet [0xV3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Terra](contact_add_entity_crypto_network) address [terra1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Stephanie](contact_add_entity_name) with [NEO](contact_add_entity_crypto_network) wallet [N3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Flow](contact_add_entity_crypto_network) address [0xF3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Robert](contact_add_entity_name) with [ICON](contact_add_entity_crypto_network) wallet [hx1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Zilliqa](contact_add_entity_crypto_network) address [zil1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I need [Kelly](contact_add_entity_name) with [Monero](contact_add_entity_crypto_network) wallet [4gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Waves](contact_add_entity_crypto_network) address [3gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Yo, add [Greg](contact_add_entity_name) with [Decred](contact_add_entity_crypto_network) wallet [DgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [EOS](contact_add_entity_crypto_network) address [eosio.gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Melissa](contact_add_entity_name) with [Dash](contact_add_entity_crypto_network) wallet [XgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Ontology](contact_add_entity_crypto_network) address [OgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Create [Brad](contact_add_entity_name) with [Qtum](contact_add_entity_crypto_network) wallet [QgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [IOTA](contact_add_entity_crypto_network) address [IgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Hannah](contact_add_entity_name) with [Theta](contact_add_entity_crypto_network) wallet [0xTgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Elrond](contact_add_entity_crypto_network) address [erd1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Scott](contact_add_entity_name) with [Ravencoin](contact_add_entity_crypto_network) wallet [RgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Phantom Chain](contact_add_entity_crypto_network) address [tprv8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - I need [Shannon](contact_add_entity_name) with [FTM](contact_add_entity_crypto_network{"value":"Fantom"}) wallet [0xFgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Secret Network](contact_add_entity_crypto_network) address [secret1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Taylor](contact_add_entity_name) with [Holo](contact_add_entity_crypto_network) wallet [0xHgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Filecoin](contact_add_entity_crypto_network) address [f1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Dominic](contact_add_entity_name) with [Celo](contact_add_entity_crypto_network) wallet [0xCgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Nano](contact_add_entity_crypto_network) address [nano_1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, create [Veronica](contact_add_entity_name) with [Chainlink](contact_add_entity_crypto_network) wallet [0xLgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Steem](contact_add_entity_crypto_network) address [steem1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Paul](contact_add_entity_name) with [NEAR](contact_add_entity_crypto_network) wallet [paul.near](contact_add_entity_wallet_address) and [Kusama](contact_add_entity_crypto_network) address [KgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Maria](contact_add_entity_name) with [BNB](contact_add_entity_crypto_network{"value":"Binance Coin"}) wallet [bnb1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Moonbeam](contact_add_entity_crypto_network) address [0xMgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I need [Derek](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) wallet [1BgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Ethereum](contact_add_entity_crypto_network) address [0xEgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, add [Zoe](contact_add_entity_name) with [Solana](contact_add_entity_crypto_network) wallet [SgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [BTC](contact_add_entity_crypto_network{"value":"Bitcoin"}) address [bc1qgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) 😎
+    - Save [Nathan](contact_add_entity_name) with [Cardano](contact_add_entity_crypto_network) wallet [addr1qgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Polkadot](contact_add_entity_crypto_network) address [1PgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create [Lily](contact_add_entity_name) with [Dogecoin](contact_add_entity_crypto_network) wallet [DgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [XRP](contact_add_entity_crypto_network) address [rXgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Dylan](contact_add_entity_name) with [Litecoin](contact_add_entity_crypto_network) wallet [LgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Cosmos](contact_add_entity_crypto_network) address [cosmos1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Grace](contact_add_entity_name) with [Tron](contact_add_entity_crypto_network) wallet [TgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [NEAR](contact_add_entity_crypto_network) address [grace.near](contact_add_entity_wallet_address)
+    - I need [Eli](contact_add_entity_name) with [Algorand](contact_add_entity_crypto_network) wallet [AgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Avalanche](contact_add_entity_crypto_network) address [X-avax1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Hazel](contact_add_entity_name) with [BSC](contact_add_entity_crypto_network{"value":"Binance Smart Chain"}) wallet [0xBgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Polygon](contact_add_entity_crypto_network) address [0xPgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Josiah](contact_add_entity_name) with [Harmony](contact_add_entity_crypto_network) wallet [one1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Stellar](contact_add_entity_crypto_network) address [GgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Yo, create [Violet](contact_add_entity_name) with [Tezos](contact_add_entity_crypto_network) wallet [tz1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [VeChain](contact_add_entity_crypto_network) address [0xVgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Julian](contact_add_entity_name) with [Terra](contact_add_entity_crypto_network) wallet [terra1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [NEO](contact_add_entity_crypto_network) address [NgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Sadie](contact_add_entity_name) with [Flow](contact_add_entity_crypto_network) wallet [0xFgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [ICON](contact_add_entity_crypto_network) address [hx1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I need [Lincoln](contact_add_entity_name) with [Zilliqa](contact_add_entity_crypto_network) wallet [zil1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Monero](contact_add_entity_crypto_network) address [4MgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Yo, save [Lydia](contact_add_entity_name) with [Waves](contact_add_entity_crypto_network) wallet [3WgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Decred](contact_add_entity_crypto_network) address [DgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Create [Evan](contact_add_entity_name) with [EOS](contact_add_entity_crypto_network) wallet [eosio.gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Dash](contact_add_entity_crypto_network) address [XgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Claire](contact_add_entity_name) with [Ontology](contact_add_entity_crypto_network) wallet [OgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Qtum](contact_add_entity_crypto_network) address [QgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Yo, save [Asher](contact_add_entity_name) with [IOTA](contact_add_entity_crypto_network) wallet [IgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Theta](contact_add_entity_crypto_network) address [0xTgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I need [Stella](contact_add_entity_name) with [Elrond](contact_add_entity_crypto_network) wallet [erd1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Ravencoin](contact_add_entity_crypto_network) address [RgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Ezra](contact_add_entity_name) with [Phantom Chain](contact_add_entity_crypto_network) wallet [tprv8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [FTM](contact_add_entity_crypto_network{"value":"Fantom"}) address [0xFgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Penelope](contact_add_entity_name) with [Secret Network](contact_add_entity_crypto_network) wallet [secret1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Holo](contact_add_entity_crypto_network) address [0xHgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, create [Mateo](contact_add_entity_name) with [Filecoin](contact_add_entity_crypto_network) wallet [f1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Celo](contact_add_entity_crypto_network) address [0xCgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Skylar](contact_add_entity_name) with [Nano](contact_add_entity_crypto_network) wallet [nano_1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Chainlink](contact_add_entity_crypto_network) address [0xLgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Addison](contact_add_entity_name) with [Steem](contact_add_entity_crypto_network) wallet [steem1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Kusama](contact_add_entity_crypto_network) address [KgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - I need [Elliot](contact_add_entity_name) with [BNB](contact_add_entity_crypto_network{"value":"Binance Coin"}) wallet [bnb1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Moonbeam](contact_add_entity_crypto_network) address [0xMgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Aurora](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) wallet [1BgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Ethereum](contact_add_entity_crypto_network) address [0xEgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) 😎
+    - Create [Grayson](contact_add_entity_name) with [Solana](contact_add_entity_crypto_network) wallet [SgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [BTC](contact_add_entity_crypto_network{"value":"Bitcoin"}) address [bc1qgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Nova](contact_add_entity_name) with [Cardano](contact_add_entity_crypto_network) wallet [addr1qgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Polkadot](contact_add_entity_crypto_network) address [1PgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Hudson](contact_add_entity_name) with [Dogecoin](contact_add_entity_crypto_network) wallet [DgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [XRP](contact_add_entity_crypto_network) address [rXgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I need [Zara](contact_add_entity_name) with [Litecoin](contact_add_entity_crypto_network) wallet [LgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Cosmos](contact_add_entity_crypto_network) address [cosmos1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, add [Jaxon](contact_add_entity_name) with [Tron](contact_add_entity_crypto_network) wallet [TgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [NEAR](contact_add_entity_crypto_network) address [jaxon.near](contact_add_entity_wallet_address)
+    - Create [Willow](contact_add_entity_name) with [Algorand](contact_add_entity_crypto_network) wallet [AgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Avalanche](contact_add_entity_crypto_network) address [X-avax1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Finn](contact_add_entity_name) with [BSC](contact_add_entity_crypto_network{"value":"Binance Smart Chain"}) wallet [0xBgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Polygon](contact_add_entity_crypto_network) address [0xPgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Eliza](contact_add_entity_name) with [Harmony](contact_add_entity_crypto_network) wallet [one1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Stellar](contact_add_entity_crypto_network) address [GgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Yo, save [Milo](contact_add_entity_name) with [Tezos](contact_add_entity_crypto_network) wallet [tz1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [VeChain](contact_add_entity_crypto_network) address [0xVgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) 😎
+    - I need [Ivy](contact_add_entity_name) with [Terra](contact_add_entity_crypto_network) wallet [terra1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [NEO](contact_add_entity_crypto_network) address [NgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Theo](contact_add_entity_name) with [Flow](contact_add_entity_crypto_network) wallet [0xFgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [ICON](contact_add_entity_crypto_network) address [hx1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Esme](contact_add_entity_name) with [Zilliqa](contact_add_entity_crypto_network) wallet [zil1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Monero](contact_add_entity_crypto_network) address [4MgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Yo, create [Jude](contact_add_entity_name) with [Waves](contact_add_entity_crypto_network) wallet [3WgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Decred](contact_add_entity_crypto_network) address [DgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Lila](contact_add_entity_name) with [EOS](contact_add_entity_crypto_network) wallet [eosio.gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Dash](contact_add_entity_crypto_network) address [XgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Remy](contact_add_entity_name) with [Ontology](contact_add_entity_crypto_network) wallet [OgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Qtum](contact_add_entity_crypto_network) address [QgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - I need [Amara](contact_add_entity_name) with [IOTA](contact_add_entity_crypto_network) wallet [IgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Theta](contact_add_entity_crypto_network) address [0xTgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Declan](contact_add_entity_name) with [Elrond](contact_add_entity_crypto_network) wallet [erd1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Ravencoin](contact_add_entity_crypto_network) address [RgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) 😎
+    - Create [Freya](contact_add_entity_name) with [Phantom Chain](contact_add_entity_crypto_network) wallet [tprv8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [FTM](contact_add_entity_crypto_network{"value":"Fantom"}) address [0xFgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Silas](contact_add_entity_name) with [Secret Network](contact_add_entity_crypto_network) wallet [secret1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Holo](contact_add_entity_crypto_network) address [0xHgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Cora](contact_add_entity_name) with [Filecoin](contact_add_entity_crypto_network) wallet [f1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Celo](contact_add_entity_crypto_network) address [0xCgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, add [Felix](contact_add_entity_name) with [Nano](contact_add_entity_crypto_network) wallet [nano_1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Chainlink](contact_add_entity_crypto_network) address [0xLgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I need [Maeve](contact_add_entity_name) with [Steem](contact_add_entity_crypto_network) wallet [steem1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Kusama](contact_add_entity_crypto_network) address [KgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Jasper](contact_add_entity_name) with [BNB](contact_add_entity_crypto_network{"value":"Binance Coin"}) wallet [bnb1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Moonbeam](contact_add_entity_crypto_network) address [0xMgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Iris](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) wallet [1BgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Ethereum](contact_add_entity_crypto_network) address [0xEgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, create [Miles](contact_add_entity_name) with [Solana](contact_add_entity_crypto_network) wallet [SgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [BTC](contact_add_entity_crypto_network{"value":"Bitcoin"}) address [bc1qgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Eloise](contact_add_entity_name) with [Cardano](contact_add_entity_crypto_network) wallet [addr1qgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Polkadot](contact_add_entity_crypto_network) address [1PgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Arlo](contact_add_entity_name) with [Dogecoin](contact_add_entity_crypto_network) wallet [DgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [XRP](contact_add_entity_crypto_network) address [rXgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I need [Mira](contact_add_entity_name) with [Litecoin](contact_add_entity_crypto_network) wallet [LgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Cosmos](contact_add_entity_crypto_network) address [cosmos1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Lena](contact_add_entity_name) with [Tron](contact_add_entity_crypto_network) wallet [TgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [NEAR](contact_add_entity_crypto_network) address [lena.near](contact_add_entity_wallet_address)
+    - Create [Kai](contact_add_entity_name) with [Algorand](contact_add_entity_crypto_network) wallet [AgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Avalanche](contact_add_entity_crypto_network) address [X-avax1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Add [Sienna](contact_add_entity_name) with [BSC](contact_add_entity_crypto_network{"value":"Binance Smart Chain"}) wallet [0xBgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Polygon](contact_add_entity_crypto_network) address [0xPgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Micah](contact_add_entity_name) with [Harmony](contact_add_entity_crypto_network) wallet [one1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Stellar](contact_add_entity_crypto_network) address [GgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) 😎
+    - I need [Selena](contact_add_entity_name) with [Tezos](contact_add_entity_crypto_network) wallet [tz1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [VeChain](contact_add_entity_crypto_network) address [0xVgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Jude](contact_add_entity_name) with [Terra](contact_add_entity_crypto_network) wallet [terra1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [NEO](contact_add_entity_crypto_network) address [NgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Rory](contact_add_entity_name) with [Flow](contact_add_entity_crypto_network) wallet [0xFgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [ICON](contact_add_entity_crypto_network) address [hx1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, create [June](contact_add_entity_name) with [Zilliqa](contact_add_entity_crypto_network) wallet [zil1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Monero](contact_add_entity_crypto_network) address [4MgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Elliot](contact_add_entity_name) with [Waves](contact_add_entity_crypto_network) wallet [3WgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Decred](contact_add_entity_crypto_network) address [DgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Tessa](contact_add_entity_name) with [EOS](contact_add_entity_crypto_network) wallet [eosio.gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Dash](contact_add_entity_crypto_network) address [XgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - I need [Caleb](contact_add_entity_name) with [Ontology](contact_add_entity_crypto_network) wallet [OgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Qtum](contact_add_entity_crypto_network) address [QgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Yo, save [Lyric](contact_add_entity_name) with [IOTA](contact_add_entity_crypto_network) wallet [IgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [Theta](contact_add_entity_crypto_network) address [0xTgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create [Zane](contact_add_entity_name) with [Elrond](contact_add_entity_crypto_network) wallet [erd1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Ravencoin](contact_add_entity_crypto_network) address [RgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Add [Mae](contact_add_entity_name) with [Phantom Chain](contact_add_entity_crypto_network) wallet [tprv8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address) and [FTM](contact_add_entity_crypto_network{"value":"Fantom"}) address [0xFgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Yo, save [Beckett](contact_add_entity_name) with [Secret Network](contact_add_entity_crypto_network) wallet [secret1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) and [Holo](contact_add_entity_crypto_network) address [0xHgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address) 😎
+    - I need [Hadley](contact_add_entity_name) with [Filecoin](contact_add_entity_crypto_network) wallet [f1gY8gY8gY8gY8gY8gY8gY8gY8
+    # Examples demonstrating Bitcoin synonyms
+    - Add [Marcus](contact_add_entity_name) to my contacts with [digital gold](contact_add_entity_crypto_network{"value":"Bitcoin"}) address [1MXYZabc123defGHIjkLMNopqRSTuvwXYZ](contact_add_entity_wallet_address)
+    - Create a contact for [Elena](contact_add_entity_name) with [satoshi's coin](contact_add_entity_crypto_network{"value":"Bitcoin"}) wallet [bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4](contact_add_entity_wallet_address)
+    - Save [Jackson](contact_add_entity_name) with [XBT](contact_add_entity_crypto_network{"value":"Bitcoin"}) address [3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy](contact_add_entity_wallet_address)
+    - I need to add [Sophia](contact_add_entity_name) with [Bitcoin network](contact_add_entity_crypto_network{"value":"Bitcoin"}) wallet [bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq](contact_add_entity_wallet_address)
+    - Can you add [Lionel](contact_add_entity_name) to contacts with [bitcoin](contact_add_entity_crypto_network{"value":"Bitcoin"}) address [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address)?
+
+    # Examples demonstrating Vaulta synonyms
+    - Add [Carlos](contact_add_entity_name) to my contacts with [A](contact_add_entity_crypto_network{"value":"Vaulta"}) address [hamsterchain](contact_add_entity_wallet_address)
+    - Save [Nadia](contact_add_entity_name) with [a](contact_add_entity_crypto_network{"value":"Vaulta"}) wallet [rosy.gm](contact_add_entity_wallet_address)
+    - Create a contact for [Theo](contact_add_entity_name) with [vaulta](contact_add_entity_crypto_network{"value":"Vaulta"}) address [wood.man](contact_add_entity_wallet_address)
+    - Please add [Yasmin](contact_add_entity_name) with [A token](contact_add_entity_crypto_network{"value":"Vaulta"}) wallet [net](contact_add_entity_wallet_address)
+    - I want to store [Rafael](contact_add_entity_name)'s [Vaulta protocol](contact_add_entity_crypto_network{"value":"Vaulta"}) address [mrd.eosvn](contact_add_entity_wallet_address)
+
+    # Examples demonstrating Ethereum synonyms
+    - Add [Leila](contact_add_entity_name) to my contacts with [ether](contact_add_entity_crypto_network{"value":"Ethereum"}) address [0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984](contact_add_entity_wallet_address)
+    - Save [Omar](contact_add_entity_name) with [ethereum](contact_add_entity_crypto_network{"value":"Ethereum"}) wallet [0x514910771AF9Ca656af840dff83E8264EcF986CA](contact_add_entity_wallet_address)
+    - Create a contact for [Zoe](contact_add_entity_name) with [vitalik's creation](contact_add_entity_crypto_network{"value":"Ethereum"}) address [0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9](contact_add_entity_wallet_address)
+    - I need to add [Victor](contact_add_entity_name) with [Ethereum network](contact_add_entity_crypto_network{"value":"Ethereum"}) wallet [0xc00e94Cb662C3520282E6f5717214004A7f26888](contact_add_entity_wallet_address)
+    - Can you add [Irene](contact_add_entity_name) to contacts with [eth](contact_add_entity_crypto_network{"value":"Ethereum"}) address [0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2](contact_add_entity_wallet_address)?
+
+    # Examples demonstrating Solana synonyms  
+    - Add [Kai](contact_add_entity_name) to my contacts with [sol](contact_add_entity_crypto_network{"value":"Solana"}) address [5YNmS1R9nNSCDzb5a8FGQvb1eJJPg8GFxde4XTFVhU9d](contact_add_entity_wallet_address)
+    - Save [Diana](contact_add_entity_name) with [solana](contact_add_entity_crypto_network{"value":"Solana"}) wallet [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address)
+    - Create a contact for [Felix](contact_add_entity_name) with [Solana network](contact_add_entity_crypto_network{"value":"Solana"}) address [HN7cABqLq46Es1jh92dQQisAq662SmxELLLsHHe4YWrH](contact_add_entity_wallet_address)
+    - I need to add [Maya](contact_add_entity_name) with [Solana blockchain](contact_add_entity_crypto_network{"value":"Solana"}) wallet [EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v](contact_add_entity_wallet_address)
+    - Can you add [Axel](contact_add_entity_name) to contacts with [SOL](contact_add_entity_crypto_network{"value":"Solana"}) address [4xTdCKvF6VxEDwGHQXGNGvw7qP3eUx8wGCj8zWhMuEum](contact_add_entity_wallet_address)?
+
+    # Examples demonstrating Dogecoin synonyms
+    - Add [Lucia](contact_add_entity_name) to my contacts with [doge](contact_add_entity_crypto_network{"value":"Dogecoin"}) address [DH5yaieqoZN36fDVciNyRueRGvGLR3mr7L](contact_add_entity_wallet_address)
+    - Save [Ethan](contact_add_entity_name) with [dogecoin](contact_add_entity_crypto_network{"value":"Dogecoin"}) wallet [DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1](contact_add_entity_wallet_address)
+    - Create a contact for [Nina](contact_add_entity_name) with [meme coin](contact_add_entity_crypto_network{"value":"Dogecoin"}) address [D6Dz1pzn2AcwbwjEuT9NgrVgtcwWxCC2WP](contact_add_entity_wallet_address)
+    - I need to add [Oscar](contact_add_entity_name) with [dog coin](contact_add_entity_crypto_network{"value":"Dogecoin"}) wallet [DArdYbEBZ6Vmx4jgBmxvsGmLQ73XUtWVcQ](contact_add_entity_wallet_address)
+    - Can you add [Beatrice](contact_add_entity_name) to contacts with [Elon's favorite](contact_add_entity_crypto_network{"value":"Dogecoin"}) address [DTnt7VZqR5ofBhR8Fr8XiQaFU94WUT2J3G](contact_add_entity_wallet_address)?
+
+    # Examples demonstrating XRP synonyms
+    - Add [Simon](contact_add_entity_name) to my contacts with [xrp](contact_add_entity_crypto_network{"value":"XRP"}) address [rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh](contact_add_entity_wallet_address)
+    - Save [Amelia](contact_add_entity_name) with [Ripple](contact_add_entity_crypto_network{"value":"XRP"}) wallet [rMnuS9WjpNixPTFCvZoHqwPaYuvJGU3DHc](contact_add_entity_wallet_address)
+    - Create a contact for [Leo](contact_add_entity_name) with [ripple](contact_add_entity_crypto_network{"value":"XRP"}) address [rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh](contact_add_entity_wallet_address)
+    - I need to add [Isabella](contact_add_entity_name) with [XRP Ledger](contact_add_entity_crypto_network{"value":"XRP"}) wallet [r3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Can you add [Hugo](contact_add_entity_name) to contacts with [Ripple network](contact_add_entity_crypto_network{"value":"XRP"}) address [rLW9gnQo7BQhU6igk5keqYnH3TVrCxGRzm](contact_add_entity_wallet_address)?
+
+    # Examples demonstrating BNB synonyms
+    - Add [Natalie](contact_add_entity_name) to my contacts with [bnb](contact_add_entity_crypto_network{"value":"BNB"}) address [bnb1jxfh2g85q3v0tdq56fnevx6xcxtcnhtsmcu64m](contact_add_entity_wallet_address)
+    - Save [Malik](contact_add_entity_name) with [Binance Coin](contact_add_entity_crypto_network{"value":"BNB"}) wallet [bnb1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Create a contact for [Lillian](contact_add_entity_name) with [binance coin](contact_add_entity_crypto_network{"value":"BNB"}) address [bnb1z35wusfv8twfele77vgca5ws582cg2q0k5l5za](contact_add_entity_wallet_address)
+    - I need to add [Adrian](contact_add_entity_name) with [Binance Smart Chain](contact_add_entity_crypto_network{"value":"BNB"}) wallet [bnb1m82ycp85x2vtjmehcpz7lxl8m2tcmxny3qr7p5](contact_add_entity_wallet_address)
+    - Can you add [Jasmine](contact_add_entity_name) to contacts with [BSC](contact_add_entity_crypto_network{"value":"BNB"}) address [bnb1e0dm5dvcr3gtw7d5urm9dyyjr7s8r4uaj4ydpt](contact_add_entity_wallet_address)?
+    - Please add [Xavier](contact_add_entity_name) with [Binance token](contact_add_entity_crypto_network{"value":"BNB"}) wallet [bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23](contact_add_entity_wallet_address)
+
+    # Examples demonstrating Cardano synonyms
+    - Add [Bianca](contact_add_entity_name) to my contacts with [ada](contact_add_entity_crypto_network{"value":"Cardano"}) address [addr1qyklpa4lcncl0yw72rjcftqrze4gg6kv9mdnmek7vklnxk7ve6hecc4ree7wufd4qgljjwywdphrvr8clxpzh92433s9pxvey](contact_add_entity_wallet_address)
+    - Save [Rayan](contact_add_entity_name) with [cardano](contact_add_entity_crypto_network{"value":"Cardano"}) wallet [addr1q8v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9v4n9](contact_add_entity_wallet_address)
+    - Create a contact for [Sofia](contact_add_entity_name) with [Cardano network](contact_add_entity_crypto_network{"value":"Cardano"}) address [addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3n0d3vllmyqwsx5wktcd8cc3sq835lu7drv2xwl2wywfgse35a3x](contact_add_entity_wallet_address)
+    - I need to add [Jonas](contact_add_entity_name) with [Cardano blockchain](contact_add_entity_crypto_network{"value":"Cardano"}) wallet [addr1qgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Can you add [Valentina](contact_add_entity_name) to contacts with [Hoskinson's project](contact_add_entity_crypto_network{"value":"Cardano"}) address [addr1qyc0kwu98x23mrwl7hcym5acvuqm6h55qeethtjz9jy996qcw7hpqhpl5dh7kud45kq2pg9975ls0yje86r4uetl7rls5qwj5p](contact_add_entity_wallet_address)?
+
+    # Examples demonstrating TRON synonyms
+    - Add [Gabriel](contact_add_entity_name) to my contacts with [trx](contact_add_entity_crypto_network{"value":"TRON"}) address [TZ2dmCNuKYyeXSUJP1tMMcFeXPVnTZrBsV](contact_add_entity_wallet_address)
+    - Save [Audrey](contact_add_entity_name) with [tron](contact_add_entity_crypto_network{"value":"TRON"}) wallet [TgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Create a contact for [Elias](contact_add_entity_name) with [TRON network](contact_add_entity_crypto_network{"value":"TRON"}) address [T3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - I need to add [Clara](contact_add_entity_name) with [Justin Sun's project](contact_add_entity_crypto_network{"value":"TRON"}) wallet [THPvaUhoh2Qn2y9THCZML3H815hhFhn5YC](contact_add_entity_wallet_address)
+    - Can you add [Vincent](contact_add_entity_name) to contacts with [TRON](contact_add_entity_crypto_network{"value":"TRON"}) address [TPwJS5eC5BPBCrPXxejL9SaCuJMULZYwxs](contact_add_entity_wallet_address)?
+
+    # Examples demonstrating Litecoin synonyms
+    - Add [Flora](contact_add_entity_name) to my contacts with [ltc](contact_add_entity_crypto_network{"value":"Litecoin"}) address [LgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Damian](contact_add_entity_name) with [litecoin](contact_add_entity_crypto_network{"value":"Litecoin"}) wallet [MPwk2KMr3Wr2vjCiP6NKmSPSDeMKZ4JXen](contact_add_entity_wallet_address)
+    - Create a contact for [Nora](contact_add_entity_name) with [digital silver](contact_add_entity_crypto_network{"value":"Litecoin"}) address [LVxNKm9uBt3LiXCcALULXVUNNFrp5vEEYC](contact_add_entity_wallet_address)
+    - I need to add [Anton](contact_add_entity_name) with [Charlie Lee's coin](contact_add_entity_crypto_network{"value":"Litecoin"}) wallet [L3KM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Can you add [Marina](contact_add_entity_name) to contacts with [Litecoin](contact_add_entity_crypto_network{"value":"Litecoin"}) address [LTC13K5Yd9yuxkizQ2zcERnJPqDpqMqG1BF](contact_add_entity_wallet_address)?
+
+    # Examples demonstrating Polkadot synonyms
+    - Add [Fabian](contact_add_entity_name) to my contacts with [dot](contact_add_entity_crypto_network{"value":"Polkadot"}) address [1PgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Lila](contact_add_entity_name) with [polkadot](contact_add_entity_crypto_network{"value":"Polkadot"}) wallet [1exaAg2VJRQbyUBAeXcktChCAqjVP9TUxF3zo23R2T6EGdE](contact_add_entity_wallet_address)
+    - Create a contact for [Hector](contact_add_entity_name) with [Polkadot network](contact_add_entity_crypto_network{"value":"Polkadot"}) address [13ib36rtGs9shQbHnbpjHqFj6fX3ExNJYCZXCcgmDbxCgJH5](contact_add_entity_wallet_address)
+    - I need to add [Alicia](contact_add_entity_name) with [Web3 Foundation](contact_add_entity_crypto_network{"value":"Polkadot"}) wallet [1FRMM8PEiWXYax7rpS6X4XZX1aAAxSWx1CrKTyrVYhV24fg](contact_add_entity_wallet_address)
+    - Can you add [Thomas](contact_add_entity_name) to contacts with [Polkadot](contact_add_entity_crypto_network{"value":"Polkadot"}) address [1FRMM1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)?
+
+    # Examples demonstrating Monero synonyms
+    - Add [Julie](contact_add_entity_name) to my contacts with [xmr](contact_add_entity_crypto_network{"value":"Monero"}) address [4MgY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Save [Marco](contact_add_entity_name) with [monero](contact_add_entity_crypto_network{"value":"Monero"}) wallet [49BnKAecHgNVxmToUgCjoSFrCGAgigYZfTTYGhZ781Cox4K7jviS8YxZTJZBSX398stMKpKSTnbEHuE9fh21yYo17RJZ5WJ](contact_add_entity_wallet_address)
+    - Create a contact for [Charlotte](contact_add_entity_name) with [privacy coin](contact_add_entity_crypto_network{"value":"Monero"}) address [48zS3VJi9CbyZ8LHDQ8n8vWx9eRs6MmynwLJGK9GR6P8WqJ2qK4TyMbfPKFfDa6rYx7h5WYTm51YBHNsSvMfdEuHJBHGWEs](contact_add_entity_wallet_address)
+    - I need to add [Dominic](contact_add_entity_name) with [anonymous cryptocurrency](contact_add_entity_crypto_network{"value":"Monero"}) wallet [4gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8g](contact_add_entity_wallet_address)
+    - Can you add [Serena](contact_add_entity_name) to contacts with [Monero](contact_add_entity_crypto_network{"value":"Monero"}) address [46F5wuHDGK5G7iXwiqPKX4ak6qLR4WLQbAmjFdfLbBfGKEj5jSgYG9YoaQgwwNiYqkfEwysDhdD8gWpD8UDcLZ1SNaRMYYK](contact_add_entity_wallet_address)?
+
+    # Examples demonstrating Avalanche synonyms
+    - Add [Nicolas](contact_add_entity_name) to my contacts with [avax](contact_add_entity_crypto_network{"value":"Avalanche"}) address [X-avax1gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY8gY](contact_add_entity_wallet_address)
+    - Save [Rosa](contact_add_entity_name) with [avalanche](contact_add_entity_crypto_network{"value":"Avalanche"}) wallet [X-avax1qr6yzjykcjmeflztsgv5na54g4qksz0evptj0l](contact_add_entity_wallet_address)
+    - Create a contact for [Ahmed](contact_add_entity_name) with [Ava Labs](contact_add_entity_crypto_network{"value":"Avalanche"}) address [X-avax1s09r3j8mxvk38d3uvhrf2leut5zx5c0uvqtcc8](contact_add_entity_wallet_address)
+    - I need to add [Leah](contact_add_entity_name) with [Avalanche blockchain](contact_add_entity_crypto_network{"value":"Avalanche"}) wallet [X-avax1w4hxgfqrrxqz75al8nlgyy6ht2a46yt5qm6gkl](contact_add_entity_wallet_address)
+    - Can you add [Philip](contact_add_entity_name) to contacts with [Avalanche](contact_add_entity_crypto_network{"value":"Avalanche"}) address [X-avax1c8cx8tr9e9x5kuhzywl83z7f5u0558x9xmvr2h](contact_add_entity_wallet_address)?
+
+    # Mixed examples with multiple cryptocurrencies using synonyms
+    - Add [Emilia](contact_add_entity_name) with [digital gold](contact_add_entity_crypto_network{"value":"Bitcoin"}) address [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address) and [vitalik's creation](contact_add_entity_crypto_network{"value":"Ethereum"}) address [0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045](contact_add_entity_wallet_address)
+    - Save [Samuel](contact_add_entity_name) with [xbt](contact_add_entity_crypto_network{"value":"Bitcoin"}) wallet [bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh](contact_add_entity_wallet_address) and [eth](contact_add_entity_crypto_network{"value":"Ethereum"}) wallet [0x742d35Cc6634C0532925a3b844Bc454e4438f44e](contact_add_entity_wallet_address)
+    - I need [Teresa](contact_add_entity_name) with [sol](contact_add_entity_crypto_network{"value":"Solana"}) address [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address) and [ada](contact_add_entity_crypto_network{"value":"Cardano"}) address [addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3n0d3vllmyqwsx5wktcd8cc3sq835lu7drv2xwl2wywfgse35a3x](contact_add_entity_wallet_address)
+    - Create a contact for [Naoki](contact_add_entity_name) with [dog coin](contact_add_entity_crypto_network{"value":"Dogecoin"}) wallet [DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1](contact_add_entity_wallet_address) and [tron](contact_add_entity_crypto_network{"value":"TRON"}) wallet [TZ2dmCNuKYyeXSUJP1tMMcFeXPVnTZrBsV](contact_add_entity_wallet_address)
+    - Add [Carmen](contact_add_entity_name) to my contacts with [Charlie Lee's coin](contact_add_entity_crypto_network{"value":"Litecoin"}) address [MPwk2KMr3Wr2vjCiP6NKmSPSDeMKZ4JXen](contact_add_entity_wallet_address) and [BSC](contact_add_entity_crypto_network{"value":"BNB"}) address [bnb1jxfh2g85q3v0tdq56fnevx6xcxtcnhtsmcu64m](contact_add_entity_wallet_address)
+
+    # Examples with more casual language using synonyms
+    - Yo, add [Tyler](contact_add_entity_name) with his [satoshi's coin](contact_add_entity_crypto_network{"value":"Bitcoin"}) addy [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address)
+    - Need to save [Alice](contact_add_entity_name)'s [vitalik's creation](contact_add_entity_crypto_network{"value":"Ethereum"}) wallet [0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045](contact_add_entity_wallet_address) ASAP
+    - Can u add [Jordan](contact_add_entity_name) with [sol](contact_add_entity_crypto_network{"value":"Solana"}) address [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address)? thx
+    - Fr need to save [Kimberly](contact_add_entity_name)'s [doge](contact_add_entity_crypto_network{"value":"Dogecoin"}) wallet [DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1](contact_add_entity_wallet_address)
+    - Gotta add [Mateo](contact_add_entity_name) with [xmr](contact_add_entity_crypto_network{"value":"Monero"}) address [49BnKAecHgNVxmToUgCjoSFrCGAgigYZfTTYGhZ781Cox4K7jviS8YxZTJZBSX398stMKpKSTnbEHuE9fh21yYo17RJZ5WJ](contact_add_entity_wallet_address)
+
+    # Examples with abbreviations using synonyms
+    - Add [Paige](contact_add_entity_name) w/ [btc](contact_add_entity_crypto_network{"value":"Bitcoin"}) address [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address)
+    - Save [Jamal](contact_add_entity_name) + his [ethereum](contact_add_entity_crypto_network{"value":"Ethereum"}) wallet [0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045](contact_add_entity_wallet_address)
+    - Add [Camila](contact_add_entity_name) 2 contacts w/ [sol](contact_add_entity_crypto_network{"value":"Solana"}) addy [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address)
+    - Need 2 save [Ricardo](contact_add_entity_name)'s [digital silver](contact_add_entity_crypto_network{"value":"Litecoin"}) wallet [MPwk2KMr3Wr2vjCiP6NKmSPSDeMKZ4JXen](contact_add_entity_wallet_address)
+    - Adding [Nadia](contact_add_entity_name) w/ their [binance coin](contact_add_entity_crypto_network{"value":"BNB"}) addy [bnb1jxfh2g85q3v0tdq56fnevx6xcxtcnhtsmcu64m](contact_add_entity_wallet_address)
+
+entities:
+  - contact_add_entity_name
+  - contact_add_entity_crypto_network
+  - contact_add_entity_wallet_address
