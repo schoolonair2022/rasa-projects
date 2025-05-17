@@ -25,13 +25,6 @@ rules:
 
   # Default fallback rule for all other cases
   - rule: Default contact add rule
-    condition:
-    - active_loop: null
-    - or:
-      - slot_was_not_set:
-          - contact_add_entity_crypto_network: "Etherum"
-      - slot_was_not_set:
-          - contact_add_entity_crypto_network: "Bitcon"
     steps:
       - intent: contact_add_request
       - action: action_check_contact_existence
@@ -42,6 +35,19 @@ rules:
   - rule: After typo correction
     steps:
       - action: action_correct_crypto_network_typo
+      - action: add_contact_form
+      - active_loop: add_contact_form
+
+  # Fallback rule for known networks (add priority to ensure it runs after typo rules)
+  - rule: Handle known crypto networks
+    priority: -1
+    condition:
+    - active_loop: null
+    - slot_was_set:
+        - contact_add_entity_crypto_network
+    steps:
+      - intent: contact_add_request
+      - action: action_check_contact_existence
       - action: add_contact_form
       - active_loop: add_contact_form
 
