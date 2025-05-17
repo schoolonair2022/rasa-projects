@@ -75,11 +75,6 @@ responses:
   
   utter_ask_expertise_level:
   - text: "How much experience do you have with cryptocurrencies?"
-  
-  utter_default:
-  - text: "I'm not sure I understand. Could you rephrase that?"
-  - text: "I didn't catch that. Can you say it differently?"
-  - text: "I'm having trouble understanding. Could you try another way?"
 
 
 actions:
@@ -272,7 +267,7 @@ forms:
 
 imports:
   - data/contact/contact_nlu.yml
-  - data/contact/contact_responses.yml
+  - data/contact/contact_response.yml
   - data/contact/contact_rules.yml
   - data/contact/contact_stories.yml
   - data/common/crypto_synonym_nlu.yml
