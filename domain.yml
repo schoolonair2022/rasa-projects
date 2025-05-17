@@ -132,10 +132,14 @@ slots:
   contact_exists:
     type: bool
     influence_conversation: true
+    mappings:
+    - type: custom
     
   valid_address:
     type: bool
     influence_conversation: true
+    mappings:
+    - type: custom
 
   address_valid:
     type: bool
