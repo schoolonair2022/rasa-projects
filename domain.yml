@@ -3,46 +3,41 @@ version: "3.1"
 intents:
   - greet
   - goodbye
-  - affirm
-  - deny
   - mood_great
   - mood_unhappy
   - bot_challenge
   - add_contact
-  - inform
   - ask_sentiment
   - check_scam
   - crypto_topic
   - share_expertise
   - mention_crypto
   - nlu_fallback
+    # Existing intents
+  - affirm
+  - deny
+  - inform
+  - cancel
+  - help
   - out_of_scope
+  
+  # New supporting intents for contact_add_request
+  - provide_contact_name
+  - provide_wallet_address
+  - provide_crypto_network
+  - request_clarification
+  - restart
+  - confirm_contact_details
+  - ask_validation_status
+  - continue_process
+  - go_back
+  - context_switch
+  - ask_save_progress
+
   - contact_add_request
 
 responses:
   # Basic greeting and introduction
-  utter_greet:
-    - text: "Hello! Welcome to your crypto wallet assistant. How can I help you today?"
-    - text: "Hi there! I'm your cryptocurrency wallet assistant. What would you like to do?"
-    - text: "Welcome to your digital wallet! I'm here to assist with your crypto needs."
-    - text: "Hello! Ready to manage your cryptocurrency wallet? I'm here to help."
-    - text: "Greetings! Your crypto assistant is ready to help with your wallet needs."
-    - text: "Hi! I'm your crypto wallet AI. What can I do for you today?"
-    - text: "Welcome back to your crypto wallet! How may I assist you?"
-    - text: "Hello! Your cryptocurrency management assistant is at your service."
-    - text: "Hi there! Ready to navigate the crypto world together? What's on your mind?"
-    - text: "Welcome! I'm your crypto companion. How can I help with your wallet today?"
-    - text: "Good day! Your digital asset assistant is here. What would you like to do?"
-    - text: "Hello! I'm here to help manage your cryptocurrency wallet. What do you need?"
-    - text: "Hi! Your personal crypto assistant is ready. What can I help you with?"
-    - text: "Welcome to your wallet dashboard! How may I assist you today?"
-    - text: "Hello! Looking to manage your crypto assets? I'm here to help."
-    - text: "Hi there! Your crypto wallet assistant is ready for your commands."
-    - text: "Welcome! How can I assist with your cryptocurrency needs today?"
-    - text: "Hello! I'm your digital wallet guide. What would you like to do?"
-    - text: "Hi! Ready to help with your crypto management. What's your request?"
-    - text: "Welcome aboard! Your crypto wallet assistant is at your service."
-
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
     image: "https://i.imgur.com/nGF1K8f.jpg"
@@ -85,10 +80,7 @@ responses:
   - text: "I'm not sure I understand. Could you rephrase that?"
   - text: "I didn't catch that. Can you say it differently?"
   - text: "I'm having trouble understanding. Could you try another way?"
-  
-  utter_out_of_scope:
-  - text: "That's outside my cryptocurrency expertise. I'm better at helping with wallet addresses, crypto sentiment, and detecting scams."
-  - text: "I'm focused on cryptocurrency topics. I can help with wallet validation, sentiment analysis, and scam detection."
+
 
 actions:
   - action_validate_wallet_address
@@ -205,6 +197,55 @@ slots:
     influence_conversation: true
     mappings:
     - type: custom
+
+  validation_attempts:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: custom
+  
+  network_address_mismatch:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+  
+  multiple_networks_detected:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+  
+  unsupported_cryptocurrency:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+  
+  # Context switching and workflow management slots
+  contact_flow_active:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+  
+  contact_last_active_state:
+    type: text
+    influence_conversation: false  # Không ảnh hưởng đến luồng hội thoại trực tiếp
+    mappings:
+      - type: custom
+  
+  previous_context:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+  
+  previous_form_state:
+    type: text
+    influence_conversation: false  # Chỉ dùng để lưu trữ, không ảnh hưởng đến dự đoán
+    mappings:
+      - type: custom
 
 forms:
   add_contact_form:

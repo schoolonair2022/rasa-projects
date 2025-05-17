@@ -1,0 +1,301 @@
+version: "3.1"
+
+nlu:
+  - intent: provide_contact_name
+    examples: |
+      - The name is [John](contact_add_entity_name)
+      - It's [Sarah Johnson](contact_add_entity_name)
+      - [Michael Smith](contact_add_entity_name)
+      - Name them [Cryptocurrency Exchange](contact_add_entity_name)
+      - Call this contact [BTC Marketplace](contact_add_entity_name)
+      - Save as [Mom](contact_add_entity_name)
+      - The contact is [Alex](contact_add_entity_name)
+      - This is for [David Wong](contact_add_entity_name)
+      - [Binance](contact_add_entity_name) is the name
+      - Add [Maria](contact_add_entity_name)
+      - Name: [Crypto Trader](contact_add_entity_name)
+      - Contact name is [James Wilson](contact_add_entity_name)
+      - Save under [Emma's Wallet](contact_add_entity_name)
+      - It's for [Robert](contact_add_entity_name)
+      - This person is [Samantha](contact_add_entity_name)
+      - The recipient is [Thomas](contact_add_entity_name)
+      - Call them [CoinBase Pro](contact_add_entity_name)
+      - Name of [Jessica](contact_add_entity_name)
+      - Set name to [Daniel's Mining Pool](contact_add_entity_name)
+      - My friend [Kevin](contact_add_entity_name)
+
+  - intent: provide_wallet_address
+    examples: |
+      - The address is [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address)
+      - Use [0x742d35Cc6634C0532925a3b844Bc454e4438f44e](contact_add_entity_wallet_address)
+      - Wallet address [3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy](contact_add_entity_wallet_address)
+      - Here's the address: [bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq](contact_add_entity_wallet_address)
+      - [rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh](contact_add_entity_wallet_address) is the wallet
+      - Their wallet is [bnb1grpf0955h0ykzq3ar5nmum7y6gdfl6lxfn46h2](contact_add_entity_wallet_address)
+      - Address [DdzFFzCqrhssjmxkChyAHE9MdHJkEc4zsZe7jgum6RtGzKLkUanN1kPZ1ipVPBLwVq2TWrhmPsAvArcr47Pp1VNKmZTh6jv8ctAFVCkj](contact_add_entity_wallet_address)
+      - Save this address: [44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A](contact_add_entity_wallet_address)
+      - The wallet is [TJCxj1RbmrQafYxrBhcTNT4UM5XJL9FJym](contact_add_entity_wallet_address)
+      - Use [nano_3o7uzba8b9e1wqu5ziwpruteyrs3scyqr761x7ke6w1xctohxfh5du75qgaj](contact_add_entity_wallet_address)
+      - Here: [XpXCrdUQpJgFyxh9nLBjEQY9zZPUKgLxMY](contact_add_entity_wallet_address)
+      - Address is [LTdsVS8VDw6syvfQADdhf2PHAm3rMbK1sa](contact_add_entity_wallet_address)
+      - Save [cosmos1h806c7khnvmjlywdrkdgk2vrayy2mmvf8kzpps](contact_add_entity_wallet_address)
+      - Their DOT address: [1FRMM8PEiWXYax7rpS6X4XZX1aAAxSWx1CrKTyrVYhV24fg](contact_add_entity_wallet_address)
+      - Use this: [r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59](contact_add_entity_wallet_address)
+      - ADA address [addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3n0d3vllmyqwsx5wktcd8cc3sq835lu7drv2xwl2wywfgse35a3x](contact_add_entity_wallet_address)
+      - This is it: [SP2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKNRV9EJ7](contact_add_entity_wallet_address)
+      - Their wallet [0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe](contact_add_entity_wallet_address)
+      - Address [pakt1qnr5g33fmtn8ammpzcz536x0xz8v7qkp4t74a8w](contact_add_entity_wallet_address)
+      - Save this one [VJL8dGk8kgqXiNrGWDBcmT3BXp9y15rYCZ](contact_add_entity_wallet_address)
+
+  - intent: provide_crypto_network
+    examples: |
+      - It's on [Bitcoin](contact_add_entity_crypto_network)
+      - Use [Ethereum](contact_add_entity_crypto_network) network
+      - [Solana](contact_add_entity_crypto_network) is the network
+      - This is a [BTC](contact_add_entity_crypto_network) address
+      - Network is [Polygon](contact_add_entity_crypto_network)
+      - It's an [ETH](contact_add_entity_crypto_network) wallet
+      - Use [Binance Smart Chain](contact_add_entity_crypto_network)
+      - This is on [Cardano](contact_add_entity_crypto_network)
+      - The network is [Avalanche](contact_add_entity_crypto_network)
+      - [Polkadot](contact_add_entity_crypto_network) network
+      - It's [Tron](contact_add_entity_crypto_network) blockchain
+      - This is [XRP](contact_add_entity_crypto_network) ledger
+      - Save for [Dogecoin](contact_add_entity_crypto_network)
+      - Use [Algorand](contact_add_entity_crypto_network) network
+      - It's [Cosmos](contact_add_entity_crypto_network) address
+      - Network type is [BSC](contact_add_entity_crypto_network)
+      - This is for [Tezos](contact_add_entity_crypto_network)
+      - Use the [Litecoin](contact_add_entity_crypto_network) network
+      - [Stellar](contact_add_entity_crypto_network) is the network
+      - This works on [Near Protocol](contact_add_entity_crypto_network)
+
+  - intent: request_clarification
+    examples: |
+      - I don't understand what you need
+      - What do you mean by wallet address?
+      - Can you explain that again?
+      - What is a crypto network?
+      - I'm not sure what to enter here
+      - What information do you need now?
+      - Can you clarify what you're asking for?
+      - What should the name include?
+      - Do I need the full address?
+      - How do I find my friend's wallet address?
+      - What networks do you support?
+      - Is nickname required?
+      - What format should the address be in?
+      - Can I add multiple networks for one contact?
+      - What's the difference between BTC and Bitcoin?
+      - How do I know if the address is correct?
+      - Where can I see my saved contacts?
+      - What happens after I add this contact?
+      - Should I include a label?
+      - How do I verify this is the right address?
+
+  - intent: restart
+    examples: |
+      - Start over
+      - Begin again
+      - Restart
+      - Let's start from the beginning
+      - Reset this process
+      - Can we start fresh?
+      - I want to restart
+      - Start again
+      - Let's try again from the start
+      - Reset everything
+      - Begin from scratch
+      - Restart this conversation
+      - Let's do this again
+      - Start the process over
+      - Can we restart from the beginning?
+      - I'd like to start fresh
+      - Restart the contact addition
+      - Start the form over
+      - Clear everything and start again
+      - Begin the process again
+
+  - intent: confirm_contact_details
+    examples: |
+      - The details look correct
+      - Yes, that's the right information
+      - The contact information is accurate
+      - All details are correct
+      - The name and address are right
+      - Everything looks good
+      - That's all correct information
+      - The contact details are accurate
+      - Address and name look right
+      - Yes, all the details are right
+      - The information is complete and correct
+      - Both name and wallet address are good
+      - Yes, that's the correct contact information
+      - The details you have are accurate
+      - All of that contact info is right
+      - The address matches what I wanted
+      - That's the right name and crypto info
+      - The wallet details are correct
+      - Name, network and address all look good
+      - Yes, save with these details
+
+  - intent: ask_validation_status
+    examples: |
+      - Is this address valid?
+      - Did you verify the address?
+      - Is this wallet address correct?
+      - Can you check if the address is valid?
+      - Has the validation completed?
+      - Is this a real Bitcoin address?
+      - Did you validate this wallet?
+      - Can you confirm this is a real address?
+      - Is the address format correct?
+      - Have you checked if this address works?
+      - Is this a valid Ethereum address?
+      - Does this address look right to you?
+      - Has the address been confirmed yet?
+      - Can you tell if this address is legitimate?
+      - Is my wallet address in the right format?
+      - Have you finished validating the address?
+      - Does the checksum match for this address?
+      - Is this address recognized by the network?
+      - Can you verify if this looks like a real wallet?
+      - Has the system validated this address?
+
+  - intent: inform
+    examples: |
+      - It's [Bitcoin](crypto_description)
+      - The name is [John Smith](contact_add_entity_name)
+      - Use [Ethereum](contact_add_entity_crypto_network) network
+      - This is for [private transfers](crypto_description)
+      - It's a [business contact](crypto_description)
+      - The network is [BTC](contact_add_entity_crypto_network)
+      - This is [Sarah's](contact_add_entity_name) wallet
+      - Use this for [recurring payments](crypto_description)
+      - It's my [friend's](crypto_description) wallet
+      - Save as [high priority](crypto_description)
+      - This is a [verified](crypto_description) address
+      - Add to [family](crypto_description) contacts
+      - Mark as [trusted](crypto_description)
+      - It's for [merchant](crypto_description) payments
+      - Save with [nickname](crypto_description) [Crypto King](contact_add_entity_name)
+      - This is my [personal](crypto_description) address
+      - He's a [business partner](crypto_description)
+      - Label this as [exchange](crypto_description) wallet
+      - Set [transfer limit](crypto_description) to [1000](contact_add_entity_wallet_address)
+      - Add [memo](crypto_description) [Monthly rent](crypto_description)
+
+  - intent: cancel
+    examples: |
+      - Cancel
+      - Stop
+      - Forget it
+      - Never mind
+      - I changed my mind
+      - Exit
+      - Quit
+      - Cancel this process
+      - Stop adding contact
+      - Let's cancel this
+      - I don't want to continue
+      - Abort this operation
+      - End this process
+      - Stop the contact creation
+      - Let's stop here
+      - Cancel the whole thing
+      - I want to cancel
+      - Don't save this contact
+      - Drop this operation
+      - I no longer want to add this contact
+
+  - intent: help
+    examples: |
+      - Help
+      - I need help
+      - How does this work?
+      - What should I do?
+      - Can you assist me?
+      - I'm confused
+      - Guide me through this
+      - How do I add a contact?
+      - What information is needed?
+      - I don't understand
+      - How do wallet addresses work?
+      - What's a crypto network?
+      - Show me how to do this
+      - What are the required fields?
+      - I'm stuck, can you help?
+      - What format should the address be in?
+      - How can I verify this is correct?
+      - What happens after I add a contact?
+      - Is this information secure?
+      - How do I know if the address is valid?
+
+  - intent: out_of_scope
+    examples: |
+      - What's the weather today?
+      - Tell me a joke
+      - Can you order pizza for me?
+      - What's the price of Apple stock?
+      - How tall is Mount Everest?
+      - Who won the World Cup?
+      - Can you book a flight for me?
+      - What's the meaning of life?
+      - Tell me about quantum physics
+      - What time is it in Tokyo?
+      - Can you play music?
+      - How do I invest in real estate?
+      - What movies are playing?
+      - Find me a hotel in Paris
+      - What's the recipe for lasagna?
+      - How do I file my taxes?
+      - What's the capital of Mongolia?
+      - Can you speak Spanish?
+      - Calculate a tip for my bill
+      - Who is the president of France?
+
+  - intent: context_switch
+    examples: |
+      - I want to check my balance [instead](switch_context)
+      - Let me [first](switch_context) transfer some funds
+      - Can I [quickly](switch_context) check my transaction history?
+      - [Before we continue](switch_context), I need to verify a payment
+      - [Hold on](switch_context), I want to do something else
+      - [Actually](switch_context), show me my recent transactions
+      - I'd like to [pause this](switch_context) and check exchange rates
+      - [Wait](switch_context), let me see my portfolio first
+      - [Interrupt](switch_context) this to check network fees
+      - [Instead of this](switch_context), I want to add a different contact
+      - [Actually](switch_context) I need to withdraw some funds
+      - Can we [put this on hold](switch_context) while I check something?
+      - [Let me first](switch_context) verify a wallet address
+      - [Before adding this contact](switch_context), show me my contacts list
+      - [Hang on](switch_context), I need to check cryptocurrency prices
+      - [Switch to](switch_context) my security settings
+      - I need to [briefly](switch_context) look at my notifications
+      - [Can we pause](switch_context) to check network status?
+      - [Rather than continuing](switch_context), I want to send a transaction
+      - [Change task](switch_context) to view my account settings
+
+  - intent: ask_save_progress
+    examples: |
+      - Can you save my progress?
+      - Save this information for later
+      - Don't lose what I've entered so far
+      - Will my information be saved if I return?
+      - Can we continue this later?
+      - Will you remember these details?
+      - Save my contact details
+      - Keep this information for when I return
+      - Can I come back to this later?
+      - Don't lose my progress
+      - Will this be saved automatically?
+      - Save and exit
+      - Can I continue filling this later?
+      - I want to complete this later
+      - Keep my partial information
+      - Is my progress saved?
+      - Save my form and exit
+      - Hold my information until I return
+      - Can I pause and resume later?
+      - Will you remember where we left off?

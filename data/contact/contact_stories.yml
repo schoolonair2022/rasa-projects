@@ -1,0 +1,900 @@
+version: "3.1"
+
+stories:
+  # HAPPY PATH SCENARIOS
+
+  - story: Add contact - complete information in initial request
+    steps:
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "John Smith"
+          - contact_add_entity_crypto_network: "Bitcoin"
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  - story: Add contact - step by step happy path
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "Sarah Johnson"
+      - slot_was_set:
+          - contact_add_entity_name: "Sarah Johnson"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  # PARTIAL INFORMATION SCENARIOS
+
+  - story: Add contact - only name provided initially
+    steps:
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "Michael Brown"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - contact_add_entity_name: "Michael Brown"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  - story: Add contact - name and network provided initially
+    steps:
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "Emma Wilson"
+          - contact_add_entity_crypto_network: "Litecoin"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - contact_add_entity_name: "Emma Wilson"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Litecoin"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "LVkPNYuhBbraFYEWA8oqQAYgGYMY57zZj5"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "LVkPNYuhBbraFYEWA8oqQAYgGYMY57zZj5"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  # ERROR HANDLING SCENARIOS
+
+  - story: Add contact - invalid wallet address
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "James Davis"
+      - slot_was_set:
+          - contact_add_entity_name: "James Davis"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "invalid123"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "invalid123"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: false
+      - slot_was_set:
+          - validation_attempts: 1
+      - action: utter_invalid_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  - story: Add contact - multiple invalid wallet addresses
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "Oliver Taylor"
+      - slot_was_set:
+          - contact_add_entity_name: "Oliver Taylor"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "invalid123"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "invalid123"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: false
+      - slot_was_set:
+          - validation_attempts: 1
+      - action: utter_invalid_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "stillwrong456"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "stillwrong456"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: false
+      - slot_was_set:
+          - validation_attempts: 2
+      - action: utter_invalid_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "notvalid789"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "notvalid789"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: false
+      - slot_was_set:
+          - validation_attempts: 3
+      - action: action_offer_validation_alternatives
+      - action: utter_contact_validation_help
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  - story: Add contact - existing contact update
+    steps:
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "Sophia Miller"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: true
+      - action: utter_contact_already_exists
+      - intent: affirm
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - contact_add_entity_name: "Sophia Miller"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Ripple"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Ripple"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_update_contact
+      - action: utter_confirm_modification
+
+  - story: Add contact - existing contact decline update
+    steps:
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "William Jones"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: true
+      - action: utter_contact_already_exists
+      - intent: deny
+      - action: utter_cancel_add_contact
+      - action: action_reset_contact_slots
+
+  # NETWORK-ADDRESS MISMATCH SCENARIO
+
+  - story: Add contact - network address mismatch
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "Noah White"
+      - slot_was_set:
+          - contact_add_entity_name: "Noah White"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: false
+      - slot_was_set:
+          - network_address_mismatch: true
+      - action: utter_network_address_mismatch
+      - action: action_clear_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - network_address_mismatch: false
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  # CANCELLATION SCENARIOS
+
+  - story: Add contact - cancellation during process
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "Olivia Clark"
+      - slot_was_set:
+          - contact_add_entity_name: "Olivia Clark"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: cancel
+      - action: utter_cancel_add_contact
+      - action: action_deactivate_loop
+      - active_loop: null
+      - action: action_reset_contact_slots
+
+  # INTERRUPTION SCENARIOS
+
+  - story: Add contact - help request during process
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: help
+      - action: utter_contact_addition_help
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "Daniel Lee"
+      - slot_was_set:
+          - contact_add_entity_name: "Daniel Lee"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  - story: Add contact - clarification request during process
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "Ava Martinez"
+      - slot_was_set:
+          - contact_add_entity_name: "Ava Martinez"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: request_clarification
+      - action: action_provide_clarification
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  - story: Add contact - context switch with save
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "Isabella Thompson"
+      - slot_was_set:
+          - contact_add_entity_name: "Isabella Thompson"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: context_switch
+      - action: action_ask_save_progress
+      - intent: affirm
+      - action: action_save_progress
+      - action: action_deactivate_loop
+      - active_loop: null
+      - slot_was_set:
+          - contact_flow_active: true
+      - action: utter_handle_different_intent
+      # Later continuation
+      - intent: continue_process
+      - action: action_resume_contact_flow
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  # GOING BACK SCENARIO
+
+  - story: Add contact - go back to previous question
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "Ethan Wilson"
+      - slot_was_set:
+          - contact_add_entity_name: "Ethan Wilson"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: go_back
+      - action: action_go_back_in_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  # UNSUPPORTED CRYPTOCURRENCY SCENARIO
+
+  - story: Add contact - unsupported cryptocurrency
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "Charlotte Garcia"
+      - slot_was_set:
+          - contact_add_entity_name: "Charlotte Garcia"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "ObscureCoin"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "ObscureCoin"
+      - action: action_validate_crypto_network
+      - slot_was_set:
+          - unsupported_cryptocurrency: true
+      - action: utter_unsupported_cryptocurrency
+      - action: action_clear_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - unsupported_cryptocurrency: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  # MULTIPLE NETWORKS SCENARIO
+
+  - story: Add contact - multiple networks detection
+    steps:
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "Lucas Rodriguez"
+          - contact_add_entity_crypto_network: "Bitcoin, Ethereum"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - multiple_networks_detected: true
+      - action: utter_confirm_multiple_networks
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - multiple_networks_detected: false
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - contact_add_entity_name: "Lucas Rodriguez"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+          - active_loop: null
+          - action: action_save_contact
+          - action: utter_contact_added_successfully
+
+  # RESTART SCENARIO
+
+  - story: Add contact - restart during process
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "Henry Scott"
+      - slot_was_set:
+          - contact_add_entity_name: "Henry Scott"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: restart
+      - action: action_deactivate_loop
+      - active_loop: null
+      - action: action_reset_contact_slots
+      - action: utter_greet
+
+  # OUT OF SCOPE SCENARIO
+
+  - story: Add contact - out of scope during process
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "Amelia Adams"
+      - slot_was_set:
+          - contact_add_entity_name: "Amelia Adams"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: out_of_scope
+      - action: utter_out_of_scope
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  # VALIDATION STATUS INQUIRY
+
+  - story: Add contact - ask validation status during process
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "Jacob Turner"
+      - slot_was_set:
+          - contact_add_entity_name: "Jacob Turner"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - intent: ask_validation_status
+      - action: action_provide_validation_status
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  # DIRECT CONFIRMATION SCENARIO
+
+  - story: Add contact - direct confirmation of details
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "Mia Collins"
+      - slot_was_set:
+          - contact_add_entity_name: "Mia Collins"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - intent: confirm_contact_details
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+      - action: action_deactivate_loop
+      - active_loop: null
+
+  # TYPICAL GEN Z STYLE REQUEST
+
+  - story: Add contact - Gen Z style request
+    steps:
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "Alex"
+          - contact_add_entity_crypto_network: "BTC"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - contact_add_entity_name: "Alex"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  # PROFESSIONAL USER WITH ABBREVIATIONS
+
+  - story: Add contact - professional user with abbreviated terms
+    steps:
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "CFO John"
+          - contact_add_entity_crypto_network: "ETH"
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  # REQUEST WITH TYPOS
+
+  - story: Add contact - request with typos in network name
+    steps:
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "Sofia Lopez"
+          - contact_add_entity_crypto_network: "Etherum" # Typo
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - action: action_correct_crypto_network_typo
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully

@@ -1,44 +1,44 @@
-version: "3.1"
+# version: "3.1"
 
-nlu:
-- intent: inform
-  examples: |
-    - [0x123456789abcdef123456789abcdef123456789a](wallet_address)
-    - [0x987654321fedcba987654321fedcba98765432](wallet_address)
-    - [Bitcoin](crypto_description)
-    - [Ethereum network](crypto_description)
-    - [ICO project](crypto_description)
-    - [a cryptocurrency that promises 100x returns](crypto_description)
-    - [Solana ecosystem](crypto_description)
-    - They promise [guaranteed 50% daily returns](crypto_description)
-    - It's a [new DeFi protocol with very high APY](crypto_description)
-    - [a token that will revolutionize the industry](crypto_description)
-    - [the founder says it's risk-free](crypto_description)
-    - Yes, I'd like to [continue adding the contact](continue_flow)
-    - No, [focus on my new question](switch_context)
-    - [answer my question first](switch_context)
-    - [let's continue adding the contact](continue_flow)
-    - [go back to adding contact](continue_flow)
-    - [skip that](switch_context)
-    - [forget the contact](switch_context)
+# nlu:
+# - intent: inform
+#   examples: |
+#     - [0x123456789abcdef123456789abcdef123456789a](wallet_address)
+#     - [0x987654321fedcba987654321fedcba98765432](wallet_address)
+#     - [Bitcoin](crypto_description)
+#     - [Ethereum network](crypto_description)
+#     - [ICO project](crypto_description)
+#     - [a cryptocurrency that promises 100x returns](crypto_description)
+#     - [Solana ecosystem](crypto_description)
+#     - They promise [guaranteed 50% daily returns](crypto_description)
+#     - It's a [new DeFi protocol with very high APY](crypto_description)
+#     - [a token that will revolutionize the industry](crypto_description)
+#     - [the founder says it's risk-free](crypto_description)
+#     - Yes, I'd like to [continue adding the contact](continue_flow)
+#     - No, [focus on my new question](switch_context)
+#     - [answer my question first](switch_context)
+#     - [let's continue adding the contact](continue_flow)
+#     - [go back to adding contact](continue_flow)
+#     - [skip that](switch_context)
+#     - [forget the contact](switch_context)
 
-- intent: out_of_scope
-  examples: |
-    - I want to order a pizza
-    - What's the weather today?
-    - Can you play some music?
-    - Tell me a joke
-    - How old are you?
-    - Who is the president?
-    - Book a flight
-    - I need a hotel
-    - Where is the nearest restaurant?
-    - Calculate 15% tip on $35
-    - Translate hello to Spanish
-    - Show me directions to New York
-    - I need medical advice
-    - What's your favorite color?
-    - How tall are you?
-    - I'm bored
-    - What time is it?
-    - Send an email for me
+# - intent: out_of_scope
+#   examples: |
+#     - I want to order a pizza
+#     - What's the weather today?
+#     - Can you play some music?
+#     - Tell me a joke
+#     - How old are you?
+#     - Who is the president?
+#     - Book a flight
+#     - I need a hotel
+#     - Where is the nearest restaurant?
+#     - Calculate 15% tip on $35
+#     - Translate hello to Spanish
+#     - Show me directions to New York
+#     - I need medical advice
+#     - What's your favorite color?
+#     - How tall are you?
+#     - I'm bored
+#     - What time is it?
+#     - Send an email for me

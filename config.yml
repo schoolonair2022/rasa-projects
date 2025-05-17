@@ -21,6 +21,7 @@ pipeline:
     max_ngram: 4
   - name: DIETClassifier
     epochs: 150
+    entity_recognition: true
     constrain_similarities: true
     model_confidence: softmax
     ranking_length: 5  # Return top 5 intent confidences
@@ -31,7 +32,7 @@ pipeline:
     epochs: 100
     retrieval_intent: faq
   - name: FallbackClassifier
-    threshold: 0.6
+    threshold: 0.3
     ambiguity_threshold: 0.1
     fallback_intent_name: nlu_fallback
 # # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
