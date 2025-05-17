@@ -149,29 +149,7 @@ rules:
       - action: add_contact_form
       - active_loop: add_contact_form
 
-  # Handle context switch - save progress
-  - rule: Handle context switch with save
-    condition:
-      - active_loop: add_contact_form
-    steps:
-      - intent: context_switch
-      - action: action_ask_save_progress
-      - intent: affirm
-      - action: action_save_progress
-      - action: action_deactivate_loop
-      - active_loop: null
-
-  # Handle context switch - discard progress
-  - rule: Handle context switch without save
-    condition:
-      - active_loop: add_contact_form
-    steps:
-      - intent: context_switch
-      - action: action_ask_save_progress
-      - intent: deny
-      - action: action_reset_contact_slots
-      - action: action_deactivate_loop
-      - active_loop: null
+  # For context switch - see stories.yml for handling save/discard progress options
 
   # Resume add contact process
   - rule: Resume add contact process
