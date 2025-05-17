@@ -1,0 +1,95 @@
+version: "3.1"
+
+nlu:
+  - intent: continue_process
+    examples: |
+      - Let's continue
+      - Continue
+      - Go on
+      - Proceed
+      - Keep going
+      - Move forward
+      - Next step
+      - Let's move on
+      - Continue with the process
+      - Go ahead
+      - I want to continue
+      - Let's proceed
+      - Resume process
+      - Carry on
+      - Move to the next step
+      - Keep the process going
+      - Go forward
+      - I'm ready to continue
+      - Proceed with the form
+      - Let's finish this
+
+  - intent: go_back
+    examples: |
+      - Go back
+      - Previous step
+      - Back to the last question
+      - I want to go back
+      - Return to previous
+      - Take me back
+      - Let's go back
+      - Back please
+      - Previous field
+      - Return to the last step
+      - I need to go back
+      - Can we go back?
+      - Back to the previous question
+      - Return to where we were
+      - Go to the previous field
+      - Back to the last part
+      - Previous input
+      - Move back one step
+      - Let me go back
+      - I want to change my previous answer
+
+  
+  - intent: affirm
+    examples: |
+      - Yes
+      - Yeah
+      - Correct
+      - That's right
+      - Yep
+      - Sure
+      - Exactly
+      - That looks good
+      - That's correct
+      - Absolutely
+      - Sounds good
+      - I confirm
+      - Perfect
+      - Yes please
+      - Yeah that's it
+      - That's exactly right
+      - Correct information
+      - That information is correct
+      - Yes, go ahead
+      - Yes, that's what I want
+
+  - intent: deny
+    examples: |
+      - No
+      - Nope
+      - That's wrong
+      - Incorrect
+      - Not right
+      - That's not it
+      - No way
+      - Not at all
+      - That's incorrect
+      - That information is wrong
+      - That's not what I meant
+      - No, that's not right
+      - Not correct
+      - I don't think so
+      - No, I don't want that
+      - That's not correct
+      - Not what I had in mind
+      - Nah
+      - That doesn't look right
+      - No thanks

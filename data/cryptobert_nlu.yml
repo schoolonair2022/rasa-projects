@@ -1,107 +1,107 @@
-- intent: ask_sentiment
-  examples: |
-    - Should I invest in Bitcoin?
-    - What do you think about ETH?
-    - Is Solana worth buying?
-    - I'm worried about the bear market
-    - I'm really excited about NFTs
-    - The market seems positive
-    - Cryptocurrencies are crashing
-    - I just lost money in the exchange collapse
-    - Analyze the current market situation
-    - Are you optimistic about Bitcoin's price?
-    - I think this is a good time to buy
-    - Should I sell my tokens?
-    - Does this coin have potential?
-    - Analyze the market sentiment for me
-    - I feel the market is about to recover
-    - Is this a bull trap?
-    - I'm really concerned about my investment
+# - intent: ask_sentiment
+#   examples: |
+#     - Should I invest in Bitcoin?
+#     - What do you think about ETH?
+#     - Is Solana worth buying?
+#     - I'm worried about the bear market
+#     - I'm really excited about NFTs
+#     - The market seems positive
+#     - Cryptocurrencies are crashing
+#     - I just lost money in the exchange collapse
+#     - Analyze the current market situation
+#     - Are you optimistic about Bitcoin's price?
+#     - I think this is a good time to buy
+#     - Should I sell my tokens?
+#     - Does this coin have potential?
+#     - Analyze the market sentiment for me
+#     - I feel the market is about to recover
+#     - Is this a bull trap?
+#     - I'm really concerned about my investment
 
-- intent: check_scam
-  examples: |
-    - Is this project a scam?
-    - Check this token for me
-    - Is [ABC] Token trustworthy?
-    - They promise 100% profit every month
-    - I received an email about a new coin presale
-    - Analyze this ICO to see if it's fraudulent
-    - They guarantee returns but require upfront payment
-    - Are there any signs of fraud in this project?
-    - This coin just launched, is it safe?
-    - I was invited to a Telegram pump and dump group
-    - Verify if this wallet is trustworthy
-    - They say there's no investment risk
-    - Is this a rugpull?
-    - I'm suspicious about this project
-    - Analyze the whitepaper to find signs of fraud
-    - Do I have a chance to get rich with this token?
-    - Is this a Ponzi scheme?
-    - Is this project worth investing in?
+# - intent: check_scam
+#   examples: |
+#     - Is this project a scam?
+#     - Check this token for me
+#     - Is [ABC] Token trustworthy?
+#     - They promise 100% profit every month
+#     - I received an email about a new coin presale
+#     - Analyze this ICO to see if it's fraudulent
+#     - They guarantee returns but require upfront payment
+#     - Are there any signs of fraud in this project?
+#     - This coin just launched, is it safe?
+#     - I was invited to a Telegram pump and dump group
+#     - Verify if this wallet is trustworthy
+#     - They say there's no investment risk
+#     - Is this a rugpull?
+#     - I'm suspicious about this project
+#     - Analyze the whitepaper to find signs of fraud
+#     - Do I have a chance to get rich with this token?
+#     - Is this a Ponzi scheme?
+#     - Is this project worth investing in?
 
-- intent: crypto_topic
-  examples: |
-    - How does Bitcoin work?
-    - How to create a cold wallet
-    - Taxes from cryptocurrency profits
-    - What are smart contracts?
-    - I want to learn about NFTs
-    - How does DeFi work?
-    - Legal regulations on cryptocurrencies
-    - How to secure a cryptocurrency wallet
-    - What is Layer 2?
-    - Is staking safe?
-    - Explain proof of stake
-    - What should I invest in?
-    - What is Web3?
-    - How to buy Bitcoin
-    - How to mine Ethereum?
-    - How do flash loans work?
-    - What is arbitrage in crypto?
-    - Explain Uniswap vs Sushiswap
+# - intent: crypto_topic
+#   examples: |
+#     - How does Bitcoin work?
+#     - How to create a cold wallet
+#     - Taxes from cryptocurrency profits
+#     - What are smart contracts?
+#     - I want to learn about NFTs
+#     - How does DeFi work?
+#     - Legal regulations on cryptocurrencies
+#     - How to secure a cryptocurrency wallet
+#     - What is Layer 2?
+#     - Is staking safe?
+#     - Explain proof of stake
+#     - What should I invest in?
+#     - What is Web3?
+#     - How to buy Bitcoin
+#     - How to mine Ethereum?
+#     - How do flash loans work?
+#     - What is arbitrage in crypto?
+#     - Explain Uniswap vs Sushiswap
 
-- intent: share_expertise
-  examples: |
-    - I'm new to crypto
-    - I've been trading bitcoin for 5 years
-    - I'm a complete beginner
-    - I don't understand anything about blockchain
-    - I'm developing a dApp
-    - I work in the DeFi space
-    - I've never bought cryptocurrency
-    - I'm a solidity developer
-    - I don't know anything about staking
-    - I've invested in many ICOs
-    - I want to learn from the very basics
-    - I've developed some NFTs myself
-    - I only know basic trading
-    - I still don't understand gas fees
-    - I regularly use DEX
-    - I'm a Rust coder
-    - I've never used metamask
-    - I'm a professional trader
+# - intent: share_expertise
+#   examples: |
+#     - I'm new to crypto
+#     - I've been trading bitcoin for 5 years
+#     - I'm a complete beginner
+#     - I don't understand anything about blockchain
+#     - I'm developing a dApp
+#     - I work in the DeFi space
+#     - I've never bought cryptocurrency
+#     - I'm a solidity developer
+#     - I don't know anything about staking
+#     - I've invested in many ICOs
+#     - I want to learn from the very basics
+#     - I've developed some NFTs myself
+#     - I only know basic trading
+#     - I still don't understand gas fees
+#     - I regularly use DEX
+#     - I'm a Rust coder
+#     - I've never used metamask
+#     - I'm a professional trader
 
-- intent: mention_crypto
-  examples: |
-    - Bitcoin
-    - Ethereum
-    - Solana
-    - BNB
-    - Cardano
-    - Polkadot
-    - USDT
-    - XRP
-    - I like Avalanche
-    - Cosmos has potential
-    - Terra Luna collapsed
-    - Filecoin solves storage issues
-    - Bitcoin is king
-    - Polygon helps Ethereum scale
-    - Chainlink is the leading oracle
-    - What do you know about Tezos
-    - I'm staking Eth
-    - Dogecoin is a meme coin
-    - Layer 1s like Solana are very fast
-    - Bitcoin Lightning Network
-    - Have you heard about zkSync?
-    - Arbitrum is an L2 for Ethereum
+# - intent: mention_crypto
+#   examples: |
+#     - Bitcoin
+#     - Ethereum
+#     - Solana
+#     - BNB
+#     - Cardano
+#     - Polkadot
+#     - USDT
+#     - XRP
+#     - I like Avalanche
+#     - Cosmos has potential
+#     - Terra Luna collapsed
+#     - Filecoin solves storage issues
+#     - Bitcoin is king
+#     - Polygon helps Ethereum scale
+#     - Chainlink is the leading oracle
+#     - What do you know about Tezos
+#     - I'm staking Eth
+#     - Dogecoin is a meme coin
+#     - Layer 1s like Solana are very fast
+#     - Bitcoin Lightning Network
+#     - Have you heard about zkSync?
+#     - Arbitrum is an L2 for Ethereum

@@ -1,0 +1,224 @@
+version: "3.1"
+
+rules:
+  # Primary rule: Activate add contact form
+  - rule: Activate add contact form
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+
+  # Form submission after all slots are filled
+  - rule: Submit add contact form
+    condition:
+      - active_loop: add_contact_form
+    steps:
+      - action: add_contact_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  # Handle existing contact - user wants to update
+  - rule: Handle existing contact - update
+    condition:
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - contact_exists: true
+    steps:
+      - action: utter_contact_already_exists
+      - intent: affirm
+      - action: action_update_contact
+      - action: utter_confirm_modification
+      - action: action_deactivate_loop
+      - active_loop: null
+
+  # Handle existing contact - user declines update
+  - rule: Handle existing contact - decline update
+    condition:
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - contact_exists: true
+    steps:
+      - action: utter_contact_already_exists
+      - intent: deny
+      - action: utter_cancel_add_contact
+      - action: action_deactivate_loop
+      - active_loop: null
+
+  # Handle invalid wallet address
+  - rule: Handle invalid wallet address
+    condition:
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - address_valid: false
+    steps:
+      - action: utter_invalid_wallet_address
+      # Form will automatically request address again
+
+  # Maximum validation attempts exceeded
+  - rule: Max validation attempts reached
+    condition:
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - validation_attempts: 3
+    steps:
+      - action: action_offer_validation_alternatives
+      - action: utter_contact_validation_help
+
+  # Cancel add contact process
+  - rule: Cancel add contact process
+    condition:
+      - active_loop: add_contact_form
+    steps:
+      - intent: cancel
+      - action: utter_cancel_add_contact
+      - action: action_deactivate_loop
+      - active_loop: null
+      - action: action_reset_contact_slots
+
+  # User requests to go back to previous step
+  - rule: Go back to previous step in form
+    condition:
+      - active_loop: add_contact_form
+    steps:
+      - intent: go_back
+      - action: action_go_back_in_form
+      - active_loop: add_contact_form
+
+  # Handle interruption with help request
+  - rule: Handle help request during contact addition
+    condition:
+      - active_loop: add_contact_form
+    steps:
+      - intent: help
+      - action: utter_contact_addition_help
+      - action: add_contact_form
+      - active_loop: add_contact_form
+
+  # Handle clarification request
+  - rule: Handle clarification request during contact addition
+    condition:
+      - active_loop: add_contact_form
+    steps:
+      - intent: request_clarification
+      - action: action_provide_clarification
+      - action: add_contact_form
+      - active_loop: add_contact_form
+
+  # Handle context switch - save progress
+  - rule: Handle context switch with save
+    condition:
+      - active_loop: add_contact_form
+    steps:
+      - intent: context_switch
+      - action: action_ask_save_progress
+      - intent: affirm
+      - action: action_save_progress
+      - action: action_deactivate_loop
+      - active_loop: null
+
+  # Handle context switch - discard progress
+  - rule: Handle context switch without save
+    condition:
+      - active_loop: add_contact_form
+    steps:
+      - intent: context_switch
+      - action: action_ask_save_progress
+      - intent: deny
+      - action: action_reset_contact_slots
+      - action: action_deactivate_loop
+      - active_loop: null
+
+  # Resume add contact process
+  - rule: Resume add contact process
+    condition:
+      - slot_was_set:
+          - contact_flow_active: true
+    steps:
+      - intent: continue_process
+      - action: action_resume_contact_flow
+      - action: add_contact_form
+      - active_loop: add_contact_form
+
+  # Handle direct confirmation of contact details
+  - rule: Handle direct confirmation of contact details
+    condition:
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - contact_add_entity_name: true
+          - contact_add_entity_crypto_network: true
+          - contact_add_entity_wallet_address: true
+    steps:
+      - intent: confirm_contact_details
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+      - action: action_deactivate_loop
+      - active_loop: null
+
+  # Handle network/address mismatch
+  - rule: Handle network address mismatch
+    condition:
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - network_address_mismatch: true
+    steps:
+      - action: utter_network_address_mismatch
+      - action: action_clear_wallet_address
+      - action: add_contact_form
+      - active_loop: add_contact_form
+
+  # Handle unsupported cryptocurrency
+  - rule: Handle unsupported cryptocurrency
+    condition:
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - unsupported_cryptocurrency: true
+    steps:
+      - action: utter_unsupported_cryptocurrency
+      - action: action_clear_crypto_network
+      - action: add_contact_form
+      - active_loop: add_contact_form
+
+  # Handle out of scope during form
+  - rule: Handle out of scope during form
+    condition:
+      - active_loop: add_contact_form
+    steps:
+      - intent: out_of_scope
+      - action: utter_out_of_scope
+      - action: add_contact_form
+      - active_loop: add_contact_form
+
+  # Handle restart during contact addition
+  - rule: Handle restart during contact addition
+    condition:
+      - active_loop: add_contact_form
+    steps:
+      - intent: restart
+      - action: action_deactivate_loop
+      - active_loop: null
+      - action: action_reset_contact_slots
+      - action: utter_greet
+
+  # Handle validation status inquiry
+  - rule: Handle validation status inquiry
+    condition:
+      - active_loop: add_contact_form
+    steps:
+      - intent: ask_validation_status
+      - action: action_provide_validation_status
+      - action: add_contact_form
+      - active_loop: add_contact_form
+
+  # Handle submission of multiple network addresses
+  - rule: Handle multiple network addresses
+    condition:
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - multiple_networks_detected: true
+    steps:
+      - action: utter_confirm_multiple_networks
+      - action: add_contact_form
+      - active_loop: add_contact_form
