@@ -55,8 +55,11 @@ class ActionCorrectCryptoNetworkTypo(Action):
             # Inform the user about the correction
             dispatcher.utter_message(text=f"I'll use {corrected_network} as the cryptocurrency network.")
             
-            # Return the corrected network
-            return [SlotSet("contact_add_entity_crypto_network", corrected_network)]
+            # Return the corrected network and set the typo flag
+            return [
+                SlotSet("contact_add_entity_crypto_network", corrected_network),
+                SlotSet("crypto_network_typo", True)
+            ]
         
         # If no close match, don't change the value
-        return []
+        return [SlotSet("crypto_network_typo", False)]

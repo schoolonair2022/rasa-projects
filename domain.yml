@@ -233,6 +233,13 @@ slots:
     mappings:
       - type: custom
   
+  # Slot for crypto network typo detection
+  crypto_network_typo:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+  
   # Context switching and workflow management slots
   contact_flow_active:
     type: bool
