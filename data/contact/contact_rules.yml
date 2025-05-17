@@ -199,8 +199,6 @@ rules:
       - active_loop: add_contact_form
       - slot_was_set:
           - network_address_mismatch: true
-      - slot_was_set:
-          - requested_slot: contact_add_entity_wallet_address
     steps:
       - action: utter_network_address_mismatch
       - action: action_clear_wallet_address
@@ -213,8 +211,6 @@ rules:
       - active_loop: add_contact_form
       - slot_was_set:
           - unsupported_cryptocurrency: true
-      - slot_was_set:
-          - requested_slot: contact_add_entity_crypto_network
     steps:
       - action: utter_unsupported_cryptocurrency
       - action: action_clear_crypto_network

@@ -26,10 +26,7 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
-      - action: action_validate_wallet_address
-      - slot_was_set:
-          - address_valid: true
-      - action: action_save_contact
+      - action: action_save_contact  
       - action: utter_contact_added_successfully
 
   - story: Add contact - step by step happy path
@@ -365,6 +362,7 @@ stories:
           - requested_slot: contact_add_entity_wallet_address
       - action: utter_network_address_mismatch
       - action: action_clear_wallet_address
+      - action: add_contact_form  # Thêm action form trực tiếp sau các utter và clear actions
       - intent: inform
         entities:
           - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
@@ -649,8 +647,11 @@ stories:
       - action: action_validate_crypto_network
       - slot_was_set:
           - unsupported_cryptocurrency: true
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
       - action: utter_unsupported_cryptocurrency
       - action: action_clear_crypto_network
+      - action: add_contact_form  # Thêm action form trực tiếp sau các utter và clear actions 
       - intent: inform
         entities:
           - contact_add_entity_crypto_network: "Bitcoin"
