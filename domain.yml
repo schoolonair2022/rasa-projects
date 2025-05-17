@@ -87,6 +87,21 @@ actions:
   - action_extract_crypto_entities
   - action_handle_context_switch
   - action_ask_crypto_clarification
+  - action_check_contact_existence
+  - action_correct_crypto_network_typo
+  - action_save_contact
+  - action_update_contact
+  - action_validate_crypto_network
+  - action_clear_crypto_network
+  - action_clear_wallet_address
+  - action_deactivate_loop
+  - action_go_back_in_form
+  - action_offer_validation_alternatives
+  - action_provide_clarification
+  - action_provide_validation_status
+  - action_resume_contact_flow
+  - action_save_progress
+  - action_ask_save_progress
   
 entities:
   - crypto_description
