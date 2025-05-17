@@ -123,6 +123,18 @@ slots:
         entity: contact_add_entity_wallet_address
     influence_conversation: true
 
+  active_loop:
+    type: text
+    mappings:
+      - type: custom
+    influence_conversation: false
+    
+  action:
+    type: text
+    mappings:
+      - type: custom
+    influence_conversation: false
+    
   crypto_abbreviation:
     type: text
     mappings:
