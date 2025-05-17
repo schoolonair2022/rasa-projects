@@ -13,6 +13,7 @@ stories:
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
+      - action: action_listen
       - action: action_validate_wallet_address
       - slot_was_set:
           - address_valid: true
@@ -67,6 +68,7 @@ stories:
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
+      - action: action_listen
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -103,6 +105,7 @@ stories:
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
+      - action: action_listen
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -632,6 +635,7 @@ stories:
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
+      - action: action_listen
       - slot_was_set:
           - multiple_networks_detected: true
       - action: utter_confirm_multiple_networks
@@ -829,6 +833,7 @@ stories:
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
+      - action: action_listen
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -863,6 +868,7 @@ stories:
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
+      - action: action_listen
       - action: action_validate_wallet_address
       - slot_was_set:
           - address_valid: true
