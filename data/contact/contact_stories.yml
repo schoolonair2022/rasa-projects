@@ -532,6 +532,31 @@ stories:
       - active_loop: null
       - action: action_save_contact
       - action: utter_contact_added_successfully
+      
+  - story: Add contact - context switch without save
+    steps:
+      - intent: contact_add_request
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_name
+      - intent: inform
+        entities:
+          - contact_add_entity_name: "David Wilson"
+      - slot_was_set:
+          - contact_add_entity_name: "David Wilson"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - intent: context_switch
+      - action: action_ask_save_progress
+      - intent: deny
+      - action: action_reset_contact_slots
+      - action: action_deactivate_loop
+      - active_loop: null
+      - action: utter_handle_different_intent
 
   # GOING BACK SCENARIO
 
