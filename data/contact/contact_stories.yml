@@ -875,30 +875,32 @@ stories:
       - action: action_save_contact
       - action: utter_contact_added_successfully
 
-  # REQUEST WITH TYPOS
+  # REQUEST WITH TYPOS - SAMPLE FOR TRAINING
 
-  - story: Add contact - request with typos in network name
+  - story: Add contact - crypto network typo correction sample
     steps:
       - intent: contact_add_request
         entities:
-          - contact_add_entity_name: "Sofia Lopez"
-          - contact_add_entity_crypto_network: "Etherum" # Typo
+          - contact_add_entity_name: "Alice Smith"
+          - contact_add_entity_crypto_network: "Bitcon" # Typo (missing i)
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
       - action: action_listen 
       - action: action_correct_crypto_network_typo
       - slot_was_set:
-          - contact_add_entity_crypto_network: "Ethereum"
+          - contact_add_entity_crypto_network: "Bitcoin"
       - action: add_contact_form
       - active_loop: add_contact_form
+      - slot_was_set:
+          - contact_add_entity_name: "Alice Smith"
       - slot_was_set:
           - requested_slot: contact_add_entity_wallet_address
       - intent: inform
         entities:
-          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
       - slot_was_set:
-          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
       - action: action_validate_wallet_address
       - slot_was_set:
           - address_valid: true
