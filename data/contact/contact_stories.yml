@@ -10,10 +10,13 @@ stories:
           - contact_add_entity_name: "John Smith"
           - contact_add_entity_crypto_network: "Bitcoin"
           - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - slot_was_set:
+          - contact_add_entity_name: "John Smith"
+          - contact_add_entity_crypto_network: "Bitcoin"
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
-      - action: action_listen
       - action: action_validate_wallet_address
       - slot_was_set:
           - address_valid: true
@@ -65,14 +68,13 @@ stories:
       - intent: contact_add_request
         entities:
           - contact_add_entity_name: "Michael Brown"
+      - slot_was_set:
+          - contact_add_entity_name: "Michael Brown"
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
-      - action: action_listen
       - action: add_contact_form
       - active_loop: add_contact_form
-      - slot_was_set:
-          - contact_add_entity_name: "Michael Brown"
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: inform
@@ -102,16 +104,14 @@ stories:
         entities:
           - contact_add_entity_name: "Emma Wilson"
           - contact_add_entity_crypto_network: "Litecoin"
+      - slot_was_set:
+          - contact_add_entity_name: "Emma Wilson"
+          - contact_add_entity_crypto_network: "Litecoin"
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
-      - action: action_listen
       - action: add_contact_form
       - active_loop: add_contact_form
-      - slot_was_set:
-          - contact_add_entity_name: "Emma Wilson"
-      - slot_was_set:
-          - contact_add_entity_crypto_network: "Litecoin"
       - slot_was_set:
           - requested_slot: contact_add_entity_wallet_address
       - intent: inform
@@ -632,10 +632,12 @@ stories:
         entities:
           - contact_add_entity_name: "Lucas Rodriguez"
           - contact_add_entity_crypto_network: "Bitcoin, Ethereum"
+      - slot_was_set:
+          - contact_add_entity_name: "Lucas Rodriguez"
+          - contact_add_entity_crypto_network: "Bitcoin, Ethereum"
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
-      - action: action_listen
       - slot_was_set:
           - multiple_networks_detected: true
       - action: utter_confirm_multiple_networks
@@ -648,8 +650,6 @@ stories:
           - multiple_networks_detected: false
       - action: add_contact_form
       - active_loop: add_contact_form
-      - slot_was_set:
-          - contact_add_entity_name: "Lucas Rodriguez"
       - slot_was_set:
           - requested_slot: contact_add_entity_wallet_address
       - intent: inform
@@ -830,14 +830,14 @@ stories:
         entities:
           - contact_add_entity_name: "Alex"
           - contact_add_entity_crypto_network: "BTC"
+      - slot_was_set:
+          - contact_add_entity_name: "Alex"
+          - contact_add_entity_crypto_network: "BTC"
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
-      - action: action_listen
       - action: add_contact_form
       - active_loop: add_contact_form
-      - slot_was_set:
-          - contact_add_entity_name: "Alex"
       - slot_was_set:
           - contact_add_entity_crypto_network: "Bitcoin"
       - slot_was_set:
@@ -865,10 +865,13 @@ stories:
           - contact_add_entity_name: "CFO John"
           - contact_add_entity_crypto_network: "ETH"
           - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - slot_was_set:
+          - contact_add_entity_name: "CFO John"
+          - contact_add_entity_crypto_network: "ETH"
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
-      - action: action_listen
       - action: action_validate_wallet_address
       - slot_was_set:
           - address_valid: true
@@ -877,23 +880,56 @@ stories:
 
   # REQUEST WITH TYPOS - SAMPLE FOR TRAINING
 
-  - story: Add contact - crypto network typo correction sample
+  - story: Add contact - crypto network typo correction sample (Etherum)
+    steps:
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "Sofia Lopez"
+          - contact_add_entity_crypto_network: "Etherum" # Typo
+      - slot_was_set:
+          - contact_add_entity_name: "Sofia Lopez"
+          - contact_add_entity_crypto_network: "Etherum"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - action: action_correct_crypto_network_typo
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Ethereum"
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  - story: Add contact - crypto network typo correction sample (Bitcon)
     steps:
       - intent: contact_add_request
         entities:
           - contact_add_entity_name: "Alice Smith"
           - contact_add_entity_crypto_network: "Bitcon" # Typo (missing i)
+      - slot_was_set:
+          - contact_add_entity_name: "Alice Smith"
+          - contact_add_entity_crypto_network: "Bitcon"
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
-      - action: action_listen 
       - action: action_correct_crypto_network_typo
       - slot_was_set:
           - contact_add_entity_crypto_network: "Bitcoin"
       - action: add_contact_form
       - active_loop: add_contact_form
-      - slot_was_set:
-          - contact_add_entity_name: "Alice Smith"
       - slot_was_set:
           - requested_slot: contact_add_entity_wallet_address
       - intent: inform
