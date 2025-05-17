@@ -210,10 +210,10 @@ nlu:
       - BTC
       - bitcoin
       - XBT
-      - Bitcoin network
+      - "Bitcoin network"
       - btc
-      - satoshi's coin
-      - digital gold
+      - "satoshi's coin"
+      - "digital gold"
 
   - synonym: Ethereum
     examples: |
@@ -337,8 +337,8 @@ nlu:
       - AVAX
       - avax
       - avalanche
-      - Ava Labs
-      - Avalanche blockchain
+      - "Ava Labs"
+      - "Avalanche blockchain"
 
   - synonym: Stellar
     examples: |
