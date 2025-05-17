@@ -1,94 +1,31 @@
-version: "3.1"
-
+version: '3.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - add_contact
-  - inform
-  - ask_sentiment
-  - check_scam
-  - crypto_topic
-  - share_expertise
-  - mention_crypto
-  - nlu_fallback
-  - out_of_scope
-
-responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-  
-  utter_add_contact_ask_name:
-  - text: "Sure! What name would you like to save for this contact?"
-  
-  utter_add_contact_ask_address:
-  - text: "Great! Now please provide the wallet address you want to save."
-  
-  # New responses for CryptoBERT features
-  utter_investment_info:
-  - text: "Investing in cryptocurrencies can offer high returns but also comes with significant risks. Remember to diversify your portfolio and only invest what you can afford to lose."
-  
-  utter_technical_info:
-  - text: "Blockchain is a distributed ledger that stores data in blocks that are linked together. Each block contains a record of transactions and a reference to the previous block."
-  
-  utter_security_tips:
-  - text: "Always protect your private keys, use two-factor authentication, and be cautious of phishing attempts. Consider using a hardware wallet for large investments."
-  
-  utter_ask_crypto_description:
-  - text: "Can you describe that cryptocurrency project in more detail?"
-  
-  utter_ask_expertise_level:
-  - text: "How much experience do you have with cryptocurrencies?"
-  
-  utter_default:
-  - text: "I'm not sure I understand. Could you rephrase that?"
-  - text: "I didn't catch that. Can you say it differently?"
-  - text: "I'm having trouble understanding. Could you try another way?"
-  
-  utter_out_of_scope:
-  - text: "That's outside my cryptocurrency expertise. I'm better at helping with wallet addresses, crypto sentiment, and detecting scams."
-  - text: "I'm focused on cryptocurrency topics. I can help with wallet validation, sentiment analysis, and scam detection."
-
-actions:
-  - action_validate_wallet_address
-  - action_reset_contact_slots
-  - action_analyze_sentiment
-  - action_detect_scam
-  - action_classify_topic
-  - action_update_user_expertise
-  - action_extract_crypto_entities
-  - action_handle_context_switch
-  
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- add_contact
+- inform
+- ask_sentiment
+- check_scam
+- crypto_topic
+- share_expertise
+- mention_crypto
+- nlu_fallback
+- out_of_scope
 entities:
-  - contact_name
-  - wallet_address
-  - network_type
-  - crypto_description
-  - continue_flow
-  - switch_context
-
-forms: {}
-
+- contact_name
+- wallet_address
+- network_type
+- crypto_description
+- continue_flow
+- switch_context
 slots:
   contact_name:
     type: text
@@ -96,14 +33,12 @@ slots:
     mappings:
     - type: from_entity
       entity: contact_name
-  
   wallet_address:
     type: text
     influence_conversation: true
     mappings:
     - type: from_entity
       entity: wallet_address
-  
   network_type:
     type: text
     influence_conversation: true
@@ -111,68 +46,101 @@ slots:
     - type: from_entity
       entity: network_type
     - type: custom
-      
   address_valid:
     type: bool
     influence_conversation: true
     mappings:
     - type: custom
-  
-  # New slots for CryptoBERT features
   sentiment:
     type: text
     influence_conversation: true
     mappings:
     - type: custom
-  
   sentiment_confidence:
     type: float
     influence_conversation: false
     mappings:
     - type: custom
-  
+    max_value: 1.0
+    min_value: 0.0
   crypto_description:
     type: text
     influence_conversation: true
     mappings:
     - type: from_text
-  
   scam_probability:
     type: float
     influence_conversation: false
     mappings:
     - type: custom
-  
+    max_value: 1.0
+    min_value: 0.0
   query_topic:
     type: text
     influence_conversation: true
     mappings:
     - type: custom
-  
   expertise_level:
     type: text
     influence_conversation: true
     mappings:
     - type: custom
-  
   mentioned_tokens:
     type: list
     influence_conversation: true
     mappings:
     - type: custom
-  
   mentioned_blockchains:
     type: list
     influence_conversation: true
     mappings:
     - type: custom
-    
   active_context:
     type: text
     influence_conversation: true
     mappings:
     - type: custom
-
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_add_contact_ask_name:
+  - text: Sure! What name would you like to save for this contact?
+  utter_add_contact_ask_address:
+  - text: Great! Now please provide the wallet address you want to save.
+  utter_investment_info:
+  - text: Investing in cryptocurrencies can offer high returns but also comes with significant risks. Remember to diversify your portfolio and only invest what you can afford to lose.
+  utter_technical_info:
+  - text: Blockchain is a distributed ledger that stores data in blocks that are linked together. Each block contains a record of transactions and a reference to the previous block.
+  utter_security_tips:
+  - text: Always protect your private keys, use two-factor authentication, and be cautious of phishing attempts. Consider using a hardware wallet for large investments.
+  utter_ask_crypto_description:
+  - text: Can you describe that cryptocurrency project in more detail?
+  utter_ask_expertise_level:
+  - text: How much experience do you have with cryptocurrencies?
+  utter_default:
+  - text: I'm not sure I understand. Could you rephrase that?
+  - text: I didn't catch that. Can you say it differently?
+  - text: I'm having trouble understanding. Could you try another way?
+  utter_out_of_scope:
+  - text: That's outside my cryptocurrency expertise. I'm better at helping with wallet addresses, crypto sentiment, and detecting scams.
+  - text: I'm focused on cryptocurrency topics. I can help with wallet validation, sentiment analysis, and scam detection.
+actions:
+- action_validate_wallet_address
+- action_reset_contact_slots
+- action_analyze_sentiment
+- action_detect_scam
+- action_classify_topic
+- action_update_user_expertise
+- action_extract_crypto_entities
+- action_handle_context_switch
