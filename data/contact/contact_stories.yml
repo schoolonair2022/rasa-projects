@@ -592,6 +592,7 @@ stories:
           - contact_add_entity_crypto_network: "ObscureCoin"
       - slot_was_set:
           - contact_add_entity_crypto_network: "ObscureCoin"
+      - action: action_listen
       - action: action_validate_crypto_network
       - slot_was_set:
           - unsupported_cryptocurrency: true
@@ -761,13 +762,14 @@ stories:
           - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
       - slot_was_set:
           - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - action: action_listen
       - intent: ask_validation_status
       - action: action_provide_validation_status
       - action: add_contact_form
       - active_loop: add_contact_form
-      - action: action_validate_wallet_address
-      - slot_was_set:
-          - address_valid: true
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
@@ -878,6 +880,7 @@ stories:
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
+      - action: action_listen 
       - action: action_correct_crypto_network_typo
       - slot_was_set:
           - contact_add_entity_crypto_network: "Ethereum"
