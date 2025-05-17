@@ -211,7 +211,7 @@ nlu:
       - bitcoin
       - XBT
       - "Bitcoin network"
-      - btc
+      - "btc"
       - "satoshi's coin"
       - "digital gold"
 
