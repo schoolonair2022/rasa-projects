@@ -902,7 +902,6 @@ stories:
       - action: action_correct_crypto_network_typo
       - slot_was_set:
           - contact_add_entity_crypto_network: "Ethereum"
-    checkpoint: typo_corrected
 
   - story: Start - Network typo detection (Bitcon)
     steps:
@@ -919,7 +918,6 @@ stories:
       - action: action_correct_crypto_network_typo
       - slot_was_set:
           - contact_add_entity_crypto_network: "Bitcoin"
-    checkpoint: typo_corrected
 
   - story: Start - Regular network (no typo)
     steps:
@@ -934,11 +932,22 @@ stories:
       - slot_was_set:
           - contact_exists: false
       - action: add_contact_form
-    checkpoint: form_activated
 
   - story: After typo corrected - Continue with form
-    checkpoint: typo_corrected
     steps:
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "User"
+          - contact_add_entity_crypto_network: "Etherum" # Typo
+      - slot_was_set:
+          - contact_add_entity_name: "User"
+          - contact_add_entity_crypto_network: "Etherum"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - action: action_correct_crypto_network_typo
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Ethereum"
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -958,8 +967,18 @@ stories:
       - action: utter_contact_added_successfully
 
   - story: After form activated - Continue with form options
-    checkpoint: form_activated
     steps:
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "Regular User"
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - contact_add_entity_name: "Regular User" 
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
           - requested_slot: contact_add_entity_wallet_address
