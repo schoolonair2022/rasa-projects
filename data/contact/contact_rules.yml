@@ -38,9 +38,8 @@ rules:
       - action: add_contact_form
       - active_loop: add_contact_form
 
-  # Fallback rule for known networks (add priority to ensure it runs after typo rules)
+  # Fallback rule for known networks
   - rule: Handle known crypto networks
-    priority: -1
     condition:
     - active_loop: null
     - slot_was_set:
