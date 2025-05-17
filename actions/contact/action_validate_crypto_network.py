@@ -20,7 +20,13 @@ class ActionValidateCryptoNetwork(Action):
         crypto_network = tracker.get_slot("contact_add_entity_crypto_network")
         
         if not crypto_network:
-            return [SlotSet("unsupported_cryptocurrency", False)]
+            return [
+                SlotSet("unsupported_cryptocurrency", False),
+                SlotSet("crypto_network_typo", False)
+            ]
+        
+        # Reset typo flag - it should be set by action_check_contact_existence and action_correct_crypto_network_typo
+        events = [SlotSet("crypto_network_typo", False)]
         
         # Standardize network name (lowercase and handle abbreviations)
         network = self._standardize_network_name(crypto_network)
@@ -37,15 +43,15 @@ class ActionValidateCryptoNetwork(Action):
         
         # If it's a supported network, update the slot with the standardized name
         if is_supported:
-            return [
+            events.extend([
                 SlotSet("contact_add_entity_crypto_network", self._format_network_name(network)),
                 SlotSet("unsupported_cryptocurrency", False)
-            ]
+            ])
         else:
             # If not supported, set the flag
-            return [
-                SlotSet("unsupported_cryptocurrency", True)
-            ]
+            events.append(SlotSet("unsupported_cryptocurrency", True))
+        
+        return events
     
     def _standardize_network_name(self, network: str) -> str:
         """Standardize network name to handle variations and abbreviations."""

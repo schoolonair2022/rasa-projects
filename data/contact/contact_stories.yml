@@ -113,6 +113,8 @@ stories:
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
+      - slot_was_set:
+          - crypto_network_typo: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -899,6 +901,8 @@ stories:
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
+      - slot_was_set:
+          - crypto_network_typo: true
       - action: action_correct_crypto_network_typo
       - slot_was_set:
           - contact_add_entity_crypto_network: "Ethereum"
@@ -932,6 +936,8 @@ stories:
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
+      - slot_was_set:
+          - crypto_network_typo: true
       - action: action_correct_crypto_network_typo
       - slot_was_set:
           - contact_add_entity_crypto_network: "Bitcoin"
@@ -965,6 +971,8 @@ stories:
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: false
+      - slot_was_set:
+          - crypto_network_typo: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
