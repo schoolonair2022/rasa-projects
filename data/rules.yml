@@ -6,3 +6,8 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
 
+- rule: Default restart action
+  steps:
+  - intent: restart
+  - action: action_restart
+
