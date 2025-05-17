@@ -902,6 +902,23 @@ stories:
       - action: action_correct_crypto_network_typo
       - slot_was_set:
           - contact_add_entity_crypto_network: "Ethereum"
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
 
   - story: Start - Network typo detection (Bitcon)
     steps:
@@ -918,36 +935,6 @@ stories:
       - action: action_correct_crypto_network_typo
       - slot_was_set:
           - contact_add_entity_crypto_network: "Bitcoin"
-
-  - story: Start - Regular network (no typo)
-    steps:
-      - intent: contact_add_request
-        entities:
-          - contact_add_entity_name: "Emma Wilson"
-          - contact_add_entity_crypto_network: "Litecoin"
-      - slot_was_set:
-          - contact_add_entity_name: "Emma Wilson"
-          - contact_add_entity_crypto_network: "Litecoin"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
-      - action: add_contact_form
-
-  - story: After typo corrected - Continue with form
-    steps:
-      - intent: contact_add_request
-        entities:
-          - contact_add_entity_name: "User"
-          - contact_add_entity_crypto_network: "Etherum" # Typo
-      - slot_was_set:
-          - contact_add_entity_name: "User"
-          - contact_add_entity_crypto_network: "Etherum"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
-      - action: action_correct_crypto_network_typo
-      - slot_was_set:
-          - contact_add_entity_crypto_network: "Ethereum"
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -965,6 +952,37 @@ stories:
       - active_loop: null
       - action: action_save_contact
       - action: utter_contact_added_successfully
+
+  - story: Start - Regular network (no typo)
+    steps:
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "Emma Wilson"
+          - contact_add_entity_crypto_network: "Litecoin"
+      - slot_was_set:
+          - contact_add_entity_name: "Emma Wilson"
+          - contact_add_entity_crypto_network: "Litecoin"
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "LVkPNYuhBbraFYEWA8oqQAYgGYMY57zZj5"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "LVkPNYuhBbraFYEWA8oqQAYgGYMY57zZj5"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
 
   - story: After form activated - Continue with form options
     steps:
