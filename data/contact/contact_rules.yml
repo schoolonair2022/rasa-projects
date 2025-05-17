@@ -7,6 +7,8 @@ rules:
     - active_loop: null
     - slot_was_set:
         - contact_add_entity_crypto_network: "Etherum"
+    - slot_was_set:
+        - contact_exists: false
     steps:
       - intent: contact_add_request
       - action: action_check_contact_existence
@@ -18,6 +20,8 @@ rules:
     - active_loop: null
     - slot_was_set:
         - contact_add_entity_crypto_network: "Bitcon"
+    - slot_was_set:
+        - contact_exists: false
     steps:
       - intent: contact_add_request
       - action: action_check_contact_existence
@@ -25,6 +29,14 @@ rules:
 
   # Default fallback rule for all other cases
   - rule: Default contact add rule
+    condition:
+      - active_loop: null
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - crypto_network_typo: false
+      - slot_was_set:
+          - multiple_networks_detected: false
     steps:
       - intent: contact_add_request
       - action: action_check_contact_existence
@@ -41,9 +53,13 @@ rules:
   # Fallback rule for known networks
   - rule: Handle known crypto networks
     condition:
-    - active_loop: null
-    - slot_was_set:
-        - contact_add_entity_crypto_network
+      - active_loop: null
+      - slot_was_set:
+          - contact_add_entity_crypto_network
+      - slot_was_set:
+          - crypto_network_typo: false
+      - slot_was_set:
+          - multiple_networks_detected: false
     steps:
       - intent: contact_add_request
       - action: action_check_contact_existence
@@ -183,6 +199,8 @@ rules:
       - active_loop: add_contact_form
       - slot_was_set:
           - network_address_mismatch: true
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
     steps:
       - action: utter_network_address_mismatch
       - action: action_clear_wallet_address
@@ -195,6 +213,8 @@ rules:
       - active_loop: add_contact_form
       - slot_was_set:
           - unsupported_cryptocurrency: true
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
     steps:
       - action: utter_unsupported_cryptocurrency
       - action: action_clear_crypto_network
@@ -217,6 +237,7 @@ rules:
       - active_loop: add_contact_form
     steps:
       - intent: restart
+      - action: action_restart
       - action: action_deactivate_loop
       - active_loop: null
       - action: action_reset_contact_slots
@@ -238,6 +259,8 @@ rules:
       - active_loop: add_contact_form
       - slot_was_set:
           - multiple_networks_detected: true
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
     steps:
       - action: utter_confirm_multiple_networks
       - action: add_contact_form

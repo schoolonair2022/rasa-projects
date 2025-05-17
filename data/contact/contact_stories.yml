@@ -19,6 +19,13 @@ stories:
           - contact_exists: false
       - slot_was_set:
           - crypto_network_typo: false
+      - slot_was_set:
+          - multiple_networks_detected: false
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
       - action: action_validate_wallet_address
       - slot_was_set:
           - address_valid: true
@@ -28,6 +35,11 @@ stories:
   - story: Add contact - step by step happy path
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
+      - slot_was_set:
+          - crypto_network_typo: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -37,9 +49,6 @@ stories:
           - contact_add_entity_name: "Sarah Johnson"
       - slot_was_set:
           - contact_add_entity_name: "Sarah Johnson"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: inform
@@ -146,6 +155,9 @@ stories:
   - story: Add contact - invalid wallet address
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -155,9 +167,6 @@ stories:
           - contact_add_entity_name: "James Davis"
       - slot_was_set:
           - contact_add_entity_name: "James Davis"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: inform
@@ -195,6 +204,9 @@ stories:
   - story: Add contact - multiple invalid wallet addresses
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -204,9 +216,6 @@ stories:
           - contact_add_entity_name: "Oliver Taylor"
       - slot_was_set:
           - contact_add_entity_name: "Oliver Taylor"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: inform
@@ -309,6 +318,8 @@ stories:
       - action: action_check_contact_existence
       - slot_was_set:
           - contact_exists: true
+      - slot_was_set:
+          - crypto_network_typo: false  
       - action: utter_contact_already_exists
       - intent: deny
       - action: utter_cancel_add_contact
@@ -319,6 +330,9 @@ stories:
   - story: Add contact - network address mismatch
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -328,9 +342,6 @@ stories:
           - contact_add_entity_name: "Noah White"
       - slot_was_set:
           - contact_add_entity_name: "Noah White"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: inform
@@ -350,6 +361,8 @@ stories:
           - address_valid: false
       - slot_was_set:
           - network_address_mismatch: true
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
       - action: utter_network_address_mismatch
       - action: action_clear_wallet_address
       - intent: inform
@@ -373,6 +386,9 @@ stories:
   - story: Add contact - cancellation during process
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -382,9 +398,6 @@ stories:
           - contact_add_entity_name: "Olivia Clark"
       - slot_was_set:
           - contact_add_entity_name: "Olivia Clark"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: cancel
@@ -398,6 +411,9 @@ stories:
   - story: Add contact - help request during process
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -411,9 +427,6 @@ stories:
           - contact_add_entity_name: "Daniel Lee"
       - slot_was_set:
           - contact_add_entity_name: "Daniel Lee"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: inform
@@ -440,6 +453,9 @@ stories:
   - story: Add contact - clarification request during process
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -449,9 +465,6 @@ stories:
           - contact_add_entity_name: "Ava Martinez"
       - slot_was_set:
           - contact_add_entity_name: "Ava Martinez"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: request_clarification
@@ -482,6 +495,9 @@ stories:
   - story: Add contact - context switch with save
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -491,9 +507,6 @@ stories:
           - contact_add_entity_name: "Isabella Thompson"
       - slot_was_set:
           - contact_add_entity_name: "Isabella Thompson"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: context_switch
@@ -536,6 +549,9 @@ stories:
   - story: Add contact - context switch without save
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -545,9 +561,6 @@ stories:
           - contact_add_entity_name: "David Wilson"
       - slot_was_set:
           - contact_add_entity_name: "David Wilson"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: context_switch
@@ -563,6 +576,9 @@ stories:
   - story: Add contact - go back to previous question
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -572,9 +588,6 @@ stories:
           - contact_add_entity_name: "Ethan Wilson"
       - slot_was_set:
           - contact_add_entity_name: "Ethan Wilson"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: inform
@@ -614,6 +627,9 @@ stories:
   - story: Add contact - unsupported cryptocurrency
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -623,9 +639,6 @@ stories:
           - contact_add_entity_name: "Charlotte Garcia"
       - slot_was_set:
           - contact_add_entity_name: "Charlotte Garcia"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: inform
@@ -633,7 +646,6 @@ stories:
           - contact_add_entity_crypto_network: "ObscureCoin"
       - slot_was_set:
           - contact_add_entity_crypto_network: "ObscureCoin"
-      - action: action_listen
       - action: action_validate_crypto_network
       - slot_was_set:
           - unsupported_cryptocurrency: true
@@ -678,6 +690,8 @@ stories:
           - contact_exists: false
       - slot_was_set:
           - multiple_networks_detected: true
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
       - action: utter_confirm_multiple_networks
       - intent: inform
         entities:
@@ -709,6 +723,9 @@ stories:
   - story: Add contact - restart during process
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -718,12 +735,10 @@ stories:
           - contact_add_entity_name: "Henry Scott"
       - slot_was_set:
           - contact_add_entity_name: "Henry Scott"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: restart
+      - action: action_restart
       - action: action_deactivate_loop
       - active_loop: null
       - action: action_reset_contact_slots
@@ -734,6 +749,9 @@ stories:
   - story: Add contact - out of scope during process
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -743,9 +761,6 @@ stories:
           - contact_add_entity_name: "Amelia Adams"
       - slot_was_set:
           - contact_add_entity_name: "Amelia Adams"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: out_of_scope
@@ -778,6 +793,9 @@ stories:
   - story: Add contact - ask validation status during process
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -787,9 +805,6 @@ stories:
           - contact_add_entity_name: "Jacob Turner"
       - slot_was_set:
           - contact_add_entity_name: "Jacob Turner"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: inform
@@ -823,6 +838,9 @@ stories:
   - story: Add contact - direct confirmation of details
     steps:
       - intent: contact_add_request
+      - action: action_check_contact_existence
+      - slot_was_set:
+          - contact_exists: false
       - action: add_contact_form
       - active_loop: add_contact_form
       - slot_was_set:
@@ -832,9 +850,6 @@ stories:
           - contact_add_entity_name: "Mia Collins"
       - slot_was_set:
           - contact_add_entity_name: "Mia Collins"
-      - action: action_check_contact_existence
-      - slot_was_set:
-          - contact_exists: false
       - slot_was_set:
           - requested_slot: contact_add_entity_crypto_network
       - intent: inform
@@ -936,6 +951,8 @@ stories:
           - contact_exists: false
       - slot_was_set:
           - crypto_network_typo: true
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network 
       - action: action_correct_crypto_network_typo
       - slot_was_set:
           - contact_add_entity_crypto_network: "Ethereum"
