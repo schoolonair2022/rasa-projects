@@ -1384,7 +1384,7 @@ nlu:
       - yield-bearing USD
       - Ondo stablecoin
 
-- synonym: Binance-Peg Dogecoin
+  - synonym: Binance-Peg Dogecoin
     examples: |
       - Binance DOGE
       - BEP-20 DOGE
