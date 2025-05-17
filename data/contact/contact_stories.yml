@@ -943,7 +943,19 @@ stories:
       - active_loop: add_contact_form
       - slot_was_set:
           - requested_slot: contact_add_entity_wallet_address
-    checkpoint: ask_wallet_address_typo_corrected
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
 
   - story: After form activated - Continue with form options
     checkpoint: form_activated
@@ -951,11 +963,6 @@ stories:
       - active_loop: add_contact_form
       - slot_was_set:
           - requested_slot: contact_add_entity_wallet_address
-    checkpoint: ask_wallet_address
-
-  - story: Provide wallet address and complete from typo correction
-    checkpoint: ask_wallet_address_typo_corrected
-    steps:
       - intent: inform
         entities:
           - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
@@ -970,22 +977,7 @@ stories:
       - action: action_save_contact
       - action: utter_contact_added_successfully
 
-  - story: Provide wallet address and complete
-    checkpoint: ask_wallet_address
-    steps:
-      - intent: inform
-        entities:
-          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
-      - slot_was_set:
-          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
-      - action: action_validate_wallet_address
-      - slot_was_set:
-          - address_valid: true
-      - slot_was_set:
-          - requested_slot: null
-      - active_loop: null
-      - action: action_save_contact
-      - action: utter_contact_added_successfully
+
 
   - story: Add contact - crypto network typo correction sample (Bitcon)
     steps:
