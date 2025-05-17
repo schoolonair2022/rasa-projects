@@ -1,35 +1,47 @@
 version: "3.1"
 
 rules:
-  # Specific rule for typo detection with higher priority
-  - rule: Check for crypto network typo
+  # Rule for Etherum typo specifically
+  - rule: Handle Etherum typo
     condition:
-      - slot_was_set:
-          - contact_add_entity_crypto_network: "Etherum"
+    - active_loop: null
+    - slot_was_set:
+        - contact_add_entity_crypto_network: "Etherum"
     steps:
       - intent: contact_add_request
       - action: action_check_contact_existence
       - action: action_correct_crypto_network_typo
-      - action: add_contact_form
-      - active_loop: add_contact_form
 
-  # Specific rule for typo detection - Bitcon
-  - rule: Check for Bitcoin typo
+  # Rule for Bitcon typo specifically
+  - rule: Handle Bitcon typo
     condition:
-      - slot_was_set:
+    - active_loop: null
+    - slot_was_set:
+        - contact_add_entity_crypto_network: "Bitcon"
+    steps:
+      - intent: contact_add_request
+      - action: action_check_contact_existence
+      - action: action_correct_crypto_network_typo
+
+  # Default fallback rule for all other cases
+  - rule: Default contact add rule
+    condition:
+    - active_loop: null
+    - or:
+      - slot_was_not_set:
+          - contact_add_entity_crypto_network: "Etherum"
+      - slot_was_not_set:
           - contact_add_entity_crypto_network: "Bitcon"
     steps:
       - intent: contact_add_request
       - action: action_check_contact_existence
-      - action: action_correct_crypto_network_typo
       - action: add_contact_form
       - active_loop: add_contact_form
 
-  # Default rule for contact add requests
-  - rule: Activate add contact form
+  # Rule for what happens after typo correction
+  - rule: After typo correction
     steps:
-      - intent: contact_add_request
-      - action: action_check_contact_existence
+      - action: action_correct_crypto_network_typo
       - action: add_contact_form
       - active_loop: add_contact_form
 
