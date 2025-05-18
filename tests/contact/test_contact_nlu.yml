@@ -1,0 +1,55 @@
+version: "3.1"
+
+nlu:
+- intent: contact_add_request
+  examples: |
+    # Complete format tests (name + address + network)
+    - Add [James](contact_add_entity_name) to my contacts with [Bitcoin](contact_add_entity_crypto_network) address [1Dt7KiqqpgQ2UVWrNSYhEV7YWYUaGC9hFS](contact_add_entity_wallet_address)
+    - Create a new contact for [Emily](contact_add_entity_name) with [Ethereum](contact_add_entity_crypto_network) wallet [0xa88a05d6a62ac84e9b8b0e58566d24a021ae8080](contact_add_entity_wallet_address)
+    - Save [Robert](contact_add_entity_name)'s [Solana](contact_add_entity_crypto_network) address [2Qk1Nn2dXBn7Vo4ZAW2yFwuKQPQdHxjBmW22j8SBNRMy](contact_add_entity_wallet_address)
+    - Could you add [Olivia](contact_add_entity_name) with her [Cardano](contact_add_entity_crypto_network) wallet [addr1q8s32g987asdft3p9eadk6cwng5pxj3jhsydzer3n0d3vllwl2w0xwl2w3wfgse35a3x](contact_add_entity_wallet_address)?
+    
+    # Just name tests
+    - Add [William](contact_add_entity_name) to my contacts
+    - I need to create a contact for [Sophia](contact_add_entity_name)
+    - Save [Benjamin](contact_add_entity_name) as a contact
+    - Add [Isabella](contact_add_entity_name) to my contacts list please
+    
+    # Just address tests
+    - Add this wallet address: [3FdmAyBPNU6uHfwGmRLXTK4Lc9tYH6PEfd](contact_add_entity_wallet_address)
+    - Save wallet [0x1f3b8736cB36C72CBeBBF070f2F5Ab7Aa1ae9D8C](contact_add_entity_wallet_address) to contacts
+    - Create a contact with address [F4LS9qh6UzdVXtJPW88JtpYcCMiPvGMrcxmXKKQQQQQQ](contact_add_entity_wallet_address)
+    - Add [DFxcTxPyHLUSbMFdGvBc3RvgXV6e3qD2TJ](contact_add_entity_wallet_address) to my list
+    
+    # Just network tests
+    - Add a [Bitcoin](contact_add_entity_crypto_network) address to contacts
+    - I want to save an [Ethereum](contact_add_entity_crypto_network) wallet
+    - Create a contact for a [Binance Coin](contact_add_entity_crypto_network) address
+    - Save a [Tezos](contact_add_entity_crypto_network) address in my contacts
+    
+    # Vague requests tests
+    - How do I add someone to my contacts?
+    - I want to save a new contact
+    - Tell me how to add a contact
+    - What's the procedure to save a contact?
+    
+    # Multiple addresses tests
+    - Add [Noah](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) address [1GhstPrTNywRy5gLfiEWTwXg5rF3ZjT7TZ](contact_add_entity_wallet_address) and [Ethereum](contact_add_entity_crypto_network) address [0x5f09CCF4df777F666075AB8D16562E4A731A9B5E](contact_add_entity_wallet_address)
+    - Create a contact for [Charlotte](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network) address [3CvEJQrG4fryZiKkWXKUJBMXGXGg9xAoKu](contact_add_entity_wallet_address) and [ETH](contact_add_entity_crypto_network) address [0xDE3E116AAd58189c2475B27EeBb9bd072d368Fc5](contact_add_entity_wallet_address)
+    
+    # Gen Y/Z style tests
+    - Yo, add [Liam](contact_add_entity_name) to my contacts rn
+    - Need to save [Ava](contact_add_entity_name)'s wallet addy: [0x4FEef7B9DF143C08d79F776af8dd795f7AFd7a81](contact_add_entity_wallet_address)
+    - Can u add [Jackson](contact_add_entity_name) to my contacts? thx
+    - Fr need to save [Mia](contact_add_entity_name)'s crypto address
+    
+    # With abbreviations and slang tests
+    - pls add [Ethan](contact_add_entity_name) w/ [BTC](contact_add_entity_crypto_network) addr [1LPkARhMSnWjN54Y6vKLYCrQEYT7jP2XfE](contact_add_entity_wallet_address)
+    - add [Harper](contact_add_entity_name) asap w [ETH](contact_add_entity_crypto_network) [0xCf31e7c1BfFd7c3B019B86279F94f4B919766898](contact_add_entity_wallet_address)
+    
+    # Edge cases tests
+    - Add [Lucas-John](contact_add_entity_name) with his [BTC](contact_add_entity_crypto_network) wallet
+    - Save [Mary Kate O'Connor](contact_add_entity_name)'s [ETH](contact_add_entity_crypto_network) address [0xA1B2C3D4E5F67890A1B2C3D4E5F67890A1B2C3D4](contact_add_entity_wallet_address)
+    - Add contact for [محمد](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) address
+    - Add [张伟](contact_add_entity_name) with [Litecoin](contact_add_entity_crypto_network) [LUiXhCMT5rEoVNJJgFPgacaECvqW7mSJcA](contact_add_entity_wallet_address)
+    - Create contact for [José María](contact_add_entity_name) with [BSC](contact_add_entity_crypto_network) wallet
