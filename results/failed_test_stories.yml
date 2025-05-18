@@ -1,0 +1,62 @@
+version: "3.1"
+stories:
+- story: Add contact - unsupported cryptocurrency (data/contact/contact_stories.yml)
+  steps:
+  - intent: contact_add_request
+  - action: action_check_contact_existence
+  - slot_was_set:
+    - contact_exists: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+    - requested_slot: contact_add_entity_name
+  - intent: inform
+    entities:
+    - contact_add_entity_name: Charlotte Garcia
+  - slot_was_set:
+    - contact_add_entity_name: Charlotte Garcia
+  - slot_was_set:
+    - contact_add_entity_name: Charlotte Garcia
+  - slot_was_set:
+    - requested_slot: contact_add_entity_crypto_network
+  - intent: inform
+    entities:
+    - contact_add_entity_crypto_network: ObscureCoin
+  - slot_was_set:
+    - contact_add_entity_crypto_network: ObscureCoin
+  - slot_was_set:
+    - contact_add_entity_crypto_network: ObscureCoin
+  - action: action_validate_crypto_network  # predicted: action_listen
+  - slot_was_set:
+    - unsupported_cryptocurrency: true
+  - slot_was_set:
+    - requested_slot: contact_add_entity_crypto_network
+  - action: utter_unsupported_cryptocurrency
+  - action: action_clear_crypto_network
+  - action: add_contact_form
+  - intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Bitcoin
+  - slot_was_set:
+    - contact_add_entity_crypto_network: Bitcoin
+  - slot_was_set:
+    - contact_add_entity_crypto_network: Bitcoin
+  - slot_was_set:
+    - unsupported_cryptocurrency: false
+  - slot_was_set:
+    - requested_slot: contact_add_entity_wallet_address
+  - intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+  - slot_was_set:
+    - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+  - slot_was_set:
+    - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+  - action: action_validate_wallet_address
+  - slot_was_set:
+    - address_valid: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
