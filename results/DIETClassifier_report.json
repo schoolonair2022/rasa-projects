@@ -1,0 +1,46 @@
+{
+  "contact_add_entity_wallet_address": {
+    "precision": 0.9791666666666666,
+    "recall": 1.0,
+    "f1-score": 0.9894736842105264,
+    "support": 47,
+    "confused_with": {}
+  },
+  "contact_add_entity_name": {
+    "precision": 1.0,
+    "recall": 0.8484848484848485,
+    "f1-score": 0.9180327868852458,
+    "support": 66,
+    "confused_with": {
+      "contact_add_entity_crypto_network": 2
+    }
+  },
+  "contact_add_entity_crypto_network": {
+    "precision": 0.86,
+    "recall": 0.8269230769230769,
+    "f1-score": 0.8431372549019608,
+    "support": 52,
+    "confused_with": {
+      "contact_add_entity_crypto_network{\"value\"": 9
+    }
+  },
+  "micro avg": {
+    "precision": 0.948051948051948,
+    "recall": 0.8848484848484849,
+    "f1-score": 0.9153605015673982,
+    "support": 165
+  },
+  "macro avg": {
+    "precision": 0.9463888888888888,
+    "recall": 0.8918026418026418,
+    "f1-score": 0.9168812419992444,
+    "support": 165
+  },
+  "weighted avg": {
+    "precision": 0.9499444444444445,
+    "recall": 0.8848484848484849,
+    "f1-score": 0.9147791778619571,
+    "support": 165
+  },
+  "accuracy": 0.9563758389261745
+}

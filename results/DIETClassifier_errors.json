@@ -1,0 +1,844 @@
+[
+  {
+    "text": "Save Ms. Sophia Lee in my address book",
+    "entities": [
+      {
+        "start": 5,
+        "end": 19,
+        "value": "Ms. Sophia Lee",
+        "entity": "contact_add_entity_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_name",
+        "start": 9,
+        "end": 15,
+        "confidence_entity": 0.9999821782112122,
+        "value": "Sophia",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Add my friend Benjamin O'Connor to contacts",
+    "entities": [
+      {
+        "start": 14,
+        "end": 31,
+        "value": "Benjamin O'Connor",
+        "entity": "contact_add_entity_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_name",
+        "start": 14,
+        "end": 24,
+        "confidence_entity": 0.3365316092967987,
+        "value": "Benjamin O",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Create a contact for Isabella García-Martínez",
+    "entities": [
+      {
+        "start": 21,
+        "end": 45,
+        "value": "Isabella García-Martínez",
+        "entity": "contact_add_entity_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_name",
+        "start": 21,
+        "end": 29,
+        "confidence_entity": 0.996256411075592,
+        "value": "Isabella",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 30,
+        "end": 45,
+        "confidence_entity": 0.7183396220207214,
+        "value": "García-Martínez",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Add محمد أحمد to my contacts",
+    "entities": [
+      {
+        "start": 4,
+        "end": 13,
+        "value": "محمد أحمد",
+        "entity": "contact_add_entity_name"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Save Екатерина Иванова to my contacts",
+    "entities": [
+      {
+        "start": 5,
+        "end": 22,
+        "value": "Екатерина Иванова",
+        "entity": "contact_add_entity_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_name",
+        "start": 15,
+        "end": 22,
+        "confidence_entity": 0.9961943030357361,
+        "value": "Иванова",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Add a BSC wallet",
+    "entities": [
+      {
+        "start": 6,
+        "end": 9,
+        "value": "BSC",
+        "entity": "contact_add_entity_crypto_network"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_crypto_network{\"value\"",
+        "start": 6,
+        "end": 9,
+        "confidence_entity": 0.67420494556427,
+        "value": "\"BNB\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Create a TRX contact",
+    "entities": [
+      {
+        "start": 9,
+        "end": 12,
+        "value": "TRX",
+        "entity": "contact_add_entity_crypto_network"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_crypto_network{\"value\"",
+        "start": 9,
+        "end": 12,
+        "confidence_entity": 0.9198688864707947,
+        "value": "\"TRON\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Add this Bitcoin address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+    "entities": [
+      {
+        "start": 26,
+        "end": 60,
+        "value": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+        "entity": "contact_add_entity_wallet_address"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_crypto_network",
+        "start": 9,
+        "end": 16,
+        "confidence_entity": 0.9892193675041199,
+        "value": "\"Bitcoin\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 26,
+        "end": 60,
+        "confidence_entity": 0.9999812841415405,
+        "value": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Save DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1 for Dogecoin",
+    "entities": [
+      {
+        "start": 5,
+        "end": 39,
+        "value": "DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1",
+        "entity": "contact_add_entity_wallet_address"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 5,
+        "end": 39,
+        "confidence_entity": 0.9999623894691467,
+        "value": "DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_crypto_network{\"value\"",
+        "start": 44,
+        "end": 52,
+        "confidence_entity": 0.9909432530403137,
+        "value": "\"Dogecoin\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Add MPwk2KMr3Wr2vjCiP6NKmSPSDeMKZ4JXen for Litecoin",
+    "entities": [
+      {
+        "start": 4,
+        "end": 38,
+        "value": "MPwk2KMr3Wr2vjCiP6NKmSPSDeMKZ4JXen",
+        "entity": "contact_add_entity_wallet_address"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 4,
+        "end": 38,
+        "confidence_entity": 0.9999961256980896,
+        "value": "MPwk2KMr3Wr2vjCiP6NKmSPSDeMKZ4JXen",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_crypto_network",
+        "start": 43,
+        "end": 51,
+        "confidence_entity": 0.9886664152145386,
+        "value": "\"Litecoin\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Create a contact with 1exaAg2VJRQbyUBAeXcktChCAqjVP9TUxF3zo23R2T6EGdE for Polkadot",
+    "entities": [
+      {
+        "start": 22,
+        "end": 69,
+        "value": "1exaAg2VJRQbyUBAeXcktChCAqjVP9TUxF3zo23R2T6EGdE",
+        "entity": "contact_add_entity_wallet_address"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 22,
+        "end": 69,
+        "confidence_entity": 0.999993622303009,
+        "value": "1exaAg2VJRQbyUBAeXcktChCAqjVP9TUxF3zo23R2T6EGdE",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_crypto_network",
+        "start": 74,
+        "end": 82,
+        "confidence_entity": 0.6816180944442749,
+        "value": "\"Polkadot\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Add rMnuS9WjpNixPTFCvZoHqwPaYuvJGU3DHc for Ripple",
+    "entities": [
+      {
+        "start": 4,
+        "end": 38,
+        "value": "rMnuS9WjpNixPTFCvZoHqwPaYuvJGU3DHc",
+        "entity": "contact_add_entity_wallet_address"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 4,
+        "end": 38,
+        "confidence_entity": 0.9999502301216125,
+        "value": "rMnuS9WjpNixPTFCvZoHqwPaYuvJGU3DHc",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_crypto_network{\"value\"",
+        "start": 43,
+        "end": 49,
+        "confidence_entity": 0.8802820444107056,
+        "value": "\"XRP\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Save tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx for Tezos",
+    "entities": [
+      {
+        "start": 5,
+        "end": 41,
+        "value": "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx",
+        "entity": "contact_add_entity_wallet_address"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 5,
+        "end": 41,
+        "confidence_entity": 0.9999945759773254,
+        "value": "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_crypto_network",
+        "start": 46,
+        "end": 51,
+        "confidence_entity": 0.9999661445617676,
+        "value": "Tezos",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Add VCMJKWOY5P5P7SKMZFFOCEROPJCZOTIJMNIYNUCKH73UUNFZGXN6YPHJPY for Algorand",
+    "entities": [
+      {
+        "start": 4,
+        "end": 62,
+        "value": "VCMJKWOY5P5P7SKMZFFOCEROPJCZOTIJMNIYNUCKH73UUNFZGXN6YPHJPY",
+        "entity": "contact_add_entity_wallet_address"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 4,
+        "end": 62,
+        "confidence_entity": 0.9999956488609314,
+        "value": "VCMJKWOY5P5P7SKMZFFOCEROPJCZOTIJMNIYNUCKH73UUNFZGXN6YPHJPY",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_crypto_network",
+        "start": 67,
+        "end": 75,
+        "confidence_entity": 0.9999452829360962,
+        "value": "Algorand",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Save Robert O'Neill's SOL address 9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM",
+    "entities": [
+      {
+        "start": 5,
+        "end": 19,
+        "value": "Robert O'Neill",
+        "entity": "contact_add_entity_name"
+      },
+      {
+        "start": 22,
+        "end": 25,
+        "value": "SOL",
+        "entity": "contact_add_entity_crypto_network"
+      },
+      {
+        "start": 34,
+        "end": 78,
+        "value": "9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM",
+        "entity": "contact_add_entity_wallet_address"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_name",
+        "start": 5,
+        "end": 11,
+        "confidence_entity": 0.999986469745636,
+        "value": "Robert",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_name",
+        "start": 12,
+        "end": 13,
+        "confidence_entity": 0.9795600771903992,
+        "value": "O",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "contact_add_entity_crypto_network",
+        "start": 14,
+        "end": 19,
+        "confidence_entity": 0.9841830134391785,
+        "value": "Neill",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "contact_add_entity_crypto_network",
+        "start": 22,
+        "end": 25,
+        "confidence_entity": 0.7778638005256653,
+        "value": "\"Solana\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 34,
+        "end": 78,
+        "confidence_entity": 0.9999836683273315,
+        "value": "9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Save Dr. William with BNB address bnb1jxfh2g85q3v0tdq56fnevx6xcxtcnhtsmcu64m",
+    "entities": [
+      {
+        "start": 5,
+        "end": 16,
+        "value": "Dr. William",
+        "entity": "contact_add_entity_name"
+      },
+      {
+        "start": 22,
+        "end": 25,
+        "value": "BNB",
+        "entity": "contact_add_entity_crypto_network"
+      },
+      {
+        "start": 34,
+        "end": 76,
+        "value": "bnb1jxfh2g85q3v0tdq56fnevx6xcxtcnhtsmcu64m",
+        "entity": "contact_add_entity_wallet_address"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_name",
+        "start": 5,
+        "end": 7,
+        "confidence_entity": 0.9996117949485779,
+        "value": "Dr",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "contact_add_entity_name",
+        "start": 9,
+        "end": 16,
+        "confidence_entity": 0.9987754821777344,
+        "value": "William",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_crypto_network{\"value\"",
+        "start": 22,
+        "end": 25,
+        "confidence_entity": 0.9994979500770569,
+        "value": "\"BNB\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 34,
+        "end": 76,
+        "confidence_entity": 0.9999973773956299,
+        "value": "bnb1jxfh2g85q3v0tdq56fnevx6xcxtcnhtsmcu64m",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Add Sophia Chan with her Dogecoin wallet DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1",
+    "entities": [
+      {
+        "start": 4,
+        "end": 15,
+        "value": "Sophia Chan",
+        "entity": "contact_add_entity_name"
+      },
+      {
+        "start": 25,
+        "end": 33,
+        "value": "Dogecoin",
+        "entity": "contact_add_entity_crypto_network"
+      },
+      {
+        "start": 41,
+        "end": 75,
+        "value": "DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1",
+        "entity": "contact_add_entity_wallet_address"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_name",
+        "start": 4,
+        "end": 10,
+        "confidence_entity": 0.9989767074584961,
+        "value": "Sophia",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_name",
+        "start": 11,
+        "end": 15,
+        "confidence_entity": 0.9017847776412964,
+        "value": "Chan",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "contact_add_entity_crypto_network{\"value\"",
+        "start": 25,
+        "end": 33,
+        "confidence_entity": 0.9945789575576782,
+        "value": "\"Dogecoin\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 41,
+        "end": 75,
+        "confidence_entity": 0.9999831914901733,
+        "value": "DCUrdaVWg71kBqNSrYWHV4AnXgd7XDmHK1",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Create a contact for a Binance Coin address",
+    "entities": [
+      {
+        "start": 23,
+        "end": 35,
+        "value": "Binance Coin",
+        "entity": "contact_add_entity_crypto_network"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_crypto_network{\"value\"",
+        "start": 23,
+        "end": 35,
+        "confidence_entity": 0.9794235229492188,
+        "value": "\"BNB\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Create a contact for Charlotte with BTC address 3CvEJQrG4fryZiKkWXKUJBMXGXGg9xAoKu and ETH address 0xDE3E116AAd58189c2475B27EeBb9bd072d368Fc5",
+    "entities": [
+      {
+        "start": 21,
+        "end": 30,
+        "value": "Charlotte",
+        "entity": "contact_add_entity_name"
+      },
+      {
+        "start": 36,
+        "end": 39,
+        "value": "BTC",
+        "entity": "contact_add_entity_crypto_network"
+      },
+      {
+        "start": 48,
+        "end": 82,
+        "value": "3CvEJQrG4fryZiKkWXKUJBMXGXGg9xAoKu",
+        "entity": "contact_add_entity_wallet_address"
+      },
+      {
+        "start": 87,
+        "end": 90,
+        "value": "ETH",
+        "entity": "contact_add_entity_crypto_network"
+      },
+      {
+        "start": 99,
+        "end": 141,
+        "value": "0xDE3E116AAd58189c2475B27EeBb9bd072d368Fc5",
+        "entity": "contact_add_entity_wallet_address"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_name",
+        "start": 21,
+        "end": 30,
+        "confidence_entity": 0.9999907612800598,
+        "value": "Charlotte",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_crypto_network{\"value\"",
+        "start": 36,
+        "end": 39,
+        "confidence_entity": 0.5605607628822327,
+        "value": "\"Bitcoin\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 48,
+        "end": 82,
+        "confidence_entity": 0.9999977946281433,
+        "value": "3CvEJQrG4fryZiKkWXKUJBMXGXGg9xAoKu",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "contact_add_entity_crypto_network{\"value\"",
+        "start": 87,
+        "end": 90,
+        "confidence_entity": 0.5195623636245728,
+        "value": "\"Ethereum\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 99,
+        "end": 141,
+        "confidence_entity": 0.9999986886978149,
+        "value": "0xDE3E116AAd58189c2475B27EeBb9bd072d368Fc5",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "pls add Ethan w/ BTC addr 1LPkARhMSnWjN54Y6vKLYCrQEYT7jP2XfE",
+    "entities": [
+      {
+        "start": 8,
+        "end": 13,
+        "value": "Ethan",
+        "entity": "contact_add_entity_name"
+      },
+      {
+        "start": 17,
+        "end": 20,
+        "value": "BTC",
+        "entity": "contact_add_entity_crypto_network"
+      },
+      {
+        "start": 26,
+        "end": 60,
+        "value": "1LPkARhMSnWjN54Y6vKLYCrQEYT7jP2XfE",
+        "entity": "contact_add_entity_wallet_address"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_name",
+        "start": 8,
+        "end": 13,
+        "confidence_entity": 0.9999881386756897,
+        "value": "Ethan",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_crypto_network{\"value\"",
+        "start": 17,
+        "end": 20,
+        "confidence_entity": 0.9991680979728699,
+        "value": "\"Bitcoin\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 26,
+        "end": 60,
+        "confidence_entity": 0.9999990463256836,
+        "value": "1LPkARhMSnWjN54Y6vKLYCrQEYT7jP2XfE",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Save Mary Kate O'Connor's ETH address 0xA1B2C3D4E5F67890A1B2C3D4E5F67890A1B2C3D4",
+    "entities": [
+      {
+        "start": 5,
+        "end": 23,
+        "value": "Mary Kate O'Connor",
+        "entity": "contact_add_entity_name"
+      },
+      {
+        "start": 26,
+        "end": 29,
+        "value": "ETH",
+        "entity": "contact_add_entity_crypto_network"
+      },
+      {
+        "start": 38,
+        "end": 80,
+        "value": "0xA1B2C3D4E5F67890A1B2C3D4E5F67890A1B2C3D4",
+        "entity": "contact_add_entity_wallet_address"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "contact_add_entity_name",
+        "start": 5,
+        "end": 9,
+        "confidence_entity": 0.9997313022613525,
+        "value": "Mary",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "contact_add_entity_name",
+        "start": 10,
+        "end": 14,
+        "confidence_entity": 0.9968584775924683,
+        "value": "Kate",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "contact_add_entity_crypto_network",
+        "start": 17,
+        "end": 23,
+        "confidence_entity": 0.4248356223106384,
+        "value": "Connor",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "contact_add_entity_crypto_network",
+        "start": 26,
+        "end": 29,
+        "confidence_entity": 0.7184081077575684,
+        "value": "\"Ethereum\"}",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "contact_add_entity_wallet_address",
+        "start": 38,
+        "end": 80,
+        "confidence_entity": 0.999998927116394,
+        "value": "0xA1B2C3D4E5F67890A1B2C3D4E5F67890A1B2C3D4",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]
