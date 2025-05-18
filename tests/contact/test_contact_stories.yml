@@ -1,0 +1,672 @@
+#### Tests for contact stories
+#### This file contains tests to evaluate that your bot behaves as expected
+#### for contact management functionality stories.
+
+stories:
+# HAPPY PATH SCENARIOS
+
+# Test add contact with complete information
+- story: Test add contact with complete information
+  steps:
+  - user: |
+      Add Mark Smith with Bitcoin address 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: Mark Smith
+    - contact_add_entity_crypto_network: Bitcoin
+    - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+      - crypto_network_typo: false
+      - multiple_networks_detected: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+
+# Test add contact step by step (happy path)
+- story: Test add contact step by step
+  steps:
+  - user: |
+      I want to add a new contact
+    intent: contact_add_request
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+      - crypto_network_typo: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_name
+  - user: |
+      Jessica Johnson
+    intent: inform
+    entities:
+    - contact_add_entity_name: Jessica Johnson
+  - slot_was_set:
+      - contact_add_entity_name: Jessica Johnson
+      - requested_slot: contact_add_entity_crypto_network
+  - user: |
+      Ethereum
+    intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Ethereum
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Ethereum
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+  - slot_was_set:
+      - contact_add_entity_wallet_address: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+      - address_valid: true
+      - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+
+# PARTIAL INFORMATION SCENARIOS
+
+# Test add contact with only name provided initially
+- story: Test add contact with only name provided initially
+  steps:
+  - user: |
+      Add Michael Brown to my contacts
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: Michael Brown
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+      - crypto_network_typo: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_crypto_network
+  - user: |
+      Bitcoin
+    intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Bitcoin
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Bitcoin
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2
+  - slot_was_set:
+      - contact_add_entity_wallet_address: 1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2
+      - address_valid: true
+      - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+
+# Test add contact with name and network provided initially
+- story: Test add contact with name and network provided initially
+  steps:
+  - user: |
+      Add Emma Wilson with Litecoin address
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: Emma Wilson
+    - contact_add_entity_crypto_network: Litecoin
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+      - crypto_network_typo: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      LVkPNYuhBbraFYEWA8oqQAYgGYMY57zZj5
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: LVkPNYuhBbraFYEWA8oqQAYgGYMY57zZj5
+  - slot_was_set:
+      - contact_add_entity_wallet_address: LVkPNYuhBbraFYEWA8oqQAYgGYMY57zZj5
+      - address_valid: true
+      - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+
+# ERROR HANDLING SCENARIOS
+
+# Test add contact with invalid wallet address
+- story: Test add contact with invalid wallet address
+  steps:
+  - user: |
+      I need to add James Davis to my contacts
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: James Davis
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_crypto_network
+  - user: |
+      Bitcoin
+    intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Bitcoin
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Bitcoin
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      invalid123
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: invalid123
+  - slot_was_set:
+      - contact_add_entity_wallet_address: invalid123
+      - address_valid: false
+      - validation_attempts: 1
+  - action: utter_invalid_wallet_address
+  - user: |
+      1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+  - slot_was_set:
+      - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+      - address_valid: true
+      - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+
+# Test add contact with multiple invalid addresses
+- story: Test add contact with multiple invalid addresses
+  steps:
+  - user: |
+      Add Oliver Taylor to contacts
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: Oliver Taylor
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_crypto_network
+  - user: |
+      Ethereum
+    intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Ethereum
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Ethereum
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      invalid123
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: invalid123
+  - slot_was_set:
+      - contact_add_entity_wallet_address: invalid123
+      - address_valid: false
+      - validation_attempts: 1
+  - action: utter_invalid_wallet_address
+  - user: |
+      stillwrong456
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: stillwrong456
+  - slot_was_set:
+      - contact_add_entity_wallet_address: stillwrong456
+      - address_valid: false
+      - validation_attempts: 2
+  - action: utter_invalid_wallet_address
+  - user: |
+      notvalid789
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: notvalid789
+  - slot_was_set:
+      - contact_add_entity_wallet_address: notvalid789
+      - address_valid: false
+      - validation_attempts: 3
+  - action: action_offer_validation_alternatives
+  - action: utter_contact_validation_help
+  - user: |
+      0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+  - slot_was_set:
+      - contact_add_entity_wallet_address: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+      - address_valid: true
+      - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+
+# Test add existing contact with update
+- story: Test add existing contact with update
+  steps:
+  - user: |
+      Add Sophia Miller to my contacts
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: Sophia Miller
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: true
+  - action: utter_contact_already_exists
+  - user: |
+      Yes, I want to update it
+    intent: affirm
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - contact_add_entity_name: Sophia Miller
+      - requested_slot: contact_add_entity_crypto_network
+  - user: |
+      Ripple
+    intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Ripple
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Ripple
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh
+  - slot_was_set:
+      - contact_add_entity_wallet_address: rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh
+      - address_valid: true
+      - requested_slot: null
+  - active_loop: null
+  - action: action_update_contact
+  - action: utter_confirm_modification
+
+# Test add existing contact decline update
+- story: Test add existing contact decline update
+  steps:
+  - user: |
+      Add William Jones to my contacts
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: William Jones
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: true
+      - crypto_network_typo: false
+  - action: utter_contact_already_exists
+  - user: |
+      No, don't update
+    intent: deny
+  - action: utter_cancel_add_contact
+  - action: action_reset_contact_slots
+
+# INTERRUPTION SCENARIOS
+
+# Test help request during process
+- story: Test help request during contact addition
+  steps:
+  - user: |
+      Add Daniel Lee to my contacts
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: Daniel Lee
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_crypto_network
+  - user: |
+      Help
+    intent: help
+  - action: utter_contact_addition_help
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - user: |
+      Bitcoin
+    intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Bitcoin
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Bitcoin
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+  - slot_was_set:
+      - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+      - address_valid: true
+      - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+
+# Test clarification request during process
+- story: Test clarification request during process
+  steps:
+  - user: |
+      Add Ava Martinez to my contacts
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: Ava Martinez
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_crypto_network
+  - user: |
+      What cryptocurrencies can I use?
+    intent: request_clarification
+  - action: action_provide_clarification
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - user: |
+      Ethereum
+    intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Ethereum
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Ethereum
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+  - slot_was_set:
+      - contact_add_entity_wallet_address: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+      - address_valid: true
+      - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+
+# Test context switch with save
+- story: Test context switch with save
+  steps:
+  - user: |
+      Add Isabella Thompson to my contacts
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: Isabella Thompson
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_crypto_network
+  - user: |
+      Can you check the weather for me?
+    intent: context_switch
+  - action: action_ask_save_progress
+  - user: |
+      Yes, save my progress
+    intent: affirm
+  - action: action_save_progress
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+      - contact_flow_active: true
+  - action: utter_handle_different_intent
+  - user: |
+      Let's continue adding the contact
+    intent: continue_process
+  - action: action_resume_contact_flow
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_crypto_network
+  - user: |
+      Bitcoin
+    intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Bitcoin
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Bitcoin
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+  - slot_was_set:
+      - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+      - address_valid: true
+      - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+
+# Test go back to previous question
+- story: Test go back to previous question
+  steps:
+  - user: |
+      Add Ethan Wilson to my contacts
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: Ethan Wilson
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_crypto_network
+  - user: |
+      Bitcoin
+    intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Bitcoin
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Bitcoin
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      Go back
+    intent: go_back
+  - action: action_go_back_in_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_crypto_network
+  - user: |
+      Ethereum
+    intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Ethereum
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Ethereum
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+  - slot_was_set:
+      - contact_add_entity_wallet_address: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+      - address_valid: true
+      - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+
+# SPECIAL CASES
+
+# Test network address mismatch
+- story: Test network address mismatch
+  steps:
+  - user: |
+      Add Noah White to my contacts
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: Noah White
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_crypto_network
+  - user: |
+      Ethereum
+    intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Ethereum
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Ethereum
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+  - slot_was_set:
+      - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+      - network_address_mismatch: true
+  - action: utter_network_address_mismatch
+  - action: action_clear_wallet_address
+  - action: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+  - slot_was_set:
+      - contact_add_entity_wallet_address: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+      - network_address_mismatch: false
+      - address_valid: true
+      - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+
+# Test multiple networks detection
+- story: Test multiple networks detection
+  steps:
+  - user: |
+      Add Lucas with Bitcoin, Ethereum addresses
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: Lucas
+    - contact_add_entity_crypto_network: Bitcoin, Ethereum
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+      - multiple_networks_detected: true
+      - requested_slot: contact_add_entity_crypto_network
+  - action: utter_confirm_multiple_networks
+  - user: |
+      Bitcoin
+    intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Bitcoin
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Bitcoin
+      - multiple_networks_detected: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+  - slot_was_set:
+      - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+      - address_valid: true
+      - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+
+# Test Gen Z style request
+- story: Test Gen Z style request
+  steps:
+  - user: |
+      Yo, add Alex with BTC addy
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: Alex
+    - contact_add_entity_crypto_network: BTC
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+      - crypto_network_typo: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Bitcoin
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+  - slot_was_set:
+      - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+      - address_valid: true
+      - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+
+# Test direct confirmation of contact details
+- story: Test direct confirmation of contact details
+  steps:
+  - user: |
+      Add Mia Collins to my contacts
+    intent: contact_add_request
+    entities:
+    - contact_add_entity_name: Mia Collins
+  - action: action_check_contact_existence
+  - slot_was_set:
+      - contact_exists: false
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+      - requested_slot: contact_add_entity_crypto_network
+  - user: |
+      Bitcoin
+    intent: inform
+    entities:
+    - contact_add_entity_crypto_network: Bitcoin
+  - slot_was_set:
+      - contact_add_entity_crypto_network: Bitcoin
+      - requested_slot: contact_add_entity_wallet_address
+  - user: |
+      1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+    intent: inform
+    entities:
+    - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+  - slot_was_set:
+      - contact_add_entity_wallet_address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+      - address_valid: true
+      - requested_slot: null
+  - user: |
+      Yes, these details are correct
+    intent: confirm_contact_details
+  - action: action_save_contact
+  - action: utter_contact_added_successfully
+  - action: action_deactivate_loop
+  - active_loop: null
