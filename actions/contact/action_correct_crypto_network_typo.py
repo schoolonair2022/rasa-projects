@@ -33,24 +33,44 @@ class ActionCorrectCryptoNetworkTypo(Action):
             "Aave", "Tezos", "Maker", "Neo", "Stacks"
         ]
         
-        # Also include common abbreviations
-        abbrevs = ["BTC", "ETH", "LTC", "XRP", "DOGE", "BCH", "XLM", "ADA", 
-                  "DOT", "SOL", "AVAX", "USDC", "USDT", "BNB", "LINK", 
-                  "XMR", "ATOM", "UNI", "MATIC", "ALGO", "NEAR", "VET", 
-                  "TRX", "EOS", "FIL", "AAVE", "XTZ", "MKR", "NEO", "STX"]
+        # Dictionary to map abbreviations to full names
+        abbrev_to_full = {
+            "BTC": "Bitcoin", "ETH": "Ethereum", "LTC": "Litecoin", 
+            "XRP": "Ripple", "DOGE": "Dogecoin", "BCH": "Bitcoin Cash", 
+            "XLM": "Stellar", "ADA": "Cardano", "DOT": "Polkadot", 
+            "SOL": "Solana", "AVAX": "Avalanche", "USDC": "USD Coin", 
+            "USDT": "Tether", "BNB": "Binance Coin", "LINK": "Chainlink",
+            "XMR": "Monero", "ATOM": "Cosmos", "UNI": "Uniswap", 
+            "MATIC": "Polygon", "ALGO": "Algorand", "NEAR": "Near Protocol", 
+            "VET": "VeChain", "TRX": "Tron", "EOS": "EOS", 
+            "FIL": "Filecoin", "AAVE": "Aave", "XTZ": "Tezos", 
+            "MKR": "Maker", "NEO": "Neo", "STX": "Stacks"
+        }
         
-        all_networks = known_networks + abbrevs
+        # Check if it's a known abbreviation first (case insensitive)
+        upper_network = network_with_typo.upper()
+        if upper_network in abbrev_to_full:
+            corrected_network = abbrev_to_full[upper_network]
+            dispatcher.utter_message(text=f"I'll use {corrected_network} as the cryptocurrency network.")
+            return [
+                SlotSet("contact_add_entity_crypto_network", corrected_network),
+                SlotSet("crypto_network_typo", False)  # Not actually a typo, just an abbreviation
+            ]
+        
+        # All networks including abbreviations for fuzzy matching
+        all_networks = known_networks + list(abbrev_to_full.keys())
         
         # Find closest match to correct typos
         closest_match = difflib.get_close_matches(network_with_typo, all_networks, n=1, cutoff=0.6)
         
         if closest_match:
-            corrected_network = closest_match[0]
+            match = closest_match[0]
             
             # If we matched an abbreviation, convert to full name for consistency
-            if corrected_network in abbrevs:
-                idx = abbrevs.index(corrected_network)
-                corrected_network = known_networks[idx % len(known_networks)]
+            if match in abbrev_to_full:
+                corrected_network = abbrev_to_full[match]
+            else:
+                corrected_network = match
             
             # Inform the user about the correction
             dispatcher.utter_message(text=f"I'll use {corrected_network} as the cryptocurrency network.")
