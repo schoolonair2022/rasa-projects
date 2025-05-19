@@ -35,6 +35,9 @@ class ActionValidateWalletAddress(Action):
                 SlotSet("validation_attempts", validation_attempts + 1),
                 SlotSet("network_address_mismatch", False)
             ]
+
+        # Clean up wallet address: remove any spaces that might have been captured incorrectly
+        wallet_address = wallet_address.replace(" ", "")
         
         # Standardize network name (handle lowercase, abbreviations, etc.)
         network = self._standardize_network_name(crypto_network)
@@ -76,7 +79,8 @@ class ActionValidateWalletAddress(Action):
         return [
             SlotSet("address_valid", is_valid),
             SlotSet("validation_attempts", validation_attempts),
-            SlotSet("network_address_mismatch", network_address_mismatch)
+            SlotSet("network_address_mismatch", network_address_mismatch),
+            SlotSet("contact_add_entity_wallet_address", wallet_address)  # Store the cleaned address
         ]
     
     def _standardize_network_name(self, network: str) -> str:

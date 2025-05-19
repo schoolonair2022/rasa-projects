@@ -1,0 +1,79 @@
+version: "3.1"
+
+stories:
+  - story: Test full name handling
+    steps:
+      - user: "Add John Smith with Bitcoin address 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "John Smith"
+          - contact_add_entity_crypto_network: "Bitcoin"
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_check_contact_existence
+      - action: add_contact_form
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  - story: Test full name with title
+    steps:
+      - user: "Add Mr.Smith with Bitcoin address 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "Mr.Smith"
+          - contact_add_entity_crypto_network: "Bitcoin"
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_check_contact_existence
+      - action: add_contact_form
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  - story: Test just name request with full name
+    steps:
+      - user: "Add Sophia Miller to my contacts"
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "Sophia Miller"
+      - action: action_check_contact_existence
+      - action: add_contact_form
+      - active_loop: add_contact_form
+      - slot_was_set:
+          - requested_slot: contact_add_entity_crypto_network
+      - user: "Bitcoin"
+      - intent: inform
+        entities:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - contact_add_entity_crypto_network: "Bitcoin"
+      - slot_was_set:
+          - requested_slot: contact_add_entity_wallet_address
+      - user: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - intent: inform
+        entities:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - slot_was_set:
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_save_contact
+      - action: utter_contact_added_successfully
+
+  - story: Test wallet address with spaces
+    steps:
+      - user: "Add John with Bitcoin address 1A1zP1eP5QGefi2DMPTfTL5SLmv7 DivfNa"
+      - intent: contact_add_request
+        entities:
+          - contact_add_entity_name: "John"
+          - contact_add_entity_crypto_network: "Bitcoin"
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7 DivfNa"
+      - action: action_check_contact_existence
+      - action: add_contact_form
+      - action: action_validate_wallet_address
+      - slot_was_set:
+          - address_valid: true
+          - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - action: action_save_contact
+      - action: utter_contact_added_successfully

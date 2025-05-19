@@ -26,17 +26,15 @@ class ActionSaveContact(Action):
             dispatcher.utter_message(text="I'm missing some information needed to save this contact. Let's start over.")
             return [AllSlotsReset()]
         
+        # Clean up wallet address: remove any spaces that might have been captured incorrectly
+        clean_wallet_address = wallet_address.replace(" ", "")
+        
         # In a real implementation, this would save to a database or API
         # For this example, we'll just log the saved contact
-        print(f"Saving contact: {contact_name}, {crypto_network}, {wallet_address}")
+        print(f"Saving contact: {contact_name}, {crypto_network}, {clean_wallet_address}")
         
-        # Simulate successful save
-        # In a real implementation, we'd check for errors and handle them
-        
-        # For demo purposes, you might want to add some simulated delay
-        # to make it feel like a real save operation
-        # import time
-        # time.sleep(1)
+        # Send a confirmation message with the contact's name
+        dispatcher.utter_message(text=f"Contact saved successfully! {contact_name} has been added to your wallet.")
         
         # Once saved, clear the contact-specific slots but keep some context
         return [

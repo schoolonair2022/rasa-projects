@@ -1082,4 +1082,31 @@ nlu:
 entities:
   - contact_add_entity_name
   - contact_add_entity_crypto_network
-  - contact_add_entity_wallet_address
+  - contact_add_entity_wallet_addressversion: "3.1"
+
+nlu:
+- intent: contact_add_request
+  examples: |
+    # Full name examples
+    - Add [John Smith](contact_add_entity_name) to my contacts with [Bitcoin](contact_add_entity_crypto_network) address [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address)
+    - Add [Mr. Smith](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) address [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address)
+    - Create a new contact for [Sophia Miller](contact_add_entity_name) with [Ethereum](contact_add_entity_crypto_network) wallet [0x742d35Cc6634C0532925a3b844Bc454e4438f44e](contact_add_entity_wallet_address)
+    - Save [John Doe](contact_add_entity_name)'s [Solana](contact_add_entity_crypto_network) address [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address)
+    - Add my friend [Jane Smith](contact_add_entity_name) with [Ripple](contact_add_entity_crypto_network) address [rMnuS9WjpNixPTFCvZoHqwPaYuvJGU3DHc](contact_add_entity_wallet_address)
+
+    # Handling wallet addresses with spaces (combined or split across lines)
+    - Add [Alex](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) address [1A1zP1eP5QGefi2DMPTfTL5SLmv7Div fNa](contact_add_entity_wallet_address)
+    - Save [Mark](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) wallet [1A1zP1eP5QGefi2DMPTfTL5 SLmv7DivfNa](contact_add_entity_wallet_address)
+    - Add [Lisa](contact_add_entity_name) to contacts with [Ethereum](contact_add_entity_crypto_network) [0x742d35Cc6634C0532925a3b844 Bc454e4438f44e](contact_add_entity_wallet_address)
+    
+    # Just name requests with full names
+    - Add [John Smith](contact_add_entity_name) to my contacts
+    - I need to create a contact for [Sophia Miller](contact_add_entity_name)
+    - Add [Mr. Smith](contact_add_entity_name) to my contact list
+    - Create a new contact called [Dr. Jones](contact_add_entity_name)
+    - Save [Mary Johnson](contact_add_entity_name) as a contact
+    
+    # Examples with titles and double names
+    - Add [Prof. Robert Williams](contact_add_entity_name) to my contacts with [ETH](contact_add_entity_crypto_network) wallet [0x742d35Cc6634C0532925a3b844Bc454e4438f44e](contact_add_entity_wallet_address)
+    - Create a contact for [Mrs. Emma Davis-Wilson](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network) address [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address)
+    - Save [Dr. John Smith Jr.](contact_add_entity_name) with [SOL](contact_add_entity_crypto_network) address [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address)
