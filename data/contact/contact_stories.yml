@@ -1117,7 +1117,6 @@ stories:
       - action: action_save_contact
       - action: utter_contact_added_successfullyversion: "3.1"
 
-stories:
   # Full name handling scenario
   - story: Add contact - full name with spaces
     steps:
