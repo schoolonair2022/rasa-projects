@@ -27,3 +27,9 @@ from .contact.action_save_progress import ActionSaveProgress
 from .contact.action_update_contact import ActionUpdateContact
 from .contact.action_validate_crypto_network import ActionValidateCryptoNetwork
 from .contact.action_validate_wallet_address import ActionValidateWalletAddress
+
+# Import fallback action
+from .fallback_claude import ActionFallbackClaude
+
+# Import language actions
+from .language_actions import ActionSetVietnameseLanguage, ActionSetEnglishLanguage

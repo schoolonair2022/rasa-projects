@@ -1,0 +1,12 @@
+version: "3.1"
+
+rules:
+  - rule: Set language to Vietnamese when user speaks Vietnamese
+    steps:
+      - intent: greet_vi
+      - action: action_set_vietnamese_language
+      
+  - rule: Set language to English when user speaks English
+    steps:
+      - intent: greet
+      - action: action_set_english_language

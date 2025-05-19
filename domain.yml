@@ -2,11 +2,13 @@ version: "3.1"
 
 intents:
   - greet
+  - greet_vi
   - goodbye
   - mood_great
   - mood_unhappy
   - bot_challenge
   - add_contact
+  - add_contact_vi
   - ask_sentiment
   - check_scam
   - crypto_topic
@@ -102,6 +104,9 @@ actions:
   - action_resume_contact_flow
   - action_save_progress
   - action_ask_save_progress
+  - action_fallback_claude
+  - action_set_vietnamese_language
+  - action_set_english_language
   
 entities:
   - crypto_description
@@ -133,6 +138,12 @@ slots:
         entity: contact_add_entity_wallet_address
     influence_conversation: true
 
+  language:
+    type: text
+    mappings:
+      - type: custom
+    influence_conversation: false
+    
   active_loop:
     type: text
     mappings:
@@ -293,6 +304,8 @@ imports:
   - data/contact/contact_rules.yml
   - data/contact/contact_stories.yml
   - data/common/crypto_synonym_nlu.yml
+  - data/language_rules.yml
+  - data/multilingual_nlu.yml
 
 session_config:
   session_expiration_time: 60
