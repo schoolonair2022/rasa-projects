@@ -7,15 +7,10 @@ assistant_id: 20250515-042817-booming-inventory
 language: vi,en  # Supporting both Vietnamese and English
 
 pipeline:
-  # Vietnamese tokenization for Vietnamese text
-  - name: "MultilingualTokenizer"
+  # Use WhitespaceTokenizer for all languages (we'll customize tokenization in code)
+  - name: WhitespaceTokenizer
     intent_tokenization_flag: True
     intent_split_symbol: "_"
-    languageInterfaces:
-      vi:
-        name: "UnderthesaTokenizer"
-      en:
-        name: "WhitespaceTokenizer"
   
   # Extract regex features for entities
   - name: RegexFeaturizer

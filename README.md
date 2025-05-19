@@ -50,7 +50,17 @@ This script will:
 - Create necessary directories
 - Check hardware compatibility
 
-### Step 3: Train the Model
+### Step 3: Test Vietnamese Tokenization
+
+Before training, test that the Vietnamese tokenizer is working properly:
+
+```bash
+python test_vietnamese_tokenizer.py
+```
+
+This will verify that the tokenizer can correctly process Vietnamese text.
+
+### Step 4: Train the Model
 
 ```bash
 rasa train
@@ -58,7 +68,7 @@ rasa train
 
 This will train the NLU model with the optimized pipeline in `config.yml`.
 
-### Step 4: Start the Action Server
+### Step 5: Start the Action Server
 
 In a separate terminal:
 
@@ -70,7 +80,7 @@ export ANTHROPIC_API_KEY=your_api_key_here
 rasa run actions
 ```
 
-### Step 5: Start the Rasa Server
+### Step 6: Start the Rasa Server
 
 ```bash
 rasa run --enable-api
@@ -85,17 +95,67 @@ rasa shell
 ## Project Structure
 
 - `config.yml`: Main Rasa configuration with `rasa/LaBSE` setup
-- `custom/tokenizers.py`: Custom tokenizers for Vietnamese
+- `components/`: Custom components for Rasa
+  - `multilingual/`: Multilingual processing components
+  - `multilingual/vietnamese.py`: Vietnamese tokenization with `underthesea`
 - `actions/`: Custom actions including:
   - `actions.py`: Main actions for wallet management
   - `fallback_claude.py`: Claude integration for fallback handling
 - `data/`: Training data (intents, stories, rules)
 - `domain.yml`: Bot domain definition
 - `setup.py`: Environment validation script
+- `test_vietnamese_tokenizer.py`: Test script for Vietnamese tokenization
 
 ## Environment Variable Configuration
 
 - `ANTHROPIC_API_KEY`: Required for Claude fallback integration
+
+## Troubleshooting
+
+### Common Issues
+
+#### MultilingualTokenizer Not Found
+
+If you encounter an error like:
+```
+InvalidConfigException: Can't load class for name 'MultilingualTokenizer'
+```
+
+Use the modified configuration in `config.yml` that uses the standard `WhitespaceTokenizer`. The Vietnamese processing happens within our custom action code using `underthesea`.
+
+#### Vietnamese Tokenization Issues
+
+If you experience problems with Vietnamese text:
+
+1. Verify the tokenizer is working:
+   ```bash
+   python test_vietnamese_tokenizer.py
+   ```
+
+2. Make sure message metadata includes language information. In your stories or rules, set:
+   ```yaml
+   - slot{"language": "vi"}
+   ```
+
+#### Out of Memory Errors
+
+If you encounter OOM errors during training:
+
+```bash
+# Edit config.yml to reduce batch_size and epochs
+# Then train with reduced memory usage
+CUDA_VISIBLE_DEVICES= rasa train --augmentation 0
+```
+
+#### Model Loading Issues
+
+If the LaBSE model fails to load:
+
+```bash
+# Clear the cache and try again
+rm -rf ./cache
+python setup.py
+```
 
 ## Optimizing for Your Hardware
 
@@ -109,38 +169,6 @@ The default configuration is optimized for 24GB RAM and 8 vCPU. If you need to o
 2. Memory management:
    - Ensure the `cache_dir` is on an SSD for faster access
    - Consider using smaller training datasets for initial development
-
-## Troubleshooting
-
-### Out of Memory Errors
-
-If you encounter OOM errors during training:
-
-```bash
-# Edit config.yml to reduce batch_size and epochs
-# Then train with reduced memory usage
-CUDA_VISIBLE_DEVICES= rasa train --augmentation 0
-```
-
-### Model Loading Issues
-
-If the LaBSE model fails to load:
-
-```bash
-# Clear the cache and try again
-rm -rf ./cache
-python setup.py
-```
-
-### Vietnamese Tokenization Problems
-
-If `underthesea` is not working correctly:
-
-```bash
-# Reinstall with specific version
-pip uninstall underthesea -y
-pip install underthesea==6.2.0
-```
 
 ## Contributing
 
