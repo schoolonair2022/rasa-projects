@@ -45,16 +45,16 @@ pipeline:
     epochs: 100
     constrain_similarities: true
     batch_strategy: "balanced"
-    evaluate_on_number_of_examples: 10
+    evaluate_on_number_of_examples: 0  # Set to 0 to disable validation split
     evaluate_every_number_of_epochs: 20
-    checkpoint_model: true
+    checkpoint_model: false  # Disable checkpoint saving since we're not validating
     entity_recognition: true
     use_masked_language_model: false
     BILOU_flag: true
     intent_tokenization_flag: true
     intent_split_symbol: "_"
     use_full_model_secure_mode: false
-    share_hidden_layers: false  # Changed to false to avoid dimension mismatch
+    share_hidden_layers: false  # Keep as false to avoid dimension mismatch
     batch_size: 16
     random_seed: 42
     ranking_length: 5        # Return top 5 intent confidences
