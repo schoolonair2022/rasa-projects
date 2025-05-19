@@ -45,7 +45,7 @@ pipeline:
     epochs: 100
     constrain_similarities: true
     batch_strategy: "balanced"
-    evaluate_on_number_of_examples: 0
+    evaluate_on_number_of_examples: 10
     evaluate_every_number_of_epochs: 20
     checkpoint_model: true
     entity_recognition: true
@@ -54,7 +54,7 @@ pipeline:
     intent_tokenization_flag: true
     intent_split_symbol: "_"
     use_full_model_secure_mode: false
-    share_hidden_layers: true
+    share_hidden_layers: false  # Changed to false to avoid dimension mismatch
     batch_size: 16
     random_seed: 42
     ranking_length: 5        # Return top 5 intent confidences
