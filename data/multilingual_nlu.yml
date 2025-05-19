@@ -1,0 +1,128 @@
+version: "3.1"
+
+nlu:
+  # English intent examples
+  - intent: greet
+    examples: |
+      - hello
+      - hi
+      - good morning
+      - good evening
+      - hey there
+      - hi there
+      - howdy
+      - greetings
+
+  # Vietnamese intent examples
+  - intent: greet_vi
+    examples: |
+      - xin chào
+      - chào
+      - chào buổi sáng
+      - chào buổi tối
+      - hey
+      - này
+      - chào bạn
+      - kính chào
+
+  # English intent examples
+  - intent: add_contact
+    examples: |
+      - I want to add a new wallet address
+      - Add a new contact
+      - Save this wallet address
+      - Add [John](contact_name) to my contacts
+      - I'd like to add [Alice](contact_name)'s wallet
+      - Save [Bob](contact_name) with his wallet address
+      - Add [Sarah](contact_name) to my list
+      - I need to save a new contact
+      - Put this address in my contacts
+      - Record a new wallet address for [Mike](contact_name)
+      - Store this address in my contacts
+      - Add a new person to my crypto contacts
+
+  # Vietnamese intent examples
+  - intent: add_contact_vi
+    examples: |
+      - Tôi muốn thêm địa chỉ ví mới
+      - Thêm một liên hệ mới
+      - Lưu địa chỉ ví này
+      - Thêm [John](contact_name) vào danh bạ của tôi
+      - Tôi muốn thêm ví của [Alice](contact_name)
+      - Lưu [Bob](contact_name) với địa chỉ ví của anh ấy
+      - Thêm [Sarah](contact_name) vào danh sách của tôi
+      - Tôi cần lưu một liên hệ mới
+      - Đặt địa chỉ này vào danh bạ của tôi
+      - Ghi lại địa chỉ ví mới cho [Mike](contact_name)
+      - Lưu trữ địa chỉ này trong danh bạ của tôi
+      - Thêm một người mới vào danh bạ tiền điện tử của tôi
+
+  # English intent examples
+  - intent: provide_wallet_address
+    examples: |
+      - The address is [0x71C7656EC7ab88b098defB751B7401B5f6d8976F](wallet_address)
+      - Here it is: [0x71C7656EC7ab88b098defB751B7401B5f6d8976F](wallet_address)
+      - [bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh](wallet_address)
+      - The wallet address is [3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy](wallet_address)
+      - [tz1Lc2qBKEWCBeDU8npG6zCeCqpmaegRi6Jg](wallet_address)
+      - His address is [0x71C7656EC7ab88b098defB751B7401B5f6d8976F](wallet_address)
+      - [addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3n0d3vllmyqwsx5wktcd8cc3sq835lu7drv2xwl2wywfgse35a3x](wallet_address)
+      - The Ethereum address is [0xB794F5eA0ba39494cE839613fffBA74279579268](wallet_address)
+      - Bitcoin address [1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2](wallet_address)
+      - [nano_3hd4ezzn4nz1rrq8zajeq3n6y7yjq6mzftgzq3kbagmjksezupxaogqmyi9j](wallet_address)
+
+  # Vietnamese intent examples
+  - intent: provide_wallet_address_vi
+    examples: |
+      - Địa chỉ là [0x71C7656EC7ab88b098defB751B7401B5f6d8976F](wallet_address)
+      - Đây nó đây: [0x71C7656EC7ab88b098defB751B7401B5f6d8976F](wallet_address)
+      - [bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh](wallet_address)
+      - Địa chỉ ví là [3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy](wallet_address)
+      - [tz1Lc2qBKEWCBeDU8npG6zCeCqpmaegRi6Jg](wallet_address)
+      - Địa chỉ của anh ấy là [0x71C7656EC7ab88b098defB751B7401B5f6d8976F](wallet_address)
+      - [addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3n0d3vllmyqwsx5wktcd8cc3sq835lu7drv2xwl2wywfgse35a3x](wallet_address)
+      - Địa chỉ Ethereum là [0xB794F5eA0ba39494cE839613fffBA74279579268](wallet_address)
+      - Địa chỉ Bitcoin [1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2](wallet_address)
+      - [nano_3hd4ezzn4nz1rrq8zajeq3n6y7yjq6mzftgzq3kbagmjksezupxaogqmyi9j](wallet_address)
+
+  # English intent examples
+  - intent: list_contacts
+    examples: |
+      - Show me my contacts
+      - List all my wallet addresses
+      - View my saved contacts
+      - Show all contacts
+      - Display my wallet contact list
+      - Who's in my contact list?
+      - Show me everyone in my contacts
+      - List saved wallets
+      - Show address book
+      - Display all my saved addresses
+      - View my wallet contacts
+
+  # Vietnamese intent examples
+  - intent: list_contacts_vi
+    examples: |
+      - Hiển thị danh bạ của tôi
+      - Liệt kê tất cả địa chỉ ví của tôi
+      - Xem các liên hệ đã lưu của tôi
+      - Hiển thị tất cả các liên hệ
+      - Hiển thị danh sách liên hệ ví của tôi
+      - Ai có trong danh sách liên hệ của tôi?
+      - Hiện tất cả mọi người trong danh bạ của tôi
+      - Liệt kê các ví đã lưu
+      - Hiển thị sổ địa chỉ
+      - Hiển thị tất cả các địa chỉ đã lưu của tôi
+      - Xem danh bạ ví của tôi
+
+  # Mixed language examples to demonstrate language detection capabilities
+  - intent: mixed_language_examples
+    examples: |
+      - I want to add một địa chỉ mới
+      - Xin chào, show me my wallet contacts
+      - Lưu địa chỉ này: [0x71C7656EC7ab88b098defB751B7401B5f6d8976F](wallet_address)
+      - Tôi muốn list all my contacts
+      - Add [Alice](contact_name) với địa chỉ [bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh](wallet_address)
+      - Chào bạn, can you help me with my wallet?
+      - Tôi cần to delete a contact
+      - Hello, tôi muốn thay đổi địa chỉ ví của [John](contact_name)

@@ -7,11 +7,13 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet, AllSlotsReset, FollowupAction
+from rasa_sdk.events import SlotSet, AllSlotsReset, FollowupAction, UserUtteranceReverted
 
 import logging
+import re
 from . import utils
 from . import crypto_utils
+from .fallback_claude import ActionFallbackClaude
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)

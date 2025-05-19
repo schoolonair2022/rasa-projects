@@ -1,79 +1,100 @@
-# The config recipe.
-# https://rasa.com/docs/rasa/model-configuration/
 recipe: default.v1
 
 # The assistant project unique identifier
-# This default value must be replaced with a unique assistant name within your deployment
 assistant_id: 20250515-042817-booming-inventory
 
-# Configuration for Rasa NLU.
-# https://rasa.com/docs/rasa/nlu/components/
-language: en
+# Configuration for Rasa NLU
+language: vi,en  # Supporting both Vietnamese and English
 
 pipeline:
-  - name: WhitespaceTokenizer
+  # Vietnamese tokenization for Vietnamese text
+  - name: "MultilingualTokenizer"
+    intent_tokenization_flag: True
+    intent_split_symbol: "_"
+    languageInterfaces:
+      vi:
+        name: "UnderthesaTokenizer"
+      en:
+        name: "WhitespaceTokenizer"
+  
+  # Extract regex features for entities
   - name: RegexFeaturizer
+    case_sensitive: False
+  
+  # Extract grammatical and syntactical features
   - name: LexicalSyntacticFeaturizer
+    
+  # Use LaBSE model for multilingual support
+  - name: LanguageModelFeaturizer
+    model_name: "bert"
+    model_weights: "rasa/LaBSE"
+    cache_dir: "./cache"  # Cache transformer models
+    batch_size: 16        # Optimized for your 24GB RAM
+    epochs: 5             # Reduced for memory efficiency
+    random_seed: 42
+  
+  # Extract bag-of-words features with word-level n-grams
   - name: CountVectorsFeaturizer
+    analyzer: "word"
+    min_ngram: 1
+    max_ngram: 2
+  
+  # Character-level features for robustness against typos
   - name: CountVectorsFeaturizer
-    analyzer: char_wb
+    analyzer: "char_wb"
     min_ngram: 1
     max_ngram: 4
+    
+  # Intent and entity classification using DIET
   - name: DIETClassifier
-    epochs: 150
-    entity_recognition: true
+    epochs: 100
     constrain_similarities: true
-    model_confidence: softmax
-    ranking_length: 5  # Return top 5 intent confidences
-    intent_tokenization_flag: True  # Improve intent recognition
+    batch_strategy: "balanced"
+    evaluate_on_number_of_examples: 0
+    evaluate_every_number_of_epochs: 20
+    checkpoint_model: true
+    entity_recognition: true
+    use_masked_language_model: false
+    BILOU_flag: true
+    intent_tokenization_flag: true
     intent_split_symbol: "_"
+    use_full_model_secure_mode: false
+    share_hidden_layers: true
+    batch_size: 16
+    random_seed: 42
+    ranking_length: 5        # Return top 5 intent confidences
+    
+  # Map entity synonyms
   - name: EntitySynonymMapper
+  
+  # Handle FAQs with ResponseSelector
   - name: ResponseSelector
     epochs: 100
     retrieval_intent: faq
+    scale_loss: true
+    constrain_similarities: true
+    batch_size: 16
+    random_seed: 42
+    
+  # Fallback when confidence is low
   - name: FallbackClassifier
-    threshold: 0.3
+    threshold: 0.7           # More conservative threshold for fallback
     ambiguity_threshold: 0.1
     fallback_intent_name: nlu_fallback
-# # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
-# # If you'd like to customize it, uncomment and adjust the pipeline.
-# # See https://rasa.com/docs/rasa/tuning-your-model for more information.
-#   - name: WhitespaceTokenizer
-#   - name: RegexFeaturizer
-#   - name: LexicalSyntacticFeaturizer
-#   - name: CountVectorsFeaturizer
-#   - name: CountVectorsFeaturizer
-#     analyzer: char_wb
-#     min_ngram: 1
-#     max_ngram: 4
-#   - name: DIETClassifier
-#     epochs: 100
-#     constrain_similarities: true
-#   - name: EntitySynonymMapper
-#   - name: ResponseSelector
-#     epochs: 100
-#     constrain_similarities: true
-#   - name: FallbackClassifier
-#     threshold: 0.3
-#     ambiguity_threshold: 0.1
 
-# Configuration for Rasa Core.
-# https://rasa.com/docs/rasa/core/policies/
+# Configuration for Rasa Core
 policies:
-- name: MemoizationPolicy
-- name: TEDPolicy
-  max_history: 5
-  epochs: 100
-- name: RulePolicy
-# # No configuration for policies was provided. The following default policies were used to train your model.
-# # If you'd like to customize them, uncomment and adjust the policies.
-# # See https://rasa.com/docs/rasa/policies for more information.
-#   - name: MemoizationPolicy
-#   - name: RulePolicy
-#   - name: UnexpecTEDIntentPolicy
-#     max_history: 5
-#     epochs: 100
-#   - name: TEDPolicy
-#     max_history: 5
-#     epochs: 100
-#     constrain_similarities: true
+  - name: MemoizationPolicy
+    max_history: 5
+    
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 50               # Reduced for faster training
+    batch_size: 32
+    random_seed: 42
+    constrain_similarities: true
+    
+  - name: RulePolicy
+    core_fallback_threshold: 0.4
+    core_fallback_action_name: "action_fallback_claude"
+    enable_fallback_prediction: true

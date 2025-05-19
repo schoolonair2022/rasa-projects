@@ -1,49 +1,151 @@
-# Wallet Address Validation Chatbot
+# Crypto Wallet Contacts Bot
 
-## Tổng quan
+A multilingual (Vietnamese/English) Rasa-based chatbot for managing cryptocurrency wallet contacts, using `rasa/LaBSE` model for improved multilingual understanding.
 
-Chatbot này sử dụng framework Rasa để xử lý việc nhận và xác thực địa chỉ ví tiền điện tử. Ngoài việc sử dụng các biểu thức chính quy cơ bản, chatbot này còn tận dụng mô hình CryptoBERT được đào tạo đặc biệt cho văn bản liên quan đến tiền điện tử.
+## Features
 
-## Mô hình CryptoBERT
+- Multilingual support (Vietnamese and English)
+- Advanced NLU using `rasa/LaBSE` embeddings
+- Custom Vietnamese tokenization using `underthesea`
+- Claude integration as fallback for complex queries
+- Cryptocurrency address validation
+- Optimized for CPU-only environments
 
-CryptoBERT là mô hình ngôn ngữ dựa trên BERT được tinh chỉnh trên một tập dữ liệu văn bản tiền điện tử lớn. Mô hình này có thể:
-- Nhận dạng địa chỉ ví hợp lệ một cách chính xác hơn
-- Phân loại loại ví (Ethereum, Bitcoin, v.v.)
-- Hiểu ngữ cảnh của các đoạn văn bản liên quan đến tiền điện tử
+## System Requirements
 
-Nguồn gốc: [ElKulako/cryptobert](https://huggingface.co/ElKulako/cryptobert)
+- Python 3.8-3.10
+- 8+ vCPU cores (recommended)
+- 24GB+ RAM (recommended)
+- 200GB+ storage
 
-source ~/activate-rasa.sh
-rm models/latest.tar.gz
-ln -s 20250515-052025-patient-syrup.tar.gz models/latest.tar.gz
-rasa shell --model models/20250515-052025-patient-syrup.tar.gz
+## Installation
 
-## Cài đặt
+### Step 1: Install Dependencies
 
-1. Cài đặt các phụ thuộc:
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+# Create and activate a virtual environment (optional but recommended)
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# OR
+venv\Scripts\activate     # Windows
 
-2. Chạy action server:
-   ```bash
-   rasa run actions
-   ```
+# Install dependencies
+pip install -r requirements.txt
+```
 
-3. Trong một terminal khác, chạy Rasa server:
-   ```bash
-   rasa run --enable-api --cors "*" --debug
-   ```
+### Step 2: Setup and Verify
 
-4. Hoặc chạy chatbot trong terminal:
-   ```bash
-   rasa shell
-   ```
+Run the setup script to verify your environment and download required models:
 
-## Quy trình xác thực địa chỉ ví
+```bash
+python setup.py
+```
 
-Bot sử dụng chiến lược hai lớp để xác thực địa chỉ ví:
-1. Xác thực biểu thức chính quy cho các mẫu địa chỉ phổ biến (Ethereum, Bitcoin)
-2. Sử dụng CryptoBERT để phân loại các địa chỉ phức tạp hơn khi xác thực biểu thức chính quy thất bại
+This script will:
+- Check Python version compatibility
+- Verify all dependencies are installed
+- Download and test the `rasa/LaBSE` model
+- Verify `underthesea` functionality
+- Test the custom tokenizer
+- Create necessary directories
+- Check hardware compatibility
 
-Điều này cung cấp khả năng phát hiện địa chỉ ví tiền điện tử chính xác hơn và đáng tin cậy hơn.
+### Step 3: Train the Model
+
+```bash
+rasa train
+```
+
+This will train the NLU model with the optimized pipeline in `config.yml`.
+
+### Step 4: Start the Action Server
+
+In a separate terminal:
+
+```bash
+# Set the Anthropic API key for Claude fallback (if using)
+export ANTHROPIC_API_KEY=your_api_key_here
+
+# Start the action server
+rasa run actions
+```
+
+### Step 5: Start the Rasa Server
+
+```bash
+rasa run --enable-api
+```
+
+Or for testing in shell mode:
+
+```bash
+rasa shell
+```
+
+## Project Structure
+
+- `config.yml`: Main Rasa configuration with `rasa/LaBSE` setup
+- `custom/tokenizers.py`: Custom tokenizers for Vietnamese
+- `actions/`: Custom actions including:
+  - `actions.py`: Main actions for wallet management
+  - `fallback_claude.py`: Claude integration for fallback handling
+- `data/`: Training data (intents, stories, rules)
+- `domain.yml`: Bot domain definition
+- `setup.py`: Environment validation script
+
+## Environment Variable Configuration
+
+- `ANTHROPIC_API_KEY`: Required for Claude fallback integration
+
+## Optimizing for Your Hardware
+
+The default configuration is optimized for 24GB RAM and 8 vCPU. If you need to optimize further:
+
+1. In `config.yml`, adjust these parameters:
+   - Reduce `batch_size` to 8 or 4
+   - Reduce `epochs` in `DIETClassifier` to 50
+   - Set lower `evaluate_every_number_of_epochs` (e.g., 10)
+
+2. Memory management:
+   - Ensure the `cache_dir` is on an SSD for faster access
+   - Consider using smaller training datasets for initial development
+
+## Troubleshooting
+
+### Out of Memory Errors
+
+If you encounter OOM errors during training:
+
+```bash
+# Edit config.yml to reduce batch_size and epochs
+# Then train with reduced memory usage
+CUDA_VISIBLE_DEVICES= rasa train --augmentation 0
+```
+
+### Model Loading Issues
+
+If the LaBSE model fails to load:
+
+```bash
+# Clear the cache and try again
+rm -rf ./cache
+python setup.py
+```
+
+### Vietnamese Tokenization Problems
+
+If `underthesea` is not working correctly:
+
+```bash
+# Reinstall with specific version
+pip uninstall underthesea -y
+pip install underthesea==6.2.0
+```
+
+## Contributing
+
+Contributions are welcome! Please check the issues page for tasks or create a pull request with improvements.
+
+## License
+
+[Your License Here]
