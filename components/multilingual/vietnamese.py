@@ -38,6 +38,7 @@ class UnderthesaTokenizer(Tokenizer):
     def __init__(self, component_config: Dict[Text, Any] = None) -> None:
         """Initialize tokenizer with configuration."""
         super().__init__(component_config)
+        self.component_config = component_config or {}
         self.intent_tokenization_flag = self.component_config.get("intent_tokenization_flag", False)
         self.intent_split_symbol = self.component_config.get("intent_split_symbol", "_")
 
