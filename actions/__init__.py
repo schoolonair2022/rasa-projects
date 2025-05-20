@@ -28,6 +28,16 @@ from .contact.action_update_contact import ActionUpdateContact
 from .contact.action_validate_crypto_network import ActionValidateCryptoNetwork
 from .contact.action_validate_wallet_address import ActionValidateWalletAddress
 
+# Import session actions
+from .session_actions import (
+    ActionSessionStart,
+    ActionDefaultFallback,
+    ActionDefaultAskAffirmation,
+    ActionDefaultAskRephrase,
+    ActionRestart,
+    ActionBack
+)
+
 # Import fallback action
 from .fallback_claude import ActionFallbackClaude
 
