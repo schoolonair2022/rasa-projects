@@ -79,7 +79,9 @@ nlu:
     - Ethereum Classic
     - Fantom
     - Waves
-    - Arweave- synonym: Bitcoin
+    - Arweave
+
+- synonym: Bitcoin
   examples: |
     - BTC
     - bitcoin
@@ -147,7 +149,9 @@ nlu:
     - Binance Coin
     - BEP-20
     - BEP-2
-    - bnb token- synonym: Polygon
+    - bnb token
+
+- synonym: Polygon
   examples: |
     - MATIC
     - matic
