@@ -397,26 +397,29 @@ slots:
 forms:
   add_contact_form:
     required_slots:
-      contact_add_entity_name:
-        - type: from_entity
-          entity: contact_add_entity_name
-        - type: from_text
-          intent: provide_contact_name
-          not_intent: [cancel, out_of_scope, nlu_fallback]
-      contact_add_entity_crypto_network:
-        - type: from_entity
-          entity: contact_add_entity_crypto_network
-        - type: from_text
-          intent: provide_crypto_network
-          not_intent: [cancel, out_of_scope, nlu_fallback]
-      contact_add_entity_wallet_address:
-        - type: from_entity
-          entity: contact_add_entity_wallet_address
-        - type: from_entity
-          entity: wallet_address
-        - type: from_text
-          intent: provide_wallet_address
-          not_intent: [cancel, out_of_scope, nlu_fallback]
+      - contact_add_entity_name
+      - contact_add_entity_crypto_network
+      - contact_add_entity_wallet_address
+    contact_add_entity_name:
+      - type: from_entity
+        entity: contact_add_entity_name
+      - type: from_text
+        intent: provide_contact_name
+        not_intent: [cancel, out_of_scope, nlu_fallback]
+    contact_add_entity_crypto_network:
+      - type: from_entity
+        entity: contact_add_entity_crypto_network
+      - type: from_text
+        intent: provide_crypto_network
+        not_intent: [cancel, out_of_scope, nlu_fallback]
+    contact_add_entity_wallet_address:
+      - type: from_entity
+        entity: contact_add_entity_wallet_address
+      - type: from_entity
+        entity: wallet_address
+      - type: from_text
+        intent: provide_wallet_address
+        not_intent: [cancel, out_of_scope, nlu_fallback]
 
 imports:
   - data/contact/contact_nlu.yml
