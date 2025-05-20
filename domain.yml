@@ -129,7 +129,7 @@ actions:
   - action_fallback_claude
   - action_set_vietnamese_language
   - action_set_english_language
-  - action_listen
+  # Removed action_listen as it's a built-in action
   - action_restart
   - action_session_start
   - action_default_fallback
