@@ -47,7 +47,7 @@ pipeline:
     epochs: 150              # Increased from 100 to 150 
     constrain_similarities: true
     batch_strategy: "sequence"  # Changed from "balanced" to "sequence" for better learning
-    evaluate_on_number_of_examples: 20  # Enable validation split for performance monitoring
+    evaluate_on_number_of_examples: 50  # Increased from 20 to 50 to exceed number of classes
     evaluate_every_number_of_epochs: 10
     checkpoint_model: true   # Save checkpoints for the best model
     entity_recognition: true
