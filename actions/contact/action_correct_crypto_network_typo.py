@@ -3,6 +3,12 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 import difflib
+import re
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class ActionCorrectCryptoNetworkTypo(Action):
     """
@@ -22,6 +28,12 @@ class ActionCorrectCryptoNetworkTypo(Action):
         
         if not network_with_typo:
             return []
+        
+        # Clean up any JSON or formatting artifacts that might be in the network name
+        # This handles cases like '"Bitcoin"}' or other formatting issues
+        cleaned_network = re.sub(r'["\'\{\}]', '', network_with_typo).strip()
+        
+        logger.info(f"Cleaning network name from '{network_with_typo}' to '{cleaned_network}'")
         
         # List of known cryptocurrency networks (comprehensive list)
         known_networks = [
@@ -47,10 +59,19 @@ class ActionCorrectCryptoNetworkTypo(Action):
             "MKR": "Maker", "NEO": "Neo", "STX": "Stacks"
         }
         
-        # Check if it's a known abbreviation first (case insensitive)
-        upper_network = network_with_typo.upper()
+        # Check if the cleaned network name is already a valid network
+        if cleaned_network in known_networks:
+            logger.info(f"Cleaned network '{cleaned_network}' is already a valid network")
+            return [
+                SlotSet("contact_add_entity_crypto_network", cleaned_network),
+                SlotSet("crypto_network_typo", False)
+            ]
+        
+        # Check if it's a known abbreviation (case insensitive)
+        upper_network = cleaned_network.upper()
         if upper_network in abbrev_to_full:
             corrected_network = abbrev_to_full[upper_network]
+            logger.info(f"Converting abbreviation '{cleaned_network}' to '{corrected_network}'")
             dispatcher.utter_message(text=f"I'll use {corrected_network} as the cryptocurrency network.")
             return [
                 SlotSet("contact_add_entity_crypto_network", corrected_network),
@@ -61,7 +82,7 @@ class ActionCorrectCryptoNetworkTypo(Action):
         all_networks = known_networks + list(abbrev_to_full.keys())
         
         # Find closest match to correct typos
-        closest_match = difflib.get_close_matches(network_with_typo, all_networks, n=1, cutoff=0.6)
+        closest_match = difflib.get_close_matches(cleaned_network, all_networks, n=1, cutoff=0.6)
         
         if closest_match:
             match = closest_match[0]
@@ -72,6 +93,8 @@ class ActionCorrectCryptoNetworkTypo(Action):
             else:
                 corrected_network = match
             
+            logger.info(f"Corrected network from '{cleaned_network}' to '{corrected_network}'")
+            
             # Inform the user about the correction
             dispatcher.utter_message(text=f"I'll use {corrected_network} as the cryptocurrency network.")
             
@@ -81,5 +104,9 @@ class ActionCorrectCryptoNetworkTypo(Action):
                 SlotSet("crypto_network_typo", True)
             ]
         
-        # If no close match, don't change the value
-        return [SlotSet("crypto_network_typo", False)]
+        # If no close match, don't change the value but use the cleaned version
+        logger.info(f"No close match found for '{cleaned_network}', using cleaned version")
+        return [
+            SlotSet("contact_add_entity_crypto_network", cleaned_network),
+            SlotSet("crypto_network_typo", False)
+        ]

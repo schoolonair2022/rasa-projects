@@ -1,6 +1,15 @@
 version: "3.1"
 
 rules:
+  # Rule for handling crypto network name with JSON artifacts
+  - rule: Handle network name with JSON artifacts
+    condition:
+    - active_loop: null
+    steps:
+      - intent: contact_add_request
+      - action: action_check_contact_existence
+      - action: action_correct_crypto_network_typo
+
   # Rule for Etherum typo specifically
   - rule: Handle Etherum typo
     condition:
