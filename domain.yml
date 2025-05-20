@@ -400,7 +400,7 @@ forms:
       - contact_add_entity_name
       - contact_add_entity_crypto_network
       - contact_add_entity_wallet_address
-    slots:
+    slot_mappings:
       contact_add_entity_name:
         - type: from_entity
           entity: contact_add_entity_name
