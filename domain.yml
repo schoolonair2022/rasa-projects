@@ -144,6 +144,7 @@ entities:
   - contact_add_entity_name
   - contact_add_entity_crypto_network
   - contact_add_entity_wallet_address
+  - wallet_address
 
 slots:
   contact_add_entity_name:
@@ -165,6 +166,13 @@ slots:
     mappings:
       - type: from_entity
         entity: contact_add_entity_wallet_address
+    influence_conversation: true
+
+  wallet_address:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: wallet_address
     influence_conversation: true
 
   language:
@@ -332,6 +340,8 @@ imports:
   - data/contact/contact_response.yml
   - data/contact/contact_rules.yml
   - data/contact/contact_stories.yml
+  - data/contact/wallet_address_examples.yml
+  - data/contact/wallet_address_rules.yml
   - data/common/crypto_synonym_nlu.yml
   - data/language_rules.yml
   - data/multilingual_nlu.yml

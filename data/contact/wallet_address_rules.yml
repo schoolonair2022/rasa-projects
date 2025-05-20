@@ -1,0 +1,10 @@
+version: "3.1"
+
+rules:
+  - rule: Validate wallet address when provided
+    condition:
+      - slot_was_set:
+          - wallet_address: null
+    steps:
+      - intent: provide_wallet_address
+      - action: action_validate_wallet_address

@@ -32,7 +32,16 @@ class ActionValidateWalletAddress(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        wallet_address = tracker.get_slot("wallet_address")
+        # First check for entity extracted as wallet_address
+        wallet_address = next(tracker.get_latest_entity_values("wallet_address"), None)
+        
+        # If not found, check fallback slots
+        if not wallet_address:
+            wallet_address = tracker.get_slot("contact_add_entity_wallet_address")
+        
+        if not wallet_address:
+            wallet_address = tracker.get_slot("wallet_address")
+        
         logger.info(f"Validating wallet address: {wallet_address}")
         
         network_type = None
@@ -50,7 +59,9 @@ class ActionValidateWalletAddress(Action):
             network_info = f" ({network_type})" if network_type else ""
             dispatcher.utter_message(text=f"I've added {contact_name} with address {wallet_address}{network_info} to your contacts. 🎉")
             dispatcher.utter_message(text="Would you like to add a nickname or note for this contact?")
-            return [SlotSet("address_valid", True), SlotSet("network_type", network_type)]
+            return [SlotSet("address_valid", True), 
+                    SlotSet("network_type", network_type), 
+                    SlotSet("wallet_address", wallet_address)]
         else:
             dispatcher.utter_message(text="That doesn't seem to be a valid wallet address. Please check and try again.")
             return [SlotSet("address_valid", False)]
