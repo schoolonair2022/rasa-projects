@@ -7,7 +7,7 @@ A multilingual (Vietnamese/English) Rasa-based chatbot for managing cryptocurren
 - Multilingual support (Vietnamese and English)
 - Advanced NLU using `rasa/LaBSE` embeddings
 - Custom Vietnamese tokenization using `underthesea`
-- Claude integration as fallback for complex queries
+- OpenAI integration as fallback for complex queries
 - Cryptocurrency address validation
 - Optimized for CPU-only environments
 
@@ -73,8 +73,8 @@ This will train the NLU model with the optimized pipeline in `config.yml`.
 In a separate terminal:
 
 ```bash
-# Set the Anthropic API key for Claude fallback (if using)
-export ANTHROPIC_API_KEY=your_api_key_here
+# Set the OpenAI API key for fallback (if using)
+export OPENAI_API_KEY=your_api_key_here
 
 # Start the action server
 rasa run actions
@@ -100,7 +100,7 @@ rasa shell
   - `multilingual/vietnamese.py`: Vietnamese tokenization with `underthesea`
 - `actions/`: Custom actions including:
   - `actions.py`: Main actions for wallet management
-  - `fallback_claude.py`: Claude integration for fallback handling
+  - `fallback_claude.py`: OpenAI integration for fallback handling
 - `data/`: Training data (intents, stories, rules)
 - `domain.yml`: Bot domain definition
 - `setup.py`: Environment validation script
@@ -108,7 +108,7 @@ rasa shell
 
 ## Environment Variable Configuration
 
-- `ANTHROPIC_API_KEY`: Required for Claude fallback integration
+- `OPENAI_API_KEY`: Required for OpenAI fallback integration
 
 ## Troubleshooting
 
