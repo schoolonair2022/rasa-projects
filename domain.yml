@@ -130,6 +130,18 @@ responses:
   utter_ask_crypto_description:
   - text: "Can you describe that cryptocurrency project in more detail?"
   
+  utter_provide_information:
+  - text: "Here's the information you requested about our crypto wallet service. Our wallet supports multiple cryptocurrencies including Bitcoin, Ethereum, and many other major tokens. You can securely store, send, and receive cryptocurrency, as well as manage your entire portfolio from one place."
+    condition:
+      - type: slot
+        name: language
+        value: en
+  - text: "Đây là thông tin bạn yêu cầu về dịch vụ ví tiền điện tử của chúng tôi. Ví của chúng tôi hỗ trợ nhiều loại tiền điện tử bao gồm Bitcoin, Ethereum và nhiều token chính khác. Bạn có thể lưu trữ, gửi và nhận tiền điện tử một cách an toàn, cũng như quản lý toàn bộ danh mục đầu tư từ một nơi."
+    condition:
+      - type: slot
+        name: language
+        value: vi
+  
   utter_address_network_mismatch:
   - text: "It looks like the wallet address you provided doesn't match the {contact_add_entity_crypto_network} network format. Please provide a valid {contact_add_entity_crypto_network} wallet address."
     condition:
