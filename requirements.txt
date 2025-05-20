@@ -5,9 +5,11 @@ underthesea==6.2.0
 tensorflow==2.12.0
 tensorflow-hub==0.14.0
 tensorflow-text==2.12.1
-protobuf==3.20.3
+protobuf>=4.23.3,<4.23.4  # Cập nhật theo yêu cầu của Rasa 3.6.10
 numpy==1.24.3
 scikit-learn==1.2.2
 scipy==1.10.1
-openai==0.28.0  # Thay anthropic bằng openai
+openai==0.28.0
 sentencepiece==0.1.99
+pydantic<2.0.0  # Đảm bảo tương thích với Rasa
+regex==2022.10.31  # Giúp tránh xung đột với transformers
