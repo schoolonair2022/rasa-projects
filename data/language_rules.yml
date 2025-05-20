@@ -2,14 +2,33 @@ version: "3.1"
 
 rules:
   - rule: Set language to Vietnamese when user speaks Vietnamese
+    conversation_start: true  # Chỉ áp dụng khi bắt đầu cuộc hội thoại
     steps:
       - intent: greet_vi
       - action: action_set_vietnamese_language
-      - action: utter_greet  # Thêm utter_greet sau action_set_vietnamese_language
+      - action: utter_greet
       
   - rule: Set language to English when user speaks English
+    conversation_start: true  # Chỉ áp dụng khi bắt đầu cuộc hội thoại
     steps:
       - intent: greet
       - action: action_set_english_language
-      - action: utter_greet  # Thêm utter_greet sau action_set_english_language
+      - action: utter_greet
+      
+  # Handle regular greetings in ongoing conversations
+  - rule: Regular greeting in ongoing conversation
+    condition:
+    - slot_was_set:
+      - language: en  # Khi ngôn ngữ đã được thiết lập
+    steps:
+      - intent: greet
+      - action: utter_greet
+      
+  - rule: Regular Vietnamese greeting in ongoing conversation
+    condition:
+    - slot_was_set:
+      - language: vi  # Khi ngôn ngữ đã được thiết lập
+    steps:
+      - intent: greet_vi
+      - action: utter_greet
 

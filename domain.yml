@@ -15,6 +15,7 @@ intents:
   - share_expertise
   - mention_crypto
   - nlu_fallback
+  - request_information  # Thêm intent mới
     # Existing intents
   - affirm
   - deny
@@ -87,8 +88,17 @@ responses:
   utter_ask_crypto_description:
   - text: "Can you describe that cryptocurrency project in more detail?"
   
-  utter_ask_expertise_level:
-  - text: "How much experience do you have with cryptocurrencies?"
+  utter_provide_information:
+  - text: "Here is some information about crypto wallets that you requested."
+    condition:
+      - type: slot
+        name: language
+        value: en
+  - text: "Đây là thông tin về ví tiền điện tử mà bạn yêu cầu."
+    condition:
+      - type: slot
+        name: language
+        value: vi
 
 
 actions:
@@ -318,6 +328,8 @@ imports:
   - data/common/crypto_synonym_nlu.yml
   - data/language_rules.yml
   - data/multilingual_nlu.yml
+  - data/stories.yml
+  - data/greeting_stories.yml
 
 session_config:
   session_expiration_time: 60

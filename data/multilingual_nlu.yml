@@ -115,14 +115,26 @@ nlu:
       - Hiển thị tất cả các địa chỉ đã lưu của tôi
       - Xem danh bạ ví của tôi
 
-  # Mixed language examples to demonstrate language detection capabilities
-  - intent: mixed_language_examples
+  # English intent examples
+  - intent: request_information
     examples: |
-      - I want to add một địa chỉ mới
-      - Xin chào, show me my wallet contacts
-      - Lưu địa chỉ này: [0x71C7656EC7ab88b098defB751B7401B5f6d8976F](wallet_address)
-      - Tôi muốn list all my contacts
-      - Add [Alice](contact_name) với địa chỉ [bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh](wallet_address)
-      - Chào bạn, can you help me with my wallet?
-      - Tôi cần to delete a contact
-      - Hello, tôi muốn thay đổi địa chỉ ví của [John](contact_name)
+      - Can you tell me about crypto wallets?
+      - I need information about wallets
+      - How do cryptocurrency wallets work?
+      - Explain wallets to me
+      - I want to know more about digital wallets
+      - Information about wallet security please
+      - Tell me about blockchain wallets
+      - What's a crypto wallet?
+
+  # Vietnamese intent examples
+  - intent: request_information
+    examples: |
+      - Bạn có thể cho tôi biết về ví tiền điện tử không?
+      - Tôi cần thông tin về ví
+      - Ví tiền điện tử hoạt động như thế nào?
+      - Giải thích về ví cho tôi
+      - Tôi muốn biết thêm về ví kỹ thuật số
+      - Thông tin về bảo mật ví
+      - Hãy cho tôi biết về ví blockchain
+      - Ví tiền điện tử là gì?

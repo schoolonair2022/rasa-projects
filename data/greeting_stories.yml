@@ -1,0 +1,34 @@
+version: "3.1"
+
+stories:
+- story: English greeting and goodbye
+  steps:
+  - intent: greet
+  - action: action_set_english_language
+  - action: utter_greet
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: Vietnamese greeting and goodbye
+  steps:
+  - intent: greet_vi
+  - action: action_set_vietnamese_language
+  - action: utter_greet
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: English request information after greeting
+  steps:
+  - intent: greet
+  - action: action_set_english_language
+  - action: utter_greet
+  - intent: request_information
+  - action: utter_provide_information
+
+- story: Vietnamese request information after greeting
+  steps:
+  - intent: greet_vi
+  - action: action_set_vietnamese_language
+  - action: utter_greet
+  - intent: request_information
+  - action: utter_provide_information

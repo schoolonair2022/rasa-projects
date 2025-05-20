@@ -1,10 +1,23 @@
 version: "3.1"
 
 stories:
-- story: happy path
+- story: mood great after greeting
   steps:
-  - intent: greet
-  - action: action_set_english_language
-  - action: utter_greet
   - intent: mood_great
   - action: utter_happy
+
+- story: mood unhappy
+  steps:
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: mood unhappy and deny
+  steps:
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
