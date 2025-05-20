@@ -1,0 +1,40 @@
+version: "3.1"
+
+nlu:
+- intent: contact_add_request
+  examples: |
+    # Complete format tests (name + address + network)
+    - Add [James](contact_add_entity_name) to my contacts with [Bitcoin](contact_add_entity_crypto_network) address [1Dt7KiqqpgQ2UVWrNSYhEV7YWYUaGC9hFS](contact_add_entity_wallet_address)
+    - Create a new contact for [Emily](contact_add_entity_name) with [Ethereum](contact_add_entity_crypto_network) wallet [0xa88a05d6a62ac84e9b8b0e58566d24a021ae8080](contact_add_entity_wallet_address)
+    - Save [Robert](contact_add_entity_name)'s [Solana](contact_add_entity_crypto_network) address [2Qk1Nn2dXBn7Vo4ZAW2yFwuKQPQdHxjBmW22j8SBNRMy](contact_add_entity_wallet_address)
+    - Could you add [Olivia](contact_add_entity_name) with her [Cardano](contact_add_entity_crypto_network) wallet [addr1q8s32g987asdft3p9eadk6cwng5pxj3jhsydzer3n0d3vllwl2w0xwl2w3wfgse35a3x](contact_add_entity_wallet_address)?
+    
+    # Vietnamese examples
+    - Thêm [Nguyễn Văn A](contact_add_entity_name) với địa chỉ [Bitcoin](contact_add_entity_crypto_network) [1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa](contact_add_entity_wallet_address)
+    - Tạo liên hệ mới cho [Trần Thị B](contact_add_entity_name) với ví [Ethereum](contact_add_entity_crypto_network) [0x742d35Cc6634C0532925a3b844Bc454e4438f44e](contact_add_entity_wallet_address)
+    - Lưu địa chỉ [Solana](contact_add_entity_crypto_network) [9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM](contact_add_entity_wallet_address) của [Lê Văn C](contact_add_entity_name)
+    - Thêm [Phạm Hồng D](contact_add_entity_name) vào danh bạ với [Binance](contact_add_entity_crypto_network) [bnb1jxfh2g85q3v0tdq56fnevx6xcxtcnhtsmcu64m](contact_add_entity_wallet_address)
+    
+    # With typos in cryptocurrency names
+    - Add [Michael](contact_add_entity_name) with [Bitcon](contact_add_entity_crypto_network) address [3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy](contact_add_entity_wallet_address)
+    - Save [Jessica](contact_add_entity_name)'s [Etherium](contact_add_entity_crypto_network) wallet [0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045](contact_add_entity_wallet_address)
+    - Create contact for [David](contact_add_entity_name) with [Solona](contact_add_entity_crypto_network) address [EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v](contact_add_entity_wallet_address)
+    - Add [Sarah](contact_add_entity_name) to my list with [Cardeno](contact_add_entity_crypto_network) wallet [addr1qyklpa4lcncl0yw72rjcftqrze4gg6kv9mdnmek7vklnxk7ve6hecc4ree7wufd4qgljjwywdphrvr8clxpzh92433s9pxvey](contact_add_entity_wallet_address)
+    
+    # With typos in names
+    - Add [Jonh](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network{"value":"Bitcoin"}) address [1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2](contact_add_entity_wallet_address)
+    - Create contact for [Jenifer](contact_add_entity_name) with [ETH](contact_add_entity_crypto_network{"value":"Ethereum"}) wallet [0x89F5C5F24447Fb138bDc8f610A87b538c220B6e8](contact_add_entity_wallet_address)
+    
+    # Network mismatch tests
+    - Add [Thomas](contact_add_entity_name) with [Bitcoin](contact_add_entity_crypto_network) address [0xCFE8D382D9f66a311fAa5A274891499695191991](contact_add_entity_wallet_address)
+    - Save [Lisa](contact_add_entity_name) with [Ethereum](contact_add_entity_crypto_network) wallet [1HLoD9E4SDFFPDiYfNYnkBLQ85Y51J3Zb1](contact_add_entity_wallet_address)
+    
+    # Mixed language examples (Vietnamese text with English entities)
+    - Thêm [John](contact_add_entity_name) với [Bitcoin](contact_add_entity_crypto_network) [3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5](contact_add_entity_wallet_address)
+    - Tạo liên hệ cho [Emma](contact_add_entity_name) với [Ethereum](contact_add_entity_crypto_network) [0x742d35Cc6634C0532925a3b844Bc454e4438f44e](contact_add_entity_wallet_address)
+    
+    # Abbreviations tests
+    - Add [William](contact_add_entity_name) with [BTC](contact_add_entity_crypto_network{"value":"Bitcoin"}) [bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh](contact_add_entity_wallet_address)
+    - Save [Sophia](contact_add_entity_name)'s [ETH](contact_add_entity_crypto_network{"value":"Ethereum"}) [0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B](contact_add_entity_wallet_address)
+    - Create contact for [Joseph](contact_add_entity_name) with [SOL](contact_add_entity_crypto_network{"value":"Solana"}) [4xTdCKvF6VxEDwGHQXGNGvw7qP3eUx8wGCj8zWhMuEum](contact_add_entity_wallet_address)
+    - Add [Olivia](contact_add_entity_name) to contacts with [ADA](contact_add_entity_crypto_network{"value":"Cardano"}) [addr1qyc0kwu98x23mrwl7hcym5acvuqm6h55qeethtjz9jy996qcw7hpqhpl5dh7kud45kq2pg9975ls0yje86r4uetl7rls5qwj5p](contact_add_entity_wallet_address)

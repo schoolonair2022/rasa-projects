@@ -71,9 +71,51 @@ responses:
   
   utter_add_contact_ask_name:
   - text: "Sure! What name would you like to save for this contact?"
+    condition:
+      - type: slot
+        name: language
+        value: en
+  - text: "Tuyệt! Bạn muốn lưu tên gì cho liên hệ này?"
+    condition:
+      - type: slot
+        name: language
+        value: vi
   
-  utter_add_contact_ask_address:
-  - text: "Great! Now please provide the wallet address you want to save."
+  utter_add_contact_ask_crypto_network:
+  - text: "Which cryptocurrency network does this wallet address belong to? (e.g., Bitcoin, Ethereum, Solana)"
+    condition:
+      - type: slot
+        name: language
+        value: en
+  - text: "Địa chỉ ví này thuộc mạng tiền điện tử nào? (ví dụ: Bitcoin, Ethereum, Solana)"
+    condition:
+      - type: slot
+        name: language
+        value: vi
+  
+  utter_add_contact_ask_wallet_address:
+  - text: "Please provide the {contact_add_entity_crypto_network} wallet address you want to save."
+    condition:
+      - type: slot
+        name: language
+        value: en
+  - text: "Vui lòng cung cấp địa chỉ ví {contact_add_entity_crypto_network} bạn muốn lưu."
+    condition:
+      - type: slot
+        name: language
+        value: vi
+  
+  utter_contact_added:
+  - text: "Great! I've added {contact_add_entity_name} to your contacts with their {contact_add_entity_crypto_network} wallet."
+    condition:
+      - type: slot
+        name: language
+        value: en
+  - text: "Tuyệt! Tôi đã thêm {contact_add_entity_name} vào danh bạ của bạn với ví {contact_add_entity_crypto_network} của họ."
+    condition:
+      - type: slot
+        name: language
+        value: vi
   
   # New responses for CryptoBERT features
   utter_investment_info:
@@ -88,13 +130,37 @@ responses:
   utter_ask_crypto_description:
   - text: "Can you describe that cryptocurrency project in more detail?"
   
-  utter_provide_information:
-  - text: "Here is some information about crypto wallets that you requested."
+  utter_address_network_mismatch:
+  - text: "It looks like the wallet address you provided doesn't match the {contact_add_entity_crypto_network} network format. Please provide a valid {contact_add_entity_crypto_network} wallet address."
     condition:
       - type: slot
         name: language
         value: en
-  - text: "Đây là thông tin về ví tiền điện tử mà bạn yêu cầu."
+  - text: "Có vẻ như địa chỉ ví bạn cung cấp không phù hợp với định dạng mạng {contact_add_entity_crypto_network}. Vui lòng cung cấp địa chỉ ví {contact_add_entity_crypto_network} hợp lệ."
+    condition:
+      - type: slot
+        name: language
+        value: vi
+
+  utter_crypto_network_corrected:
+  - text: "I've corrected {contact_add_entity_crypto_network} in your contact details. Please continue with the other information."
+    condition:
+      - type: slot
+        name: language
+        value: en
+  - text: "Tôi đã sửa lại {contact_add_entity_crypto_network} trong thông tin liên hệ của bạn. Vui lòng tiếp tục với thông tin khác."
+    condition:
+      - type: slot
+        name: language
+        value: vi
+
+  utter_unsupported_cryptocurrency:
+  - text: "I'm sorry, but {contact_add_entity_crypto_network} is not currently supported. Please choose from Bitcoin, Ethereum, Solana, Cardano, Binance Smart Chain, or other major cryptocurrencies."
+    condition:
+      - type: slot
+        name: language
+        value: en
+  - text: "Tôi rất tiếc, nhưng {contact_add_entity_crypto_network} hiện không được hỗ trợ. Vui lòng chọn từ Bitcoin, Ethereum, Solana, Cardano, Binance Smart Chain hoặc các tiền điện tử chính khác."
     condition:
       - type: slot
         name: language
@@ -331,9 +397,26 @@ slots:
 forms:
   add_contact_form:
     required_slots:
-      - contact_add_entity_name
-      - contact_add_entity_crypto_network
-      - contact_add_entity_wallet_address
+      contact_add_entity_name:
+        - type: from_entity
+          entity: contact_add_entity_name
+        - type: from_text
+          intent: provide_contact_name
+          not_intent: [cancel, out_of_scope, nlu_fallback]
+      contact_add_entity_crypto_network:
+        - type: from_entity
+          entity: contact_add_entity_crypto_network
+        - type: from_text
+          intent: provide_crypto_network
+          not_intent: [cancel, out_of_scope, nlu_fallback]
+      contact_add_entity_wallet_address:
+        - type: from_entity
+          entity: contact_add_entity_wallet_address
+        - type: from_entity
+          entity: wallet_address
+        - type: from_text
+          intent: provide_wallet_address
+          not_intent: [cancel, out_of_scope, nlu_fallback]
 
 imports:
   - data/contact/contact_nlu.yml
@@ -342,6 +425,7 @@ imports:
   - data/contact/contact_stories.yml
   - data/contact/wallet_address_examples.yml
   - data/contact/wallet_address_rules.yml
+  - data/contact/crypto_lookup.yml
   - data/common/crypto_synonym_nlu.yml
   - data/language_rules.yml
   - data/multilingual_nlu.yml

@@ -7,12 +7,14 @@ assistant_id: 20250515-042817-booming-inventory
 language: vi,en  # Supporting both Vietnamese and English
 
 pipeline:
-  # Use WhitespaceTokenizer for all languages (we'll customize tokenization in code)
-  - name: WhitespaceTokenizer
+  # Use Underthesea for Vietnamese tokenization
+  - name: components.multilingual.vietnamese.UnderthesaTokenizer
+    model: vi
     intent_tokenization_flag: True
     intent_split_symbol: "_"
   
   # Extract regex features for entities
+  # Define regex patterns for cryptocurrency wallet addresses
   - name: RegexFeaturizer
     case_sensitive: False
   
@@ -23,9 +25,9 @@ pipeline:
   - name: LanguageModelFeaturizer
     model_name: "bert"
     model_weights: "rasa/LaBSE"
-    cache_dir: "./cache"  # Cache transformer models
-    batch_size: 16        # Optimized for your 24GB RAM
-    epochs: 5             # Reduced for memory efficiency
+    cache_dir: "./cache"     # Cache transformer models
+    batch_size: 16           # Optimized for 24GB RAM
+    epochs: 15               # Increased from 5 to 15 for better fine-tuning
     random_seed: 42
   
   # Extract bag-of-words features with word-level n-grams
@@ -42,22 +44,22 @@ pipeline:
     
   # Intent and entity classification using DIET
   - name: DIETClassifier
-    epochs: 100
+    epochs: 150              # Increased from 100 to 150 
     constrain_similarities: true
-    batch_strategy: "balanced"
-    evaluate_on_number_of_examples: 0  # Set to 0 to disable validation split
-    evaluate_every_number_of_epochs: 20
-    checkpoint_model: false  # Disable checkpoint saving since we're not validating
+    batch_strategy: "sequence"  # Changed from "balanced" to "sequence" for better learning
+    evaluate_on_number_of_examples: 20  # Enable validation split for performance monitoring
+    evaluate_every_number_of_epochs: 10
+    checkpoint_model: true   # Save checkpoints for the best model
     entity_recognition: true
     use_masked_language_model: false
     BILOU_flag: true
     intent_tokenization_flag: true
     intent_split_symbol: "_"
     use_full_model_secure_mode: false
-    share_hidden_layers: false  # Keep as false to avoid dimension mismatch
-    batch_size: 16
+    share_hidden_layers: false
+    batch_size: [16, 32]     # Dynamic batch sizing for better convergence
     random_seed: 42
-    ranking_length: 5        # Return top 5 intent confidences
+    ranking_length: 3        # Return top 3 instead of 5 for more focused results
     
   # Map entity synonyms
   - name: EntitySynonymMapper
@@ -73,7 +75,7 @@ pipeline:
     
   # Fallback when confidence is low
   - name: FallbackClassifier
-    threshold: 0.7           # More conservative threshold for fallback
+    threshold: 0.7           # Conservative threshold for fallback
     ambiguity_threshold: 0.1
     fallback_intent_name: nlu_fallback
 
@@ -89,7 +91,7 @@ policies:
     
   - name: TEDPolicy
     max_history: 5
-    epochs: 50               # Reduced for faster training
+    epochs: 100              # Increased from 50 to 100 for better dialogue learning
     batch_size: 32
     random_seed: 42
     constrain_similarities: true
