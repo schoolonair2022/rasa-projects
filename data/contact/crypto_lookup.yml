@@ -1,0 +1,217 @@
+version: "3.1"
+
+nlu:
+- regex: wallet_address
+  examples: |
+    # Bitcoin address patterns
+    - ^(1|3)[a-zA-Z0-9]{25,34}$
+    - ^bc1[a-zA-Z0-9]{25,62}$
+    # Ethereum address patterns
+    - ^0x[a-fA-F0-9]{40}$
+    # Litecoin address patterns
+    - ^[LM3][a-km-zA-HJ-NP-Z1-9]{26,33}$
+    # Ripple (XRP) address patterns
+    - ^r[0-9a-zA-Z]{24,34}$
+    # Dogecoin address patterns
+    - ^D[0-9a-zA-Z]{25,34}$
+    # Solana address patterns
+    - ^[1-9A-HJ-NP-Za-km-z]{32,44}$
+    # Cardano address patterns
+    - ^addr1[a-zA-Z0-9]{90,110}$
+    # Polkadot address patterns
+    - ^1[a-zA-Z0-9]{47,48}$
+    # Near address patterns
+    - ^[a-z0-9_-]{2,64}\.near$
+    # USDT, DAI, and other ERC-20 tokens use Ethereum address format
+    # General pattern for wallets over 20 characters
+    - [a-zA-Z0-9]{20,120}
+
+- lookup: crypto_network
+  examples: |
+    - Bitcoin
+    - Ethereum
+    - Cardano
+    - Solana
+    - Ripple
+    - XRP
+    - Dogecoin
+    - Litecoin
+    - Polkadot
+    - Avalanche
+    - Stellar
+    - Cosmos
+    - NEAR
+    - Tezos
+    - Binance Coin
+    - Binance Smart Chain
+    - BSC
+    - Algorand
+    - Polygon
+    - Chainlink
+    - Monero
+    - Uniswap
+    - Aave
+    - Compound
+    - USD Coin
+    - Tether
+    - Terra
+    - VeChain
+    - Decentraland
+    - The Graph
+    - Filecoin
+    - Kusama
+    - Flow
+    - Hedera Hashgraph
+    - Theta
+    - EOS
+    - TRON
+    - NEO
+    - Ontology
+    - IOTA
+    - Dash
+    - Zilliqa
+    - Harmony
+    - Elrond
+    - IoTeX
+    - Helium
+    - Zcash
+    - Bitcoin Cash
+    - Ethereum Classic
+    - Fantom
+    - Waves
+    - Arweave
+
+- synonym: Bitcoin
+  examples: |
+    - BTC
+    - bitcoin
+    - XBT
+    - btc
+    - Bitcoin network
+    - bitcon
+    - bitc0in
+    - bit coin
+    - bitcoin cash
+    - bitcoin gold
+    - satoshi's vision
+
+- synonym: Ethereum
+  examples: |
+    - ETH
+    - ethereum
+    - ether
+    - eth
+    - Ethereum network
+    - vitalik's creation
+    - etherium
+    - etherem
+    - WETH
+    - wrapped ETH
+    - etherum
+
+- synonym: Solana
+  examples: |
+    - SOL
+    - sol
+    - solana
+    - Solana network
+    - Solana blockchain
+    - solona
+    - sol token
+    - sollana
+
+- synonym: Cardano
+  examples: |
+    - ADA
+    - ada
+    - cardano
+    - Cardano network
+    - Cardano blockchain
+    - Hoskinson's project
+    - cardeno
+    - cardona
+
+- synonym: Binance Smart Chain
+  examples: |
+    - BSC
+    - bsc
+    - Binance Chain
+    - BNB Chain
+    - Binance coin
+    - BNB
+    - bnb
+
+- synonym: Binance Coin
+  examples: |
+    - BNB
+    - binance coin
+    - binance token
+    - Binance Coin
+    - BEP-20
+    - BEP-2
+    - bnb token
+
+- synonym: Polygon
+  examples: |
+    - MATIC
+    - matic
+    - polygon
+    - Polygon network
+    - Matic network
+    - polygone
+    - polygen
+    - MATIC token
+
+- synonym: XRP
+  examples: |
+    - xrp
+    - Ripple
+    - ripple
+    - XRP Ledger
+    - Ripple network
+    - XRP token
+    - ripl
+    - rippl
+
+- synonym: Dogecoin
+  examples: |
+    - DOGE
+    - doge
+    - dogecoin
+    - doge coin
+    - dog coin
+    - Elon's favorite
+    - dogcoin
+    - dogecoine
+    - dodge coin
+
+- synonym: Tether
+  examples: |
+    - USDT
+    - usdt
+    - tether
+    - Tether USD
+    - dollar-pegged
+    - tether token
+    - USDT token
+
+- synonym: USD Coin
+  examples: |
+    - USDC
+    - usdc
+    - USD Coin
+    - usd coin
+    - USDC stablecoin
+    - Circle USD
+    - Circle USDC
+
+- synonym: Avalanche
+  examples: |
+    - AVAX
+    - avax
+    - avalanche
+    - Ava Labs
+    - Avalanche blockchain
+    - avalanch
+    - avalanch chain
+    - avax token

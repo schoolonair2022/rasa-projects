@@ -1,0 +1,82 @@
+version: "3.1"
+
+stories:
+- story: Add BTC contact in Vietnamese
+  language: vi
+  steps:
+  - intent: contact_add_request
+    entities:
+    - contact_add_entity_name: "Nguyễn Văn A"
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - slot_was_set:
+    - requested_slot: contact_add_entity_crypto_network
+  - intent: provide_crypto_network
+    entities:
+    - contact_add_entity_crypto_network: "Bitcoin"
+  - action: add_contact_form
+  - slot_was_set:
+    - contact_add_entity_crypto_network: "Bitcoin"
+    - requested_slot: contact_add_entity_wallet_address  
+  - intent: provide_wallet_address
+    entities:
+    - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+  - action: add_contact_form
+  - slot_was_set:
+    - contact_add_entity_wallet_address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+    - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+
+- story: Add ETH contact with typo in network name
+  steps:
+  - intent: contact_add_request
+    entities:
+    - contact_add_entity_name: "Jessica"
+    - contact_add_entity_crypto_network: "Etherium"
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - action: action_validate_crypto_network
+  - slot_was_set:
+    - contact_add_entity_crypto_network: "Ethereum"
+    - crypto_network_typo: true
+  - slot_was_set:
+    - requested_slot: contact_add_entity_wallet_address
+  - intent: provide_wallet_address
+    entities:
+    - contact_add_entity_wallet_address: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+  - action: add_contact_form
+  - action: action_validate_wallet_address
+  - slot_was_set:
+    - address_valid: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
+
+- story: Add contact with network mismatch
+  steps:
+  - intent: contact_add_request
+    entities:
+    - contact_add_entity_name: "Thomas"
+    - contact_add_entity_crypto_network: "Bitcoin"
+    - contact_add_entity_wallet_address: "0xCFE8D382D9f66a311fAa5A274891499695191991"
+  - action: add_contact_form
+  - active_loop: add_contact_form
+  - action: action_validate_wallet_address
+  - slot_was_set:
+    - address_valid: false
+    - network_address_mismatch: true
+  - action: utter_address_network_mismatch
+  - intent: provide_wallet_address
+    entities:
+    - contact_add_entity_wallet_address: "1HLoD9E4SDFFPDiYfNYnkBLQ85Y51J3Zb1"
+  - action: add_contact_form
+  - action: action_validate_wallet_address
+  - slot_was_set:
+    - address_valid: true
+    - network_address_mismatch: false
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_save_contact
