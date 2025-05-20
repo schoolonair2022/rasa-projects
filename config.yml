@@ -98,3 +98,8 @@ policies:
     core_fallback_threshold: 0.4
     core_fallback_action_name: "action_fallback_claude"
     enable_fallback_prediction: true
+    featurizer:
+      - name: MaxHistoryTrackerFeaturizer
+        max_history: 5
+        state_featurizer:
+          - name: SingleStateFeaturizer

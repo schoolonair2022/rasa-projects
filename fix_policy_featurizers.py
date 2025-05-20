@@ -58,8 +58,8 @@ def extract_model(model_path):
         shutil.rmtree(temp_dir)
         return None
 
-def fix_memorization_policy(model_dir):
-    """Fix MemoizationPolicy configuration in the model."""
+def fix_policy_featurizers(model_dir):
+    """Fix featurizer configuration for all policies in the model."""
     # Check for core policy file
     core_policy_path = os.path.join(model_dir, "core", "policy_metadata.json")
     if not os.path.exists(core_policy_path):
@@ -70,48 +70,45 @@ def fix_memorization_policy(model_dir):
     with open(core_policy_path, 'r') as f:
         metadata = json.load(f)
     
-    # Check if we have the MemoizationPolicy
+    # Get policy names
     policies = metadata.get("policy_names", [])
-    if "MemoizationPolicy" not in policies:
-        logger.error("MemoizationPolicy not found in the model.")
-        return False
+    fixed_policies = []
     
-    # Find the index of MemoizationPolicy
-    memo_idx = policies.index("MemoizationPolicy")
-    
-    # Check if the featurizer is already configured correctly
+    # Fix each policy with featurizer issues
     policy_dict = metadata.get("policy_priority", {})
-    if memo_idx in policy_dict:
-        logger.info("Checking MemoizationPolicy configuration...")
-        featurizer_info = policy_dict.get(str(memo_idx), {}).get("featurizer", {})
-        
-        if isinstance(featurizer_info, dict) and "name" not in featurizer_info:
-            logger.info("Fixing MemoizationPolicy featurizer configuration...")
-            
-            # Fix the featurizer configuration
-            policy_dict[str(memo_idx)]["featurizer"] = {
-                "name": "MaxHistoryTrackerFeaturizer",
-                "max_history": 5,
-                "state_featurizer": {
-                    "name": "SingleStateFeaturizer"
-                }
-            }
-            
-            # Update the metadata
-            metadata["policy_priority"] = policy_dict
-            
-            # Write the updated metadata back to the file
-            with open(core_policy_path, 'w') as f:
-                json.dump(metadata, f, indent=2)
+    
+    for i, policy_name in enumerate(policies):
+        if policy_name in ["MemoizationPolicy", "RulePolicy", "TEDPolicy"]:
+            if str(i) in policy_dict:
+                logger.info(f"Checking {policy_name} configuration...")
+                featurizer_info = policy_dict.get(str(i), {}).get("featurizer", {})
                 
-            logger.info("MemoizationPolicy featurizer fixed successfully.")
-            return True
-        else:
-            logger.info("MemoizationPolicy featurizer is already configured correctly.")
-            return True
+                if isinstance(featurizer_info, dict) and "name" not in featurizer_info:
+                    logger.info(f"Fixing {policy_name} featurizer configuration...")
+                    
+                    # Fix the featurizer configuration
+                    policy_dict[str(i)]["featurizer"] = {
+                        "name": "MaxHistoryTrackerFeaturizer",
+                        "max_history": 5,
+                        "state_featurizer": {
+                            "name": "SingleStateFeaturizer"
+                        }
+                    }
+                    fixed_policies.append(policy_name)
+    
+    if fixed_policies:
+        # Update the metadata
+        metadata["policy_priority"] = policy_dict
+        
+        # Write the updated metadata back to the file
+        with open(core_policy_path, 'w') as f:
+            json.dump(metadata, f, indent=2)
+            
+        logger.info(f"Fixed featurizer configuration for policies: {', '.join(fixed_policies)}")
+        return True
     else:
-        logger.error(f"MemoizationPolicy index {memo_idx} not found in policy_priority.")
-        return False
+        logger.info("No policy featurizers needed fixing.")
+        return True
 
 def repackage_model(model_dir, original_model_path):
     """Package the fixed model back into a .tar.gz file."""
@@ -140,7 +137,7 @@ def repackage_model(model_dir, original_model_path):
 
 def main():
     """Main function to fix MemoizationPolicy error."""
-    logger.info("Starting MemoizationPolicy fixer...")
+    logger.info("Starting Policy Featurizer fixer...")
     
     # Find the latest model
     model_path = find_latest_model()
@@ -153,8 +150,8 @@ def main():
         return 1
     
     try:
-        # Fix MemoizationPolicy
-        if fix_memorization_policy(temp_dir):
+        # Fix Policy Featurizers
+        if fix_policy_featurizers(temp_dir):
             # Repackage the model
             fixed_model_path = repackage_model(temp_dir, model_path)
             if fixed_model_path:
@@ -164,7 +161,7 @@ def main():
                 logger.error("Failed to repackage the model.")
                 return 1
         else:
-            logger.error("Failed to fix MemoizationPolicy.")
+            logger.error("Failed to fix policy featurizers.")
             return 1
     finally:
         # Clean up
